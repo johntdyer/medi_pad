@@ -1,0 +1,15 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  procedure_name: MyString
+  procedure_code: MyString
+  procedure_nickname: MyString
+  group_type: MyString
+  procedure_id: 1
+
+two:
+  procedure_name: MyString
+  procedure_code: MyString
+  procedure_nickname: MyString
+  group_type: MyString
+  procedure_id: 1

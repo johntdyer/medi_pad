@@ -1,0 +1,11 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  doctor_name: MyString
+  doctor_id: MyString
+  doctor_pin: MyString
+
+two:
+  doctor_name: MyString
+  doctor_id: MyString
+  doctor_pin: MyString

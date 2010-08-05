@@ -1,0 +1,18 @@
+<p>
+  <b>Doctor name:</b>
+  <%=h @doctor.doctor_name %>
+</p>
+
+<p>
+  <b>Doctor:</b>
+  <%=h @doctor.doctor_id %>
+</p>
+
+<p>
+  <b>Doctor pin:</b>
+  <%=h @doctor.doctor_pin %>
+</p>
+
+
+<%= link_to 'Edit', edit_doctor_path(@doctor) %> |
+<%= link_to 'Back', doctors_path %>

@@ -1,0 +1,31 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  facility: MyString
+  room: MyString
+  bed: MyString
+  unit: MyString
+  patient_name: MyString
+  age: 1
+  sex: MyString
+  mrn: MyString
+  fin: MyString
+  attending_md: MyString
+  consult_md: MyString
+  admitted: 2010-08-04
+  patient_been_seen: false
+
+two:
+  facility: MyString
+  room: MyString
+  bed: MyString
+  unit: MyString
+  patient_name: MyString
+  age: 1
+  sex: MyString
+  mrn: MyString
+  fin: MyString
+  attending_md: MyString
+  consult_md: MyString
+  admitted: 2010-08-04
+  patient_been_seen: false

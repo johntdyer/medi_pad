@@ -1,0 +1,79 @@
+<table class='patient_data' style="width: 300px; margin-right: 0px; margin-left: 30px;">
+  <caption>Patient Data</caption>
+		<tr>
+			<th scope='col' abbr='Name'>Name</th>
+			<td><%= @patient.patient_name %></td>
+		</tr>	
+		<tr>
+			<th scope='col' abbr='Facility'>Facility</th>
+			<td><%= @patient.facility %></td>
+		</tr>
+		<tr>
+			<th scope='col' abbr='Attending'>Attending</th>
+			<td><%= @patient.attending_md %></td>
+		</tr>
+				<% if @patient.consult_md!=nil%>
+			<tr>
+				<th scope='col' abbr='Consulting'>Consulting MD</th>
+				<td><%= @patient.consult_md %> </td>
+			</tr>
+			<%end%>
+		</tr>
+	</table>
+	
+	<table class='patient_procedure_list' style="width: 200px; margin-right: 0px; margin-left: 30px;">
+	  <caption>Location</caption>
+			<tr>
+				<th scope='col' abbr='Room'>Room</th>
+					<td>
+						<%= check_value(@patient.room)%>
+					</td>
+			</tr>
+			<tr>
+				<th scope='col' abbr='Bed'>Bed</th>
+					<td>
+						<%= check_value(@patient.bed)%>
+					</td>
+			</tr>
+			<tr>
+				<th scope='col' abbr='Unit'>Unit</th>
+					<td>
+						<%= check_value(@patient.unit)%>
+					</td>
+			</tr>
+			<tr>
+				<th scope='col' abbr='Age'>Age</th>
+					<td>
+						<%= check_value(@patient.age.to_s)%>
+					</td
+			</tr>
+			<tr>
+				<th scope='col' abbr='Sex'>Sex</th>
+				<td>
+					<%= check_value(@patient.sex)%>
+				</td>
+			</tr>
+		</tr>
+	</table>
+<!--
+<p>
+  <b>Mrn:</b>
+  <%=h @patient.mrn %>
+</p>
+
+<p>
+  <b>Fin:</b>
+  <%=h @patient.fin %>
+</p>
+-->
+<%= render :partial=>"show_charges",	:locals=>{:charges=>@patient.charges,:orders=>@order}	%>
+
+
+
+<%= render :partial=>"new_charge",  :locals=>{:charge=>Charge.new(:patient_id=>@patient.id)}%>
+
+
+
+
+<%= link_to 'Edit', edit_patient_path(@patient) %> |
+<%= link_to 'Back', patients_path %>

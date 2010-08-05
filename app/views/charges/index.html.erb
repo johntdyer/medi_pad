@@ -1,0 +1,26 @@
+<h1>Listing charges</h1>
+
+<table>
+  <tr>
+    <th>Procedure name</th>
+    <th>Procedure code</th>
+    <th>Doctor</th>
+    <th>Patient</th>
+  </tr>
+
+<% @charges.each do |charge| %>
+  <tr>
+    <td><%=h charge.procedure_name %></td>
+    <td><%=h charge.procedure_code %></td>
+    <td><%=h charge.doctor %></td>
+    <td><%=h charge.patient_id %></td>
+    <td><%= link_to 'Show', charge %></td>
+    <td><%= link_to 'Edit', edit_charge_path(charge) %></td>
+    <td><%= link_to 'Destroy', charge, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New charge', new_charge_path %>

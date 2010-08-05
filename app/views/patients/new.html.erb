@@ -1,0 +1,73 @@
+<table class='patient_data' style="width: 300px; margin-right: 0px; margin-left: 30px;">
+<caption>Add Patient</caption>
+
+<% form_for(@patient) do |f| %>
+  <%= f.error_messages %>
+
+    <tr>
+      <td><%= f.label :facility %></td>
+      <td><%= f.text_field :facility %></td>
+    </tr>
+    <tr>
+      <td><%= f.label :room %></td>
+      <td><%= f.text_field :room %></td>
+    </tr>
+    <tr>
+      <td><%= f.label :unit %></td>
+      <td><%= f.text_field :unit %></td>
+    </tr>
+    <tr>
+      <td><%= f.label :patient_name %></td>
+      <td><%= f.text_field :patient_name %></td>
+    </tr>
+    <tr>
+      <td><%= f.label :age %></td>
+      <td><%= f.text_field :age %></td>
+    </tr>
+    <tr>
+      <td><%= f.label :sex %></td>
+      <td><%= f.text_field :sex %></td>
+    </tr>
+    <tr>
+      <td><%= f.label :attending_md %></td>
+      <td><%= f.text_field :attending_md %></td>
+    </tr>
+    <tr>
+      <td><%= f.label :bed %></td>
+      <td><%= f.text_field :bed %></td>
+    </tr>
+    <tr>
+      <td><%= f.label :unit %></td>
+      <td><%= f.text_field :unit %></td>
+    </tr>
+    <tr>
+      <td><%= f.label :patient_name %></td>
+      <td><%= f.text_field :patient_name %></td>
+    </tr>
+    <tr>
+      <td><%= f.label :age %></td>
+      <td><%= f.text_field :age %></td>
+    </tr>
+    <tr>
+      <td><%= f.label :sex %></td>
+      <td><%= f.text_field :sex %></td>
+    </tr>
+    <tr>
+      <td><%= f.label :attending_md %></td>
+      <td><%= f.text_field :attending_md %></td>
+    </tr>
+    <tr>
+      <td><%= f.label :consult_md %></td>
+      <td><%= f.text_field :consult_md %></td>
+    </tr>
+    <tr>
+      <td><%= f.label :admitted %></td>
+      <td><%= f.date_select :admitted %></td>
+    </tr>
+    <tr>
+      <td><%= f.submit 'Create' %></td>
+      <td><%= link_to 'Show', @patient %></td>
+      <td><%= link_to 'Back', patients_path %></td>
+    </tr>
+  </table>
+<% end %>

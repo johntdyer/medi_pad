@@ -1,0 +1,23 @@
+<p>
+  <b>Procedure name:</b>
+  <%=h @charge.procedure_name %>
+</p>
+
+<p>
+  <b>Procedure code:</b>
+  <%=h @charge.procedure_code %>
+</p>
+
+<p>
+  <b>Doctor:</b>
+  <%=h @charge.doctor %>
+</p>
+
+<p>
+  <b>Patient:</b>
+  <%=h @charge.patient_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_charge_path(@charge) %> |
+<%= link_to 'Back', charges_path %>

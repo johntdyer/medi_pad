@@ -1,0 +1,28 @@
+<p>
+  <b>Procedure name:</b>
+  <%=h @procedure.procedure_name %>
+</p>
+
+<p>
+  <b>Procedure code:</b>
+  <%=h @procedure.procedure_code %>
+</p>
+
+<p>
+  <b>Procedure nickname:</b>
+  <%=h @procedure.procedure_nickname %>
+</p>
+
+<p>
+  <b>Group type:</b>
+  <%=h @procedure.group_type %>
+</p>
+
+<p>
+  <b>Procedure:</b>
+  <%=h @procedure.procedure_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_procedure_path(@procedure) %> |
+<%= link_to 'Back', procedures_path %>

@@ -1,0 +1,13 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  procedure_name: MyString
+  procedure_code: 1
+  doctor: MyString
+  patient_id: MyString
+
+two:
+  procedure_name: MyString
+  procedure_code: 1
+  doctor: MyString
+  patient_id: MyString
