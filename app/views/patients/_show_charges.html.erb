@@ -1,26 +1,29 @@
 <table class='stripeMe' style="width: 300px; margin-right: 0px; margin-left: 30px;">
-	<%if !charges.empty? %>
-
-  <caption>Charges</caption>
-	<thead>
-			<tr class='odd'>
-			<th scope='col' abbr='Procedure'>Charge</th>
-			<th scope='col' abbr='Doctor'>Doctor</th>
-			<th></th>
-		</tr>
-	</thead>
-		<tr>
-		
-		<% charges.each do |charge| %>
-				<% get_info(charge.procedure_code).each do |i| %>
-				  <td>	<%=	i.procedure_name %>					</td>
-				<% end %>
-				  <td>	<%=charge.doctor %>					</td>
-
-				<td><%= link_to 'Remove', charge, :confirm => 'Are you sure?', :method => :delete %></td>
-		</tr>
-		<% end %>
-	<%end%>
+  <%if !charges.empty? %>
+    <caption>Charges</caption>
+    <thead>
+      <tr class='odd'>
+        <th scope='col' abbr='Procedure'>Charge</th>
+        <th scope='col' abbr='Doctor'>Doctor</th>
+        <th></th>
+      </tr>
+    </thead>
+  <tr>
+    <% charges.each do |charge| %>
+    <!-- Pulled from charges_helper -->
+        <% get_info(charge.procedure_code).each do |i| %>
+          <td>
+          <%=	i.procedure_name %>
+          </td>
+          <% end %>
+        <td>
+          <%=charge.doctor %>
+        </td>
+        <td>
+          <%= link_to 'Remove', charge, :confirm => 'Are you sure?', :method => :delete %>
+        </td>
+      </tr>
+      <% end %>
+    <%end%>
 </table>
 <br />
-

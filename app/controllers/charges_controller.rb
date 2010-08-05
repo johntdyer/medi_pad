@@ -44,10 +44,10 @@ class ChargesController < ApplicationController
 
     respond_to do |format|
       if @charge.save
-        format.html { redirect_to(@charge, :notice => 'Charge was successfully created.') 
-#	redirect_to "/patients/#{@charge.patient_id}"
-	
-	}
+        format.html { 
+          #	redirect_to(@charge, :notice => 'Charge was successfully created.') 
+          redirect_to "/patients/#{@charge.patient_id}"
+        }
         format.xml  { render :xml => @charge, :status => :created, :location => @charge }
       else
         format.html { render :action => "new" }
