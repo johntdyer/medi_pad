@@ -1,16 +1,25 @@
-<h1>Listing charges</h1>
-
-<table>
-  <tr>
+<table class='stripeMe' border=1 style="width: 400px; margin-left: 10px;">
+	<caption>Charges</caption>
+	
+  <thead>
+    <tr class='odd'>
     <th>Procedure name</th>
     <th>Procedure code</th>
     <th>Doctor</th>
     <th>Patient</th>
+    <th></th>
+    <th></th>
+    <th></th>
+    
   </tr>
-
+</thead>
+<tbody>
 <% @charges.each do |charge| %>
   <tr>
-    <td><%=h charge.procedure_name %></td>
+    <% get_info(charge.procedure_code).each do |i| %>
+      <td><%=	i.procedure_name %></td>
+    <%end %>
+    
     <td><%=h charge.procedure_code %></td>
     <td><%=h charge.doctor %></td>
     <td><%=h charge.patient_id %></td>
@@ -21,6 +30,6 @@
 <% end %>
 </table>
 
-<br />
+</tbody>
 
-<%= link_to 'New charge', new_charge_path %>
+<!--<%= link_to 'New charge', new_charge_path %>-->

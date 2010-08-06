@@ -1,13 +1,19 @@
-<h1>Listing procedures</h1>
-
-<table>
-  <tr>
-    <th>Procedure name</th>
-    <th>Procedure code</th>
-    <th>Procedure nickname</th>
-    <th>Group type</th>
-    <th>Procedure</th>
+<table class='stripeMe' border=1 style="width: 400px; margin-left: 10px;">
+	<caption>Procedures</caption>
+	
+  <thead>
+    <tr class='odd'>
+      <th>Procedure name</th>
+      <th>Procedure code</th>
+      <th>Procedure nickname</th>
+      <th>Group type</th>
+      <th>Procedure</th>
+      <th></th>
+      <th></th>
+      <th></th>
   </tr>
+</thead>
+<tbody>
 
 <% @procedures.each do |procedure| %>
   <tr>

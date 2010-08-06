@@ -1,11 +1,19 @@
-<h1>Listing doctors</h1>
-
-<table>
-  <tr>
-    <th>Doctor name</th>
-    <th>Doctor</th>
-    <th>Doctor pin</th>
+<table class='stripeMe'>
+	<caption>Doctors</caption>
+	
+  <thead>
+    <tr class='odd'>
+        <th>Doctor name</th>
+        <th>Doctor</th>
+        <th>Doctor pin</th>
+        <th></th>
+        <th></th>
+        <th></th>
+    
   </tr>
+</thead>
+<tbody>
+
 
 <% @doctors.each do |doctor| %>
   <tr>
@@ -18,7 +26,7 @@
   </tr>
 <% end %>
 </table>
+</tbody>
 
-<br />
 
 <%= link_to 'New doctor', new_doctor_path %>

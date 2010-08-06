@@ -90,3 +90,13 @@ color: #66a3d3
 border-style:none; 
 border-collapse:collapse;
 }
+table.stripeMe{
+    width: 300px; 
+    margin-right: 0px; 
+    margin-left: 30px;
+}
+table.patient_data{
+    width: 300px; 
+    margin-right: 0px; 
+    margin-left: 30px;
+}

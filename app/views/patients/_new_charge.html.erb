@@ -3,17 +3,15 @@ select.style01 {border:1px solid #A5A5A5; backgorund-color:#D0D0D0}
 select.style01 option {border-bottom:1px solid #dadada; width:10px;}
 </style>
 
+<!--
 <table class='stripeMe' style="width: 400px; margin-right: 0px; margin-left: 0px;">
     <% form_for(charge) do |f| %>
     <%= f.error_messages %>
     <%= f.hidden_field :patient_id %>
-
     <div id="style01">
-      <!--  LIST OF PROCEDURES -->
       <td>
         <%= f.collection_select :procedure_code, Procedure.all, :procedure_code, :procedure_name %>
       </td>
-      <!--  LIST OF DOCTORS -->
       <td>
         <%= select :charge,:doctor,Doctor.find(:all).collect{|p| [p.doctor_name]}%>
       </td>
@@ -22,5 +20,19 @@ select.style01 option {border-bottom:1px solid #dadada; width:10px;}
       </td>
     </tr>
   </div>
+</table>-->
+
 <% end %>
-</table>
+
+  <% form_tag add_charges_path, :method => :put do %>
+      <%= hidden_field_tag :patient_id,charge.patient_id%>
+      <%= select :charge,:doctor,Doctor.find(:all).collect{|p| [p.doctor_name]}%>
+    <% for p in Procedure.find(:all) %>
+        <div>
+          <%= check_box_tag "procedure_ids[]", p.procedure_code %>
+          <%= p.procedure_name %>  
+        </div>
+       <% end %>
+    <%= submit_tag 'Add' %>
+   <% end %>
+</ul>

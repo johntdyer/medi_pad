@@ -40,6 +40,7 @@ class ChargesController < ApplicationController
   # POST /charges
   # POST /charges.xml
   def create
+
     @charge = Charge.new(params[:charge])
 
     respond_to do |format|
@@ -82,5 +83,31 @@ class ChargesController < ApplicationController
       format.html { redirect_to(charges_url) }
       format.xml  { head :ok }
     end
+  end
+  
+  def add
+    
+    @procedure_ids = params[:procedure_ids]
+    @doctor=params[:charge][:doctor]
+    logger.debug { "procedure_ids : #{@procedure_ids.inspect}" }
+    logger.debug { "doctor : #{@doctor.inspect}" }
+      
+      @procedure_ids.each_with_index { | i,count| 
+        logger.debug "Adding Procedure #{i} for Doctor #{@doctor}" 
+        @charge = Charge.new(:doctor => @doctor, :procedure_code => i, :patient_id => params[:patient_id])
+        @charge.save
+        }
+  redirect_to "/patients/#{@charge.patient_id}"
+#do |each|{
+
+#    }
+#      @charge = Charge.new(:doctor => params[:charge][:doctor], :procedure_code => params[:procedure_ids], :patient_id => params[:patient_id])
+
+=begin       if @charge.save
+          format.html { 
+            #	redirect_to(@charge, :notice => 'Charge was successfully created.') 
+            redirect_to "/patients/#{@charge.patient_id}"
+          }
+=end
   end
 end
