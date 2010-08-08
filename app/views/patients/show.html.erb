@@ -69,7 +69,6 @@
 <%= render :partial=>"show_charges",	:locals=>{:charges=>@patient.charges,:orders=>@order}	%>
 
 
-
 <%= render :partial=>"new_charge",  :locals=>{:charge=>Charge.new(:patient_id=>@patient.id)}%>
 
 

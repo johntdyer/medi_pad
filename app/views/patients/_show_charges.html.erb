@@ -1,4 +1,4 @@
-<table class='stripeMe' style="width: 300px; margin-right: 0px; margin-left: 30px;">
+<table class='stripeMe' style="boarder: 0px; width: 300px; margin-right: 0px; margin-left: 30px;">
   <%if !charges.empty? %>
     <caption>Charges</caption>
     <thead>
@@ -6,24 +6,25 @@
         <th scope='col' abbr='Procedure'>Charge</th>
         <th scope='col' abbr='Doctor'>Doctor</th>
         <th></th>
+        <th scope='col' abbr='Procedure'>Charge</th>
+        <th scope='col' abbr='Doctor'>Doctor</th>
+        <th></th>
       </tr>
     </thead>
-  <tr>
-    <% charges.each do |charge| %>
-    <!-- Pulled from charges_helper -->
-        <% get_info(charge.procedure_code).each do |i| %>
-          <td>
-          <%=	i.procedure_name %>
-          </td>
-          <% end %>
-        <td>
-          <%=charge.doctor %>
-        </td>
-        <td>
-          <%= link_to 'Remove', charge, :confirm => 'Are you sure?', :method => :delete %>
-        </td>
-      </tr>
+
+    <% charges.in_groups_of(2,false) do |c| %>
+    <tr>
+        <% c.each do |procedure| %>
+            <!-- Pulled from charges_helper -->
+            <% get_info(procedure.procedure_code).each do |i| %>
+              <td><%=	i.procedure_name %></td>
+            <% end %>
+            
+              <td><%=procedure.doctor %></td>
+              <td><%= link_to image_tag("delete.png", :border=>0), procedure, :confirm => 'Are you sure?', :method => :delete %></td>
+        <% end %>
+        </tr>
       <% end %>
     <%end%>
 </table>
-<br />
+<br /><br />

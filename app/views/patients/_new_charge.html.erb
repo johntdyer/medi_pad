@@ -8,62 +8,38 @@ select.style01 option {border-bottom:1px solid #dadada; width:10px;}
   <%= javascript_include_tag :defaults %>
 <% end %>
 
-<!--
-<table class='stripeMe' style="width: 400px; margin-right: 0px; margin-left: 0px;">
-    <% form_for(charge) do |f| %>
-    <%= f.error_messages %>
-    <%= f.hidden_field :patient_id %>
-    <div id="style01">
-      <td>
-        <%= f.collection_select :procedure_code, Procedure.all, :procedure_code, :procedure_name %>
-      </td>
-      <td>
-        <%= select :charge,:doctor,Doctor.find(:all).collect{|p| [p.doctor_name]}%>
-      </td>
-      <td >
-        <%= f.submit 'Add' %>
-      </td>
-    </tr>
-  </div>
-</table>
-<% end %>
--->
-
 <%= stylesheet_link_tag 'checkbox' %>
 
 <body>
   <% form_tag add_charges_path, :method => :put do %>
-
+      <% @procedure_list = Procedure.find(:all) %>
       <%= hidden_field_tag :patient_id,charge.patient_id%>
-      <%= select :charge,:doctor,Doctor.find(:all).collect{|p| [p.doctor_name]}%>
+      
+        <table>
+            <% @procedure_list.in_groups_of(4,false) do |procedure| %>  
+            <tr>  
+              <% procedure.each do |p| %>  
+              <td>
+                <label class='checkbox'>
+                  <%= check_box_tag "procedure_ids[]", p.procedure_code %>
+                  <%= p.procedure_name %>  
+                </label>
+              </td>  
+              <% end %>  
+            </tr>  
+            <% end %>  
 
-      <% for p in Procedure.find(:all) %>
-
-          <label class='checkbox'>
-            <%= check_box_tag "procedure_ids[]", p.procedure_code %>
-            <%= p.procedure_name %>  
-          </label>
-        
-       <% end %>
-    <%= submit_tag 'Add' %>
- <% end %>
+            <tr>
+              <td>
+                <%= select :charge,:doctor,Doctor.find(:all).collect{|p| [p.doctor_name]}%>
+                <%= submit_tag 'Add' %>
+              </td>
+            </tr>
+          </table>
+  <% end %>
   
    <script type="text/javascript">
     Event.observe(window, 'load', function() {
         FancyForm.start();
       });
     </script>
-
-<!--
-  <% form_tag add_charges_path, :method => :put do %>
-      <%= hidden_field_tag :patient_id,charge.patient_id%>
-      <%= select :charge,:doctor,Doctor.find(:all).collect{|p| [p.doctor_name]}%>
-    <% for p in Procedure.find(:all) %>
-        <div>
-          <%= check_box_tag "procedure_ids[]", p.procedure_code %>
-          <%= p.procedure_name %>  
-        </div>
-       <% end %>
-    <%= submit_tag 'Add' %>
-   <% end %>
-   -->

@@ -21,7 +21,7 @@ label.checked{
                }
 
 label.unchecked{
-               background-image:url(../images/chk_off.png);
+               background-image:url(../images/circle.png);
                  }
 
 label.selected{
