@@ -1,0 +1,34 @@
+
+
+label.checked,
+label.unchecked,
+label.selected,
+label.unselected{
+                  position:relative;
+                  display:block;
+                  padding:0.5em;
+                  padding-left:32px;
+                  background-position:8px center;
+                  background-repeat:no-repeat;
+                  border:0px solid #252525;
+                  margin:3px;
+                  clear:both;
+                  cursor:pointer
+                  }
+
+label.checked{
+               background-image:url(../images/chk_on.png);
+               }
+
+label.unchecked{
+               background-image:url(../images/chk_off.png);
+                 }
+
+label.selected{
+               background-image:url(../images/rdo_on.png);
+                }
+
+label.unselected{
+               background-image:url(../images/rdo_off.png);
+                  }
+
