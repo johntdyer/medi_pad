@@ -1,6 +1,6 @@
 <style type="text/css" media="screen">
 select.style01 {border:0px solid #A5A5A5; backgorund-color:#D0D0D0}
-select.style01 option {border-bottom:1px solid #dadada; width:10px;}
+select.style01 option {border-bottom:0px solid #dadada; width:10px;}
 </style>
 
 <% content_for(:head) do %>
@@ -9,25 +9,29 @@ select.style01 option {border-bottom:1px solid #dadada; width:10px;}
 <% end %>
 
 <%= stylesheet_link_tag 'checkbox' %>
-
-<body>
+<body>  
+  
   <% form_tag add_charges_path, :method => :put do %>
       <% @procedure_list = Procedure.find(:all) %>
       <%= hidden_field_tag :patient_id,charge.patient_id%>
-      
-        <table>
-            <% @procedure_list.in_groups_of(4,false) do |procedure| %>  
-            <tr>  
-              <% procedure.each do |p| %>  
+
+        <table class="procedure_list">
+          <caption>Procedures</caption>
+      	  
+            <% @procedure_list.in_groups_of(4,false) do |procedure| %>
+            <tr>
+              <% procedure.each do |p| %>
+              <div id="rounded">
               <td>
                 <label class='checkbox'>
                   <%= check_box_tag "procedure_ids[]", p.procedure_code %>
-                  <%= p.procedure_name %>  
+                  <%= p.procedure_name %>
                 </label>
-              </td>  
-              <% end %>  
-            </tr>  
-            <% end %>  
+                </div>
+              </td>
+              <% end %>
+            </tr>
+            <% end %>
 
             <tr>
               <td>
@@ -42,4 +46,5 @@ select.style01 option {border-bottom:1px solid #dadada; width:10px;}
     Event.observe(window, 'load', function() {
         FancyForm.start();
       });
+
     </script>

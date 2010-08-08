@@ -80,7 +80,7 @@ class ChargesController < ApplicationController
     @charge.destroy
 
     respond_to do |format|
-      format.html { redirect_to(charges_url) }
+      format.html { redirect_to "/patients/#{@charge.patient_id}"}
       format.xml  { head :ok }
     end
   end
@@ -97,17 +97,6 @@ class ChargesController < ApplicationController
         @charge = Charge.new(:doctor => @doctor, :procedure_code => i, :patient_id => params[:patient_id])
         @charge.save
         }
-  redirect_to "/patients/#{@charge.patient_id}"
-#do |each|{
-
-#    }
-#      @charge = Charge.new(:doctor => params[:charge][:doctor], :procedure_code => params[:procedure_ids], :patient_id => params[:patient_id])
-
-=begin       if @charge.save
-          format.html { 
-            #	redirect_to(@charge, :notice => 'Charge was successfully created.') 
-            redirect_to "/patients/#{@charge.patient_id}"
-          }
-=end
+        redirect_to "/patients/#{@charge.patient_id}"
   end
 end
