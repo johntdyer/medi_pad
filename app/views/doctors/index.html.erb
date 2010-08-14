@@ -4,29 +4,25 @@
   <thead>
     <tr class='odd'>
         <th>Doctor name</th>
-        <th>Doctor</th>
-        <th>Doctor pin</th>
+        <th>Username</th>
+        <th>Pin</th>
         <th></th>
-        <th></th>
-        <th></th>
-    
+        <th></th>    
   </tr>
 </thead>
 <tbody>
-
 
 <% @doctors.each do |doctor| %>
   <tr>
     <td><%=h doctor.doctor_name %></td>
     <td><%=h doctor.doctor_id %></td>
     <td><%=h doctor.doctor_pin %></td>
-    <td><%= link_to 'Show', doctor %></td>
     <td><%= link_to 'Edit', edit_doctor_path(doctor) %></td>
     <td><%= link_to 'Destroy', doctor, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+  <tr>
+    <td><%= link_to 'Add doctor', new_doctor_path %></td>
   </tr>
 <% end %>
 </table>
 </tbody>
-
-
-<%= link_to 'New doctor', new_doctor_path %>

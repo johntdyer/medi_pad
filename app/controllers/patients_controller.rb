@@ -4,7 +4,8 @@ class PatientsController < ApplicationController
   # GET /patients
   # GET /patients.xml
   def index
-    @patients = Patient.all
+    @patients = Patient.all(:order=>'facility')
+    @patients_charges = Patient.all(:order=>'facility')
 
     respond_to do |format|
       format.html # index.html.erb

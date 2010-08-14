@@ -12,20 +12,19 @@ select.style01 option {border-bottom:0px solid #dadada; width:10px;}
 <body>  
   
   <% form_tag add_charges_path, :method => :put do %>
-      <% @procedure_list = Procedure.find(:all) %>
+      <% @procedure_list = Procedure.find(:all, :order => "procedure_name") %>
       <%= hidden_field_tag :patient_id,charge.patient_id%>
 
         <table class="procedure_list">
           <caption>Procedures</caption>
-      	  
-            <% @procedure_list.in_groups_of(4,false) do |procedure| %>
+            <% @procedure_list.in_groups_of(3,false) do |procedure| %>
             <tr>
               <% procedure.each do |p| %>
               <div id="rounded">
               <td>
                 <label class='checkbox'>
                   <%= check_box_tag "procedure_ids[]", p.procedure_code %>
-                  <%= p.procedure_name %>
+                  <%= look_for_procecdure_nickname(p) %>
                 </label>
                 </div>
               </td>

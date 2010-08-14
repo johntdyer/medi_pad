@@ -1,12 +1,14 @@
+<>
 <table class='stripeMe'>
-	<caption>Patients</caption>
-	
+  <caption>Patients</caption>
+  
   <thead>
     <tr class='odd'>
     <th>Facility</th>
+    <th>Location</th>
     <th>Patient</th>
-    <!--
-    <th>Room</th>
+
+  <!--
     <th>Bed</th>
     <th>Unit</th>
     <th>Addmitted</th>
@@ -23,24 +25,24 @@
   <% @patients.each do |patient| %>
   <tr>
     <td><%=h patient.facility %></td>
-<!--
     <td><%=h patient.room %></td>
+    <!--
     <td><%=h patient.bed %></td>
     <td><%=h patient.unit %></td>
     <td><%=h patient.admitted %></td>
--->
+    -->
     <td><%=h patient.patient_name %></td>
-<!--
+    <!--
     <td><%=h patient.age %> / <%=h patient.sex %></td>
     <td><%=h patient.mrn %></td>
     <td><%=h patient.fin %></td>
--->
+    -->
     <td><%=get_lastname(patient.attending_md) %></td>
-		  <td><%= been_seen(patient) %></td>
+    <td><%= been_seen(patient) %></td>
 
-<!--
-<td><%=h patient.consult_md %></td>
--->
+    <!--
+    <td><%=h patient.consult_md %></td>
+    -->
 
     <td>
 
