@@ -5,7 +5,7 @@
     <tr class='odd'>
         <th>Doctor name</th>
         <th>Username</th>
-        <th>Pin</th>
+        <th>Email</th>
         <th></th>
         <th></th>    
   </tr>
@@ -16,13 +16,14 @@
   <tr>
     <td><%=h doctor.doctor_name %></td>
     <td><%=h doctor.doctor_id %></td>
-    <td><%=h doctor.doctor_pin %></td>
+    <td><%=h doctor.email %></td>
     <td><%= link_to 'Edit', edit_doctor_path(doctor) %></td>
     <td><%= link_to 'Destroy', doctor, :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
   <tr>
-    <td><%= link_to 'Add doctor', new_doctor_path %></td>
   </tr>
 <% end %>
+<td><%= link_to 'Add doctor', new_doctor_path %></td>
+
 </table>
 </tbody>
