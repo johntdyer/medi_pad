@@ -1,61 +1,58 @@
-<>
-<table class='stripeMe'>
-  <caption>Patients</caption>
+<%= stylesheet_link_tag 'tabs' %>
+<% @facilities = get_list_of_facilities() %>
+
+<title>Patients: <%= get_location_name(@search) %></title>
+
+<ul id="tabnav">
   
-  <thead>
-    <tr class='odd'>
-    <th>Facility</th>
-    <th>Location</th>
-    <th>Patient</th>
+  <li class="All"><a href="/patients">All</a></li>
 
-  <!--
-    <th>Bed</th>
-    <th>Unit</th>
-    <th>Addmitted</th>
-    <th>A / S</th>
-    <th>Sex</th>
-    <th>Mrn</th>
-    <th>Fin</th>
-    -->
-    <th>Attending</th>
-    <th>Seen</th>
-    <th></th>
-  </tr>
-  </thead>
-  <% @patients.each do |patient| %>
+  <% @facilities.each do |facility|%>
+    <li><%= link_to "#{facility.capitalize}", :controller => "patients", :action => "index", :search=>{"facility"=>"#{facility}" } %> </li>
+
+  <% end%>
+</ul>
+
+<% form_for @search do |f| %>
+<table>
   <tr>
-    <td><%=h patient.facility %></td>
-    <td><%=h patient.room %></td>
-    <!--
-    <td><%=h patient.bed %></td>
-    <td><%=h patient.unit %></td>
-    <td><%=h patient.admitted %></td>
-    -->
-    <td><%=h patient.patient_name %></td>
-    <!--
-    <td><%=h patient.age %> / <%=h patient.sex %></td>
-    <td><%=h patient.mrn %></td>
-    <td><%=h patient.fin %></td>
-    -->
-    <td><%=get_lastname(patient.attending_md) %></td>
-    <td><%= been_seen(patient) %></td>
-
-    <!--
-    <td><%=h patient.consult_md %></td>
-    -->
-
     <td>
-
-      <table id="inner_table" border="0" cellspacing="0">
-            <td id="inner_table"><%= link_to image_tag("find.png", :border=>0), patient %></td>
-            <td id="inner_table"><%= link_to image_tag("edit.png", :border=>0), edit_patient_path(patient) %></td>
-            <td id="inner_table"><%= link_to image_tag("delete.png", :border=>0),patient, :confirm => 'Are you sure?', :method => :delete %></td>
-      </table>
-    </td>
-  </tr>
-<% end %>
+    <%= f.label :patient_name_like, "Patient Name" %>
+    <%= f.text_field :patient_name_like%>
+  </td>
+  <td>
+    <%= f.label :room_like, "Room" %> 
+    <%= f.text_field :room_like%>
+  </td>
+  <td>
+    <%= f.label :facility_equals, "Facility" %> 
+    <%= f.collection_select :facility, Patient.find(:all,:select=>"DISTINCT facility"),:facility,:facility,{:include_blank => true}%>
+  </td>
+  <td>
+    <%= f.submit "Search" %>
+  </td>
 </table>
 
-<br />
+<% end%>
 
-<!--<%= link_to 'New patient', new_patient_path %>-->
+<table class='stripeMe'>
+  <caption><%= get_location_name(@search) %> Patients</caption>
+  <thead>
+    <tr class='odd'>
+    <th><%= order @search, :by => :facility,:as => "Hospital" %></th>
+    <th><%= order @search, :by => :room,:as => "Location" %></th>
+    <th><%= order @search, :by => :patient_name,:as => "Name" %></th>
+    <th><%= order @search, :by => :attending_md,:as => "MD"%></th>
+    <th><%= order @search, :by => :patient_been_seen,:as => "Seen"%></th>
+    <th></th>
+    
+    
+  </tr>
+  </thead>
+
+<%= render @patients  %>
+ 
+ 
+ </table>
+
+ <!--<%= link_to 'New patient', new_patient_path %>-->
