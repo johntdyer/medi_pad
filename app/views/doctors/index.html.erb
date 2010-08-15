@@ -6,8 +6,8 @@
         <th>Doctor name</th>
         <th>Username</th>
         <th>Email</th>
-        <th></th>
-        <th></th>    
+        <th>Last Login</th>
+        <th>Last IP</th>    
   </tr>
 </thead>
 <tbody>
@@ -15,8 +15,10 @@
 <% @doctors.each do |doctor| %>
   <tr>
     <td><%=h doctor.doctor_name %></td>
-    <td><%=h doctor.doctor_id %></td>
+    <td><%=h doctor.username %></td>
     <td><%=h doctor.email %></td>
+    <td><%=h doctor.last_login_at %></td>
+    <td><%=h doctor.last_login_ip %></td>
     <td><%= link_to 'Edit', edit_doctor_path(doctor) %></td>
     <td><%= link_to 'Destroy', doctor, :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
