@@ -3,7 +3,7 @@ ActionController::Routing::Routes.draw do |map|
   map.logout "logout",:controller =>"doctor_sessions", :action => "destroy"
   
   map.resources :doctor_sessions
-
+  map.resources :password_resets, :only => [ :new, :create, :edit, :update ]
   map.resources :procedures
   map.resources :charges, :collection => { :add => :put }
   map.resources :doctors

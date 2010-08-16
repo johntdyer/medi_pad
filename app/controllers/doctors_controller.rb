@@ -1,4 +1,9 @@
 class DoctorsController < ApplicationController
+  
+  before_filter :require_no_doctor, :only => [:new, :create]
+  before_filter :require_doctor, :only => [:show, :edit, :update]
+  
+  
   # GET /doctors
   # GET /doctors.xml
   def index

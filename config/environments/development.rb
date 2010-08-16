@@ -16,4 +16,4 @@ config.action_controller.perform_caching             = false
 # Don't care if the mailer can't send
 config.action_mailer.raise_delivery_errors = false
 
-#config.middleware.use "Rack::Bug",:secret_key => "pleaseletmein!!22"
+# config.middleware.use "Rack::Bug",:secret_key => "pleaseletmein!!22"

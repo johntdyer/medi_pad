@@ -1,15 +1,28 @@
 
-<% form_for @doctor_session do |f| %>
-  <%= f.error_messages %>
-  <p>
-    <%= f.label :username %><br />
-    <%= f.text_field :username %>
-  </p>
-  <p>
-    <%= f.label :password %><br />
-    <%= f.password_field :password %>
-  </p>
-  <p><%= f.submit %></p>
-<% end %>
+  <% form_for @doctor_session do |f| %>
 
+    <fieldset>
 
+      <legend>Log in</legend>
+
+      <%= f.label :username %>
+      <%= f.text_field :username %>
+
+      <div class="clear"></div>
+
+      <%= f.label :password %>
+       <%= f.password_field :password %>
+      <div class="clear"></div>
+
+      <div class="clear"></div>
+
+      <br />
+      
+      <input id="doctor_session_submit" type="submit" style="margin: -20px 0 0 287px;" class="button" name="commit" value="Log in"/>
+    </fieldset>
+    <%= f.error_messages %>
+    
+    <% end %>
+</body>
+
+</html>
