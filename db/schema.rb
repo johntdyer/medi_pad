@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100805001234) do
+ActiveRecord::Schema.define(:version => 20100816001208) do
 
   create_table "charges", :force => true do |t|
     t.string   "procedure_name"
@@ -35,7 +35,10 @@ ActiveRecord::Schema.define(:version => 20100805001234) do
     t.datetime "last_request_at"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "perishable_token",   :default => "", :null => false
   end
+
+  add_index "doctors", ["perishable_token"], :name => "index_doctors_on_perishable_token"
 
   create_table "patients", :force => true do |t|
     t.string   "facility"
