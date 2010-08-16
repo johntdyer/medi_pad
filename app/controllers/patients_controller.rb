@@ -10,8 +10,6 @@ class PatientsController < ApplicationController
   
   @search=Patient.search(params[:search])
   @patients=@search.all
-  
-
     respond_to do |format|
       
       format.html # index.html.erb

@@ -1,18 +1,22 @@
 <%= stylesheet_link_tag 'tabs' %>
-<% @facilities = get_list_of_facilities() %>
 
-<title>Patients: <%= get_location_name(@search) %></title>
+<title>Patients: <%= fix_location_name(@search) %></title>
 
-<ul id="tabnav">
-  
+<ul id="tabnav"> 
   <li class="All"><a href="/patients">All</a></li>
-
-  <% @facilities.each do |facility|%>
+  <% get_list_of_facilities().each do |facility|%>
     <li><%= link_to "#{facility.capitalize}", :controller => "patients", :action => "index", :search=>{"facility"=>"#{facility}" } %> </li>
-
   <% end%>
 </ul>
-
+<div id="user_nav">
+  <% if current_doctor %>
+    <%= link_to "Edit Profile", edit_doctor_path(:current) %>
+    <%= link_to "Logout", logout_path%>
+  <% else %>
+    <%= link_to "Register", new_doctor_path%>
+    <%= link_to "Login", login_path%>
+  <%end%>
+</div>
 <% form_for @search do |f| %>
 <table>
   <tr>
@@ -25,10 +29,6 @@
     <%= f.text_field :room_like%>
   </td>
   <td>
-    <%= f.label :facility_equals, "Facility" %> 
-    <%= f.collection_select :facility, Patient.find(:all,:select=>"DISTINCT facility"),:facility,:facility,{:include_blank => true}%>
-  </td>
-  <td>
     <%= f.submit "Search" %>
   </td>
 </table>
@@ -36,7 +36,7 @@
 <% end%>
 
 <table class='stripeMe'>
-  <caption><%= get_location_name(@search) %> Patients</caption>
+  <caption><%= fix_location_name(@search) %> Patients</caption>
   <thead>
     <tr class='odd'>
     <th><%= order @search, :by => :facility,:as => "Hospital" %></th>

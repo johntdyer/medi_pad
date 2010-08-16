@@ -65,4 +65,7 @@ a:hover {
   list-style: square;
 }
 
-
+#user_nav{
+    float: right;
+    font-size: 12px;
+}

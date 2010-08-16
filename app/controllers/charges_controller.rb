@@ -42,7 +42,6 @@ class ChargesController < ApplicationController
   def create
 
     @charge = Charge.new(params[:charge])
-
     respond_to do |format|
       if @charge.save
         format.html { 
@@ -86,12 +85,15 @@ class ChargesController < ApplicationController
   end
   
   def add
-    
     @procedure_ids = params[:procedure_ids]
-    @doctor=params[:charge][:doctor]
+    @doctor=cookies[:doctor]
+    logger.debug { "Cookie: Doctor Name=> #{@doctor}" }    
     logger.debug { "procedure_ids : #{@procedure_ids.inspect}" }
-    logger.debug { "doctor : #{@doctor.inspect}" }
-      
+
+    #Change patient_been_seen flag to true
+    @patient=Patient.find(params[:patient_id])
+    @patient.update_attributes :patient_been_seen => true
+
       @procedure_ids.each_with_index { | i,count| 
         logger.debug "Adding Procedure #{i} for Doctor #{@doctor}" 
         @charge = Charge.new(:doctor => @doctor, :procedure_code => i, :patient_id => params[:patient_id])

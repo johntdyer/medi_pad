@@ -14,8 +14,6 @@ module PatientsHelper
   def been_seen(patient)
     if !patient.charges.empty?
       logger.debug { "Logged Unseen Patient" }
-      patient.update_attributes :patient_been_seen => true
-      
       return  image_tag("check_mark.png", :border=>0)
     
     end
@@ -35,7 +33,7 @@ module PatientsHelper
 
  
  #Returns the current search object, also capilalizes first letter of each letter in word
- def get_location_name(i)
+ def fix_location_name(i)
    if i.facility.nil?
      return i.facility
    else

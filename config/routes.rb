@@ -1,4 +1,8 @@
 ActionController::Routing::Routes.draw do |map|
+  map.login "login",:controller =>"doctor_sessions", :action => "new"
+  map.logout "logout",:controller =>"doctor_sessions", :action => "destroy"
+  
+  map.resources :doctor_sessions
 
   map.resources :procedures
   map.resources :charges, :collection => { :add => :put }

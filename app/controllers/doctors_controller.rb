@@ -3,7 +3,6 @@ class DoctorsController < ApplicationController
   # GET /doctors.xml
   def index
     @doctors = Doctor.all
-
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @doctors }
@@ -34,7 +33,9 @@ class DoctorsController < ApplicationController
 
   # GET /doctors/1/edit
   def edit
-    @doctor = Doctor.find(params[:id])
+    #@doctor = Doctor.find(params[:id])
+    @doctor = current_doctor
+    
   end
 
   # POST /doctors
@@ -44,7 +45,11 @@ class DoctorsController < ApplicationController
 
     respond_to do |format|
       if @doctor.save
-        format.html { redirect_to(@doctor, :notice => 'Doctor was successfully created.') }
+        format.html { 
+          flash[:notice] = 'Registration Successful.'
+          redirect_to root_url 
+
+          }
         format.xml  { render :xml => @doctor, :status => :created, :location => @doctor }
       else
         format.html { render :action => "new" }
@@ -56,11 +61,15 @@ class DoctorsController < ApplicationController
   # PUT /doctors/1
   # PUT /doctors/1.xml
   def update
-    @doctor = Doctor.find(params[:id])
 
+    # @doctor = Doctor.find(params[:id])
+    @doctor = current_doctor
     respond_to do |format|
       if @doctor.update_attributes(params[:doctor])
-        format.html { redirect_to(@doctor, :notice => 'Doctor was successfully updated.') }
+        format.html { 
+          flash[:notice] = 'Profile updated.'
+          redirect_to root_url
+          }  
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
