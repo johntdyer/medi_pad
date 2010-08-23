@@ -1,6 +1,7 @@
 class PatientsController < ApplicationController
 
-	protect_from_forgery :only => [:update, :destroy]
+	protect_from_forgery :only => [:update, :destroy]   
+	
   before_filter :require_doctor, :except=>[:create]
 	
   # GET /patients

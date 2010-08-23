@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
   
   helper :all # include all helpers, all the time
   helper_method :current_doctor_session, :current_doctor
-  filter_parameter_logging :password, :password_confirmation
+  #filter_parameter_logging :password, :password_confirmation
   
   
   
@@ -58,7 +58,7 @@ class ApplicationController < ActionController::Base
 
   def check_login
         if session[:login].blank?
-          redirect_to :controller => 'logindemo', :action => 'index'
+          redirect_to :controller => 'patients', :action => 'index'
         end
   end  
   
