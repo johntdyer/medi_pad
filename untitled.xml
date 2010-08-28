@@ -1,0 +1,2329 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Florida Hospital Communications Area -->
+<?xml-stylesheet type="text/css" href="https://home.floridahospitalmd.org/FloridaHospitalMD/theme/fhmd_xml.css"?>
+<FHCA>
+  <REQUEST>
+    <CLIENT>20</CLIENT>
+    <RETURNCODE> </RETURNCODE>
+    <TEST1> </TEST1>
+    <TEST2 ATTR2="TEST2 ATTRIBUTE TEXT" ATTR2A="MORE TEST">TEST2 DATA</TEST2>
+    <PROGRAM> </PROGRAM>
+    <PROGRC>        </PROGRC>
+    <SQLRC>+0000</SQLRC>
+    <FUNCTION>GET-PHYS-WS-PATN-LIST</FUNCTION>
+    <USERINFO> </USERINFO>
+    <SERVERID> </SERVERID>
+    <SESSIONID>WmhiTNTnCekbCK5jHDz5G0A</SESSIONID>
+    <TSREQ> </TSREQ>
+    <TSREQREC> </TSREQREC>
+    <TSREQCMP> </TSREQCMP>
+    <TSCHANGE> </TSCHANGE>
+    <COLUMNCNT>9</COLUMNCNT>
+    <FIXEDCOLCNT>0</FIXEDCOLCNT>
+    <ROWCNT>85</ROWCNT>
+    <MULTIROWCNT>85</MULTIROWCNT>
+    <CRITERRCNT>0</CRITERRCNT>
+    <INFOERRCNT>0</INFOERRCNT>
+    <WARNERRCNT>0</WARNERRCNT>
+    <MSGFLAG>N</MSGFLAG>
+    <CRITFLAG>N</CRITFLAG>
+    <INFOFLAG>N</INFOFLAG>
+    <WARNFLAG>N</WARNFLAG>
+    <CURRENTACTION> </CURRENTACTION>
+    <ERRMSG> </ERRMSG>
+    <MAXROWS>50</MAXROWS>
+    <MOREROWS> </MOREROWS>
+    <NEXTCURSOR> </NEXTCURSOR>
+    <TOTALROWS>0</TOTALROWS>
+    <ABENDFLAG> </ABENDFLAG>
+    <KEYS>
+      <KEY>I-CLIE=20</KEY>
+      <KEY>I-LOCT-CORP=**</KEY>
+      <KEY>I-KEY1=71.43.195.61</KEY>
+      <KEY>I-KEY2=T</KEY>
+      <KEY>I-KEY3=03</KEY>
+      <KEY>I-KEY4=N</KEY>
+      <KEY>I-KEY5=S</KEY>
+      <KEY>I-KEY6=1</KEY>
+      <KEY>I-PS=100900</KEY>
+      <KEY>I-PS-PROC-MODE=G</KEY>
+    </KEYS>
+  </REQUEST>
+  <DATA>
+    <PATIENTLIST>
+      <ROW POSITION="1">
+        <N_PATN>BAYNTON, THOMAS</N_PATN>
+        <I_UNIT>3N</I_UNIT>
+        <I_ROOM>3562</I_ROOM>
+        <I_LOCT_PATN>01</I_LOCT_PATN>
+        <N_LOCT>FH ORLANDO</N_LOCT>
+        <I_MRI>004338221</I_MRI>
+        <I_ACCN>0020537292</I_ACCN>
+        <F_SEX>M</F_SEX>
+        <I_AGE_PATN>Y048</I_AGE_PATN>
+        <I_ROLE> </I_ROLE>
+        <F_HIDE_LIST_PATN>N</F_HIDE_LIST_PATN>
+        <I_TYPE_ACCN>I</I_TYPE_ACCN>
+        <D_ADMS_PATN>2010-05-05</D_ADMS_PATN>
+        <D_DISC_PATN>01/01/0001</D_DISC_PATN>
+        <Q_LOS>0114</Q_LOS>
+        <D_STAR_CLIN_SUMM>05/05/2010</D_STAR_CLIN_SUMM>
+        <D_END_CLIN_SUMM>08/26/2010</D_END_CLIN_SUMM>
+        <I_PS_1>0000014398</I_PS_1>
+        <N_PS_1>DUBLIN, BRIAN K.</N_PS_1>
+        <R_PS_1>CONS</R_PS_1>
+        <PHYS_COUNT>1</PHYS_COUNT>
+      </ROW>
+      <ROW POSITION="2">
+        <N_PATN>HADDAD, DAVID M</N_PATN>
+        <I_UNIT>3N</I_UNIT>
+        <I_ROOM>3557</I_ROOM>
+        <I_LOCT_PATN>01</I_LOCT_PATN>
+        <N_LOCT>FH ORLANDO</N_LOCT>
+        <I_MRI>002716012</I_MRI>
+        <I_ACCN>0020582249</I_ACCN>
+        <F_SEX>M</F_SEX>
+        <I_AGE_PATN>Y054</I_AGE_PATN>
+        <I_ROLE> </I_ROLE>
+        <F_HIDE_LIST_PATN>N</F_HIDE_LIST_PATN>
+        <I_TYPE_ACCN>I</I_TYPE_ACCN>
+        <D_ADMS_PATN>2010-05-20</D_ADMS_PATN>
+        <D_DISC_PATN>01/01/0001</D_DISC_PATN>
+        <Q_LOS>0099</Q_LOS>
+        <D_STAR_CLIN_SUMM>05/20/2010</D_STAR_CLIN_SUMM>
+        <D_END_CLIN_SUMM>08/26/2010</D_END_CLIN_SUMM>
+        <I_PS_1>0000014398</I_PS_1>
+        <N_PS_1>DUBLIN, BRIAN K.</N_PS_1>
+        <R_PS_1>OTHR</R_PS_1>
+        <I_PS_2>0000100917</I_PS_2>
+        <N_PS_2>RODRIGUEZ, ARSENIO RALPH</N_PS_2>
+        <R_PS_2>OTHR</R_PS_2>
+        <PHYS_COUNT>2</PHYS_COUNT>
+      </ROW>
+      <ROW POSITION="3">
+        <N_PATN>KILDERRY, JOHN</N_PATN>
+        <I_UNIT>3N</I_UNIT>
+        <I_ROOM>3556</I_ROOM>
+        <I_LOCT_PATN>01</I_LOCT_PATN>
+        <N_LOCT>FH ORLANDO</N_LOCT>
+        <I_MRI>004306073</I_MRI>
+        <I_ACCN>0020631511</I_ACCN>
+        <F_SEX>M</F_SEX>
+        <I_AGE_PATN>Y067</I_AGE_PATN>
+        <I_ROLE> </I_ROLE>
+        <F_HIDE_LIST_PATN>N</F_HIDE_LIST_PATN>
+        <I_TYPE_ACCN>I</I_TYPE_ACCN>
+        <D_ADMS_PATN>2010-06-09</D_ADMS_PATN>
+        <D_DISC_PATN>01/01/0001</D_DISC_PATN>
+        <Q_LOS>0079</Q_LOS>
+        <D_STAR_CLIN_SUMM>06/09/2010</D_STAR_CLIN_SUMM>
+        <D_END_CLIN_SUMM>08/26/2010</D_END_CLIN_SUMM>
+        <I_PS_1>0000014318</I_PS_1>
+        <N_PS_1>THAKUR, AJAY</N_PS_1>
+        <R_PS_1>OTHR</R_PS_1>
+        <I_PS_2>0000014398</I_PS_2>
+        <N_PS_2>DUBLIN, BRIAN K.</N_PS_2>
+        <R_PS_2>CONS</R_PS_2>
+        <PHYS_COUNT>2</PHYS_COUNT>
+      </ROW>
+      <ROW POSITION="4">
+        <N_PATN>RUSSELL, THOMAS W</N_PATN>
+        <I_UNIT>8TWR</I_UNIT>
+        <I_ROOM>8213</I_ROOM>
+        <I_LOCT_PATN>01</I_LOCT_PATN>
+        <N_LOCT>FH ORLANDO</N_LOCT>
+        <I_MRI>000322550</I_MRI>
+        <I_ACCN>0020696073</I_ACCN>
+        <F_SEX>M</F_SEX>
+        <I_AGE_PATN>Y063</I_AGE_PATN>
+        <I_ROLE> </I_ROLE>
+        <F_HIDE_LIST_PATN>N</F_HIDE_LIST_PATN>
+        <I_TYPE_ACCN>I</I_TYPE_ACCN>
+        <D_ADMS_PATN>2010-07-06</D_ADMS_PATN>
+        <D_DISC_PATN>01/01/0001</D_DISC_PATN>
+        <Q_LOS>0052</Q_LOS>
+        <D_STAR_CLIN_SUMM>07/06/2010</D_STAR_CLIN_SUMM>
+        <D_END_CLIN_SUMM>08/26/2010</D_END_CLIN_SUMM>
+        <I_PS_1>0000013322</I_PS_1>
+        <N_PS_1>ZARATE, JUAN CARLOS</N_PS_1>
+        <R_PS_1>OTHR</R_PS_1>
+        <I_PS_2>0000100913</I_PS_2>
+        <N_PS_2>TAUSSIG, ANDREW S.</N_PS_2>
+        <R_PS_2>OTHR</R_PS_2>
+        <I_PS_3>0000100917</I_PS_3>
+        <N_PS_3>RODRIGUEZ, ARSENIO RALPH</N_PS_3>
+        <R_PS_3>OTHR</R_PS_3>
+        <PHYS_COUNT>3</PHYS_COUNT>
+      </ROW>
+      <ROW POSITION="5">
+        <N_PATN>LAMARQUE, NATHALIE</N_PATN>
+        <I_UNIT>GT4N</I_UNIT>
+        <I_ROOM>4805</I_ROOM>
+        <I_LOCT_PATN>01</I_LOCT_PATN>
+        <N_LOCT>FH ORLANDO</N_LOCT>
+        <I_MRI>001603619</I_MRI>
+        <I_ACCN>0020713050</I_ACCN>
+        <F_SEX>F</F_SEX>
+        <I_AGE_PATN>Y038</I_AGE_PATN>
+        <I_ROLE> </I_ROLE>
+        <F_HIDE_LIST_PATN>N</F_HIDE_LIST_PATN>
+        <I_TYPE_ACCN>I</I_TYPE_ACCN>
+        <D_ADMS_PATN>2010-07-13</D_ADMS_PATN>
+        <D_DISC_PATN>01/01/0001</D_DISC_PATN>
+        <Q_LOS>0045</Q_LOS>
+        <D_STAR_CLIN_SUMM>07/13/2010</D_STAR_CLIN_SUMM>
+        <D_END_CLIN_SUMM>08/26/2010</D_END_CLIN_SUMM>
+        <I_PS_1>0000014398</I_PS_1>
+        <N_PS_1>DUBLIN, BRIAN K.</N_PS_1>
+        <R_PS_1>CONS</R_PS_1>
+        <PHYS_COUNT>1</PHYS_COUNT>
+      </ROW>
+      <ROW POSITION="6">
+        <N_PATN>BRUNSON, WILLIAM E</N_PATN>
+        <I_UNIT>XTWR</I_UNIT>
+        <I_ROOM>X227</I_ROOM>
+        <I_LOCT_PATN>01</I_LOCT_PATN>
+        <N_LOCT>FH ORLANDO</N_LOCT>
+        <I_MRI>001869972</I_MRI>
+        <I_ACCN>0020738146</I_ACCN>
+        <F_SEX>M</F_SEX>
+        <I_AGE_PATN>Y077</I_AGE_PATN>
+        <I_ROLE> </I_ROLE>
+        <F_HIDE_LIST_PATN>N</F_HIDE_LIST_PATN>
+        <I_TYPE_ACCN>I</I_TYPE_ACCN>
+        <D_ADMS_PATN>2010-07-22</D_ADMS_PATN>
+        <D_DISC_PATN>01/01/0001</D_DISC_PATN>
+        <Q_LOS>0036</Q_LOS>
+        <D_STAR_CLIN_SUMM>07/22/2010</D_STAR_CLIN_SUMM>
+        <D_END_CLIN_SUMM>08/26/2010</D_END_CLIN_SUMM>
+        <I_PS_1>0000013322</I_PS_1>
+        <N_PS_1>ZARATE, JUAN CARLOS</N_PS_1>
+        <R_PS_1>OTHR</R_PS_1>
+        <I_PS_2>0000100917</I_PS_2>
+        <N_PS_2>RODRIGUEZ, ARSENIO RALPH</N_PS_2>
+        <R_PS_2>CONS</R_PS_2>
+        <PHYS_COUNT>2</PHYS_COUNT>
+      </ROW>
+      <ROW POSITION="7">
+        <N_PATN>BROWN, LARRY D</N_PATN>
+        <I_UNIT>CYRU</I_UNIT>
+        <I_ROOM>CYRU</I_ROOM>
+        <I_LOCT_PATN>01</I_LOCT_PATN>
+        <N_LOCT>FH ORLANDO</N_LOCT>
+        <I_MRI>000789602</I_MRI>
+        <I_ACCN>0020749197</I_ACCN>
+        <F_SEX>M</F_SEX>
+        <I_AGE_PATN>Y058</I_AGE_PATN>
+        <I_ROLE> </I_ROLE>
+        <F_HIDE_LIST_PATN>N</F_HIDE_LIST_PATN>
+        <I_TYPE_ACCN>O</I_TYPE_ACCN>
+        <D_ADMS_PATN>2010-08-02</D_ADMS_PATN>
+        <D_DISC_PATN>01/01/0001</D_DISC_PATN>
+        <Q_LOS>0025</Q_LOS>
+        <D_STAR_CLIN_SUMM>08/02/2010</D_STAR_CLIN_SUMM>
+        <D_END_CLIN_SUMM>08/26/2010</D_END_CLIN_SUMM>
+        <I_PS_1>0000100917</I_PS_1>
+        <N_PS_1>RODRIGUEZ, ARSENIO RALPH</N_PS_1>
+        <R_PS_1>ATTN</R_PS_1>
+        <PHYS_COUNT>1</PHYS_COUNT>
+      </ROW>
+      <ROW POSITION="8">
+        <N_PATN>THORPE, JANA G</N_PATN>
+        <I_UNIT>8TWR</I_UNIT>
+        <I_ROOM>8224</I_ROOM>
+        <I_LOCT_PATN>01</I_LOCT_PATN>
+        <N_LOCT>FH ORLANDO</N_LOCT>
+        <I_MRI>004088974</I_MRI>
+        <I_ACCN>0020778395</I_ACCN>
+        <F_SEX>F</F_SEX>
+        <I_AGE_PATN>Y067</I_AGE_PATN>
+        <I_ROLE> </I_ROLE>
+        <F_HIDE_LIST_PATN>N</F_HIDE_LIST_PATN>
+        <I_TYPE_ACCN>I</I_TYPE_ACCN>
+        <D_ADMS_PATN>2010-08-25</D_ADMS_PATN>
+        <D_DISC_PATN>01/01/0001</D_DISC_PATN>
+        <Q_LOS>0002</Q_LOS>
+        <D_STAR_CLIN_SUMM>08/25/2010</D_STAR_CLIN_SUMM>
+        <D_END_CLIN_SUMM>08/26/2010</D_END_CLIN_SUMM>
+        <I_PS_1>0000014398</I_PS_1>
+        <N_PS_1>DUBLIN, BRIAN K.</N_PS_1>
+        <R_PS_1>OTHR</R_PS_1>
+        <I_PS_2>0000100912</I_PS_2>
+        <N_PS_2>STORY, WILLIAM</N_PS_2>
+        <R_PS_2>CONS</R_PS_2>
+        <PHYS_COUNT>2</PHYS_COUNT>
+      </ROW>
+      <ROW POSITION="9">
+        <N_PATN>HAGMAIER, STEVEN ALLEN</N_PATN>
+        <I_UNIT>CYRU</I_UNIT>
+        <I_ROOM>CYRU</I_ROOM>
+        <I_LOCT_PATN>01</I_LOCT_PATN>
+        <N_LOCT>FH ORLANDO</N_LOCT>
+        <I_MRI>070229223</I_MRI>
+        <I_ACCN>0020782103</I_ACCN>
+        <F_SEX>M</F_SEX>
+        <I_AGE_PATN>Y048</I_AGE_PATN>
+        <I_ROLE> </I_ROLE>
+        <F_HIDE_LIST_PATN>N</F_HIDE_LIST_PATN>
+        <I_TYPE_ACCN>O</I_TYPE_ACCN>
+        <D_ADMS_PATN>2010-08-09</D_ADMS_PATN>
+        <D_DISC_PATN>01/01/0001</D_DISC_PATN>
+        <Q_LOS>0018</Q_LOS>
+        <D_STAR_CLIN_SUMM>08/09/2010</D_STAR_CLIN_SUMM>
+        <D_END_CLIN_SUMM>08/26/2010</D_END_CLIN_SUMM>
+        <I_PS_1>0000014398</I_PS_1>
+        <N_PS_1>DUBLIN, BRIAN K.</N_PS_1>
+        <R_PS_1>ATTN</R_PS_1>
+        <PHYS_COUNT>1</PHYS_COUNT>
+      </ROW>
+      <ROW POSITION="10">
+        <N_PATN>CALDWELL, WILLIAM LEROY</N_PATN>
+        <I_UNIT>GT4S</I_UNIT>
+        <I_ROOM>4816</I_ROOM>
+        <I_LOCT_PATN>01</I_LOCT_PATN>
+        <N_LOCT>FH ORLANDO</N_LOCT>
+        <I_MRI>002798146</I_MRI>
+        <I_ACCN>0020790535</I_ACCN>
+        <F_SEX>M</F_SEX>
+        <I_AGE_PATN>Y072</I_AGE_PATN>
+        <I_ROLE> </I_ROLE>
+        <F_HIDE_LIST_PATN>N</F_HIDE_LIST_PATN>
+        <I_TYPE_ACCN>I</I_TYPE_ACCN>
+        <D_ADMS_PATN>2010-08-11</D_ADMS_PATN>
+        <D_DISC_PATN>01/01/0001</D_DISC_PATN>
+        <Q_LOS>0016</Q_LOS>
+        <D_STAR_CLIN_SUMM>08/11/2010</D_STAR_CLIN_SUMM>
+        <D_END_CLIN_SUMM>08/26/2010</D_END_CLIN_SUMM>
+        <I_PS_1>0000013322</I_PS_1>
+        <N_PS_1>ZARATE, JUAN CARLOS</N_PS_1>
+        <R_PS_1>CONS</R_PS_1>
+        <I_PS_2>0000014318</I_PS_2>
+        <N_PS_2>THAKUR, AJAY</N_PS_2>
+        <R_PS_2>OTHR</R_PS_2>
+        <I_PS_3>0000014398</I_PS_3>
+        <N_PS_3>DUBLIN, BRIAN K.</N_PS_3>
+        <R_PS_3>CONS</R_PS_3>
+        <PHYS_COUNT>3</PHYS_COUNT>
+      </ROW>
+      <ROW POSITION="11">
+        <N_PATN>DUNN, MAX</N_PATN>
+        <I_UNIT>GT8</I_UNIT>
+        <I_ROOM>8811</I_ROOM>
+        <I_LOCT_PATN>01</I_LOCT_PATN>
+        <N_LOCT>FH ORLANDO</N_LOCT>
+        <I_MRI>003743098</I_MRI>
+        <I_ACCN>0020790749</I_ACCN>
+        <F_SEX>M</F_SEX>
+        <I_AGE_PATN>Y079</I_AGE_PATN>
+        <I_ROLE> </I_ROLE>
+        <F_HIDE_LIST_PATN>N</F_HIDE_LIST_PATN>
+        <I_TYPE_ACCN>I</I_TYPE_ACCN>
+        <D_ADMS_PATN>2010-08-11</D_ADMS_PATN>
+        <D_DISC_PATN>01/01/0001</D_DISC_PATN>
+        <Q_LOS>0016</Q_LOS>
+        <D_STAR_CLIN_SUMM>08/11/2010</D_STAR_CLIN_SUMM>
+        <D_END_CLIN_SUMM>08/26/2010</D_END_CLIN_SUMM>
+        <I_PS_1>0000014318</I_PS_1>
+        <N_PS_1>THAKUR, AJAY</N_PS_1>
+        <R_PS_1>OTHR</R_PS_1>
+        <I_PS_2>0000100912</I_PS_2>
+        <N_PS_2>STORY, WILLIAM</N_PS_2>
+        <R_PS_2>CONS</R_PS_2>
+        <PHYS_COUNT>2</PHYS_COUNT>
+      </ROW>
+      <ROW POSITION="12">
+        <N_PATN>BRAGG, LISA</N_PATN>
+        <I_UNIT>XTWR</I_UNIT>
+        <I_ROOM>X232</I_ROOM>
+        <I_LOCT_PATN>01</I_LOCT_PATN>
+        <N_LOCT>FH ORLANDO</N_LOCT>
+        <I_MRI>003079022</I_MRI>
+        <I_ACCN>0020801205</I_ACCN>
+        <F_SEX>F</F_SEX>
+        <I_AGE_PATN>Y044</I_AGE_PATN>
+        <I_ROLE> </I_ROLE>
+        <F_HIDE_LIST_PATN>N</F_HIDE_LIST_PATN>
+        <I_TYPE_ACCN>I</I_TYPE_ACCN>
+        <D_ADMS_PATN>2010-08-16</D_ADMS_PATN>
+        <D_DISC_PATN>01/01/0001</D_DISC_PATN>
+        <Q_LOS>0011</Q_LOS>
+        <D_STAR_CLIN_SUMM>08/16/2010</D_STAR_CLIN_SUMM>
+        <D_END_CLIN_SUMM>08/26/2010</D_END_CLIN_SUMM>
+        <I_PS_1>0000100917</I_PS_1>
+        <N_PS_1>RODRIGUEZ, ARSENIO RALPH</N_PS_1>
+        <R_PS_1>OTHR</R_PS_1>
+        <PHYS_COUNT>1</PHYS_COUNT>
+      </ROW>
+      <ROW POSITION="13">
+        <N_PATN>FRASER, DAVID W</N_PATN>
+        <I_UNIT>8TWR</I_UNIT>
+        <I_ROOM>8201</I_ROOM>
+        <I_LOCT_PATN>01</I_LOCT_PATN>
+        <N_LOCT>FH ORLANDO</N_LOCT>
+        <I_MRI>001465465</I_MRI>
+        <I_ACCN>0020802389</I_ACCN>
+        <F_SEX>M</F_SEX>
+        <I_AGE_PATN>Y044</I_AGE_PATN>
+        <I_ROLE> </I_ROLE>
+        <F_HIDE_LIST_PATN>N</F_HIDE_LIST_PATN>
+        <I_TYPE_ACCN>I</I_TYPE_ACCN>
+        <D_ADMS_PATN>2010-08-16</D_ADMS_PATN>
+        <D_DISC_PATN>01/01/0001</D_DISC_PATN>
+        <Q_LOS>0011</Q_LOS>
+        <D_STAR_CLIN_SUMM>08/16/2010</D_STAR_CLIN_SUMM>
+        <D_END_CLIN_SUMM>08/26/2010</D_END_CLIN_SUMM>
+        <I_PS_1>0000014318</I_PS_1>
+        <N_PS_1>THAKUR, AJAY</N_PS_1>
+        <R_PS_1>OTHR</R_PS_1>
+        <I_PS_2>0000014398</I_PS_2>
+        <N_PS_2>DUBLIN, BRIAN K.</N_PS_2>
+        <R_PS_2>CONS</R_PS_2>
+        <I_PS_3>0000100917</I_PS_3>
+        <N_PS_3>RODRIGUEZ, ARSENIO RALPH</N_PS_3>
+        <R_PS_3>OTHR</R_PS_3>
+        <I_PS_4>0000100923</I_PS_4>
+        <N_PS_4>BARNETT, J. CRAIG</N_PS_4>
+        <R_PS_4>OTHR</R_PS_4>
+        <PHYS_COUNT>4</PHYS_COUNT>
+      </ROW>
+      <ROW POSITION="14">
+        <N_PATN>WEAVER, ANNA KITTY</N_PATN>
+        <I_UNIT>W1NM</I_UNIT>
+        <I_ROOM>1448</I_ROOM>
+        <I_LOCT_PATN>01</I_LOCT_PATN>
+        <N_LOCT>FH ORLANDO</N_LOCT>
+        <I_MRI>001036151</I_MRI>
+        <I_ACCN>0020802637</I_ACCN>
+        <F_SEX>F</F_SEX>
+        <I_AGE_PATN>Y078</I_AGE_PATN>
+        <I_ROLE> </I_ROLE>
+        <F_HIDE_LIST_PATN>N</F_HIDE_LIST_PATN>
+        <I_TYPE_ACCN>I</I_TYPE_ACCN>
+        <D_ADMS_PATN>2010-08-16</D_ADMS_PATN>
+        <D_DISC_PATN>01/01/0001</D_DISC_PATN>
+        <Q_LOS>0011</Q_LOS>
+        <D_STAR_CLIN_SUMM>08/16/2010</D_STAR_CLIN_SUMM>
+        <D_END_CLIN_SUMM>08/26/2010</D_END_CLIN_SUMM>
+        <I_PS_1>0000014318</I_PS_1>
+        <N_PS_1>THAKUR, AJAY</N_PS_1>
+        <R_PS_1>CONS</R_PS_1>
+        <PHYS_COUNT>1</PHYS_COUNT>
+      </ROW>
+      <ROW POSITION="15">
+        <N_PATN>CRAIG, PAMELA</N_PATN>
+        <I_UNIT>GT4N</I_UNIT>
+        <I_ROOM>4807</I_ROOM>
+        <I_LOCT_PATN>01</I_LOCT_PATN>
+        <N_LOCT>FH ORLANDO</N_LOCT>
+        <I_MRI>004383851</I_MRI>
+        <I_ACCN>0020802889</I_ACCN>
+        <F_SEX>F</F_SEX>
+        <I_AGE_PATN>Y050</I_AGE_PATN>
+        <I_ROLE> </I_ROLE>
+        <F_HIDE_LIST_PATN>N</F_HIDE_LIST_PATN>
+        <I_TYPE_ACCN>I</I_TYPE_ACCN>
+        <D_ADMS_PATN>2010-08-16</D_ADMS_PATN>
+        <D_DISC_PATN>01/01/0001</D_DISC_PATN>
+        <Q_LOS>0011</Q_LOS>
+        <D_STAR_CLIN_SUMM>08/16/2010</D_STAR_CLIN_SUMM>
+        <D_END_CLIN_SUMM>08/26/2010</D_END_CLIN_SUMM>
+        <I_PS_1>0000100917</I_PS_1>
+        <N_PS_1>RODRIGUEZ, ARSENIO RALPH</N_PS_1>
+        <R_PS_1>OTHR</R_PS_1>
+        <PHYS_COUNT>1</PHYS_COUNT>
+      </ROW>
+      <ROW POSITION="16">
+        <N_PATN>COHEN, LON B</N_PATN>
+        <I_UNIT>W3NW</I_UNIT>
+        <I_ROOM>3462</I_ROOM>
+        <I_LOCT_PATN>07</I_LOCT_PATN>
+        <N_LOCT>FH WINTER PARK</N_LOCT>
+        <I_MRI>001468133</I_MRI>
+        <I_ACCN>0020806665</I_ACCN>
+        <F_SEX>M</F_SEX>
+        <I_AGE_PATN>Y047</I_AGE_PATN>
+        <I_ROLE> </I_ROLE>
+        <F_HIDE_LIST_PATN>N</F_HIDE_LIST_PATN>
+        <I_TYPE_ACCN>I</I_TYPE_ACCN>
+        <D_ADMS_PATN>2010-08-17</D_ADMS_PATN>
+        <D_DISC_PATN>01/01/0001</D_DISC_PATN>
+        <Q_LOS>0010</Q_LOS>
+        <D_STAR_CLIN_SUMM>08/17/2010</D_STAR_CLIN_SUMM>
+        <D_END_CLIN_SUMM>08/26/2010</D_END_CLIN_SUMM>
+        <I_PS_1>0000100923</I_PS_1>
+        <N_PS_1>BARNETT, J. CRAIG</N_PS_1>
+        <R_PS_1>CONS</R_PS_1>
+        <I_PS_2>0000100925</I_PS_2>
+        <N_PS_2>KUMAR, ANIL</N_PS_2>
+        <R_PS_2>OTHR</R_PS_2>
+        <PHYS_COUNT>2</PHYS_COUNT>
+      </ROW>
+      <ROW POSITION="17">
+        <N_PATN>MARTINEZ, ESTELLE</N_PATN>
+        <I_UNIT>9TWR</I_UNIT>
+        <I_ROOM>9224</I_ROOM>
+        <I_LOCT_PATN>01</I_LOCT_PATN>
+        <N_LOCT>FH ORLANDO</N_LOCT>
+        <I_MRI>001949230</I_MRI>
+        <I_ACCN>0020807626</I_ACCN>
+        <F_SEX>F</F_SEX>
+        <I_AGE_PATN>Y053</I_AGE_PATN>
+        <I_ROLE> </I_ROLE>
+        <F_HIDE_LIST_PATN>N</F_HIDE_LIST_PATN>
+        <I_TYPE_ACCN>I</I_TYPE_ACCN>
+        <D_ADMS_PATN>2010-08-18</D_ADMS_PATN>
+        <D_DISC_PATN>01/01/0001</D_DISC_PATN>
+        <Q_LOS>0009</Q_LOS>
+        <D_STAR_CLIN_SUMM>08/18/2010</D_STAR_CLIN_SUMM>
+        <D_END_CLIN_SUMM>08/26/2010</D_END_CLIN_SUMM>
+        <I_PS_1>0000013322</I_PS_1>
+        <N_PS_1>ZARATE, JUAN CARLOS</N_PS_1>
+        <R_PS_1>CONS</R_PS_1>
+        <I_PS_2>0000100925</I_PS_2>
+        <N_PS_2>KUMAR, ANIL</N_PS_2>
+        <R_PS_2>OTHR</R_PS_2>
+        <PHYS_COUNT>2</PHYS_COUNT>
+      </ROW>
+      <ROW POSITION="18">
+        <N_PATN>BOUTEILLER, GEORGE E</N_PATN>
+        <I_UNIT>O2CV</I_UNIT>
+        <I_ROOM>2709</I_ROOM>
+        <I_LOCT_PATN>01</I_LOCT_PATN>
+        <N_LOCT>FH ORLANDO</N_LOCT>
+        <I_MRI>004384724</I_MRI>
+        <I_ACCN>0020811089</I_ACCN>
+        <F_SEX>M</F_SEX>
+        <I_AGE_PATN>Y080</I_AGE_PATN>
+        <I_ROLE> </I_ROLE>
+        <F_HIDE_LIST_PATN>N</F_HIDE_LIST_PATN>
+        <I_TYPE_ACCN>I</I_TYPE_ACCN>
+        <D_ADMS_PATN>2010-08-19</D_ADMS_PATN>
+        <D_DISC_PATN>01/01/0001</D_DISC_PATN>
+        <Q_LOS>0008</Q_LOS>
+        <D_STAR_CLIN_SUMM>08/19/2010</D_STAR_CLIN_SUMM>
+        <D_END_CLIN_SUMM>08/26/2010</D_END_CLIN_SUMM>
+        <I_PS_1>0000100912</I_PS_1>
+        <N_PS_1>STORY, WILLIAM</N_PS_1>
+        <R_PS_1>CONS</R_PS_1>
+        <PHYS_COUNT>1</PHYS_COUNT>
+      </ROW>
+      <ROW POSITION="19">
+        <N_PATN>BRUNNER, SONDRA</N_PATN>
+        <I_UNIT>GT7</I_UNIT>
+        <I_ROOM>7811</I_ROOM>
+        <I_LOCT_PATN>01</I_LOCT_PATN>
+        <N_LOCT>FH ORLANDO</N_LOCT>
+        <I_MRI>004384827</I_MRI>
+        <I_ACCN>0020812378</I_ACCN>
+        <F_SEX>F</F_SEX>
+        <I_AGE_PATN>Y069</I_AGE_PATN>
+        <I_ROLE> </I_ROLE>
+        <F_HIDE_LIST_PATN>N</F_HIDE_LIST_PATN>
+        <I_TYPE_ACCN>I</I_TYPE_ACCN>
+        <D_ADMS_PATN>2010-08-19</D_ADMS_PATN>
+        <D_DISC_PATN>01/01/0001</D_DISC_PATN>
+        <Q_LOS>0008</Q_LOS>
+        <D_STAR_CLIN_SUMM>08/19/2010</D_STAR_CLIN_SUMM>
+        <D_END_CLIN_SUMM>08/26/2010</D_END_CLIN_SUMM>
+        <I_PS_1>0000012384</I_PS_1>
+        <N_PS_1>HAZDAY, MARCOS S</N_PS_1>
+        <R_PS_1>CONS</R_PS_1>
+        <I_PS_2>0000100912</I_PS_2>
+        <N_PS_2>STORY, WILLIAM</N_PS_2>
+        <R_PS_2>CONS</R_PS_2>
+        <PHYS_COUNT>2</PHYS_COUNT>
+      </ROW>
+      <ROW POSITION="20">
+        <N_PATN>BOYD, NAKIZZA MUTESA</N_PATN>
+        <I_UNIT>XTWR</I_UNIT>
+        <I_ROOM>X237</I_ROOM>
+        <I_LOCT_PATN>01</I_LOCT_PATN>
+        <N_LOCT>FH ORLANDO</N_LOCT>
+        <I_MRI>000202456</I_MRI>
+        <I_ACCN>0020812711</I_ACCN>
+        <F_SEX>F</F_SEX>
+        <I_AGE_PATN>Y030</I_AGE_PATN>
+        <I_ROLE> </I_ROLE>
+        <F_HIDE_LIST_PATN>N</F_HIDE_LIST_PATN>
+        <I_TYPE_ACCN>I</I_TYPE_ACCN>
+        <D_ADMS_PATN>2010-08-19</D_ADMS_PATN>
+        <D_DISC_PATN>01/01/0001</D_DISC_PATN>
+        <Q_LOS>0008</Q_LOS>
+        <D_STAR_CLIN_SUMM>08/19/2010</D_STAR_CLIN_SUMM>
+        <D_END_CLIN_SUMM>08/26/2010</D_END_CLIN_SUMM>
+        <I_PS_1>0000100917</I_PS_1>
+        <N_PS_1>RODRIGUEZ, ARSENIO RALPH</N_PS_1>
+        <R_PS_1>OTHR</R_PS_1>
+        <PHYS_COUNT>1</PHYS_COUNT>
+      </ROW>
+      <ROW POSITION="21">
+        <N_PATN>RUBIN, EMILIO R</N_PATN>
+        <I_UNIT>2N</I_UNIT>
+        <I_ROOM>2568</I_ROOM>
+        <I_LOCT_PATN>01</I_LOCT_PATN>
+        <N_LOCT>FH ORLANDO</N_LOCT>
+        <I_MRI>003353879</I_MRI>
+        <I_ACCN>0020814927</I_ACCN>
+        <F_SEX>M</F_SEX>
+        <I_AGE_PATN>Y074</I_AGE_PATN>
+        <I_ROLE> </I_ROLE>
+        <F_HIDE_LIST_PATN>N</F_HIDE_LIST_PATN>
+        <I_TYPE_ACCN>I</I_TYPE_ACCN>
+        <D_ADMS_PATN>2010-08-20</D_ADMS_PATN>
+        <D_DISC_PATN>01/01/0001</D_DISC_PATN>
+        <Q_LOS>0007</Q_LOS>
+        <D_STAR_CLIN_SUMM>08/20/2010</D_STAR_CLIN_SUMM>
+        <D_END_CLIN_SUMM>08/26/2010</D_END_CLIN_SUMM>
+        <I_PS_1>0000013614</I_PS_1>
+        <N_PS_1>STEIN, BRUCE C.</N_PS_1>
+        <R_PS_1>CONS</R_PS_1>
+        <I_PS_2>0000014398</I_PS_2>
+        <N_PS_2>DUBLIN, BRIAN K.</N_PS_2>
+        <R_PS_2>OTHR</R_PS_2>
+        <I_PS_3>0000100923</I_PS_3>
+        <N_PS_3>BARNETT, J. CRAIG</N_PS_3>
+        <R_PS_3>CONS</R_PS_3>
+        <PHYS_COUNT>3</PHYS_COUNT>
+      </ROW>
+      <ROW POSITION="22">
+        <N_PATN>INGRAM, BILLY J</N_PATN>
+        <I_UNIT>GT8</I_UNIT>
+        <I_ROOM>8815</I_ROOM>
+        <I_LOCT_PATN>01</I_LOCT_PATN>
+        <N_LOCT>FH ORLANDO</N_LOCT>
+        <I_MRI>001052298</I_MRI>
+        <I_ACCN>0020816882</I_ACCN>
+        <F_SEX>M</F_SEX>
+        <I_AGE_PATN>Y074</I_AGE_PATN>
+        <I_ROLE> </I_ROLE>
+        <F_HIDE_LIST_PATN>N</F_HIDE_LIST_PATN>
+        <I_TYPE_ACCN>I</I_TYPE_ACCN>
+        <D_ADMS_PATN>2010-08-21</D_ADMS_PATN>
+        <D_DISC_PATN>01/01/0001</D_DISC_PATN>
+        <Q_LOS>0006</Q_LOS>
+        <D_STAR_CLIN_SUMM>08/21/2010</D_STAR_CLIN_SUMM>
+        <D_END_CLIN_SUMM>08/26/2010</D_END_CLIN_SUMM>
+        <I_PS_1>0000014318</I_PS_1>
+        <N_PS_1>THAKUR, AJAY</N_PS_1>
+        <R_PS_1>ADMT</R_PS_1>
+        <I_PS_2>0000100913</I_PS_2>
+        <N_PS_2>TAUSSIG, ANDREW S.</N_PS_2>
+        <R_PS_2>CONS</R_PS_2>
+        <PHYS_COUNT>2</PHYS_COUNT>
+      </ROW>
+      <ROW POSITION="23">
+        <N_PATN>HOFMA, JOHN ROBERT</N_PATN>
+        <I_UNIT>8TWR</I_UNIT>
+        <I_ROOM>8225</I_ROOM>
+        <I_LOCT_PATN>01</I_LOCT_PATN>
+        <N_LOCT>FH ORLANDO</N_LOCT>
+        <I_MRI>000187989</I_MRI>
+        <I_ACCN>0020819186</I_ACCN>
+        <F_SEX>M</F_SEX>
+        <I_AGE_PATN>Y049</I_AGE_PATN>
+        <I_ROLE> </I_ROLE>
+        <F_HIDE_LIST_PATN>N</F_HIDE_LIST_PATN>
+        <I_TYPE_ACCN>I</I_TYPE_ACCN>
+        <D_ADMS_PATN>2010-08-23</D_ADMS_PATN>
+        <D_DISC_PATN>01/01/0001</D_DISC_PATN>
+        <Q_LOS>0004</Q_LOS>
+        <D_STAR_CLIN_SUMM>08/23/2010</D_STAR_CLIN_SUMM>
+        <D_END_CLIN_SUMM>08/26/2010</D_END_CLIN_SUMM>
+        <I_PS_1>0000100916</I_PS_1>
+        <N_PS_1>POLLAK, SCOTT J.</N_PS_1>
+        <R_PS_1>CONS</R_PS_1>
+        <PHYS_COUNT>1</PHYS_COUNT>
+      </ROW>
+      <ROW POSITION="24">
+        <N_PATN>HOROVITZ, IRVING G</N_PATN>
+        <I_UNIT>4PCA</I_UNIT>
+        <I_ROOM>4811</I_ROOM>
+        <I_LOCT_PATN>02</I_LOCT_PATN>
+        <N_LOCT>FH ALTAMONTE</N_LOCT>
+        <I_MRI>000655253</I_MRI>
+        <I_ACCN>0020820031</I_ACCN>
+        <F_SEX>M</F_SEX>
+        <I_AGE_PATN>Y082</I_AGE_PATN>
+        <I_ROLE> </I_ROLE>
+        <F_HIDE_LIST_PATN>N</F_HIDE_LIST_PATN>
+        <I_TYPE_ACCN>I</I_TYPE_ACCN>
+        <D_ADMS_PATN>2010-08-23</D_ADMS_PATN>
+        <D_DISC_PATN>01/01/0001</D_DISC_PATN>
+        <Q_LOS>0004</Q_LOS>
+        <D_STAR_CLIN_SUMM>08/23/2010</D_STAR_CLIN_SUMM>
+        <D_END_CLIN_SUMM>08/26/2010</D_END_CLIN_SUMM>
+        <I_PS_1>0000014318</I_PS_1>
+        <N_PS_1>THAKUR, AJAY</N_PS_1>
+        <R_PS_1>CONS</R_PS_1>
+        <I_PS_2>0000100913</I_PS_2>
+        <N_PS_2>TAUSSIG, ANDREW S.</N_PS_2>
+        <R_PS_2>CONS</R_PS_2>
+        <PHYS_COUNT>2</PHYS_COUNT>
+      </ROW>
+      <ROW POSITION="25">
+        <N_PATN>SCHMIDT, EARL H</N_PATN>
+        <I_UNIT>GT7</I_UNIT>
+        <I_ROOM>7834</I_ROOM>
+        <I_LOCT_PATN>01</I_LOCT_PATN>
+        <N_LOCT>FH ORLANDO</N_LOCT>
+        <I_MRI>000112483</I_MRI>
+        <I_ACCN>0020820185</I_ACCN>
+        <F_SEX>M</F_SEX>
+        <I_AGE_PATN>Y084</I_AGE_PATN>
+        <I_ROLE> </I_ROLE>
+        <F_HIDE_LIST_PATN>N</F_HIDE_LIST_PATN>
+        <I_TYPE_ACCN>I</I_TYPE_ACCN>
+        <D_ADMS_PATN>2010-08-23</D_ADMS_PATN>
+        <D_DISC_PATN>01/01/0001</D_DISC_PATN>
+        <Q_LOS>0004</Q_LOS>
+        <D_STAR_CLIN_SUMM>08/23/2010</D_STAR_CLIN_SUMM>
+        <D_END_CLIN_SUMM>08/26/2010</D_END_CLIN_SUMM>
+        <I_PS_1>0000100912</I_PS_1>
+        <N_PS_1>STORY, WILLIAM</N_PS_1>
+        <R_PS_1>CONS</R_PS_1>
+        <I_PS_2>0000100925</I_PS_2>
+        <N_PS_2>KUMAR, ANIL</N_PS_2>
+        <R_PS_2>OTHR</R_PS_2>
+        <PHYS_COUNT>2</PHYS_COUNT>
+      </ROW>
+      <ROW POSITION="26">
+        <N_PATN>WYCOFF, EDGAR BYRON</N_PATN>
+        <I_UNIT>GT6</I_UNIT>
+        <I_ROOM>6802</I_ROOM>
+        <I_LOCT_PATN>01</I_LOCT_PATN>
+        <N_LOCT>FH ORLANDO</N_LOCT>
+        <I_MRI>000640164</I_MRI>
+        <I_ACCN>0020821420</I_ACCN>
+        <F_SEX>M</F_SEX>
+        <I_AGE_PATN>Y075</I_AGE_PATN>
+        <I_ROLE> </I_ROLE>
+        <F_HIDE_LIST_PATN>N</F_HIDE_LIST_PATN>
+        <I_TYPE_ACCN>I</I_TYPE_ACCN>
+        <D_ADMS_PATN>2010-08-26</D_ADMS_PATN>
+        <D_DISC_PATN>01/01/0001</D_DISC_PATN>
+        <Q_LOS>0001</Q_LOS>
+        <D_STAR_CLIN_SUMM>08/26/2010</D_STAR_CLIN_SUMM>
+        <D_END_CLIN_SUMM>08/26/2010</D_END_CLIN_SUMM>
+        <I_PS_1>0000100923</I_PS_1>
+        <N_PS_1>BARNETT, J. CRAIG</N_PS_1>
+        <R_PS_1>ATTN</R_PS_1>
+        <PHYS_COUNT>1</PHYS_COUNT>
+      </ROW>
+      <ROW POSITION="27">
+        <N_PATN>WILLE, LYNDON R</N_PATN>
+        <I_UNIT>GT6</I_UNIT>
+        <I_ROOM>6828</I_ROOM>
+        <I_LOCT_PATN>01</I_LOCT_PATN>
+        <N_LOCT>FH ORLANDO</N_LOCT>
+        <I_MRI>001765244</I_MRI>
+        <I_ACCN>0020823704</I_ACCN>
+        <F_SEX>M</F_SEX>
+        <I_AGE_PATN>Y063</I_AGE_PATN>
+        <I_ROLE> </I_ROLE>
+        <F_HIDE_LIST_PATN>N</F_HIDE_LIST_PATN>
+        <I_TYPE_ACCN>I</I_TYPE_ACCN>
+        <D_ADMS_PATN>2010-08-26</D_ADMS_PATN>
+        <D_DISC_PATN>01/01/0001</D_DISC_PATN>
+        <Q_LOS>0001</Q_LOS>
+        <D_STAR_CLIN_SUMM>08/26/2010</D_STAR_CLIN_SUMM>
+        <D_END_CLIN_SUMM>08/26/2010</D_END_CLIN_SUMM>
+        <I_PS_1>0000013614</I_PS_1>
+        <N_PS_1>STEIN, BRUCE C.</N_PS_1>
+        <R_PS_1>ATTN</R_PS_1>
+        <PHYS_COUNT>1</PHYS_COUNT>
+      </ROW>
+      <ROW POSITION="28">
+        <N_PATN>GILES, SANDRA LEE</N_PATN>
+        <I_UNIT>GT5</I_UNIT>
+        <I_ROOM>5813</I_ROOM>
+        <I_LOCT_PATN>01</I_LOCT_PATN>
+        <N_LOCT>FH ORLANDO</N_LOCT>
+        <I_MRI>000113800</I_MRI>
+        <I_ACCN>0020824023</I_ACCN>
+        <F_SEX>F</F_SEX>
+        <I_AGE_PATN>Y070</I_AGE_PATN>
+        <I_ROLE> </I_ROLE>
+        <F_HIDE_LIST_PATN>N</F_HIDE_LIST_PATN>
+        <I_TYPE_ACCN>I</I_TYPE_ACCN>
+        <D_ADMS_PATN>2010-08-24</D_ADMS_PATN>
+        <D_DISC_PATN>01/01/0001</D_DISC_PATN>
+        <Q_LOS>0003</Q_LOS>
+        <D_STAR_CLIN_SUMM>08/24/2010</D_STAR_CLIN_SUMM>
+        <D_END_CLIN_SUMM>08/26/2010</D_END_CLIN_SUMM>
+        <I_PS_1>0000013614</I_PS_1>
+        <N_PS_1>STEIN, BRUCE C.</N_PS_1>
+        <R_PS_1>OTHR</R_PS_1>
+        <I_PS_2>0000100916</I_PS_2>
+        <N_PS_2>POLLAK, SCOTT J.</N_PS_2>
+        <R_PS_2>ATTN</R_PS_2>
+        <PHYS_COUNT>2</PHYS_COUNT>
+      </ROW>
+      <ROW POSITION="29">
+        <N_PATN>PEREZ, LUZ N</N_PATN>
+        <I_UNIT>W3NW</I_UNIT>
+        <I_ROOM>3401</I_ROOM>
+        <I_LOCT_PATN>07</I_LOCT_PATN>
+        <N_LOCT>FH WINTER PARK</N_LOCT>
+        <I_MRI>000388751</I_MRI>
+        <I_ACCN>0020824322</I_ACCN>
+        <F_SEX>F</F_SEX>
+        <I_AGE_PATN>Y058</I_AGE_PATN>
+        <I_ROLE> </I_ROLE>
+        <F_HIDE_LIST_PATN>N</F_HIDE_LIST_PATN>
+        <I_TYPE_ACCN>I</I_TYPE_ACCN>
+        <D_ADMS_PATN>2010-08-24</D_ADMS_PATN>
+        <D_DISC_PATN>01/01/0001</D_DISC_PATN>
+        <Q_LOS>0003</Q_LOS>
+        <D_STAR_CLIN_SUMM>08/24/2010</D_STAR_CLIN_SUMM>
+        <D_END_CLIN_SUMM>08/26/2010</D_END_CLIN_SUMM>
+        <I_PS_1>0000014318</I_PS_1>
+        <N_PS_1>THAKUR, AJAY</N_PS_1>
+        <R_PS_1>OTHR</R_PS_1>
+        <I_PS_2>0000100925</I_PS_2>
+        <N_PS_2>KUMAR, ANIL</N_PS_2>
+        <R_PS_2>CONS</R_PS_2>
+        <PHYS_COUNT>2</PHYS_COUNT>
+      </ROW>
+      <ROW POSITION="30">
+        <N_PATN>HILL, CARL</N_PATN>
+        <I_UNIT>O2CV</I_UNIT>
+        <I_ROOM>2716</I_ROOM>
+        <I_LOCT_PATN>01</I_LOCT_PATN>
+        <N_LOCT>FH ORLANDO</N_LOCT>
+        <I_MRI>002532806</I_MRI>
+        <I_ACCN>0020824441</I_ACCN>
+        <F_SEX>M</F_SEX>
+        <I_AGE_PATN>Y087</I_AGE_PATN>
+        <I_ROLE> </I_ROLE>
+        <F_HIDE_LIST_PATN>N</F_HIDE_LIST_PATN>
+        <I_TYPE_ACCN>I</I_TYPE_ACCN>
+        <D_ADMS_PATN>2010-08-24</D_ADMS_PATN>
+        <D_DISC_PATN>01/01/0001</D_DISC_PATN>
+        <Q_LOS>0003</Q_LOS>
+        <D_STAR_CLIN_SUMM>08/24/2010</D_STAR_CLIN_SUMM>
+        <D_END_CLIN_SUMM>08/26/2010</D_END_CLIN_SUMM>
+        <I_PS_1>0000100912</I_PS_1>
+        <N_PS_1>STORY, WILLIAM</N_PS_1>
+        <R_PS_1>CONS</R_PS_1>
+        <PHYS_COUNT>1</PHYS_COUNT>
+      </ROW>
+      <ROW POSITION="31">
+        <N_PATN>BRADLEY, MARIE L</N_PATN>
+        <I_UNIT>W2SW</I_UNIT>
+        <I_ROOM>2620</I_ROOM>
+        <I_LOCT_PATN>07</I_LOCT_PATN>
+        <N_LOCT>FH WINTER PARK</N_LOCT>
+        <I_MRI>001349164</I_MRI>
+        <I_ACCN>0020824464</I_ACCN>
+        <F_SEX>F</F_SEX>
+        <I_AGE_PATN>Y086</I_AGE_PATN>
+        <I_ROLE> </I_ROLE>
+        <F_HIDE_LIST_PATN>N</F_HIDE_LIST_PATN>
+        <I_TYPE_ACCN>I</I_TYPE_ACCN>
+        <D_ADMS_PATN>2010-08-24</D_ADMS_PATN>
+        <D_DISC_PATN>01/01/0001</D_DISC_PATN>
+        <Q_LOS>0003</Q_LOS>
+        <D_STAR_CLIN_SUMM>08/24/2010</D_STAR_CLIN_SUMM>
+        <D_END_CLIN_SUMM>08/26/2010</D_END_CLIN_SUMM>
+        <I_PS_1>0000100925</I_PS_1>
+        <N_PS_1>KUMAR, ANIL</N_PS_1>
+        <R_PS_1>OTHR</R_PS_1>
+        <PHYS_COUNT>1</PHYS_COUNT>
+      </ROW>
+      <ROW POSITION="32">
+        <N_PATN>ANDERSON, BLANCHE</N_PATN>
+        <I_UNIT>W3N</I_UNIT>
+        <I_ROOM>3214</I_ROOM>
+        <I_LOCT_PATN>07</I_LOCT_PATN>
+        <N_LOCT>FH WINTER PARK</N_LOCT>
+        <I_MRI>000501925</I_MRI>
+        <I_ACCN>0020824729</I_ACCN>
+        <F_SEX>F</F_SEX>
+        <I_AGE_PATN>Y068</I_AGE_PATN>
+        <I_ROLE> </I_ROLE>
+        <F_HIDE_LIST_PATN>N</F_HIDE_LIST_PATN>
+        <I_TYPE_ACCN>I</I_TYPE_ACCN>
+        <D_ADMS_PATN>2010-08-24</D_ADMS_PATN>
+        <D_DISC_PATN>01/01/0001</D_DISC_PATN>
+        <Q_LOS>0003</Q_LOS>
+        <D_STAR_CLIN_SUMM>08/24/2010</D_STAR_CLIN_SUMM>
+        <D_END_CLIN_SUMM>08/26/2010</D_END_CLIN_SUMM>
+        <I_PS_1>0000100925</I_PS_1>
+        <N_PS_1>KUMAR, ANIL</N_PS_1>
+        <R_PS_1>CONS</R_PS_1>
+        <PHYS_COUNT>1</PHYS_COUNT>
+      </ROW>
+      <ROW POSITION="33">
+        <N_PATN>SHURR, IRENE</N_PATN>
+        <I_UNIT>CTU</I_UNIT>
+        <I_ROOM>1308</I_ROOM>
+        <I_LOCT_PATN>01</I_LOCT_PATN>
+        <N_LOCT>FH ORLANDO</N_LOCT>
+        <I_MRI>000917666</I_MRI>
+        <I_ACCN>0020826401</I_ACCN>
+        <F_SEX>F</F_SEX>
+        <I_AGE_PATN>Y067</I_AGE_PATN>
+        <I_ROLE> </I_ROLE>
+        <F_HIDE_LIST_PATN>N</F_HIDE_LIST_PATN>
+        <I_TYPE_ACCN>O</I_TYPE_ACCN>
+        <D_ADMS_PATN>2010-08-26</D_ADMS_PATN>
+        <D_DISC_PATN>01/01/0001</D_DISC_PATN>
+        <Q_LOS>0001</Q_LOS>
+        <D_STAR_CLIN_SUMM>08/26/2010</D_STAR_CLIN_SUMM>
+        <D_END_CLIN_SUMM>08/26/2010</D_END_CLIN_SUMM>
+        <I_PS_1>0000100912</I_PS_1>
+        <N_PS_1>STORY, WILLIAM</N_PS_1>
+        <R_PS_1>CONS</R_PS_1>
+        <PHYS_COUNT>1</PHYS_COUNT>
+      </ROW>
+      <ROW POSITION="34">
+        <N_PATN>SHEVALIER, JASON CARL</N_PATN>
+        <I_UNIT>GT7</I_UNIT>
+        <I_ROOM>7814</I_ROOM>
+        <I_LOCT_PATN>01</I_LOCT_PATN>
+        <N_LOCT>FH ORLANDO</N_LOCT>
+        <I_MRI>000915815</I_MRI>
+        <I_ACCN>0020830514</I_ACCN>
+        <F_SEX>M</F_SEX>
+        <I_AGE_PATN>Y035</I_AGE_PATN>
+        <I_ROLE> </I_ROLE>
+        <F_HIDE_LIST_PATN>N</F_HIDE_LIST_PATN>
+        <I_TYPE_ACCN>I</I_TYPE_ACCN>
+        <D_ADMS_PATN>2010-08-26</D_ADMS_PATN>
+        <D_DISC_PATN>01/01/0001</D_DISC_PATN>
+        <Q_LOS>0001</Q_LOS>
+        <D_STAR_CLIN_SUMM>08/26/2010</D_STAR_CLIN_SUMM>
+        <D_END_CLIN_SUMM>08/26/2010</D_END_CLIN_SUMM>
+        <I_PS_1>0000013322</I_PS_1>
+        <N_PS_1>ZARATE, JUAN CARLOS</N_PS_1>
+        <R_PS_1>OTHR</R_PS_1>
+        <I_PS_2>0000013614</I_PS_2>
+        <N_PS_2>STEIN, BRUCE C.</N_PS_2>
+        <R_PS_2>CONS</R_PS_2>
+        <PHYS_COUNT>2</PHYS_COUNT>
+      </ROW>
+      <ROW POSITION="35">
+        <N_PATN>GRUBBS, VIRGINIA D</N_PATN>
+        <I_UNIT>CTU</I_UNIT>
+        <I_ROOM>1327</I_ROOM>
+        <I_LOCT_PATN>01</I_LOCT_PATN>
+        <N_LOCT>FH ORLANDO</N_LOCT>
+        <I_MRI>001276483</I_MRI>
+        <I_ACCN>0020830665</I_ACCN>
+        <F_SEX>F</F_SEX>
+        <I_AGE_PATN>Y083</I_AGE_PATN>
+        <I_ROLE> </I_ROLE>
+        <F_HIDE_LIST_PATN>N</F_HIDE_LIST_PATN>
+        <I_TYPE_ACCN>I</I_TYPE_ACCN>
+        <D_ADMS_PATN>2010-08-26</D_ADMS_PATN>
+        <D_DISC_PATN>01/01/0001</D_DISC_PATN>
+        <Q_LOS>0001</Q_LOS>
+        <D_STAR_CLIN_SUMM>08/26/2010</D_STAR_CLIN_SUMM>
+        <D_END_CLIN_SUMM>08/26/2010</D_END_CLIN_SUMM>
+        <I_PS_1>0000100907</I_PS_1>
+        <N_PS_1>NOCERO, MICHAEL</N_PS_1>
+        <R_PS_1>CONS</R_PS_1>
+        <PHYS_COUNT>1</PHYS_COUNT>
+      </ROW>
+      <ROW POSITION="36">
+        <N_PATN>NORMAN, DOUGLAS RANDOLPH</N_PATN>
+        <I_UNIT>3N</I_UNIT>
+        <I_ROOM>3564</I_ROOM>
+        <I_LOCT_PATN>01</I_LOCT_PATN>
+        <N_LOCT>FH ORLANDO</N_LOCT>
+        <I_MRI>001127668</I_MRI>
+        <I_ACCN>0081079001</I_ACCN>
+        <F_SEX>M</F_SEX>
+        <I_AGE_PATN>Y057</I_AGE_PATN>
+        <I_ROLE> </I_ROLE>
+        <F_HIDE_LIST_PATN>N</F_HIDE_LIST_PATN>
+        <I_TYPE_ACCN>I</I_TYPE_ACCN>
+        <D_ADMS_PATN>2010-07-18</D_ADMS_PATN>
+        <D_DISC_PATN>01/01/0001</D_DISC_PATN>
+        <Q_LOS>0040</Q_LOS>
+        <D_STAR_CLIN_SUMM>07/18/2010</D_STAR_CLIN_SUMM>
+        <D_END_CLIN_SUMM>08/26/2010</D_END_CLIN_SUMM>
+        <I_PS_1>0000014398</I_PS_1>
+        <N_PS_1>DUBLIN, BRIAN K.</N_PS_1>
+        <R_PS_1>CONS</R_PS_1>
+        <I_PS_2>0000100912</I_PS_2>
+        <N_PS_2>STORY, WILLIAM</N_PS_2>
+        <R_PS_2>OTHR</R_PS_2>
+        <I_PS_3>0000100913</I_PS_3>
+        <N_PS_3>TAUSSIG, ANDREW S.</N_PS_3>
+        <R_PS_3>OTHR</R_PS_3>
+        <PHYS_COUNT>3</PHYS_COUNT>
+      </ROW>
+      <ROW POSITION="37">
+        <N_PATN>ZACIEWSKI, JOSEPH</N_PATN>
+        <I_UNIT>O2CV</I_UNIT>
+        <I_ROOM>2719</I_ROOM>
+        <I_LOCT_PATN>01</I_LOCT_PATN>
+        <N_LOCT>FH ORLANDO</N_LOCT>
+        <I_MRI>070230748</I_MRI>
+        <I_ACCN>0081086365</I_ACCN>
+        <F_SEX>M</F_SEX>
+        <I_AGE_PATN>Y021</I_AGE_PATN>
+        <I_ROLE> </I_ROLE>
+        <F_HIDE_LIST_PATN>N</F_HIDE_LIST_PATN>
+        <I_TYPE_ACCN>I</I_TYPE_ACCN>
+        <D_ADMS_PATN>2010-07-25</D_ADMS_PATN>
+        <D_DISC_PATN>01/01/0001</D_DISC_PATN>
+        <Q_LOS>0033</Q_LOS>
+        <D_STAR_CLIN_SUMM>07/25/2010</D_STAR_CLIN_SUMM>
+        <D_END_CLIN_SUMM>08/26/2010</D_END_CLIN_SUMM>
+        <I_PS_1>0000012384</I_PS_1>
+        <N_PS_1>HAZDAY, MARCOS S</N_PS_1>
+        <R_PS_1>OTHR</R_PS_1>
+        <I_PS_2>0000100917</I_PS_2>
+        <N_PS_2>RODRIGUEZ, ARSENIO RALPH</N_PS_2>
+        <R_PS_2>CONS</R_PS_2>
+        <PHYS_COUNT>2</PHYS_COUNT>
+      </ROW>
+      <ROW POSITION="38">
+        <N_PATN>HESTER, JOHNNIE LEE</N_PATN>
+        <I_UNIT>W2NE</I_UNIT>
+        <I_ROOM>2251</I_ROOM>
+        <I_LOCT_PATN>07</I_LOCT_PATN>
+        <N_LOCT>FH WINTER PARK</N_LOCT>
+        <I_MRI>002700954</I_MRI>
+        <I_ACCN>0081089693</I_ACCN>
+        <F_SEX>M</F_SEX>
+        <I_AGE_PATN>Y055</I_AGE_PATN>
+        <I_ROLE> </I_ROLE>
+        <F_HIDE_LIST_PATN>N</F_HIDE_LIST_PATN>
+        <I_TYPE_ACCN>I</I_TYPE_ACCN>
+        <D_ADMS_PATN>2010-07-28</D_ADMS_PATN>
+        <D_DISC_PATN>01/01/0001</D_DISC_PATN>
+        <Q_LOS>0030</Q_LOS>
+        <D_STAR_CLIN_SUMM>07/28/2010</D_STAR_CLIN_SUMM>
+        <D_END_CLIN_SUMM>08/26/2010</D_END_CLIN_SUMM>
+        <I_PS_1>0000012384</I_PS_1>
+        <N_PS_1>HAZDAY, MARCOS S</N_PS_1>
+        <R_PS_1>OTHR</R_PS_1>
+        <I_PS_2>0000100925</I_PS_2>
+        <N_PS_2>KUMAR, ANIL</N_PS_2>
+        <R_PS_2>CONS</R_PS_2>
+        <PHYS_COUNT>2</PHYS_COUNT>
+      </ROW>
+      <ROW POSITION="39">
+        <N_PATN>NORRIS, JOANNE P</N_PATN>
+        <I_UNIT>GT7</I_UNIT>
+        <I_ROOM>7816</I_ROOM>
+        <I_LOCT_PATN>01</I_LOCT_PATN>
+        <N_LOCT>FH ORLANDO</N_LOCT>
+        <I_MRI>000565994</I_MRI>
+        <I_ACCN>0081097335</I_ACCN>
+        <F_SEX>F</F_SEX>
+        <I_AGE_PATN>Y077</I_AGE_PATN>
+        <I_ROLE> </I_ROLE>
+        <F_HIDE_LIST_PATN>N</F_HIDE_LIST_PATN>
+        <I_TYPE_ACCN>I</I_TYPE_ACCN>
+        <D_ADMS_PATN>2010-08-04</D_ADMS_PATN>
+        <D_DISC_PATN>01/01/0001</D_DISC_PATN>
+        <Q_LOS>0023</Q_LOS>
+        <D_STAR_CLIN_SUMM>08/04/2010</D_STAR_CLIN_SUMM>
+        <D_END_CLIN_SUMM>08/26/2010</D_END_CLIN_SUMM>
+        <I_PS_1>0000100912</I_PS_1>
+        <N_PS_1>STORY, WILLIAM</N_PS_1>
+        <R_PS_1>CONS</R_PS_1>
+        <PHYS_COUNT>1</PHYS_COUNT>
+      </ROW>
+      <ROW POSITION="40">
+        <N_PATN>RIVERA, MOISES</N_PATN>
+        <I_UNIT>3W</I_UNIT>
+        <I_ROOM>3361</I_ROOM>
+        <I_LOCT_PATN>01</I_LOCT_PATN>
+        <N_LOCT>FH ORLANDO</N_LOCT>
+        <I_MRI>001770712</I_MRI>
+        <I_ACCN>0081099787</I_ACCN>
+        <F_SEX>M</F_SEX>
+        <I_AGE_PATN>Y079</I_AGE_PATN>
+        <I_ROLE> </I_ROLE>
+        <F_HIDE_LIST_PATN>N</F_HIDE_LIST_PATN>
+        <I_TYPE_ACCN>I</I_TYPE_ACCN>
+        <D_ADMS_PATN>2010-08-07</D_ADMS_PATN>
+        <D_DISC_PATN>01/01/0001</D_DISC_PATN>
+        <Q_LOS>0020</Q_LOS>
+        <D_STAR_CLIN_SUMM>08/07/2010</D_STAR_CLIN_SUMM>
+        <D_END_CLIN_SUMM>08/26/2010</D_END_CLIN_SUMM>
+        <I_PS_1>0000014398</I_PS_1>
+        <N_PS_1>DUBLIN, BRIAN K.</N_PS_1>
+        <R_PS_1>CONS</R_PS_1>
+        <I_PS_2>0000100916</I_PS_2>
+        <N_PS_2>POLLAK, SCOTT J.</N_PS_2>
+        <R_PS_2>CONS</R_PS_2>
+        <I_PS_3>0000100917</I_PS_3>
+        <N_PS_3>RODRIGUEZ, ARSENIO RALPH</N_PS_3>
+        <R_PS_3>CONS</R_PS_3>
+        <PHYS_COUNT>3</PHYS_COUNT>
+      </ROW>
+      <ROW POSITION="41">
+        <N_PATN>CASKEY, JAMES R</N_PATN>
+        <I_UNIT>3W</I_UNIT>
+        <I_ROOM>3363</I_ROOM>
+        <I_LOCT_PATN>01</I_LOCT_PATN>
+        <N_LOCT>FH ORLANDO</N_LOCT>
+        <I_MRI>001537666</I_MRI>
+        <I_ACCN>0081100058</I_ACCN>
+        <F_SEX>M</F_SEX>
+        <I_AGE_PATN>Y077</I_AGE_PATN>
+        <I_ROLE> </I_ROLE>
+        <F_HIDE_LIST_PATN>N</F_HIDE_LIST_PATN>
+        <I_TYPE_ACCN>I</I_TYPE_ACCN>
+        <D_ADMS_PATN>2010-08-07</D_ADMS_PATN>
+        <D_DISC_PATN>01/01/0001</D_DISC_PATN>
+        <Q_LOS>0020</Q_LOS>
+        <D_STAR_CLIN_SUMM>08/07/2010</D_STAR_CLIN_SUMM>
+        <D_END_CLIN_SUMM>08/26/2010</D_END_CLIN_SUMM>
+        <I_PS_1>0000100917</I_PS_1>
+        <N_PS_1>RODRIGUEZ, ARSENIO RALPH</N_PS_1>
+        <R_PS_1>OTHR</R_PS_1>
+        <PHYS_COUNT>1</PHYS_COUNT>
+      </ROW>
+      <ROW POSITION="42">
+        <N_PATN>BLATTNER, MYRON N</N_PATN>
+        <I_UNIT>4PCA</I_UNIT>
+        <I_ROOM>4823</I_ROOM>
+        <I_LOCT_PATN>02</I_LOCT_PATN>
+        <N_LOCT>FH ALTAMONTE</N_LOCT>
+        <I_MRI>000179442</I_MRI>
+        <I_ACCN>0081104502</I_ACCN>
+        <F_SEX>M</F_SEX>
+        <I_AGE_PATN>Y075</I_AGE_PATN>
+        <I_ROLE> </I_ROLE>
+        <F_HIDE_LIST_PATN>N</F_HIDE_LIST_PATN>
+        <I_TYPE_ACCN>I</I_TYPE_ACCN>
+        <D_ADMS_PATN>2010-08-11</D_ADMS_PATN>
+        <D_DISC_PATN>01/01/0001</D_DISC_PATN>
+        <Q_LOS>0016</Q_LOS>
+        <D_STAR_CLIN_SUMM>08/11/2010</D_STAR_CLIN_SUMM>
+        <D_END_CLIN_SUMM>08/26/2010</D_END_CLIN_SUMM>
+        <I_PS_1>0000013614</I_PS_1>
+        <N_PS_1>STEIN, BRUCE C.</N_PS_1>
+        <R_PS_1>OTHR</R_PS_1>
+        <I_PS_2>0000014318</I_PS_2>
+        <N_PS_2>THAKUR, AJAY</N_PS_2>
+        <R_PS_2>CONS</R_PS_2>
+        <I_PS_3>0000100913</I_PS_3>
+        <N_PS_3>TAUSSIG, ANDREW S.</N_PS_3>
+        <R_PS_3>CONS</R_PS_3>
+        <PHYS_COUNT>3</PHYS_COUNT>
+      </ROW>
+      <ROW POSITION="43">
+        <N_PATN>STALWORTH, MARIE A</N_PATN>
+        <I_UNIT>2N</I_UNIT>
+        <I_ROOM>2564</I_ROOM>
+        <I_LOCT_PATN>01</I_LOCT_PATN>
+        <N_LOCT>FH ORLANDO</N_LOCT>
+        <I_MRI>004235159</I_MRI>
+        <I_ACCN>0081106128</I_ACCN>
+        <F_SEX>F</F_SEX>
+        <I_AGE_PATN>Y058</I_AGE_PATN>
+        <I_ROLE> </I_ROLE>
+        <F_HIDE_LIST_PATN>N</F_HIDE_LIST_PATN>
+        <I_TYPE_ACCN>I</I_TYPE_ACCN>
+        <D_ADMS_PATN>2010-08-13</D_ADMS_PATN>
+        <D_DISC_PATN>01/01/0001</D_DISC_PATN>
+        <Q_LOS>0014</Q_LOS>
+        <D_STAR_CLIN_SUMM>08/13/2010</D_STAR_CLIN_SUMM>
+        <D_END_CLIN_SUMM>08/26/2010</D_END_CLIN_SUMM>
+        <I_PS_1>0000100917</I_PS_1>
+        <N_PS_1>RODRIGUEZ, ARSENIO RALPH</N_PS_1>
+        <R_PS_1>OTHR</R_PS_1>
+        <PHYS_COUNT>1</PHYS_COUNT>
+      </ROW>
+      <ROW POSITION="44">
+        <N_PATN>BRANCH, TIMMY</N_PATN>
+        <I_UNIT>2N</I_UNIT>
+        <I_ROOM>2502</I_ROOM>
+        <I_LOCT_PATN>01</I_LOCT_PATN>
+        <N_LOCT>FH ORLANDO</N_LOCT>
+        <I_MRI>070235022</I_MRI>
+        <I_ACCN>0081106787</I_ACCN>
+        <F_SEX>M</F_SEX>
+        <I_AGE_PATN>Y053</I_AGE_PATN>
+        <I_ROLE> </I_ROLE>
+        <F_HIDE_LIST_PATN>N</F_HIDE_LIST_PATN>
+        <I_TYPE_ACCN>I</I_TYPE_ACCN>
+        <D_ADMS_PATN>2010-08-14</D_ADMS_PATN>
+        <D_DISC_PATN>01/01/0001</D_DISC_PATN>
+        <Q_LOS>0013</Q_LOS>
+        <D_STAR_CLIN_SUMM>08/14/2010</D_STAR_CLIN_SUMM>
+        <D_END_CLIN_SUMM>08/26/2010</D_END_CLIN_SUMM>
+        <I_PS_1>0000100917</I_PS_1>
+        <N_PS_1>RODRIGUEZ, ARSENIO RALPH</N_PS_1>
+        <R_PS_1>OTHR</R_PS_1>
+        <PHYS_COUNT>1</PHYS_COUNT>
+      </ROW>
+      <ROW POSITION="45">
+        <N_PATN>BURFORD, MYRTLE BELLE</N_PATN>
+        <I_UNIT>XTWR</I_UNIT>
+        <I_ROOM>X226</I_ROOM>
+        <I_LOCT_PATN>01</I_LOCT_PATN>
+        <N_LOCT>FH ORLANDO</N_LOCT>
+        <I_MRI>000731283</I_MRI>
+        <I_ACCN>0081107451</I_ACCN>
+        <F_SEX>F</F_SEX>
+        <I_AGE_PATN>Y076</I_AGE_PATN>
+        <I_ROLE> </I_ROLE>
+        <F_HIDE_LIST_PATN>N</F_HIDE_LIST_PATN>
+        <I_TYPE_ACCN>I</I_TYPE_ACCN>
+        <D_ADMS_PATN>2010-08-14</D_ADMS_PATN>
+        <D_DISC_PATN>01/01/0001</D_DISC_PATN>
+        <Q_LOS>0013</Q_LOS>
+        <D_STAR_CLIN_SUMM>08/14/2010</D_STAR_CLIN_SUMM>
+        <D_END_CLIN_SUMM>08/26/2010</D_END_CLIN_SUMM>
+        <I_PS_1>0000013614</I_PS_1>
+        <N_PS_1>STEIN, BRUCE C.</N_PS_1>
+        <R_PS_1>CONS</R_PS_1>
+        <I_PS_2>0000100912</I_PS_2>
+        <N_PS_2>STORY, WILLIAM</N_PS_2>
+        <R_PS_2>OTHR</R_PS_2>
+        <PHYS_COUNT>2</PHYS_COUNT>
+      </ROW>
+      <ROW POSITION="46">
+        <N_PATN>SEERAM, RADESH</N_PATN>
+        <I_UNIT>GT5</I_UNIT>
+        <I_ROOM>5833</I_ROOM>
+        <I_LOCT_PATN>01</I_LOCT_PATN>
+        <N_LOCT>FH ORLANDO</N_LOCT>
+        <I_MRI>003217321</I_MRI>
+        <I_ACCN>0081108510</I_ACCN>
+        <F_SEX>M</F_SEX>
+        <I_AGE_PATN>Y040</I_AGE_PATN>
+        <I_ROLE> </I_ROLE>
+        <F_HIDE_LIST_PATN>N</F_HIDE_LIST_PATN>
+        <I_TYPE_ACCN>I</I_TYPE_ACCN>
+        <D_ADMS_PATN>2010-08-15</D_ADMS_PATN>
+        <D_DISC_PATN>01/01/0001</D_DISC_PATN>
+        <Q_LOS>0012</Q_LOS>
+        <D_STAR_CLIN_SUMM>08/15/2010</D_STAR_CLIN_SUMM>
+        <D_END_CLIN_SUMM>08/26/2010</D_END_CLIN_SUMM>
+        <I_PS_1>0000100917</I_PS_1>
+        <N_PS_1>RODRIGUEZ, ARSENIO RALPH</N_PS_1>
+        <R_PS_1>OTHR</R_PS_1>
+        <PHYS_COUNT>1</PHYS_COUNT>
+      </ROW>
+      <ROW POSITION="47">
+        <N_PATN>JOHNSTON, ROBERT W.</N_PATN>
+        <I_UNIT>GT7</I_UNIT>
+        <I_ROOM>7803</I_ROOM>
+        <I_LOCT_PATN>01</I_LOCT_PATN>
+        <N_LOCT>FH ORLANDO</N_LOCT>
+        <I_MRI>002916284</I_MRI>
+        <I_ACCN>0081109814</I_ACCN>
+        <F_SEX>M</F_SEX>
+        <I_AGE_PATN>Y083</I_AGE_PATN>
+        <I_ROLE> </I_ROLE>
+        <F_HIDE_LIST_PATN>N</F_HIDE_LIST_PATN>
+        <I_TYPE_ACCN>I</I_TYPE_ACCN>
+        <D_ADMS_PATN>2010-08-16</D_ADMS_PATN>
+        <D_DISC_PATN>01/01/0001</D_DISC_PATN>
+        <Q_LOS>0011</Q_LOS>
+        <D_STAR_CLIN_SUMM>08/16/2010</D_STAR_CLIN_SUMM>
+        <D_END_CLIN_SUMM>08/26/2010</D_END_CLIN_SUMM>
+        <I_PS_1>0000100917</I_PS_1>
+        <N_PS_1>RODRIGUEZ, ARSENIO RALPH</N_PS_1>
+        <R_PS_1>CONS</R_PS_1>
+        <I_PS_2>0000100923</I_PS_2>
+        <N_PS_2>BARNETT, J. CRAIG</N_PS_2>
+        <R_PS_2>OTHR</R_PS_2>
+        <I_PS_3>0000100925</I_PS_3>
+        <N_PS_3>KUMAR, ANIL</N_PS_3>
+        <R_PS_3>OTHR</R_PS_3>
+        <PHYS_COUNT>3</PHYS_COUNT>
+      </ROW>
+      <ROW POSITION="48">
+        <N_PATN>FACTOR, HOWARD</N_PATN>
+        <I_UNIT>W2NW</I_UNIT>
+        <I_ROOM>2425</I_ROOM>
+        <I_LOCT_PATN>07</I_LOCT_PATN>
+        <N_LOCT>FH WINTER PARK</N_LOCT>
+        <I_MRI>001376346</I_MRI>
+        <I_ACCN>0081110069</I_ACCN>
+        <F_SEX>M</F_SEX>
+        <I_AGE_PATN>Y071</I_AGE_PATN>
+        <I_ROLE> </I_ROLE>
+        <F_HIDE_LIST_PATN>N</F_HIDE_LIST_PATN>
+        <I_TYPE_ACCN>I</I_TYPE_ACCN>
+        <D_ADMS_PATN>2010-08-17</D_ADMS_PATN>
+        <D_DISC_PATN>01/01/0001</D_DISC_PATN>
+        <Q_LOS>0010</Q_LOS>
+        <D_STAR_CLIN_SUMM>08/17/2010</D_STAR_CLIN_SUMM>
+        <D_END_CLIN_SUMM>08/26/2010</D_END_CLIN_SUMM>
+        <I_PS_1>0000100925</I_PS_1>
+        <N_PS_1>KUMAR, ANIL</N_PS_1>
+        <R_PS_1>CONS</R_PS_1>
+        <PHYS_COUNT>1</PHYS_COUNT>
+      </ROW>
+      <ROW POSITION="49">
+        <N_PATN>BRANTLEY, DANIEL H</N_PATN>
+        <I_UNIT>2E</I_UNIT>
+        <I_ROOM>2620</I_ROOM>
+        <I_LOCT_PATN>01</I_LOCT_PATN>
+        <N_LOCT>FH ORLANDO</N_LOCT>
+        <I_MRI>002683176</I_MRI>
+        <I_ACCN>0081110332</I_ACCN>
+        <F_SEX>M</F_SEX>
+        <I_AGE_PATN>Y043</I_AGE_PATN>
+        <I_ROLE> </I_ROLE>
+        <F_HIDE_LIST_PATN>N</F_HIDE_LIST_PATN>
+        <I_TYPE_ACCN>I</I_TYPE_ACCN>
+        <D_ADMS_PATN>2010-08-17</D_ADMS_PATN>
+        <D_DISC_PATN>01/01/0001</D_DISC_PATN>
+        <Q_LOS>0010</Q_LOS>
+        <D_STAR_CLIN_SUMM>08/17/2010</D_STAR_CLIN_SUMM>
+        <D_END_CLIN_SUMM>08/26/2010</D_END_CLIN_SUMM>
+        <I_PS_1>0000013322</I_PS_1>
+        <N_PS_1>ZARATE, JUAN CARLOS</N_PS_1>
+        <R_PS_1>OTHR</R_PS_1>
+        <PHYS_COUNT>1</PHYS_COUNT>
+      </ROW>
+      <ROW POSITION="50">
+        <N_PATN>BURGOS, ANGEL</N_PATN>
+        <I_UNIT>W2NW</I_UNIT>
+        <I_ROOM>2417</I_ROOM>
+        <I_LOCT_PATN>07</I_LOCT_PATN>
+        <N_LOCT>FH WINTER PARK</N_LOCT>
+        <I_MRI>070232859</I_MRI>
+        <I_ACCN>0081110512</I_ACCN>
+        <F_SEX>M</F_SEX>
+        <I_AGE_PATN>Y088</I_AGE_PATN>
+        <I_ROLE> </I_ROLE>
+        <F_HIDE_LIST_PATN>N</F_HIDE_LIST_PATN>
+        <I_TYPE_ACCN>I</I_TYPE_ACCN>
+        <D_ADMS_PATN>2010-08-17</D_ADMS_PATN>
+        <D_DISC_PATN>01/01/0001</D_DISC_PATN>
+        <Q_LOS>0010</Q_LOS>
+        <D_STAR_CLIN_SUMM>08/17/2010</D_STAR_CLIN_SUMM>
+        <D_END_CLIN_SUMM>08/26/2010</D_END_CLIN_SUMM>
+        <I_PS_1>0000014398</I_PS_1>
+        <N_PS_1>DUBLIN, BRIAN K.</N_PS_1>
+        <R_PS_1>OTHR</R_PS_1>
+        <I_PS_2>0000100917</I_PS_2>
+        <N_PS_2>RODRIGUEZ, ARSENIO RALPH</N_PS_2>
+        <R_PS_2>CONS</R_PS_2>
+        <I_PS_3>0000100925</I_PS_3>
+        <N_PS_3>KUMAR, ANIL</N_PS_3>
+        <R_PS_3>CONS</R_PS_3>
+        <PHYS_COUNT>3</PHYS_COUNT>
+      </ROW>
+      <ROW POSITION="51">
+        <N_PATN>HUGGINS, TERESA L</N_PATN>
+        <I_UNIT>GT5</I_UNIT>
+        <I_ROOM>5816</I_ROOM>
+        <I_LOCT_PATN>01</I_LOCT_PATN>
+        <N_LOCT>FH ORLANDO</N_LOCT>
+        <I_MRI>000166445</I_MRI>
+        <I_ACCN>0081111258</I_ACCN>
+        <F_SEX>F</F_SEX>
+        <I_AGE_PATN>Y061</I_AGE_PATN>
+        <I_ROLE> </I_ROLE>
+        <F_HIDE_LIST_PATN>N</F_HIDE_LIST_PATN>
+        <I_TYPE_ACCN>I</I_TYPE_ACCN>
+        <D_ADMS_PATN>2010-08-18</D_ADMS_PATN>
+        <D_DISC_PATN>01/01/0001</D_DISC_PATN>
+        <Q_LOS>0009</Q_LOS>
+        <D_STAR_CLIN_SUMM>08/18/2010</D_STAR_CLIN_SUMM>
+        <D_END_CLIN_SUMM>08/26/2010</D_END_CLIN_SUMM>
+        <I_PS_1>0000100917</I_PS_1>
+        <N_PS_1>RODRIGUEZ, ARSENIO RALPH</N_PS_1>
+        <R_PS_1>OTHR</R_PS_1>
+        <PHYS_COUNT>1</PHYS_COUNT>
+      </ROW>
+      <ROW POSITION="52">
+        <N_PATN>BLACKWELL, CHARLES C</N_PATN>
+        <I_UNIT>W2NW</I_UNIT>
+        <I_ROOM>2409</I_ROOM>
+        <I_LOCT_PATN>07</I_LOCT_PATN>
+        <N_LOCT>FH WINTER PARK</N_LOCT>
+        <I_MRI>002251422</I_MRI>
+        <I_ACCN>0081111306</I_ACCN>
+        <F_SEX>M</F_SEX>
+        <I_AGE_PATN>Y088</I_AGE_PATN>
+        <I_ROLE> </I_ROLE>
+        <F_HIDE_LIST_PATN>N</F_HIDE_LIST_PATN>
+        <I_TYPE_ACCN>I</I_TYPE_ACCN>
+        <D_ADMS_PATN>2010-08-18</D_ADMS_PATN>
+        <D_DISC_PATN>01/01/0001</D_DISC_PATN>
+        <Q_LOS>0009</Q_LOS>
+        <D_STAR_CLIN_SUMM>08/18/2010</D_STAR_CLIN_SUMM>
+        <D_END_CLIN_SUMM>08/26/2010</D_END_CLIN_SUMM>
+        <I_PS_1>0000012384</I_PS_1>
+        <N_PS_1>HAZDAY, MARCOS S</N_PS_1>
+        <R_PS_1>CONS</R_PS_1>
+        <I_PS_2>0000100917</I_PS_2>
+        <N_PS_2>RODRIGUEZ, ARSENIO RALPH</N_PS_2>
+        <R_PS_2>OTHR</R_PS_2>
+        <PHYS_COUNT>2</PHYS_COUNT>
+      </ROW>
+      <ROW POSITION="53">
+        <N_PATN>ALDARZEE, MOHAMMED</N_PATN>
+        <I_UNIT>GT8</I_UNIT>
+        <I_ROOM>8804</I_ROOM>
+        <I_LOCT_PATN>01</I_LOCT_PATN>
+        <N_LOCT>FH ORLANDO</N_LOCT>
+        <I_MRI>070236028</I_MRI>
+        <I_ACCN>0081111656</I_ACCN>
+        <F_SEX>M</F_SEX>
+        <I_AGE_PATN>Y081</I_AGE_PATN>
+        <I_ROLE> </I_ROLE>
+        <F_HIDE_LIST_PATN>N</F_HIDE_LIST_PATN>
+        <I_TYPE_ACCN>I</I_TYPE_ACCN>
+        <D_ADMS_PATN>2010-08-18</D_ADMS_PATN>
+        <D_DISC_PATN>01/01/0001</D_DISC_PATN>
+        <Q_LOS>0009</Q_LOS>
+        <D_STAR_CLIN_SUMM>08/18/2010</D_STAR_CLIN_SUMM>
+        <D_END_CLIN_SUMM>08/26/2010</D_END_CLIN_SUMM>
+        <I_PS_1>0000012384</I_PS_1>
+        <N_PS_1>HAZDAY, MARCOS S</N_PS_1>
+        <R_PS_1>CONS</R_PS_1>
+        <I_PS_2>0000100917</I_PS_2>
+        <N_PS_2>RODRIGUEZ, ARSENIO RALPH</N_PS_2>
+        <R_PS_2>OTHR</R_PS_2>
+        <I_PS_3>0000100923</I_PS_3>
+        <N_PS_3>BARNETT, J. CRAIG</N_PS_3>
+        <R_PS_3>OTHR</R_PS_3>
+        <PHYS_COUNT>3</PHYS_COUNT>
+      </ROW>
+      <ROW POSITION="54">
+        <N_PATN>GREW, DONALD</N_PATN>
+        <I_UNIT>3S</I_UNIT>
+        <I_ROOM>3306</I_ROOM>
+        <I_LOCT_PATN>01</I_LOCT_PATN>
+        <N_LOCT>FH ORLANDO</N_LOCT>
+        <I_MRI>000637316</I_MRI>
+        <I_ACCN>0081112497</I_ACCN>
+        <F_SEX>M</F_SEX>
+        <I_AGE_PATN>Y076</I_AGE_PATN>
+        <I_ROLE> </I_ROLE>
+        <F_HIDE_LIST_PATN>N</F_HIDE_LIST_PATN>
+        <I_TYPE_ACCN>I</I_TYPE_ACCN>
+        <D_ADMS_PATN>2010-08-19</D_ADMS_PATN>
+        <D_DISC_PATN>01/01/0001</D_DISC_PATN>
+        <Q_LOS>0008</Q_LOS>
+        <D_STAR_CLIN_SUMM>08/19/2010</D_STAR_CLIN_SUMM>
+        <D_END_CLIN_SUMM>08/26/2010</D_END_CLIN_SUMM>
+        <I_PS_1>0000013322</I_PS_1>
+        <N_PS_1>ZARATE, JUAN CARLOS</N_PS_1>
+        <R_PS_1>OTHR</R_PS_1>
+        <I_PS_2>0000100912</I_PS_2>
+        <N_PS_2>STORY, WILLIAM</N_PS_2>
+        <R_PS_2>CONS</R_PS_2>
+        <I_PS_3>0000100913</I_PS_3>
+        <N_PS_3>TAUSSIG, ANDREW S.</N_PS_3>
+        <R_PS_3>CONS</R_PS_3>
+        <PHYS_COUNT>3</PHYS_COUNT>
+      </ROW>
+      <ROW POSITION="55">
+        <N_PATN>DEVORE, JAMES D</N_PATN>
+        <I_UNIT>W3NW</I_UNIT>
+        <I_ROOM>3404</I_ROOM>
+        <I_LOCT_PATN>07</I_LOCT_PATN>
+        <N_LOCT>FH WINTER PARK</N_LOCT>
+        <I_MRI>003484951</I_MRI>
+        <I_ACCN>0081113453</I_ACCN>
+        <F_SEX>M</F_SEX>
+        <I_AGE_PATN>Y061</I_AGE_PATN>
+        <I_ROLE> </I_ROLE>
+        <F_HIDE_LIST_PATN>N</F_HIDE_LIST_PATN>
+        <I_TYPE_ACCN>I</I_TYPE_ACCN>
+        <D_ADMS_PATN>2010-08-20</D_ADMS_PATN>
+        <D_DISC_PATN>01/01/0001</D_DISC_PATN>
+        <Q_LOS>0007</Q_LOS>
+        <D_STAR_CLIN_SUMM>08/20/2010</D_STAR_CLIN_SUMM>
+        <D_END_CLIN_SUMM>08/26/2010</D_END_CLIN_SUMM>
+        <I_PS_1>0000100917</I_PS_1>
+        <N_PS_1>RODRIGUEZ, ARSENIO RALPH</N_PS_1>
+        <R_PS_1>CONS</R_PS_1>
+        <I_PS_2>0000100925</I_PS_2>
+        <N_PS_2>KUMAR, ANIL</N_PS_2>
+        <R_PS_2>CONS</R_PS_2>
+        <PHYS_COUNT>2</PHYS_COUNT>
+      </ROW>
+      <ROW POSITION="56">
+        <N_PATN>LUNDE, DAVID</N_PATN>
+        <I_UNIT>GT7</I_UNIT>
+        <I_ROOM>7838</I_ROOM>
+        <I_LOCT_PATN>01</I_LOCT_PATN>
+        <N_LOCT>FH ORLANDO</N_LOCT>
+        <I_MRI>070236416</I_MRI>
+        <I_ACCN>0081113589</I_ACCN>
+        <F_SEX>M</F_SEX>
+        <I_AGE_PATN>Y065</I_AGE_PATN>
+        <I_ROLE> </I_ROLE>
+        <F_HIDE_LIST_PATN>N</F_HIDE_LIST_PATN>
+        <I_TYPE_ACCN>I</I_TYPE_ACCN>
+        <D_ADMS_PATN>2010-08-20</D_ADMS_PATN>
+        <D_DISC_PATN>01/01/0001</D_DISC_PATN>
+        <Q_LOS>0007</Q_LOS>
+        <D_STAR_CLIN_SUMM>08/20/2010</D_STAR_CLIN_SUMM>
+        <D_END_CLIN_SUMM>08/26/2010</D_END_CLIN_SUMM>
+        <I_PS_1>0000100923</I_PS_1>
+        <N_PS_1>BARNETT, J. CRAIG</N_PS_1>
+        <R_PS_1>OTHR</R_PS_1>
+        <I_PS_2>0000100925</I_PS_2>
+        <N_PS_2>KUMAR, ANIL</N_PS_2>
+        <R_PS_2>CONS</R_PS_2>
+        <PHYS_COUNT>2</PHYS_COUNT>
+      </ROW>
+      <ROW POSITION="57">
+        <N_PATN>ZAVITZ, JOHN C</N_PATN>
+        <I_UNIT>W3NW</I_UNIT>
+        <I_ROOM>3411</I_ROOM>
+        <I_LOCT_PATN>07</I_LOCT_PATN>
+        <N_LOCT>FH WINTER PARK</N_LOCT>
+        <I_MRI>000639960</I_MRI>
+        <I_ACCN>0081113713</I_ACCN>
+        <F_SEX>M</F_SEX>
+        <I_AGE_PATN>Y078</I_AGE_PATN>
+        <I_ROLE> </I_ROLE>
+        <F_HIDE_LIST_PATN>N</F_HIDE_LIST_PATN>
+        <I_TYPE_ACCN>I</I_TYPE_ACCN>
+        <D_ADMS_PATN>2010-08-20</D_ADMS_PATN>
+        <D_DISC_PATN>01/01/0001</D_DISC_PATN>
+        <Q_LOS>0007</Q_LOS>
+        <D_STAR_CLIN_SUMM>08/20/2010</D_STAR_CLIN_SUMM>
+        <D_END_CLIN_SUMM>08/26/2010</D_END_CLIN_SUMM>
+        <I_PS_1>0000012384</I_PS_1>
+        <N_PS_1>HAZDAY, MARCOS S</N_PS_1>
+        <R_PS_1>OTHR</R_PS_1>
+        <I_PS_2>0000100923</I_PS_2>
+        <N_PS_2>BARNETT, J. CRAIG</N_PS_2>
+        <R_PS_2>CONS</R_PS_2>
+        <PHYS_COUNT>2</PHYS_COUNT>
+      </ROW>
+      <ROW POSITION="58">
+        <N_PATN>JIMENEZ, FRANCES</N_PATN>
+        <I_UNIT>4PCA</I_UNIT>
+        <I_ROOM>4824</I_ROOM>
+        <I_LOCT_PATN>02</I_LOCT_PATN>
+        <N_LOCT>FH ALTAMONTE</N_LOCT>
+        <I_MRI>000406257</I_MRI>
+        <I_ACCN>0081114097</I_ACCN>
+        <F_SEX>F</F_SEX>
+        <I_AGE_PATN>Y052</I_AGE_PATN>
+        <I_ROLE> </I_ROLE>
+        <F_HIDE_LIST_PATN>N</F_HIDE_LIST_PATN>
+        <I_TYPE_ACCN>I</I_TYPE_ACCN>
+        <D_ADMS_PATN>2010-08-21</D_ADMS_PATN>
+        <D_DISC_PATN>01/01/0001</D_DISC_PATN>
+        <Q_LOS>0006</Q_LOS>
+        <D_STAR_CLIN_SUMM>08/21/2010</D_STAR_CLIN_SUMM>
+        <D_END_CLIN_SUMM>08/26/2010</D_END_CLIN_SUMM>
+        <I_PS_1>0000014318</I_PS_1>
+        <N_PS_1>THAKUR, AJAY</N_PS_1>
+        <R_PS_1>OTHR</R_PS_1>
+        <I_PS_2>0000100923</I_PS_2>
+        <N_PS_2>BARNETT, J. CRAIG</N_PS_2>
+        <R_PS_2>CONS</R_PS_2>
+        <PHYS_COUNT>2</PHYS_COUNT>
+      </ROW>
+      <ROW POSITION="59">
+        <N_PATN>ELLISON, DOUGLAS WAYNE</N_PATN>
+        <I_UNIT>BMTU</I_UNIT>
+        <I_ROOM>X221</I_ROOM>
+        <I_LOCT_PATN>01</I_LOCT_PATN>
+        <N_LOCT>FH ORLANDO</N_LOCT>
+        <I_MRI>000121883</I_MRI>
+        <I_ACCN>0081114438</I_ACCN>
+        <F_SEX>M</F_SEX>
+        <I_AGE_PATN>Y060</I_AGE_PATN>
+        <I_ROLE> </I_ROLE>
+        <F_HIDE_LIST_PATN>N</F_HIDE_LIST_PATN>
+        <I_TYPE_ACCN>I</I_TYPE_ACCN>
+        <D_ADMS_PATN>2010-08-21</D_ADMS_PATN>
+        <D_DISC_PATN>01/01/0001</D_DISC_PATN>
+        <Q_LOS>0006</Q_LOS>
+        <D_STAR_CLIN_SUMM>08/21/2010</D_STAR_CLIN_SUMM>
+        <D_END_CLIN_SUMM>08/26/2010</D_END_CLIN_SUMM>
+        <I_PS_1>0000014398</I_PS_1>
+        <N_PS_1>DUBLIN, BRIAN K.</N_PS_1>
+        <R_PS_1>OTHR</R_PS_1>
+        <PHYS_COUNT>1</PHYS_COUNT>
+      </ROW>
+      <ROW POSITION="60">
+        <N_PATN>HAWKINS, CHICO L</N_PATN>
+        <I_UNIT>4FHS</I_UNIT>
+        <I_ROOM>4912</I_ROOM>
+        <I_LOCT_PATN>02</I_LOCT_PATN>
+        <N_LOCT>FH ALTAMONTE</N_LOCT>
+        <I_MRI>070236587</I_MRI>
+        <I_ACCN>0081114453</I_ACCN>
+        <F_SEX>M</F_SEX>
+        <I_AGE_PATN>Y029</I_AGE_PATN>
+        <I_ROLE> </I_ROLE>
+        <F_HIDE_LIST_PATN>N</F_HIDE_LIST_PATN>
+        <I_TYPE_ACCN>I</I_TYPE_ACCN>
+        <D_ADMS_PATN>2010-08-21</D_ADMS_PATN>
+        <D_DISC_PATN>01/01/0001</D_DISC_PATN>
+        <Q_LOS>0006</Q_LOS>
+        <D_STAR_CLIN_SUMM>08/21/2010</D_STAR_CLIN_SUMM>
+        <D_END_CLIN_SUMM>08/26/2010</D_END_CLIN_SUMM>
+        <I_PS_1>0000014318</I_PS_1>
+        <N_PS_1>THAKUR, AJAY</N_PS_1>
+        <R_PS_1>OTHR</R_PS_1>
+        <I_PS_2>0000100923</I_PS_2>
+        <N_PS_2>BARNETT, J. CRAIG</N_PS_2>
+        <R_PS_2>CONS</R_PS_2>
+        <PHYS_COUNT>2</PHYS_COUNT>
+      </ROW>
+      <ROW POSITION="61">
+        <N_PATN>SASSER, GRADY ALAN</N_PATN>
+        <I_UNIT>GT8</I_UNIT>
+        <I_ROOM>8830</I_ROOM>
+        <I_LOCT_PATN>01</I_LOCT_PATN>
+        <N_LOCT>FH ORLANDO</N_LOCT>
+        <I_MRI>000823683</I_MRI>
+        <I_ACCN>0081114521</I_ACCN>
+        <F_SEX>M</F_SEX>
+        <I_AGE_PATN>Y067</I_AGE_PATN>
+        <I_ROLE> </I_ROLE>
+        <F_HIDE_LIST_PATN>N</F_HIDE_LIST_PATN>
+        <I_TYPE_ACCN>I</I_TYPE_ACCN>
+        <D_ADMS_PATN>2010-08-21</D_ADMS_PATN>
+        <D_DISC_PATN>01/01/0001</D_DISC_PATN>
+        <Q_LOS>0006</Q_LOS>
+        <D_STAR_CLIN_SUMM>08/21/2010</D_STAR_CLIN_SUMM>
+        <D_END_CLIN_SUMM>08/26/2010</D_END_CLIN_SUMM>
+        <I_PS_1>0000014318</I_PS_1>
+        <N_PS_1>THAKUR, AJAY</N_PS_1>
+        <R_PS_1>OTHR</R_PS_1>
+        <PHYS_COUNT>1</PHYS_COUNT>
+      </ROW>
+      <ROW POSITION="62">
+        <N_PATN>LEFLER, MARY ELLENE</N_PATN>
+        <I_UNIT>7TWR</I_UNIT>
+        <I_ROOM>7220</I_ROOM>
+        <I_LOCT_PATN>01</I_LOCT_PATN>
+        <N_LOCT>FH ORLANDO</N_LOCT>
+        <I_MRI>000932515</I_MRI>
+        <I_ACCN>0081114561</I_ACCN>
+        <F_SEX>F</F_SEX>
+        <I_AGE_PATN>Y065</I_AGE_PATN>
+        <I_ROLE> </I_ROLE>
+        <F_HIDE_LIST_PATN>N</F_HIDE_LIST_PATN>
+        <I_TYPE_ACCN>I</I_TYPE_ACCN>
+        <D_ADMS_PATN>2010-08-21</D_ADMS_PATN>
+        <D_DISC_PATN>01/01/0001</D_DISC_PATN>
+        <Q_LOS>0006</Q_LOS>
+        <D_STAR_CLIN_SUMM>08/21/2010</D_STAR_CLIN_SUMM>
+        <D_END_CLIN_SUMM>08/26/2010</D_END_CLIN_SUMM>
+        <I_PS_1>0000014318</I_PS_1>
+        <N_PS_1>THAKUR, AJAY</N_PS_1>
+        <R_PS_1>CONS</R_PS_1>
+        <PHYS_COUNT>1</PHYS_COUNT>
+      </ROW>
+      <ROW POSITION="63">
+        <N_PATN>DINGMAN, ANN</N_PATN>
+        <I_UNIT>W2NW</I_UNIT>
+        <I_ROOM>2419</I_ROOM>
+        <I_LOCT_PATN>07</I_LOCT_PATN>
+        <N_LOCT>FH WINTER PARK</N_LOCT>
+        <I_MRI>004133806</I_MRI>
+        <I_ACCN>0081114712</I_ACCN>
+        <F_SEX>F</F_SEX>
+        <I_AGE_PATN>Y090</I_AGE_PATN>
+        <I_ROLE> </I_ROLE>
+        <F_HIDE_LIST_PATN>N</F_HIDE_LIST_PATN>
+        <I_TYPE_ACCN>I</I_TYPE_ACCN>
+        <D_ADMS_PATN>2010-08-21</D_ADMS_PATN>
+        <D_DISC_PATN>01/01/0001</D_DISC_PATN>
+        <Q_LOS>0006</Q_LOS>
+        <D_STAR_CLIN_SUMM>08/21/2010</D_STAR_CLIN_SUMM>
+        <D_END_CLIN_SUMM>08/26/2010</D_END_CLIN_SUMM>
+        <I_PS_1>0000100913</I_PS_1>
+        <N_PS_1>TAUSSIG, ANDREW S.</N_PS_1>
+        <R_PS_1>OTHR</R_PS_1>
+        <I_PS_2>0000100917</I_PS_2>
+        <N_PS_2>RODRIGUEZ, ARSENIO RALPH</N_PS_2>
+        <R_PS_2>CONS</R_PS_2>
+        <I_PS_3>0000100925</I_PS_3>
+        <N_PS_3>KUMAR, ANIL</N_PS_3>
+        <R_PS_3>CONS</R_PS_3>
+        <PHYS_COUNT>3</PHYS_COUNT>
+      </ROW>
+      <ROW POSITION="64">
+        <N_PATN>REDDITT, YVONNE MARIE</N_PATN>
+        <I_UNIT>6FHA</I_UNIT>
+        <I_ROOM>6731</I_ROOM>
+        <I_LOCT_PATN>02</I_LOCT_PATN>
+        <N_LOCT>FH ALTAMONTE</N_LOCT>
+        <I_MRI>000437037</I_MRI>
+        <I_ACCN>0081114890</I_ACCN>
+        <F_SEX>F</F_SEX>
+        <I_AGE_PATN>Y045</I_AGE_PATN>
+        <I_ROLE> </I_ROLE>
+        <F_HIDE_LIST_PATN>N</F_HIDE_LIST_PATN>
+        <I_TYPE_ACCN>I</I_TYPE_ACCN>
+        <D_ADMS_PATN>2010-08-21</D_ADMS_PATN>
+        <D_DISC_PATN>01/01/0001</D_DISC_PATN>
+        <Q_LOS>0006</Q_LOS>
+        <D_STAR_CLIN_SUMM>08/21/2010</D_STAR_CLIN_SUMM>
+        <D_END_CLIN_SUMM>08/26/2010</D_END_CLIN_SUMM>
+        <I_PS_1>0000014318</I_PS_1>
+        <N_PS_1>THAKUR, AJAY</N_PS_1>
+        <R_PS_1>CONS</R_PS_1>
+        <PHYS_COUNT>1</PHYS_COUNT>
+      </ROW>
+      <ROW POSITION="65">
+        <N_PATN>LANG, MARY L</N_PATN>
+        <I_UNIT>O3ST</I_UNIT>
+        <I_ROOM>3760</I_ROOM>
+        <I_LOCT_PATN>01</I_LOCT_PATN>
+        <N_LOCT>FH ORLANDO</N_LOCT>
+        <I_MRI>000901376</I_MRI>
+        <I_ACCN>0081115271</I_ACCN>
+        <F_SEX>F</F_SEX>
+        <I_AGE_PATN>Y085</I_AGE_PATN>
+        <I_ROLE> </I_ROLE>
+        <F_HIDE_LIST_PATN>N</F_HIDE_LIST_PATN>
+        <I_TYPE_ACCN>I</I_TYPE_ACCN>
+        <D_ADMS_PATN>2010-08-22</D_ADMS_PATN>
+        <D_DISC_PATN>01/01/0001</D_DISC_PATN>
+        <Q_LOS>0005</Q_LOS>
+        <D_STAR_CLIN_SUMM>08/22/2010</D_STAR_CLIN_SUMM>
+        <D_END_CLIN_SUMM>08/26/2010</D_END_CLIN_SUMM>
+        <I_PS_1>0000100913</I_PS_1>
+        <N_PS_1>TAUSSIG, ANDREW S.</N_PS_1>
+        <R_PS_1>CONS</R_PS_1>
+        <I_PS_2>0000100923</I_PS_2>
+        <N_PS_2>BARNETT, J. CRAIG</N_PS_2>
+        <R_PS_2>OTHR</R_PS_2>
+        <PHYS_COUNT>2</PHYS_COUNT>
+      </ROW>
+      <ROW POSITION="66">
+        <N_PATN>HUBITZ, LAURA</N_PATN>
+        <I_UNIT>GT6</I_UNIT>
+        <I_ROOM>6830</I_ROOM>
+        <I_LOCT_PATN>01</I_LOCT_PATN>
+        <N_LOCT>FH ORLANDO</N_LOCT>
+        <I_MRI>002086121</I_MRI>
+        <I_ACCN>0081115357</I_ACCN>
+        <F_SEX>F</F_SEX>
+        <I_AGE_PATN>Y053</I_AGE_PATN>
+        <I_ROLE> </I_ROLE>
+        <F_HIDE_LIST_PATN>N</F_HIDE_LIST_PATN>
+        <I_TYPE_ACCN>I</I_TYPE_ACCN>
+        <D_ADMS_PATN>2010-08-22</D_ADMS_PATN>
+        <D_DISC_PATN>01/01/0001</D_DISC_PATN>
+        <Q_LOS>0005</Q_LOS>
+        <D_STAR_CLIN_SUMM>08/22/2010</D_STAR_CLIN_SUMM>
+        <D_END_CLIN_SUMM>08/26/2010</D_END_CLIN_SUMM>
+        <I_PS_1>0000014398</I_PS_1>
+        <N_PS_1>DUBLIN, BRIAN K.</N_PS_1>
+        <R_PS_1>CONS</R_PS_1>
+        <PHYS_COUNT>1</PHYS_COUNT>
+      </ROW>
+      <ROW POSITION="67">
+        <N_PATN>BEAVO, EDNA M</N_PATN>
+        <I_UNIT>GT7</I_UNIT>
+        <I_ROOM>7804</I_ROOM>
+        <I_LOCT_PATN>01</I_LOCT_PATN>
+        <N_LOCT>FH ORLANDO</N_LOCT>
+        <I_MRI>000261895</I_MRI>
+        <I_ACCN>0081116100</I_ACCN>
+        <F_SEX>F</F_SEX>
+        <I_AGE_PATN>Y092</I_AGE_PATN>
+        <I_ROLE> </I_ROLE>
+        <F_HIDE_LIST_PATN>N</F_HIDE_LIST_PATN>
+        <I_TYPE_ACCN>I</I_TYPE_ACCN>
+        <D_ADMS_PATN>2010-08-23</D_ADMS_PATN>
+        <D_DISC_PATN>01/01/0001</D_DISC_PATN>
+        <Q_LOS>0004</Q_LOS>
+        <D_STAR_CLIN_SUMM>08/23/2010</D_STAR_CLIN_SUMM>
+        <D_END_CLIN_SUMM>08/26/2010</D_END_CLIN_SUMM>
+        <I_PS_1>0000013614</I_PS_1>
+        <N_PS_1>STEIN, BRUCE C.</N_PS_1>
+        <R_PS_1>CONS</R_PS_1>
+        <I_PS_2>0000014398</I_PS_2>
+        <N_PS_2>DUBLIN, BRIAN K.</N_PS_2>
+        <R_PS_2>OTHR</R_PS_2>
+        <I_PS_3>0000100917</I_PS_3>
+        <N_PS_3>RODRIGUEZ, ARSENIO RALPH</N_PS_3>
+        <R_PS_3>CONS</R_PS_3>
+        <I_PS_4>0000100925</I_PS_4>
+        <N_PS_4>KUMAR, ANIL</N_PS_4>
+        <R_PS_4>OTHR</R_PS_4>
+        <PHYS_COUNT>4</PHYS_COUNT>
+      </ROW>
+      <ROW POSITION="68">
+        <N_PATN>CHAMLESS, REGINOLD L</N_PATN>
+        <I_UNIT>7TWR</I_UNIT>
+        <I_ROOM>7236</I_ROOM>
+        <I_LOCT_PATN>01</I_LOCT_PATN>
+        <N_LOCT>FH ORLANDO</N_LOCT>
+        <I_MRI>003072137</I_MRI>
+        <I_ACCN>0081116554</I_ACCN>
+        <F_SEX>M</F_SEX>
+        <I_AGE_PATN>Y048</I_AGE_PATN>
+        <I_ROLE> </I_ROLE>
+        <F_HIDE_LIST_PATN>N</F_HIDE_LIST_PATN>
+        <I_TYPE_ACCN>I</I_TYPE_ACCN>
+        <D_ADMS_PATN>2010-08-23</D_ADMS_PATN>
+        <D_DISC_PATN>01/01/0001</D_DISC_PATN>
+        <Q_LOS>0004</Q_LOS>
+        <D_STAR_CLIN_SUMM>08/23/2010</D_STAR_CLIN_SUMM>
+        <D_END_CLIN_SUMM>08/26/2010</D_END_CLIN_SUMM>
+        <I_PS_1>0000012384</I_PS_1>
+        <N_PS_1>HAZDAY, MARCOS S</N_PS_1>
+        <R_PS_1>CONS</R_PS_1>
+        <PHYS_COUNT>1</PHYS_COUNT>
+      </ROW>
+      <ROW POSITION="69">
+        <N_PATN>HERNANDEZ, JOSE H</N_PATN>
+        <I_UNIT>GT6</I_UNIT>
+        <I_ROOM>6840</I_ROOM>
+        <I_LOCT_PATN>01</I_LOCT_PATN>
+        <N_LOCT>FH ORLANDO</N_LOCT>
+        <I_MRI>002764313</I_MRI>
+        <I_ACCN>0081117225</I_ACCN>
+        <F_SEX>M</F_SEX>
+        <I_AGE_PATN>Y050</I_AGE_PATN>
+        <I_ROLE> </I_ROLE>
+        <F_HIDE_LIST_PATN>N</F_HIDE_LIST_PATN>
+        <I_TYPE_ACCN>I</I_TYPE_ACCN>
+        <D_ADMS_PATN>2010-08-24</D_ADMS_PATN>
+        <D_DISC_PATN>01/01/0001</D_DISC_PATN>
+        <Q_LOS>0003</Q_LOS>
+        <D_STAR_CLIN_SUMM>08/24/2010</D_STAR_CLIN_SUMM>
+        <D_END_CLIN_SUMM>08/26/2010</D_END_CLIN_SUMM>
+        <I_PS_1>0000014318</I_PS_1>
+        <N_PS_1>THAKUR, AJAY</N_PS_1>
+        <R_PS_1>CONS</R_PS_1>
+        <PHYS_COUNT>1</PHYS_COUNT>
+      </ROW>
+      <ROW POSITION="70">
+        <N_PATN>ALPERN, JOYCE Z</N_PATN>
+        <I_UNIT>W1SW</I_UNIT>
+        <I_ROOM>1603</I_ROOM>
+        <I_LOCT_PATN>07</I_LOCT_PATN>
+        <N_LOCT>FH WINTER PARK</N_LOCT>
+        <I_MRI>000398006</I_MRI>
+        <I_ACCN>0081117350</I_ACCN>
+        <F_SEX>F</F_SEX>
+        <I_AGE_PATN>Y072</I_AGE_PATN>
+        <I_ROLE> </I_ROLE>
+        <F_HIDE_LIST_PATN>N</F_HIDE_LIST_PATN>
+        <I_TYPE_ACCN>I</I_TYPE_ACCN>
+        <D_ADMS_PATN>2010-08-24</D_ADMS_PATN>
+        <D_DISC_PATN>01/01/0001</D_DISC_PATN>
+        <Q_LOS>0003</Q_LOS>
+        <D_STAR_CLIN_SUMM>08/24/2010</D_STAR_CLIN_SUMM>
+        <D_END_CLIN_SUMM>08/26/2010</D_END_CLIN_SUMM>
+        <I_PS_1>0000100916</I_PS_1>
+        <N_PS_1>POLLAK, SCOTT J.</N_PS_1>
+        <R_PS_1>CONS</R_PS_1>
+        <I_PS_2>0000100917</I_PS_2>
+        <N_PS_2>RODRIGUEZ, ARSENIO RALPH</N_PS_2>
+        <R_PS_2>CONS</R_PS_2>
+        <PHYS_COUNT>2</PHYS_COUNT>
+      </ROW>
+      <ROW POSITION="71">
+        <N_PATN>RUFF, ROSEBROUGH</N_PATN>
+        <I_UNIT>GT4S</I_UNIT>
+        <I_ROOM>4821</I_ROOM>
+        <I_LOCT_PATN>01</I_LOCT_PATN>
+        <N_LOCT>FH ORLANDO</N_LOCT>
+        <I_MRI>000293180</I_MRI>
+        <I_ACCN>0081117476</I_ACCN>
+        <F_SEX>M</F_SEX>
+        <I_AGE_PATN>Y089</I_AGE_PATN>
+        <I_ROLE> </I_ROLE>
+        <F_HIDE_LIST_PATN>N</F_HIDE_LIST_PATN>
+        <I_TYPE_ACCN>I</I_TYPE_ACCN>
+        <D_ADMS_PATN>2010-08-24</D_ADMS_PATN>
+        <D_DISC_PATN>01/01/0001</D_DISC_PATN>
+        <Q_LOS>0003</Q_LOS>
+        <D_STAR_CLIN_SUMM>08/24/2010</D_STAR_CLIN_SUMM>
+        <D_END_CLIN_SUMM>08/26/2010</D_END_CLIN_SUMM>
+        <I_PS_1>0000100912</I_PS_1>
+        <N_PS_1>STORY, WILLIAM</N_PS_1>
+        <R_PS_1>CONS</R_PS_1>
+        <I_PS_2>0000100916</I_PS_2>
+        <N_PS_2>POLLAK, SCOTT J.</N_PS_2>
+        <R_PS_2>OTHR</R_PS_2>
+        <PHYS_COUNT>2</PHYS_COUNT>
+      </ROW>
+      <ROW POSITION="72">
+        <N_PATN>PERKINSON, REX WAYNE</N_PATN>
+        <I_UNIT>2N</I_UNIT>
+        <I_ROOM>2569</I_ROOM>
+        <I_LOCT_PATN>01</I_LOCT_PATN>
+        <N_LOCT>FH ORLANDO</N_LOCT>
+        <I_MRI>004201387</I_MRI>
+        <I_ACCN>0081117585</I_ACCN>
+        <F_SEX>M</F_SEX>
+        <I_AGE_PATN>Y062</I_AGE_PATN>
+        <I_ROLE> </I_ROLE>
+        <F_HIDE_LIST_PATN>N</F_HIDE_LIST_PATN>
+        <I_TYPE_ACCN>I</I_TYPE_ACCN>
+        <D_ADMS_PATN>2010-08-24</D_ADMS_PATN>
+        <D_DISC_PATN>01/01/0001</D_DISC_PATN>
+        <Q_LOS>0003</Q_LOS>
+        <D_STAR_CLIN_SUMM>08/24/2010</D_STAR_CLIN_SUMM>
+        <D_END_CLIN_SUMM>08/26/2010</D_END_CLIN_SUMM>
+        <I_PS_1>0000100923</I_PS_1>
+        <N_PS_1>BARNETT, J. CRAIG</N_PS_1>
+        <R_PS_1>CONS</R_PS_1>
+        <PHYS_COUNT>1</PHYS_COUNT>
+      </ROW>
+      <ROW POSITION="73">
+        <N_PATN>MCCONNELL, ROSE M</N_PATN>
+        <I_UNIT>W1NM</I_UNIT>
+        <I_ROOM>1443</I_ROOM>
+        <I_LOCT_PATN>01</I_LOCT_PATN>
+        <N_LOCT>FH ORLANDO</N_LOCT>
+        <I_MRI>001805611</I_MRI>
+        <I_ACCN>0081117633</I_ACCN>
+        <F_SEX>F</F_SEX>
+        <I_AGE_PATN>Y090</I_AGE_PATN>
+        <I_ROLE> </I_ROLE>
+        <F_HIDE_LIST_PATN>N</F_HIDE_LIST_PATN>
+        <I_TYPE_ACCN>I</I_TYPE_ACCN>
+        <D_ADMS_PATN>2010-08-24</D_ADMS_PATN>
+        <D_DISC_PATN>01/01/0001</D_DISC_PATN>
+        <Q_LOS>0003</Q_LOS>
+        <D_STAR_CLIN_SUMM>08/24/2010</D_STAR_CLIN_SUMM>
+        <D_END_CLIN_SUMM>08/26/2010</D_END_CLIN_SUMM>
+        <I_PS_1>0000100923</I_PS_1>
+        <N_PS_1>BARNETT, J. CRAIG</N_PS_1>
+        <R_PS_1>CONS</R_PS_1>
+        <PHYS_COUNT>1</PHYS_COUNT>
+      </ROW>
+      <ROW POSITION="74">
+        <N_PATN>ROGERS, CAROLYN A</N_PATN>
+        <I_UNIT>GT5</I_UNIT>
+        <I_ROOM>5837</I_ROOM>
+        <I_LOCT_PATN>01</I_LOCT_PATN>
+        <N_LOCT>FH ORLANDO</N_LOCT>
+        <I_MRI>000659005</I_MRI>
+        <I_ACCN>0081117967</I_ACCN>
+        <F_SEX>F</F_SEX>
+        <I_AGE_PATN>Y078</I_AGE_PATN>
+        <I_ROLE> </I_ROLE>
+        <F_HIDE_LIST_PATN>N</F_HIDE_LIST_PATN>
+        <I_TYPE_ACCN>I</I_TYPE_ACCN>
+        <D_ADMS_PATN>2010-08-25</D_ADMS_PATN>
+        <D_DISC_PATN>01/01/0001</D_DISC_PATN>
+        <Q_LOS>0002</Q_LOS>
+        <D_STAR_CLIN_SUMM>08/25/2010</D_STAR_CLIN_SUMM>
+        <D_END_CLIN_SUMM>08/26/2010</D_END_CLIN_SUMM>
+        <I_PS_1>0000013614</I_PS_1>
+        <N_PS_1>STEIN, BRUCE C.</N_PS_1>
+        <R_PS_1>CONS</R_PS_1>
+        <I_PS_2>0000014398</I_PS_2>
+        <N_PS_2>DUBLIN, BRIAN K.</N_PS_2>
+        <R_PS_2>OTHR</R_PS_2>
+        <I_PS_3>0000100917</I_PS_3>
+        <N_PS_3>RODRIGUEZ, ARSENIO RALPH</N_PS_3>
+        <R_PS_3>OTHR</R_PS_3>
+        <PHYS_COUNT>3</PHYS_COUNT>
+      </ROW>
+      <ROW POSITION="75">
+        <N_PATN>PAUL, JOSEPHINE LAEDLY</N_PATN>
+        <I_UNIT>8TWR</I_UNIT>
+        <I_ROOM>8220</I_ROOM>
+        <I_LOCT_PATN>01</I_LOCT_PATN>
+        <N_LOCT>FH ORLANDO</N_LOCT>
+        <I_MRI>000270070</I_MRI>
+        <I_ACCN>0081117992</I_ACCN>
+        <F_SEX>F</F_SEX>
+        <I_AGE_PATN>Y077</I_AGE_PATN>
+        <I_ROLE> </I_ROLE>
+        <F_HIDE_LIST_PATN>N</F_HIDE_LIST_PATN>
+        <I_TYPE_ACCN>I</I_TYPE_ACCN>
+        <D_ADMS_PATN>2010-08-25</D_ADMS_PATN>
+        <D_DISC_PATN>01/01/0001</D_DISC_PATN>
+        <Q_LOS>0002</Q_LOS>
+        <D_STAR_CLIN_SUMM>08/25/2010</D_STAR_CLIN_SUMM>
+        <D_END_CLIN_SUMM>08/26/2010</D_END_CLIN_SUMM>
+        <I_PS_1>0000100923</I_PS_1>
+        <N_PS_1>BARNETT, J. CRAIG</N_PS_1>
+        <R_PS_1>CONS</R_PS_1>
+        <PHYS_COUNT>1</PHYS_COUNT>
+      </ROW>
+      <ROW POSITION="76">
+        <N_PATN>GREER, BARBARA S</N_PATN>
+        <I_UNIT>GT7</I_UNIT>
+        <I_ROOM>7822</I_ROOM>
+        <I_LOCT_PATN>01</I_LOCT_PATN>
+        <N_LOCT>FH ORLANDO</N_LOCT>
+        <I_MRI>000412585</I_MRI>
+        <I_ACCN>0081118212</I_ACCN>
+        <F_SEX>F</F_SEX>
+        <I_AGE_PATN>Y076</I_AGE_PATN>
+        <I_ROLE> </I_ROLE>
+        <F_HIDE_LIST_PATN>N</F_HIDE_LIST_PATN>
+        <I_TYPE_ACCN>I</I_TYPE_ACCN>
+        <D_ADMS_PATN>2010-08-25</D_ADMS_PATN>
+        <D_DISC_PATN>01/01/0001</D_DISC_PATN>
+        <Q_LOS>0002</Q_LOS>
+        <D_STAR_CLIN_SUMM>08/25/2010</D_STAR_CLIN_SUMM>
+        <D_END_CLIN_SUMM>08/26/2010</D_END_CLIN_SUMM>
+        <I_PS_1>0000014318</I_PS_1>
+        <N_PS_1>THAKUR, AJAY</N_PS_1>
+        <R_PS_1>OTHR</R_PS_1>
+        <I_PS_2>0000014398</I_PS_2>
+        <N_PS_2>DUBLIN, BRIAN K.</N_PS_2>
+        <R_PS_2>CONS</R_PS_2>
+        <PHYS_COUNT>2</PHYS_COUNT>
+      </ROW>
+      <ROW POSITION="77">
+        <N_PATN>GRAY, BETTY J</N_PATN>
+        <I_UNIT>GT6</I_UNIT>
+        <I_ROOM>6825</I_ROOM>
+        <I_LOCT_PATN>01</I_LOCT_PATN>
+        <N_LOCT>FH ORLANDO</N_LOCT>
+        <I_MRI>001616819</I_MRI>
+        <I_ACCN>0081118278</I_ACCN>
+        <F_SEX>F</F_SEX>
+        <I_AGE_PATN>Y080</I_AGE_PATN>
+        <I_ROLE> </I_ROLE>
+        <F_HIDE_LIST_PATN>N</F_HIDE_LIST_PATN>
+        <I_TYPE_ACCN>I</I_TYPE_ACCN>
+        <D_ADMS_PATN>2010-08-25</D_ADMS_PATN>
+        <D_DISC_PATN>01/01/0001</D_DISC_PATN>
+        <Q_LOS>0002</Q_LOS>
+        <D_STAR_CLIN_SUMM>08/25/2010</D_STAR_CLIN_SUMM>
+        <D_END_CLIN_SUMM>08/26/2010</D_END_CLIN_SUMM>
+        <I_PS_1>0000100925</I_PS_1>
+        <N_PS_1>KUMAR, ANIL</N_PS_1>
+        <R_PS_1>CONS</R_PS_1>
+        <PHYS_COUNT>1</PHYS_COUNT>
+      </ROW>
+      <ROW POSITION="78">
+        <N_PATN>RIFFLE, DOROTHY J</N_PATN>
+        <I_UNIT>W2NW</I_UNIT>
+        <I_ROOM>2414</I_ROOM>
+        <I_LOCT_PATN>07</I_LOCT_PATN>
+        <N_LOCT>FH WINTER PARK</N_LOCT>
+        <I_MRI>000539023</I_MRI>
+        <I_ACCN>0081118327</I_ACCN>
+        <F_SEX>F</F_SEX>
+        <I_AGE_PATN>Y090</I_AGE_PATN>
+        <I_ROLE> </I_ROLE>
+        <F_HIDE_LIST_PATN>N</F_HIDE_LIST_PATN>
+        <I_TYPE_ACCN>I</I_TYPE_ACCN>
+        <D_ADMS_PATN>2010-08-25</D_ADMS_PATN>
+        <D_DISC_PATN>01/01/0001</D_DISC_PATN>
+        <Q_LOS>0002</Q_LOS>
+        <D_STAR_CLIN_SUMM>08/25/2010</D_STAR_CLIN_SUMM>
+        <D_END_CLIN_SUMM>08/26/2010</D_END_CLIN_SUMM>
+        <I_PS_1>0000100925</I_PS_1>
+        <N_PS_1>KUMAR, ANIL</N_PS_1>
+        <R_PS_1>CONS</R_PS_1>
+        <PHYS_COUNT>1</PHYS_COUNT>
+      </ROW>
+      <ROW POSITION="79">
+        <N_PATN>ANDERSON, ZACHARIAH</N_PATN>
+        <I_UNIT>2N</I_UNIT>
+        <I_ROOM>2516</I_ROOM>
+        <I_LOCT_PATN>01</I_LOCT_PATN>
+        <N_LOCT>FH ORLANDO</N_LOCT>
+        <I_MRI>002612808</I_MRI>
+        <I_ACCN>0081118721</I_ACCN>
+        <F_SEX>M</F_SEX>
+        <I_AGE_PATN>Y066</I_AGE_PATN>
+        <I_ROLE> </I_ROLE>
+        <F_HIDE_LIST_PATN>N</F_HIDE_LIST_PATN>
+        <I_TYPE_ACCN>I</I_TYPE_ACCN>
+        <D_ADMS_PATN>2010-08-25</D_ADMS_PATN>
+        <D_DISC_PATN>01/01/0001</D_DISC_PATN>
+        <Q_LOS>0002</Q_LOS>
+        <D_STAR_CLIN_SUMM>08/25/2010</D_STAR_CLIN_SUMM>
+        <D_END_CLIN_SUMM>08/26/2010</D_END_CLIN_SUMM>
+        <I_PS_1>0000013614</I_PS_1>
+        <N_PS_1>STEIN, BRUCE C.</N_PS_1>
+        <R_PS_1>CONS</R_PS_1>
+        <PHYS_COUNT>1</PHYS_COUNT>
+      </ROW>
+      <ROW POSITION="80">
+        <N_PATN>BODNARIK, PETER P</N_PATN>
+        <I_UNIT>W3NW</I_UNIT>
+        <I_ROOM>3402</I_ROOM>
+        <I_LOCT_PATN>07</I_LOCT_PATN>
+        <N_LOCT>FH WINTER PARK</N_LOCT>
+        <I_MRI>002655803</I_MRI>
+        <I_ACCN>0081118801</I_ACCN>
+        <F_SEX>M</F_SEX>
+        <I_AGE_PATN>Y056</I_AGE_PATN>
+        <I_ROLE> </I_ROLE>
+        <F_HIDE_LIST_PATN>N</F_HIDE_LIST_PATN>
+        <I_TYPE_ACCN>I</I_TYPE_ACCN>
+        <D_ADMS_PATN>2010-08-25</D_ADMS_PATN>
+        <D_DISC_PATN>01/01/0001</D_DISC_PATN>
+        <Q_LOS>0002</Q_LOS>
+        <D_STAR_CLIN_SUMM>08/25/2010</D_STAR_CLIN_SUMM>
+        <D_END_CLIN_SUMM>08/26/2010</D_END_CLIN_SUMM>
+        <I_PS_1>0000013322</I_PS_1>
+        <N_PS_1>ZARATE, JUAN CARLOS</N_PS_1>
+        <R_PS_1>CONS</R_PS_1>
+        <I_PS_2>0000100925</I_PS_2>
+        <N_PS_2>KUMAR, ANIL</N_PS_2>
+        <R_PS_2>OTHR</R_PS_2>
+        <PHYS_COUNT>2</PHYS_COUNT>
+      </ROW>
+      <ROW POSITION="81">
+        <N_PATN>BIALOPIOTROWICZ, VICTOR J</N_PATN>
+        <I_UNIT>3M</I_UNIT>
+        <I_ROOM>3506</I_ROOM>
+        <I_LOCT_PATN>01</I_LOCT_PATN>
+        <N_LOCT>FH ORLANDO</N_LOCT>
+        <I_MRI>000636670</I_MRI>
+        <I_ACCN>0081118842</I_ACCN>
+        <F_SEX>M</F_SEX>
+        <I_AGE_PATN>Y085</I_AGE_PATN>
+        <I_ROLE> </I_ROLE>
+        <F_HIDE_LIST_PATN>N</F_HIDE_LIST_PATN>
+        <I_TYPE_ACCN>I</I_TYPE_ACCN>
+        <D_ADMS_PATN>2010-08-25</D_ADMS_PATN>
+        <D_DISC_PATN>01/01/0001</D_DISC_PATN>
+        <Q_LOS>0002</Q_LOS>
+        <D_STAR_CLIN_SUMM>08/25/2010</D_STAR_CLIN_SUMM>
+        <D_END_CLIN_SUMM>08/26/2010</D_END_CLIN_SUMM>
+        <I_PS_1>0000014398</I_PS_1>
+        <N_PS_1>DUBLIN, BRIAN K.</N_PS_1>
+        <R_PS_1>OTHR</R_PS_1>
+        <I_PS_2>0000100917</I_PS_2>
+        <N_PS_2>RODRIGUEZ, ARSENIO RALPH</N_PS_2>
+        <R_PS_2>CONS</R_PS_2>
+        <PHYS_COUNT>2</PHYS_COUNT>
+      </ROW>
+      <ROW POSITION="82">
+        <N_PATN>SILVA, MANUEL A</N_PATN>
+        <I_UNIT>6FHA</I_UNIT>
+        <I_ROOM>6725</I_ROOM>
+        <I_LOCT_PATN>02</I_LOCT_PATN>
+        <N_LOCT>FH ALTAMONTE</N_LOCT>
+        <I_MRI>001492523</I_MRI>
+        <I_ACCN>0081118854</I_ACCN>
+        <F_SEX>M</F_SEX>
+        <I_AGE_PATN>Y080</I_AGE_PATN>
+        <I_ROLE> </I_ROLE>
+        <F_HIDE_LIST_PATN>N</F_HIDE_LIST_PATN>
+        <I_TYPE_ACCN>I</I_TYPE_ACCN>
+        <D_ADMS_PATN>2010-08-25</D_ADMS_PATN>
+        <D_DISC_PATN>01/01/0001</D_DISC_PATN>
+        <Q_LOS>0002</Q_LOS>
+        <D_STAR_CLIN_SUMM>08/25/2010</D_STAR_CLIN_SUMM>
+        <D_END_CLIN_SUMM>08/26/2010</D_END_CLIN_SUMM>
+        <I_PS_1>0000014318</I_PS_1>
+        <N_PS_1>THAKUR, AJAY</N_PS_1>
+        <R_PS_1>CONS</R_PS_1>
+        <I_PS_2>0000100917</I_PS_2>
+        <N_PS_2>RODRIGUEZ, ARSENIO RALPH</N_PS_2>
+        <R_PS_2>CONS</R_PS_2>
+        <PHYS_COUNT>2</PHYS_COUNT>
+      </ROW>
+      <ROW POSITION="83">
+        <N_PATN>WILLIAMS, THOMAS A</N_PATN>
+        <I_UNIT>G2CP</I_UNIT>
+        <I_ROOM>G2CP</I_ROOM>
+        <I_LOCT_PATN>01</I_LOCT_PATN>
+        <N_LOCT>FH ORLANDO</N_LOCT>
+        <I_MRI>000321990</I_MRI>
+        <I_ACCN>0081119330</I_ACCN>
+        <F_SEX>M</F_SEX>
+        <I_AGE_PATN>Y051</I_AGE_PATN>
+        <I_ROLE> </I_ROLE>
+        <F_HIDE_LIST_PATN>N</F_HIDE_LIST_PATN>
+        <I_TYPE_ACCN>O</I_TYPE_ACCN>
+        <D_ADMS_PATN>2010-08-26</D_ADMS_PATN>
+        <D_DISC_PATN>01/01/0001</D_DISC_PATN>
+        <Q_LOS>0001</Q_LOS>
+        <D_STAR_CLIN_SUMM>08/26/2010</D_STAR_CLIN_SUMM>
+        <D_END_CLIN_SUMM>08/26/2010</D_END_CLIN_SUMM>
+        <I_PS_1>0000013322</I_PS_1>
+        <N_PS_1>ZARATE, JUAN CARLOS</N_PS_1>
+        <R_PS_1>OTHR</R_PS_1>
+        <I_PS_2>0000013614</I_PS_2>
+        <N_PS_2>STEIN, BRUCE C.</N_PS_2>
+        <R_PS_2>CONS</R_PS_2>
+        <PHYS_COUNT>2</PHYS_COUNT>
+      </ROW>
+      <ROW POSITION="84">
+        <N_PATN>BAUGHMAN, INGRID</N_PATN>
+        <I_UNIT>W1SW</I_UNIT>
+        <I_ROOM>1606</I_ROOM>
+        <I_LOCT_PATN>07</I_LOCT_PATN>
+        <N_LOCT>FH WINTER PARK</N_LOCT>
+        <I_MRI>004375303</I_MRI>
+        <I_ACCN>0081119339</I_ACCN>
+        <F_SEX>F</F_SEX>
+        <I_AGE_PATN>Y086</I_AGE_PATN>
+        <I_ROLE> </I_ROLE>
+        <F_HIDE_LIST_PATN>N</F_HIDE_LIST_PATN>
+        <I_TYPE_ACCN>I</I_TYPE_ACCN>
+        <D_ADMS_PATN>2010-08-26</D_ADMS_PATN>
+        <D_DISC_PATN>01/01/0001</D_DISC_PATN>
+        <Q_LOS>0001</Q_LOS>
+        <D_STAR_CLIN_SUMM>08/26/2010</D_STAR_CLIN_SUMM>
+        <D_END_CLIN_SUMM>08/26/2010</D_END_CLIN_SUMM>
+        <I_PS_1>0000012384</I_PS_1>
+        <N_PS_1>HAZDAY, MARCOS S</N_PS_1>
+        <R_PS_1>OTHR</R_PS_1>
+        <I_PS_2>0000100925</I_PS_2>
+        <N_PS_2>KUMAR, ANIL</N_PS_2>
+        <R_PS_2>CONS</R_PS_2>
+        <PHYS_COUNT>2</PHYS_COUNT>
+      </ROW>
+      <ROW POSITION="85">
+        <N_PATN>MEDLOCK, SYBRINA L</N_PATN>
+        <I_UNIT>ED1</I_UNIT>
+        <I_ROOM>ED1</I_ROOM>
+        <I_LOCT_PATN>01</I_LOCT_PATN>
+        <N_LOCT>FH ORLANDO</N_LOCT>
+        <I_MRI>003218570</I_MRI>
+        <I_ACCN>0081119483</I_ACCN>
+        <F_SEX>F</F_SEX>
+        <I_AGE_PATN>Y049</I_AGE_PATN>
+        <I_ROLE> </I_ROLE>
+        <F_HIDE_LIST_PATN>N</F_HIDE_LIST_PATN>
+        <I_TYPE_ACCN>I</I_TYPE_ACCN>
+        <D_ADMS_PATN>2010-08-26</D_ADMS_PATN>
+        <D_DISC_PATN>01/01/0001</D_DISC_PATN>
+        <Q_LOS>0001</Q_LOS>
+        <D_STAR_CLIN_SUMM>08/26/2010</D_STAR_CLIN_SUMM>
+        <D_END_CLIN_SUMM>08/26/2010</D_END_CLIN_SUMM>
+        <I_PS_1>0000013322</I_PS_1>
+        <N_PS_1>ZARATE, JUAN CARLOS</N_PS_1>
+        <R_PS_1>ATTN</R_PS_1>
+        <PHYS_COUNT>1</PHYS_COUNT>
+      </ROW>
+    </PATIENTLIST>
+    <VAR_DATA>
+      <PATN_LIST_TITLE>IN BEDS</PATN_LIST_TITLE>
+      <SIGN_ON_TYPE>S</SIGN_ON_TYPE>
+      <PROCESSING_MODE>G</PROCESSING_MODE>
+      <PHYS_NAME>CENTRAL FLORIDA CARDIOLOGY GROUP</PHYS_NAME>
+      <DISPLAY_ORDER>ROOM</DISPLAY_ORDER>
+      <PATIENT_TYPE>T</PATIENT_TYPE>
+      <CORP_LOCT>**</CORP_LOCT>
+      <ROOM_LIST_FLAG>N</ROOM_LIST_FLAG>
+      <F_PRINT>N</F_PRINT>
+      <F_EXP>N</F_EXP>
+      <I_PS_SEL>N</I_PS_SEL>
+      <LOCATION_DESC>ALL LOCATIONS</LOCATION_DESC>
+      <PATN_TYPE_DESC>ALL PATIENTS</PATN_TYPE_DESC>
+      <SHOW_HIDDEN_FLAG>N</SHOW_HIDDEN_FLAG>
+      <HIDDEN_COUNT>0</HIDDEN_COUNT>
+    </VAR_DATA>
+    <LOCATIONPATN>
+      <ROW POSITION="1">
+        <I_LOCT>01</I_LOCT>
+        <N_LOCT>FH ORLANDO</N_LOCT>
+      </ROW>
+      <ROW POSITION="2">
+        <I_LOCT>02</I_LOCT>
+        <N_LOCT>FH ALTAMONTE</N_LOCT>
+      </ROW>
+      <ROW POSITION="3">
+        <I_LOCT>07</I_LOCT>
+        <N_LOCT>FH WINTER PARK</N_LOCT>
+      </ROW>
+    </LOCATIONPATN>
+    <PHYS_GROUP>
+      <ROW POSITION="1">
+        <I_PS>0000012384</I_PS>
+        <N_PS>HAZDAY, MARCOS S</N_PS>
+      </ROW>
+      <ROW POSITION="2">
+        <I_PS>0000013322</I_PS>
+        <N_PS>ZARATE, JUAN CARLOS</N_PS>
+      </ROW>
+      <ROW POSITION="3">
+        <I_PS>0000013614</I_PS>
+        <N_PS>STEIN, BRUCE C.</N_PS>
+      </ROW>
+      <ROW POSITION="4">
+        <I_PS>0000014318</I_PS>
+        <N_PS>THAKUR, AJAY</N_PS>
+      </ROW>
+      <ROW POSITION="5">
+        <I_PS>0000014398</I_PS>
+        <N_PS>DUBLIN, BRIAN K.</N_PS>
+      </ROW>
+      <ROW POSITION="6">
+        <I_PS>0000100907</I_PS>
+        <N_PS>NOCERO, MICHAEL</N_PS>
+      </ROW>
+      <ROW POSITION="7">
+        <I_PS>0000100912</I_PS>
+        <N_PS>STORY, WILLIAM</N_PS>
+      </ROW>
+      <ROW POSITION="8">
+        <I_PS>0000100913</I_PS>
+        <N_PS>TAUSSIG, ANDREW S.</N_PS>
+      </ROW>
+      <ROW POSITION="9">
+        <I_PS>0000100914</I_PS>
+        <N_PS>WHITWORTH, HALL B.</N_PS>
+      </ROW>
+      <ROW POSITION="10">
+        <I_PS>0000100916</I_PS>
+        <N_PS>POLLAK, SCOTT J.</N_PS>
+      </ROW>
+      <ROW POSITION="11">
+        <I_PS>0000100917</I_PS>
+        <N_PS>RODRIGUEZ, ARSENIO RALPH</N_PS>
+      </ROW>
+      <ROW POSITION="12">
+        <I_PS>0000100923</I_PS>
+        <N_PS>BARNETT, J. CRAIG</N_PS>
+      </ROW>
+      <ROW POSITION="13">
+        <I_PS>0000100925</I_PS>
+        <N_PS>KUMAR, ANIL</N_PS>
+      </ROW>
+      <ROW POSITION="14">
+        <I_PS>0000215659</I_PS>
+        <N_PS>NAVA, GUILLERMO</N_PS>
+      </ROW>
+      <PHYS_COUNT>14</PHYS_COUNT>
+    </PHYS_GROUP>
+    <ERRORCODE/>
+    <SECURITYINFO>
+      <USERNAME>JTD753</USERNAME>
+      <SERVER>home.floridahospitalmd.org</SERVER>
+      <SESSION>WmhiTNTnCekbCK5jHDz5G0A</SESSION>
+      <TIMEOUT>1800</TIMEOUT>
+      <REMOTESYSTEM/>
+      <SECURITY_LEVEL>0000</SECURITY_LEVEL>
+    </SECURITYINFO>
+    <GLOBALINFO>
+      <DEBUGFLAG>N</DEBUGFLAG>
+      <DEBUGBUFFER/>
+      <ERRORMESSAGE/>
+      <WARNMESSAGE/>
+      <INFOMESSAGE/>
+      <GLOBALMESSAGE/>
+      <GLOBALMESSLEVEL/>
+    </GLOBALINFO>
+    <PAGING>
+      <PAGE_NUMBER/>
+      <RECORD_NUMBER_FIRST/>
+      <RECORD_NUMBER_LAST/>
+      <PAGE_START_KEY/>
+      <NEXT_PAGE_KEY/>
+      <PREV_PAGE_FLAG/>
+      <NEXT_PAGE_FLAG/>
+    </PAGING>
+    <PATN-LIST-INIT>
+      <REPORT_TYPE/>
+      <N_PATN_CURR/>
+      <I_ACCN_PATN_CURR/>
+      <I_MRI_PATN_CURR/>
+      <CLIN_SUMM_EFFC_DATE/>
+      <CLIN_SUMM_START_DATE/>
+      <CLIN_SUMM_END_DATE/>
+      <VIEW_TYPE/>
+      <F_RESL_ONLY/>
+      <REPORT_SOURCE/>
+      <REPORT_START_TIME/>
+      <REPORT_END_TIME/>
+      <EMR_MODE>Y</EMR_MODE>
+    </PATN-LIST-INIT>
+  </DATA>
+</FHCA>

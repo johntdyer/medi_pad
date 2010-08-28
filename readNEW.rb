@@ -2,7 +2,6 @@ require 'rubygems'
 require 'hpricot'
 require 'rest_client'
 
-	fh = File.open("list.xml", "r")
 
 	doc = Hpricot(fh)  
 
@@ -56,4 +55,7 @@ end
 				}
 			}
 				RestClient.post 'http://localhost:3000/patients/create',patient_data
+
+
+
 			end
