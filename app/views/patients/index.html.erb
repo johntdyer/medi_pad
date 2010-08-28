@@ -1,6 +1,9 @@
 <%= stylesheet_link_tag 'tabs' %>
 
 <title>Patients: <%= fix_location_name(@search) %></title>
+<%= javascript_include_tag "jquery-1.4.2.min.js" %>  
+<%= stylesheet_link_tag "http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/themes/redmond/jquery-ui.css", "application" %>  
+<%= javascript_include_tag "http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.1/jquery-ui.min.js", "application" %>
 
 <style type="text/css" media="screen">
   div#user_id{
@@ -28,11 +31,25 @@
             <%= link_to "Login", login_path%>
          <%end%>
 
-       
+
+<!-- Date Search Functions -->
+         <script type="text/javascript" charset="utf-8">
+           $(function (){  
+               $('#search_created_at_gte').datepicker({ dateFormat: 'yy-mm-dd' }); 
+               $('#search_created_at_lte').datepicker({ dateFormat: 'yy-mm-dd' });
+           });
+           </script>
+<!-- Date Search Form -->           
+               <% form_for @search, :html => { :class => "input_form" , :id => "date_pick" }do |f| %>
+                 <%= f.label :date, "Range" %>
+                   <%= f.text_field :created_at_gte, :size => 12 %> - 
+                   <%= f.text_field :created_at_lte, :size => 12 %>
+                   <%= f.submit 'Search' %>
+               <% end %>
+<!-- End date search Form -->
 
      </div>
 </ul>
-
 
 
 <table class='stripeMe'>

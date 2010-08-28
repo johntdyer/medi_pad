@@ -8,6 +8,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :charges, :collection => { :add => :put }
   map.resources :doctors
   map.resources :patients
+  map.resources :import
 
   # The priority is based upon order of creation: first created -> highest priority.
 

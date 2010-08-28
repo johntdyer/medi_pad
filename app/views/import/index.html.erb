@@ -1,0 +1,13 @@
+
+
+ <% form_for @imports, :html => { :multipart => true } do |form| %>  
+   <ol class="formList">  
+     <!-- Other fields go here... -->  
+     <li>  
+       <%= form.label :patient_data_file_name, "Photo" %>  
+       <%= form.file_field :patient_data_file_name %>  
+     <li>  
+       <%= form.submit "Submit" %>  
+     </li>  
+   </ol>  
+ <% end %>
