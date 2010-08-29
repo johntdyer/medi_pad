@@ -18,7 +18,7 @@ ActiveRecord::Schema.define(:version => 20100829221742) do
     t.string   "patient_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "recorded"
+    t.boolean  "recorded",       :default => false
   end
 
   create_table "doctors", :force => true do |t|

@@ -1,0 +1,55 @@
+<title>Home</title>
+<%= javascript_include_tag "jquery-1.4.2.min.js" %>  
+<%= stylesheet_link_tag "http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/themes/redmond/jquery-ui.css" %>  
+<%= javascript_include_tag "http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.1/jquery-ui.min.js" %>
+      <div id="user_id" class="user_id">
+          <% if current_doctor %>
+            <%= link_to "Edit", edit_doctor_path(:current) %> | 
+            <%= link_to "Logout", logout_path%>
+              <% form_for @search do |f| %>
+                <%= f.label :patient_name_like, "Patient Name" %>
+                <%= f.text_field :patient_name_like%>
+                <%= f.submit "Search" %>
+              <% end%>
+          <% else %>
+            <%= link_to "Register", new_doctor_path%>|
+            <%= link_to "Login", login_path%>
+         <%end%>
+
+
+<!-- Date Search Functions -->
+         <script type="text/javascript" charset="utf-8">
+           $(function (){  
+               $('#search_created_at_gte').datepicker({ dateFormat: 'yy-mm-dd' }); 
+               $('#search_created_at_lte').datepicker({ dateFormat: 'yy-mm-dd' });
+           });
+           </script>
+<!-- Date Search Form -->           
+               <% form_for @search, :html => { :class => "input_form" , :id => "date_pick" }do |f| %>
+                 <%= f.label :date, "Range" %>
+                   <%= f.text_field :created_at_gte, :size => 12 %> - 
+                   <%= f.text_field :created_at_lte, :size => 12 %>
+                   <%= f.submit 'Search' %>
+               <% end %>
+<!-- End date search Form -->
+
+     </div>
+     
+     <table class='stripeMe'>
+       <caption>Reports Patients</caption>
+       <thead>
+         <tr class='odd'>
+         <th><%= order @search, :by => :facility,:as => "Hospital" %></th>
+         <th><%= order @search, :by => :room,:as => "Location" %></th>
+         <th><%= order @search, :by => :patient_name,:as => "Name" %></th>
+         <th><%= order @search, :by => :attending_md,:as => "MD"%></th>
+         <th><%= order @search, :by => :patient_been_seen,:as => "Seen"%></th>
+         <th></th>
+
+
+       </tr>
+       </thead>
+
+       <%= render @patients  %>
+
+      </table>

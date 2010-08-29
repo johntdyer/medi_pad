@@ -17,38 +17,7 @@
       <% end%>
       <li><%= link_to "All", :controller => "patients", :action => "index", :search=>"All"%> </li>
       
-      <div id="user_id" class="user_id">
-          <% if current_doctor %>
-            <%= link_to "Edit", edit_doctor_path(:current) %> | 
-            <%= link_to "Logout", logout_path%>
-              <% form_for @search do |f| %>
-                <%= f.label :patient_name_like, "Patient Name" %>
-                <%= f.text_field :patient_name_like%>
-                <%= f.submit "Search" %>
-              <% end%>
-          <% else %>
-            <%= link_to "Register", new_doctor_path%>|
-            <%= link_to "Login", login_path%>
-         <%end%>
 
-
-<!-- Date Search Functions -->
-         <script type="text/javascript" charset="utf-8">
-           $(function (){  
-               $('#search_created_at_gte').datepicker({ dateFormat: 'yy-mm-dd' }); 
-               $('#search_created_at_lte').datepicker({ dateFormat: 'yy-mm-dd' });
-           });
-           </script>
-<!-- Date Search Form -->           
-               <% form_for @search, :html => { :class => "input_form" , :id => "date_pick" }do |f| %>
-                 <%= f.label :date, "Range" %>
-                   <%= f.text_field :created_at_gte, :size => 12 %> - 
-                   <%= f.text_field :created_at_lte, :size => 12 %>
-                   <%= f.submit 'Search' %>
-               <% end %>
-<!-- End date search Form -->
-
-     </div>
 </ul>
 
 

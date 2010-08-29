@@ -1,4 +1,6 @@
-<%= link_to "Procedures", procedures_path %> <br/>
+
 <%= link_to "Patients", patients_path %><br/>
 <%= link_to "Profiles", doctors_path %><br/>
-<%= link_to "Reports", reports_path %>
+<%= link_to "Reports", reports_path %><br/>
+<%= link_to "Admin", {:controller => "admin", :action => "index"}, {:title => "Admin"} %>
+
