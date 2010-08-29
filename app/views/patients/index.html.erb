@@ -2,8 +2,8 @@
 
 <title>Patients: <%= fix_location_name(@search) %></title>
 <%= javascript_include_tag "jquery-1.4.2.min.js" %>  
-<%= stylesheet_link_tag "http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/themes/redmond/jquery-ui.css", "application" %>  
-<%= javascript_include_tag "http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.1/jquery-ui.min.js", "application" %>
+<%= stylesheet_link_tag "http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/themes/redmond/jquery-ui.css" %>  
+<%= javascript_include_tag "http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.1/jquery-ui.min.js" %>
 
 <style type="text/css" media="screen">
   div#user_id{
@@ -11,12 +11,12 @@
   }  
 </style>
 
-  <ul id="tabnav"> 
-    <li class="All"><a href="/patients">All</a></li>
+    <ul id="tabnav"> 
       <% get_list_of_facilities().each do |facility|%>
         <li><%= link_to "#{facility.capitalize}", :controller => "patients", :action => "index", :search=>{"facility"=>"#{facility}" } %> </li>
       <% end%>
-
+      <li><%= link_to "All", :controller => "patients", :action => "index", :search=>"All"%> </li>
+      
       <div id="user_id" class="user_id">
           <% if current_doctor %>
             <%= link_to "Edit", edit_doctor_path(:current) %> | 

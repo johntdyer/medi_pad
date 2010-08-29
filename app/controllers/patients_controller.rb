@@ -2,7 +2,7 @@ class PatientsController < ApplicationController
   helper :all
 	protect_from_forgery :only => [:update, :destroy]   
 	
-  before_filter :require_doctor, :except=>[:create]
+  before_filter :require_doctor, :except=>[:create,:index]
 	
   # GET /patients
   # GET /patients.xml
@@ -10,11 +10,13 @@ class PatientsController < ApplicationController
     #@patients = Patient.all(:order=>'facility')
     #@patients_charges = Patient.all(:order=>'facility')
     #@patients = Patient.facility_like_all(params[:search].to_s.split).ascend_by_room
-  
-  @search=Patient.search(params[:search])
-  @patients=@search.all
+
+    @list = Patient.all(:select=>"DISTINCT facility")
+
+    @search=Patient.search(params[:search] ||= {:facility=>@list[0].facility})
+    @patients=@search.all
     respond_to do |format|
-      
+
       format.html # index.html.erb
       format.xml  { render :xml => @patients }
     end
