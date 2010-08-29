@@ -19,8 +19,8 @@ require 'rest_client'
       :I_ROOM=>"#{(item/"/I_ROOM").inner_text}",
       :I_LOCT_PATN=>"#{(item/"/I_LOCT_PATN").inner_text}",
       :N_LOCT=>"#{(item/"/N_LOCT").inner_text}",
-      :I_MRI=>"#{(item/"/I_MRI").inner_text}",
-      :I_ACCN=>"#{(item/"/I_ACCN").inner_text}",
+      :I_MRI=>"#{(item/"/I_MRI").inner_text}",      #MRI LIFE TIME NUMBER
+      :I_ACCN=>"#{(item/"/I_ACCN").inner_text}",    #
       :F_SEX=>"#{(item/"/F_SEX").inner_text}",
       :I_AGE_PATN=>"#{(item/"/I_AGE_PATN").inner_text}",
       :I_ROLE=>"#{(item/"/I_ROLE").inner_text}",

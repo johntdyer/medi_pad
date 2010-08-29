@@ -1,5 +1,5 @@
 class PatientsController < ApplicationController
-
+  helper :all
 	protect_from_forgery :only => [:update, :destroy]   
 	
   before_filter :require_doctor, :except=>[:create]

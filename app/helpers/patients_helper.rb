@@ -14,8 +14,7 @@ module PatientsHelper
   def been_seen(patient)
     if !patient.charges.empty?
       logger.debug { "Logged Unseen Patient" }
-      return  image_tag("check_mark.png", :border=>0)
-    
+      return  image_tag("check_mark.png", :border=>0) 
     end
   end
 
