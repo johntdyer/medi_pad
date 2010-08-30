@@ -1,7 +1,102 @@
 <title>Home</title>
+
 <%= javascript_include_tag "jquery-1.4.2.min.js" %>  
 <%= stylesheet_link_tag "http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/themes/redmond/jquery-ui.css" %>  
 <%= javascript_include_tag "http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.1/jquery-ui.min.js" %>
+
+<%= javascript_include_tag "jquery.ibutton", :cache => true %>
+<%= stylesheet_link_tag "jquery.ibutton" %>  
+
+
+  <style type="text/css">
+    h4, h5 {
+      margin-bottom: 0;
+    }
+
+    .examples pre {
+      margin-top: 0;
+    }
+
+    label.label {
+      display: block;
+      width: 120px;
+      float: left;
+      padding-top: 5px;
+      font-weight: bold;
+      height: 30px;
+    }
+
+    div.row {
+      margin-top: 10px;
+    }
+
+    input.button {
+      margin-top: 5px;
+    }
+
+  /* shows overwriting styles via CSS */
+    #css .ibutton-container {
+      width: 175px;
+    }
+
+    #css .ibutton-container .ibutton-handle {
+      width: 5px;
+    }
+  </style>
+
+
+  <script type="text/javascript">
+	<!--//
+	function debug(){
+		if( window.console && window.console.log ) console.log(arguments);
+	}
+
+	// on DOM ready
+	$(document).ready(function (){
+		$(".group").iButton({
+			  init: function (){
+//				debug("init", arguments);
+
+			}
+			, change: function (){
+
+        if ($('#ex02').attr('checked')) {
+      		console.info("checked");
+          var is_checked = true;
+        }else{
+          console.info("not checked");
+          var is_checked = false;
+        }
+
+        $.ajax({
+          type: "POST",
+          url: "/reports/show_only_recorded",
+            data: "show_only_recorded="+is_checked,
+            success: function(msg){
+              console.info( "Data Saved: " + msg );
+            }
+          });
+
+			}
+		});
+
+		$("#ex10")
+			// attach the iButton behavior
+			.iButton({
+			   labelOn: "Yes"
+			 , labelOff: "No"
+			 , change: function ($input){
+					// update the text based on the status of the checkbox
+					$("#send-email").html($input.is(":checked") ? "Yes, send me more e-mail!" : "Ugh... no more e-mail already!");
+				}
+			})
+			// trigger the change event (to update the text)
+			.trigger("change");
+	});
+	//-->
+	</script>
+
+
       <div id="user_id" class="user_id">
           <% if current_doctor %>
             <%= link_to "Edit", edit_doctor_path(:current) %> | 
@@ -24,6 +119,7 @@
                $('#search_created_at_lte').datepicker({ dateFormat: 'yy-mm-dd' });
            });
            </script>
+
 <!-- Date Search Form -->           
                <% form_for @search, :html => { :class => "input_form" , :id => "date_pick" }do |f| %>
                  <%= f.label :date, "Range" %>
@@ -32,23 +128,31 @@
                    <%= f.submit 'Search' %>
                <% end %>
 <!-- End date search Form -->
+<br/>
 
-     </div>
-     
+
+<div id="simple" class="group">
+  <div class="row">
+    <label class="label" for="ex02">Only Recorded</label>
+    <input type="checkbox" id="ex02" checked="checked" />
+  </div>
+</div>
+
      <table class='stripeMe'>
        <caption>Reports Patients</caption>
        <thead>
          <tr class='odd'>
-         <th><%= order @search, :by => :procedure_name,:as => "Name" %></th>
+         <th><%= order @search, :by => :paitent_name,:as => "Paitent Name" %></th>
+
+         <th><%= order @search, :by => :procedure_name,:as => "Procedure Name" %></th>
          <th><%= order @search, :by => :procedure_code,:as => "Code" %></th>
          <th><%= order @search, :by => :doctor,:as => "Doctor" %></th>
+         <th><%= order @search, :by => :fin,:as => "ID" %></th>
          <th><%= order @search, :by => :recorded,:as => "Billed?"%></th>
+         
          <th></th>
-
-
        </tr>
        </thead>
-
-       <%= render @charges  %>
-
-      </table>
+        <%= render :partial => "reports", :collection => @reports %>
+       </table>
+       

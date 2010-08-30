@@ -15,7 +15,6 @@ select.style01 option {border-bottom:0px solid #dadada; width:10px;}
   <% form_tag add_charges_path, :method => :put do %>
       <% @procedure_list = Procedure.find(:all, :order => "procedure_name") %>
       <%= hidden_field_tag :patient_id,charge.patient_id%>
-<!--      <%   cookies[:fin] = get_patient_fin(charge.patient_id) %> -->
 
         <table class="procedure_list">
           <caption>Procedures</caption>
