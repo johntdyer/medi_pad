@@ -87,18 +87,21 @@ class ChargesController < ApplicationController
   def add
     @procedure_ids = params[:procedure_ids]
     @doctor=cookies[:doctor]
-    logger.debug { "Cookie: Doctor Name=> #{@doctor}" }    
-    logger.debug { "procedure_ids : #{@procedure_ids.inspect}" }
+
+    logger.info { "Cookie: Doctor Name=> #{@doctor}" }    
+    logger.info { "procedure_ids : #{@procedure_ids.inspect}" }
 
     #Change patient_been_seen flag to true
     @patient=Patient.find(params[:patient_id])
     @patient.update_attributes :patient_been_seen => true
-    
-      @procedure_ids.each_with_index { | i,count| 
+
+      @procedure_ids.each_with_index { | i,count | 
         @procedure=Procedure.find_by_procedure_code(i)
         logger.debug "#{@doctor} Has charged a #{@procedure.procedure_name} => [Code:#{i}]" 
-        @charge = Charge.new(:doctor => @doctor, :procedure_name=>@procedure.procedure_name,:procedure_code => i, :patient_id => params[:patient_id])
+        
+        @charge = Charge.new(:doctor => @doctor, :fin=>@patient.fin,:patient_name=>@patient.patient_name,:procedure_name=>@procedure.procedure_name,:procedure_code => i, :patient_id => params[:patient_id])
         @charge.save
+        
         }
         redirect_to "/patients/#{@charge.patient_id}"
   end

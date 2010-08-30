@@ -1,0 +1,13 @@
+<tr>
+  <td><%=charge.procedure_code %></td>
+
+  <tr>
+
+  <td>
+    <table id="inner_table" border="0" cellspacing="0">
+        <td id="inner_table"><%= link_to image_tag("find.png", :border=>0), patient %></td>
+        <td id="inner_table"><%= link_to image_tag("edit.png", :border=>0), edit_patient_path(patient) %></td>
+        <td id="inner_table"><%= link_to image_tag("delete.png", :border=>0),patient, :confirm => 'Are you sure?', :method => :delete %></td>
+  </table>
+  </td>
+</tr>

@@ -42,4 +42,9 @@ module PatientsHelper
    end 
  end
  
+ #Get patient FIN from Patient ID
+ def get_patient_fin(patient_id)
+  @patient = Patient.find(patient_id) 
+  return  @patient.fin
+  end
 end

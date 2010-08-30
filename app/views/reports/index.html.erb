@@ -39,17 +39,16 @@
        <caption>Reports Patients</caption>
        <thead>
          <tr class='odd'>
-         <th><%= order @search, :by => :facility,:as => "Hospital" %></th>
-         <th><%= order @search, :by => :room,:as => "Location" %></th>
-         <th><%= order @search, :by => :patient_name,:as => "Name" %></th>
-         <th><%= order @search, :by => :attending_md,:as => "MD"%></th>
-         <th><%= order @search, :by => :patient_been_seen,:as => "Seen"%></th>
+         <th><%= order @search, :by => :procedure_name,:as => "Name" %></th>
+         <th><%= order @search, :by => :procedure_code,:as => "Code" %></th>
+         <th><%= order @search, :by => :doctor,:as => "Doctor" %></th>
+         <th><%= order @search, :by => :recorded,:as => "Billed?"%></th>
          <th></th>
 
 
        </tr>
        </thead>
 
-       <%= render @patients  %>
+       <%= render @charges  %>
 
       </table>
