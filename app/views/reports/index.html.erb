@@ -48,20 +48,18 @@
   <script type="text/javascript">
 	<!--//
 	function debug(){
-		if( window.console && window.console.log ) console.log(arguments);
-	}
+    if( window.console && window.console.log ) console.log(arguments);
+  }
 
-	// on DOM ready
-	$(document).ready(function (){
-		$(".group").iButton({
-			  init: function (){
-//				debug("init", arguments);
-
-			}
-			, change: function (){
-
+  // on DOM ready
+  $(document).ready(function (){
+    $(".group").iButton({
+      init: function (){
+        debug("init", arguments);
+      }, 
+      change: function (){
         if ($('#ex02').attr('checked')) {
-      		console.info("checked");
+          console.info("checked");
           var is_checked = true;
         }else{
           console.info("not checked");
@@ -76,25 +74,24 @@
               console.info( "Data Saved: " + msg );
             }
           });
+        }
+      });
 
-			}
-		});
-
-		$("#ex10")
-			// attach the iButton behavior
-			.iButton({
-			   labelOn: "Yes"
-			 , labelOff: "No"
-			 , change: function ($input){
-					// update the text based on the status of the checkbox
-					$("#send-email").html($input.is(":checked") ? "Yes, send me more e-mail!" : "Ugh... no more e-mail already!");
-				}
-			})
-			// trigger the change event (to update the text)
-			.trigger("change");
-	});
-	//-->
-	</script>
+      $("#ex10")
+      // attach the iButton behavior
+      .iButton({
+        labelOn: "Yes"
+        , labelOff: "No"
+        , change: function ($input){
+          // update the text based on the status of the checkbox
+          $("#send-email").html($input.is(":checked") ? "Yes, send me more e-mail!" : "Ugh... no more e-mail already!");
+        }
+      })
+      // trigger the change event (to update the text)
+      .trigger("change");
+  });
+    //-->
+    </script>
 
 
       <div id="user_id" class="user_id">
