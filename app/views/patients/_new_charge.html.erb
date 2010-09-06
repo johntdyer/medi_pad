@@ -37,7 +37,6 @@ select.style01 option {border-bottom:0px solid #dadada; width:10px;}
               <td>
 
               <%   cookies[:doctor] = current_doctor.doctor_name %>
-
                 <!--<%= select :charge,:doctor,Doctor.find(:all).collect{|p| [p.doctor_name]}%>-->
                 <%= submit_tag 'Add' %>
               </td>
@@ -51,17 +50,3 @@ select.style01 option {border-bottom:0px solid #dadada; width:10px;}
       });
 
     </script>
-    
-    <!--
-    {"commit"=>"Add",
-     "_method"=>"put",
-     "authenticity_token"=>"9PlPpH6Xq2FnTq3KPM4eCEljq9ZwPzliCytzw2I51K0=",
-     "patient_id"=>"16",
-     "charge"=>{"doctor"=>"Ali"}}
-     
-     {"commit"=>"Add", "procedure_ids"=>["32421"], "authenticity_token"=>"9PlPpH6Xq2FnTq3KPM4eCEljq9ZwPzliCytzw2I51K0=", "patient_id"=>"16", "charge"=>"doctorJohn Dyer"}
-       
-       
-     
-    
-    -->

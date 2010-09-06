@@ -1,3 +1,7 @@
+<% @favorites = YAML.load(@doctor.favorites) %>
+<% @procedure_list = Procedure.find(:all, :order => "procedure_name") %>
+
+
 <h1>Editing doctor</h1>
 
 <% form_for(@doctor) do |f| %>
@@ -19,14 +23,72 @@
     <%= f.label :password %><br />
     <%= f.password_field :password %>
   </p>
-  <p>
-    <%= f.label :password_confirmation %>  <br />
-    <%= f.password_field :password_confirmation %>
+    <div id="password_confirmation">
+  <p>  
+      <%= f.label :password_confirmation %>  <br />
+      <%= f.password_field :password_confirmation %>
   </p>
+    </div>
+  
   <p>
-    <%= f.submit 'Update' %>
+    <%= f.label :favorites %>  <br />
   </p>
-<% end %>
 
+  <%= javascript_include_tag "jquery.js" %>
+  <%= javascript_include_tag "jquery.trilemma.js" %>  
+
+
+  <script type="text/javascript">
+
+
+      $("input#doctor_password").keypress(function(){
+         $("#password_confirmation").show();
+     })
+     
+   // checks to see if we have 10 items selected, if we do we want to not
+   // allow user to select any more (10 favorites max).  This works in 
+   // combination w/ the trilemma plug in, which limits checkboxes to 10 as 
+   // well.  Problem is that it acts onChange, so if there was 10 we had no 
+   // way to prevent users from selecting an 11th
+   
+   $("#password_confirmation").hide();
+
+   $(function(){
+     $('.favorites').trilemma({max:10});
+     });
+     
+    $(document).ready(function(){
+        var numSelected = $("input[name~='procedure']:checked").length;
+        console.log("@@@@@ = > " + numSelected);
+        if(numSelected >= 10){
+          $("input[name~='procedure']:not(:checked)").each(function(){
+            $(this).attr('disabled','true');
+          })  
+        }
+      })
+</script>
+
+ <fieldset class="favorites">
+
+    <table class="procedure_list">
+      <caption>Favorites</caption>
+        <% @procedure_list.in_groups_of(3,false) do |procedure| %>
+        <tr>
+          <% procedure.each do |p| %>
+          <div id="rounded">
+          <td>
+            <label class='checkbox'>
+              <%= check_box_tag "procedure_ids[]",p.procedure_code,@favorites.include?(p.procedure_code) %>
+              <%= look_for_procecdure_nickname(p) %>
+            </label>
+            </div>
+          </td>
+          <% end %>
+        </tr>
+        <% end %>
+        </table>
+        <p><%= f.submit 'Update' %></p>
+        <% end %>
+</fieldset>
 <%= link_to 'Show', @doctor %> |
 <%= link_to 'Back', doctors_path %>

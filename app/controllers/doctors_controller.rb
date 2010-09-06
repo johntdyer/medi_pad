@@ -2,6 +2,8 @@ class DoctorsController < ApplicationController
   
   before_filter :require_no_doctor, :only => [:new, :create]
   before_filter :require_doctor, :only => [:show, :edit, :update]
+
+  helper :all
   
   
   # GET /doctors
@@ -67,11 +69,19 @@ class DoctorsController < ApplicationController
   # PUT /doctors/1.xml
   def update
 
-    # @doctor = Doctor.find(params[:id])
-    @doctor = current_doctor
+#    @test = Test.find_by_guid(params[:CallGuid])
+#    @test.update_attributes(:call_status=>"Recording Audio")
+    
+@doctor = current_doctor
+
+    count_favorites(params[:procedure_ids],@doctor)
+
+
     respond_to do |format|
       if @doctor.update_attributes(params[:doctor])
         format.html { 
+          
+      #    @doctor.update_attributes(:favorites=>params[:procedure_ids].to_yaml)
           flash[:notice] = 'Profile updated.'
           redirect_to root_url
           }  
@@ -94,4 +104,25 @@ class DoctorsController < ApplicationController
       format.xml  { head :ok }
     end
   end
+  
+  
+  private
+  
+   
+=begin rdoc
+  Limits favorites to 10
+=end
+    def count_favorites(v,doctor)
+      require 'yaml'
+      if !v.nil?
+        logger.info "NO NILL"
+        doctor.update_attributes(:favorites=>v[0..9].to_yaml)
+        flash[:notice] = 'Profile updated.'
+        return true
+      else
+        logger.info "@@@ ZERO FAVORITES"
+        return false
+      end
+    end
+    
 end
