@@ -68,20 +68,18 @@ class DoctorsController < ApplicationController
   # PUT /doctors/1
   # PUT /doctors/1.xml
   def update
-
+    logger.info("@@@@ #{params[:procedure_code]}")
+    @doctor = current_doctor
 #    @test = Test.find_by_guid(params[:CallGuid])
 #    @test.update_attributes(:call_status=>"Recording Audio")
     
-@doctor = current_doctor
+    @doctor = current_doctor
 
-    count_favorites(params[:procedure_ids],@doctor)
-
+   # count_favorites(params[:procedure_ids],@doctor)
 
     respond_to do |format|
       if @doctor.update_attributes(params[:doctor])
         format.html { 
-          
-      #    @doctor.update_attributes(:favorites=>params[:procedure_ids].to_yaml)
           flash[:notice] = 'Profile updated.'
           redirect_to root_url
           }  
@@ -91,6 +89,31 @@ class DoctorsController < ApplicationController
         format.xml  { render :xml => @doctor.errors, :status => :unprocessable_entity }
       end
     end
+  end
+  
+  def edit_procedure
+    @doctor = current_doctor
+    favorites = YAML.load(@doctor.favorites)
+    
+    if params[:commit]=='delete'
+        logger.info("@@@@ #{params[:commit]} #{params[:procedure_code]} => #{current_doctor.doctor_name}")
+
+        favorites.delete(params[:procedure_code])        
+        @doctor.update_attributes(:favorites=>favorites.to_yaml)
+        
+      elsif params[:commit]=='add'
+        logger.info("@@@@ #{params[:commit]} #{params[:procedure_code]} => #{current_doctor.doctor_name}")
+        favorites<<params[:procedure_code]
+        @doctor.update_attributes(:favorites=>favorites.to_yaml)
+
+      else
+        logger.info "@@@ LOG: Error: edit_procedure, unexpected action param"
+        redirect_to "/doctors/#{params[:id]}"
+      end
+    
+    #@doctor.update_attributes(params[])
+    redirect_to "/doctors/#{params[:id]}"
+    
   end
 
   # DELETE /doctors/1
@@ -112,17 +135,17 @@ class DoctorsController < ApplicationController
 =begin rdoc
   Limits favorites to 10
 =end
-    def count_favorites(v,doctor)
-      require 'yaml'
-      if !v.nil?
-        logger.info "NO NILL"
-        doctor.update_attributes(:favorites=>v[0..9].to_yaml)
-        flash[:notice] = 'Profile updated.'
-        return true
-      else
-        logger.info "@@@ ZERO FAVORITES"
-        return false
-      end
-    end
+    # def count_favorites(v,doctor)
+    #    require 'yaml'
+    #    if !v.nil?
+    #      logger.info "NO NILL"
+    #      doctor.update_attributes(:favorites=>v[0..9].to_yaml)
+    #      flash[:notice] = 'Profile updated.'
+    #      return true
+    #    else
+    #      logger.info "@@@ ZERO FAVORITES"
+    #      return false
+    #    end
+    #  end
     
 end

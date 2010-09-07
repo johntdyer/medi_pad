@@ -1,12 +1,14 @@
+<%= javascript_include_tag "jquery.js" %>
+<%= javascript_include_tag "jquery.trilemma.js" %>  
+
+
 <% @favorites = YAML.load(@doctor.favorites) %>
 <% @procedure_list = Procedure.find(:all, :order => "procedure_name") %>
-
 
 <h1>Editing doctor</h1>
 
 <% form_for(@doctor) do |f| %>
   <%= f.error_messages %>
-
   <p>
     <%= f.label :doctor_name %><br />
     <%= f.text_field :doctor_name %>
@@ -19,27 +21,25 @@
     <%= f.label "Email" %><br />
     <%= f.text_field :email %>
   </p>
-  <p>
-    <%= f.label :password %><br />
-    <%= f.password_field :password %>
-  </p>
-    <div id="password_confirmation">
-  <p>  
+  <div id="password_field">
+    <p>
+      <%= f.label :password %><br />
+      <%= f.password_field :password %>
+    </p>
+  </div>
+  <div id="password_confirmation">
+    <p>
       <%= f.label :password_confirmation %>  <br />
       <%= f.password_field :password_confirmation %>
-  </p>
-    </div>
-  
-  <p>
-    <%= f.label :favorites %>  <br />
-  </p>
+    </p>
+  </div>
+    <p><%= f.submit 'Update' %></p>
+<% end %>
 
-  <%= javascript_include_tag "jquery.js" %>
-  <%= javascript_include_tag "jquery.trilemma.js" %>  
-
+<input type="button" name="Edit Favorites" value="Edit Favorites" id="show_favorites"><br/>
+<input type="button" name="Change Password" value="Change Password" id="change_password"><br/>
 
   <script type="text/javascript">
-
 
       $("input#doctor_password").keypress(function(){
          $("#password_confirmation").show();
@@ -59,17 +59,58 @@
      
     $(document).ready(function(){
         var numSelected = $("input[name~='procedure']:checked").length;
-        console.log("@@@@@ = > " + numSelected);
         if(numSelected >= 10){
           $("input[name~='procedure']:not(:checked)").each(function(){
             $(this).attr('disabled','true');
           })  
         }
+    })
+
+      // Ajax call to update procedure_code favorites
+      $(document).ready(function(){
+      
+        $("input[name~='procedure']").bind('change', function(){
+          var procedure_id_var= jQuery(this).val();
+          
+          if(jQuery(this).attr("checked")){ var action = 'add'}
+            else{ var action = 'delete' }
+            console.log("@ LOG => {action=>" + action + ",:procedure_code=>"+ jQuery(this).val()+"}");
+             $.ajax({
+                       async:true, 
+                       url:'/doctors/edit_procedure',
+                       type:'POST',
+                       data: {
+                            'commit':action,
+                            'procedure_code':procedure_id_var, 
+                            'authenticity_token':'<%= form_authenticity_token %>',
+                            'id':'<%= @doctor.id %>'
+                       },
+            success: function(){console.log("Succes!");},
+            error:function(request){ alert('Sorry, there was an error!!!')}
+          })
+            return false
+          })
+          
+
+          // Unhide Favorites 
+          $(".favorites").hide();
+          
+          $("#show_favorites").click(function(){
+              if($(".favorites").is(":visible")){ $(".favorites").hide(); }
+                else{ $(".favorites").show(); }
+          })
+
+          // Unhide Password Field
+            $("#password_field").hide();
+
+              $("#change_password").click(function(){
+                if($("#password_field").is(":visible")){  $("#password_field").hide();  }
+                else{  $("#password_field").show();  }
+            })
       })
-</script>
+  </script>
 
  <fieldset class="favorites">
-
     <table class="procedure_list">
       <caption>Favorites</caption>
         <% @procedure_list.in_groups_of(3,false) do |procedure| %>
@@ -87,8 +128,7 @@
         </tr>
         <% end %>
         </table>
-        <p><%= f.submit 'Update' %></p>
-        <% end %>
+      
 </fieldset>
 <%= link_to 'Show', @doctor %> |
 <%= link_to 'Back', doctors_path %>

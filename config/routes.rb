@@ -13,6 +13,9 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :home
   map.resources :reports
     
+    
+  map.connect 'doctors/update_results.:format',:action=>"update_results", :controller=>'doctors',:conditions=>{:method => :post} 
+    
   map.connect ':controller/:action/:id'
   map.connect ':controller/:action/:id.:format'
 	map.root :controller => "home"
