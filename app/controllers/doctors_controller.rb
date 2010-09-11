@@ -49,7 +49,7 @@ class DoctorsController < ApplicationController
   # POST /doctors.xml
   def create
     @doctor = Doctor.new(params[:doctor])
-
+    @doctor.update_favorites('--- []\n\n')
     respond_to do |format|
       if @doctor.save
         format.html { 

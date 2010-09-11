@@ -1,14 +1,16 @@
- <tr>
-    <td><%= reports.patient_name %> </td>
-    <td><%= reports.procedure_name %> </td>
-    <td><%= reports.procedure_code %> </td>    
-    <td><%= reports.doctor %> </td>    
-    <td><%= reports.fin %> </td>
-    <td><%= charge_recorded?(reports.recorded) %></td>
+ <tr class="patient_charge">
+    <td class="patient_name"><%= reports.patient_name %> </td>
+    <td class="procedure_name"><%= reports.procedure_name %> </td>
+    <td class="procedure_code"><%= reports.procedure_code %> </td>    
+    <td class="doctor"><%= reports.doctor %> </td>    
+    <td class="fin"><%= reports.fin %> </td>
+    <td class="recorded"><%= charge_recorded?(reports.recorded) %></td>
     
     <td>
       <table id="inner_table" border="0" cellspacing="0">
-        <td>button</td>
+        <td class="patient_button"><input type="button" class="record_charge_button" value="record"/></td>
       </table>
     </td>
   </tr>
+
+

@@ -66,17 +66,44 @@
           var is_checked = false;
         }
 
-        $.ajax({
-          type: "POST",
-          url: "/reports/show_only_recorded",
-            data: "show_only_recorded="+is_checked,
-            success: function(msg){
-              console.info( "Data Saved: " + msg );
-            }
-          });
+        // $.ajax({
+        //   type: "POST",
+        //   url: "/reports/show_only_recorded",
+        //     data: "show_only_recorded="+is_checked,
+        //     success: function(msg){
+        //       console.info( "Data Saved: " + msg );
+        //     }
+        //   });
+        //           
         }
       });
 
+
+
+          $(".patient_charge").click(function(){
+            patient.patient_name = $(this).find('.patient_name').html();
+            
+            console.log("@@@");
+          });
+
+        
+    
+      
+      
+      
+        $(".patient_charge").each(function(){
+
+          var patient=new Object();
+          patient.patient_name = $(this).find('.patient_name').html();
+          patient.is_recorded = $(this).find('.recorded').html();
+            if(patient.is_recorded==true){
+             // $(this).show();
+            }
+
+          console.log("@@@ Name=>" + patient.patient_name + " Recorded? => " + patient.is_recorded);
+          });
+
+        
       $("#ex10")
       // attach the iButton behavior
       .iButton({
@@ -140,7 +167,6 @@
        <thead>
          <tr class='odd'>
          <th><%= order @search, :by => :paitent_name,:as => "Paitent Name" %></th>
-
          <th><%= order @search, :by => :procedure_name,:as => "Procedure Name" %></th>
          <th><%= order @search, :by => :procedure_code,:as => "Code" %></th>
          <th><%= order @search, :by => :doctor,:as => "Doctor" %></th>
@@ -149,7 +175,10 @@
          
          <th></th>
        </tr>
-       </thead>
-        <%= render :partial => "reports", :collection => @reports %>
-       </table>
        
+       <div id="current_reading">
+        </thead>
+        
+         <%= render :partial => "reports", :collection => @reports %>
+        </table>
+      </div>

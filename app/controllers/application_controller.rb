@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
   
   helper :all # include all helpers, all the time
   helper_method :current_doctor_session, :current_doctor
-  #filter_parameter_logging :password, :password_confirmation
+  filter_parameter_logging :password, :password_confirmation
   
   
   
@@ -42,7 +42,7 @@ class ApplicationController < ActionController::Base
     if current_doctor
       store_location
       flash[:notice] = "You must be logged out to access this page"
-      redirect_to root
+      redirect_to root_url
       return false
     end
   end
@@ -64,6 +64,6 @@ class ApplicationController < ActionController::Base
   
  
   
-  
+
   
 end

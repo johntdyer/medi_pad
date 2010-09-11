@@ -6,6 +6,10 @@ class ReportsController < ApplicationController
   def index
     @search=Charge.search(params[:search] || {:recorded=>false})
     @reports=@search.all
+    if request.xml_http_request?
+      render :partial => "reports", :layout => false
+    end
+    
      respond_to do |format|
         format.html # index.html.erb
         format.xml  { render :xml => @reports }
@@ -15,7 +19,22 @@ class ReportsController < ApplicationController
   def show_only_recorded
     logger.info { "" }
     logger.info { "@@@ Log: #{params.inspect}" }
-    redirect_to "/reports/"
+
+      show_only_recorded = params[:show_only_recorded]
+
+        if show_only_recorded=='true'
+            @search=Charge.search(params[:search] || {:recorded=>false})
+        elsif show_only_recorded == 'false'
+            logger.info { "FALSE" }
+            @search=Charge.search(params[:search] || {:recorded=>true})
+        else
+          logger.info { "show_only_recorded not boolean" }
+        end
+        
+        @reports=@search.all
+    
+#        redirect_to '/reports'
+
     
   end
 end
