@@ -1,0 +1,23 @@
+# Be sure to restart your server when you modify this file
+
+# Specifies gem version of Rails to use when vendor/rails is not present
+RAILS_GEM_VERSION = '2.3.8' unless defined? RAILS_GEM_VERSION
+
+# Bootstrap the Rails environment, frameworks, and default configuration
+require File.join(File.dirname(__FILE__), 'boot')
+
+Rails::Initializer.run do |config|
+
+  config.time_zone = 'UTC'
+  
+  config.gem "searchlogic"
+  config.gem "authlogic"
+  config.gem "hpricot"
+  config.action_controller.session_store = :active_record_store
+  # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
+  # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}')]
+  # config.i18n.default_locale = :de
+  
+#  config.action_mailer.delivery_method = :smtp ActionMailer::Base.server_settings = {   :address => "mmail.voxeo.com",   :port => 25,   :user_name => "jdyer",   :password => "D()/#/{CCAM}",   :authentication => :plain }
+  
+end
