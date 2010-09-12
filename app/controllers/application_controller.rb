@@ -1,21 +1,9 @@
-# Filters added to this controller apply to all controllers in the application.
-# Likewise, all the methods added will be available for all controllers.
-
 class ApplicationController < ActionController::Base
+  protect_from_forgery
   
   helper :all # include all helpers, all the time
   helper_method :current_doctor_session, :current_doctor
-  filter_parameter_logging :password, :password_confirmation
-  
-  
-  
-  protect_from_forgery # See ActionController::RequestForgeryProtection for details
 
-  include Oink::MemoryUsageLogger
-  include Oink::InstanceTypeCounter
-  
-  # Scrub sensitive parameters from your log
-  # filter_parameter_logging :password
   
   private
   
@@ -61,9 +49,5 @@ class ApplicationController < ActionController::Base
           redirect_to :controller => 'patients', :action => 'index'
         end
   end  
-  
- 
-  
-
   
 end

@@ -1,6 +1,6 @@
 
 <%= link_to "Patients", patients_path %><br/>
-<%= link_to "Profiles", doctors_path %><br/>
 <%= link_to "Reports", reports_path %><br/>
-<%= link_to "Admin", {:controller => "admin", :action => "index"}, {:title => "Admin"} %>
+<%= link_to "Admin", {:controller => "admin", :action => "index"}, {:title => "Admin"} %><br>
+<%= link_to 'Profiles', edit_doctor_path(current_doctor) if !current_doctor.nil? %>
 

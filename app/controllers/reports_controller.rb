@@ -4,7 +4,8 @@ class ReportsController < ApplicationController
   
   
   def index
-    @search=Charge.search(params[:search] || {:recorded=>false})
+
+    @search = Charge.search(params[:search])
     @reports=@search.all
     if request.xml_http_request?
       render :partial => "reports", :layout => false
@@ -23,10 +24,12 @@ class ReportsController < ApplicationController
       show_only_recorded = params[:show_only_recorded]
 
         if show_only_recorded=='true'
-            @search=Charge.search(params[:search] || {:recorded=>false})
+            @search=Charge.search(params[:search])
+            #.where({:recorded=>false})
         elsif show_only_recorded == 'false'
             logger.info { "FALSE" }
-            @search=Charge.search(params[:search] || {:recorded=>true})
+            @search=Charge.search(params[:search])
+            #.where({:recorded=>false})
         else
           logger.info { "show_only_recorded not boolean" }
         end

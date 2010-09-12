@@ -1,68 +1,36 @@
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 
 <script language="javascript" type="text/javascript">  
- $(document).ready(function() { 
+$(document).ready(function(){
    $("#pw_reset").hide();
    
    $('.toggle').click(function(){ 
      $("#pw_reset").toggle(); 
-    }); 
+   }); 
   });  
 </script>
-<style type="text/css" media="screen">
-  #pw_reset{
-    margin-left: 90px;
-    margin-top: -170px;
-    margin-left: -10px;
-    margin-bottom: 100px;
-  }
-  
-  .toggle{
-    margin-left: 345px;
-    margin-bottom: 120px;
-    margin-top: -98px;
-  }
-    .reset-button{
-      margin-left: 235px;
-      margin-bottom: 100px;
-      margin-top: -40px;  
-    }
-    
-</style>
+
   <% form_for @doctor_session do |f| %>
     <fieldset>
       <legend>Log in</legend>
 
       <%= f.label :username %>
-      <%= f.text_field :username %>
+      <%= f.text_field :username %><br><br>
 
-      <div class="clear"></div>
-
-      <%= f.label :password %>
-       <%= f.password_field :password %>
-      <div class="clear"></div>
-
-      <div class="clear"></div>
-
+        <%= f.label :password %>
+        <%= f.password_field :password %>
+        
       <br />
-      
-      <input id="doctor_session_submit" type="submit" style="margin: -20px 0 0 287px;" class="button" name="commit" value="Log in"/>
+     <div id="pw_reset">
+      <% form_tag password_resets_path do %>
+          Email: <%= text_field_tag :email %>
+          <%= submit_tag "Reset",:class => "reset-button" %>
+      <% end %>
+     </div>
+      <br><br>
+      <input id="doctor_session_submit" type="submit" class="button" name="commit" value="Log in"/><input type="button" value="Reset Password" href="#" class="toggle"/>
     </fieldset>
     <%= f.error_messages %>
-    
     <% end %>
-
-     
-   <a href="#" class="toggle">Reset Password</a>
- 
-    <div id="pw_reset">
-          <% form_tag password_resets_path do %>
-            Email:
-            <%= text_field_tag :email %>
-            <%= submit_tag "Reset",:class => "reset-button" %>
-        <% end %>
-          
-    </div>
-</body>
-
+  </body>
 </html>

@@ -49,7 +49,8 @@ class DoctorsController < ApplicationController
   # POST /doctors.xml
   def create
     @doctor = Doctor.new(params[:doctor])
-    @doctor.update_favorites('--- []\n\n')
+    #Sets favorites to a nill YAML string, needed for favorites
+    @doctor.update_attributes(:favorites=>'--- []\n\n')
     respond_to do |format|
       if @doctor.save
         format.html { 

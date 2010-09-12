@@ -1,4 +1,9 @@
 class ChargesController < ApplicationController
+  
+    before_filter :require_doctor
+  
+  
+  
   # GET /charges
   # GET /charges.xml
   def index
@@ -83,6 +88,18 @@ class ChargesController < ApplicationController
       format.xml  { head :ok }
     end
   end
+  
+  def update_charge_status
+    logger.debug { "Charge Status => #{params[:charge_status]}" }
+    logger.debug { "Charge ID => #{params[:charge_id]}" }
+
+    @charge = Charge.find(params[:charge_id])
+    @charge.toggle(:recorded)
+    @charge.save
+
+    redirect_to "/reports"
+  end
+  
   
   def add
     @procedure_ids = params[:procedure_ids]

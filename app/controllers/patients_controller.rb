@@ -2,25 +2,42 @@ class PatientsController < ApplicationController
   helper :all
 	protect_from_forgery :only => [:update, :destroy]   
 	
-  before_filter :require_doctor, :except=>[:create,:index]
+#  before_filter :require_doctor, :except=>[:create,:index]
 	
   # GET /patients
   # GET /patients.xml
   def index
-    #@patients = Patient.all(:order=>'facility')
-    #@patients_charges = Patient.all(:order=>'facility')
-    #@patients = Patient.facility_like_all(params[:search].to_s.split).ascend_by_room
+    params.each{|i| logger.debug { "@@@@ => #{i}" } }
 
-    @list = Patient.all(:select=>"DISTINCT facility")
+      @list = Patient.all(:select=>"DISTINCT facility")
 
-    @search=Patient.search(params[:search] ||= {:facility=>@list[0].facility})
-    @patients=@search.all
+      if params.has_key?(:search)
+        logger.debug { "SEARCH PRESENT" }
+        logger.debug { "" }
+        @search = Patient.search(:facility_contains=>params[:id])
+      else
+        @search = Patient.where(:facility=>@list[0].facility).search(params[:search]) 
+      end
+
+      @patients = @search.all
+
     respond_to do |format|
-
       format.html # index.html.erb
       format.xml  { render :xml => @patients }
     end
   end
+
+ 
+ def search
+   @search = Patient.search(:facility_contains=>params[:id])
+   @patients=@search.all
+   logger.debug { "@@@@ => #{@patients.class}" }
+   
+   
+   render :action => "index"
+  end
+
+
 
 
   # GET /patients/1

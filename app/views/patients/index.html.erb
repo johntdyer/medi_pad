@@ -1,6 +1,5 @@
 <%= stylesheet_link_tag 'tabs' %>
 
-<title>Patients: <%= fix_location_name(@search) %></title>
 <%= javascript_include_tag "jquery-1.4.2.min.js" %>  
 <%= stylesheet_link_tag "http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/themes/redmond/jquery-ui.css" %>  
 <%= javascript_include_tag "http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.1/jquery-ui.min.js" %>
@@ -12,9 +11,10 @@
   }  
 </style>
 
+
     <ul id="tabnav"> 
       <% get_list_of_facilities().each do |facility|%>
-        <li><%= link_to "#{facility.capitalize}", :controller => "patients", :action => "index", :search=>{"facility"=>"#{facility}" } %> </li>
+        <li><%= link_to "#{facility.capitalize}","/patients/search/#{facility}"%> </li>
       <% end%>
       <li><%= link_to "All", :controller => "patients", :action => "index", :search=>"All"%> </li>
       
@@ -22,15 +22,14 @@
 
 
 <table class='stripeMe'>
-  <caption><%= fix_location_name(@search) %> Patients</caption>
   <thead>
     <tr class='odd'>
-    <th><%= order @search, :by => :facility,:as => "Hospital" %></th>
-    <th><%= order @search, :by => :room,:as => "Location" %></th>
-    <th><%= order @search, :by => :patient_name,:as => "Name" %></th>
-    <th><%= order @search, :by => :attending_md,:as => "MD"%></th>
-    <th><%= order @search, :by => :patient_been_seen,:as => "Seen"%></th>
-    <th></th>
+    <th><%= sort_link @search,:facility, "Hospital" %></th>
+    <th><%= sort_link @search,:room,"Location" %></th>
+    <th><%= sort_link @search,:patient_name,"Name" %></th>
+    <th><%= sort_link @search,:attending_md, "MD"%></th>
+    <th><%= sort_link @search,:patient_been_seen, "Seen"%></th>
+    <th></th>             
     
     
   </tr>

@@ -1,7 +1,7 @@
 <%= javascript_include_tag "jquery.js" %>
 <%= javascript_include_tag "jquery.trilemma.js" %>  
 
-<%=@doctor.favorites %>
+
 <% @favorites = YAML.load(@doctor.favorites) if @doctor.favorites %>
 <% @procedure_list = Procedure.find(:all, :order => "procedure_name") %>
 

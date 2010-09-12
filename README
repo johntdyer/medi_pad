@@ -1,39 +1,9 @@
-# Added Search Logic
+http://github.com/ernie/meta_where
+
+http://github.com/ernie/meta_search
 
 
-# <N_PATN>PEREIRA, IRMA</N_PATN>
-# <I_UNIT>GT5</I_UNIT>
-# <I_ROOM>5821</I_ROOM>
-# <I_LOCT_PATN>01</I_LOCT_PATN>
-# <N_LOCT>FH ORLANDO</N_LOCT>
-# <I_MRI>004321056</I_MRI>        # Lifetime number
-# <I_ACCN>0020159816</I_ACCN>     # Encounter ID  (Each Visit)
-# <F_SEX>F</F_SEX>                
-# <I_AGE_PATN>Y046</I_AGE_PATN>
-# <I_ROLE> </I_ROLE>
-# <F_HIDE_LIST_PATN>N</F_HIDE_LIST_PATN>
-# <I_TYPE_ACCN>I</I_TYPE_ACCN>
-# <D_ADMS_PATN>2009-12-07</D_ADMS_PATN>
-# <D_DISC_PATN>01/01/0001</D_DISC_PATN>
-# <Q_LOS>0151</Q_LOS>
-# <D_STAR_CLIN_SUMM>12/07/2009</D_STAR_CLIN_SUMM>
-# <D_END_CLIN_SUMM>05/06/2010</D_END_CLIN_SUMM>
-# <I_PS_1>0000013806</I_PS_1>
-# <N_PS_1>MASOOD, AHMED</N_PS_1>
-# <R_PS_1>CONS</R_PS_1>
-# <I_PS_2>0000014352</I_PS_2>
-# <N_PS_2>MOBIN, SYED I</N_PS_2>
-# <R_PS_2>CONS</R_PS_2>
-# <I_PS_3>0000105810</I_PS_3>
-# <N_PS_3>HAIM, YITZHAK DANI</N_PS_3>
-# <R_PS_3>CONS</R_PS_3>
-# <I_PS_4>0000211389</I_PS_4>
-# <N_PS_4>GO, EUGENE L.</N_PS_4>
-# <R_PS_4>CONS</R_PS_4>
-# <I_PS_5>0000216246</I_PS_5>
-# <N_PS_5>GARCIA, RUEL B.</N_PS_5>
-# <R_PS_5>CONS</R_PS_5>
-# <PHYS_COUNT>5</PHYS_COUNT>
-
-
-20159816
+App Name:	Medi Pad
+App URL:	http://www.cfpulmonary.com/
+App ID:	127042014011561
+App Secret:	0e927c8121f9efac13a8cced90262db4

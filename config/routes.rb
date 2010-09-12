@@ -1,23 +1,50 @@
-ActionController::Routing::Routes.draw do |map|
-  map.login "login",:controller =>"doctor_sessions", :action => "new"
-  map.logout "logout",:controller =>"doctor_sessions", :action => "destroy"
-  
-  map.resources :doctor_sessions
-  map.resources :password_resets, :only => [ :new, :create, :edit, :update ]
-  map.resources :procedures
-  map.resources :charges, :collection => { :add => :put }
-  map.resources :doctors
-  map.resources :patients
-  map.resources :admin
-  
-  map.resources :home
-  map.resources :reports
-    
-    
-  map.connect 'doctors/update_results.:format',:action=>"update_results", :controller=>'doctors',:conditions=>{:method => :post} 
-    
-  map.connect ':controller/:action/:id'
-  map.connect ':controller/:action/:id.:format'
-	map.root :controller => "home"
+MediPad::Application.routes.draw do
 
+ 
+    match "login", :to =>"doctor_sessions#new", :as => 'login'
+    match "logout", :to =>"doctor_sessions#destroy", :as => 'logout'
+
+
+
+    resources :doctor_sessions
+    resources :password_resets, :only => [ :new, :create, :edit, :update ]
+    resources :procedures
+    resources :charges, :collection => { :add => :put }
+    resources :doctors
+
+    resources :admin
+
+    resources :home
+    resources :reports
+    resources :patients
+
+#    match 'patients/search', :to => 'patients#search'
+    
+    
+    
+    match 'doctors/update_results.:format', :to => 'doctors#update_results',:via => :post
+
+  #  match 'patients/search/:facility' => 'patients#search', :as=>'facility_search'
+
+    match 'patients/search' => 'patients#index', :as=>'facility_search'
+
+
+
+#  match 'patients' => 'patients#search', :constraints => { :search }
+ 
+
+
+#    match "patients:search", :to => "patients#search"
+
+  match '/patients' => 'patients#search', :as=>'facility_search'
+
+
+  
+    
+    match '/:controller(/:action(/:id))'
+    
+
+
+    root :to=>"home#index"
+	 
 end

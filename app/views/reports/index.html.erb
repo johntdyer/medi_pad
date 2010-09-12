@@ -3,7 +3,6 @@
 <%= javascript_include_tag "jquery-1.4.2.min.js" %>  
 <%= stylesheet_link_tag "http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/themes/redmond/jquery-ui.css" %>  
 <%= javascript_include_tag "http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.1/jquery-ui.min.js" %>
-
 <%= javascript_include_tag "jquery.ibutton", :cache => true %>
 <%= stylesheet_link_tag "jquery.ibutton" %>  
 
@@ -44,7 +43,6 @@
     }
   </style>
 
-
   <script type="text/javascript">
 	<!--//
 	function debug(){
@@ -53,132 +51,136 @@
 
   // on DOM ready
   $(document).ready(function (){
+    
+      // Hide recorded charges by default
+      $('.patient_charge').each(function(){
+        if($(this).find('.recorded').text()=="true"){$(this).hide();  }
+      });
+          
     $(".group").iButton({
       init: function (){
         debug("init", arguments);
       }, 
       change: function (){
         if ($('#ex02').attr('checked')) {
-          console.info("checked");
+          console.info("Hide Toggle");
           var is_checked = true;
+          $('.patient_charge').each(function(){
+            if($(this).find('.recorded').text()=="true"){ $(this).hide(); }
+          });
         }else{
-          console.info("not checked");
+          console.info("Show Toggle");
           var is_checked = false;
+            $('.patient_charge').each(function(){
+              if($(this).find('.recorded').text()=="true"){   $(this).show(); }
+            });
         }
-
-        // $.ajax({
-        //   type: "POST",
-        //   url: "/reports/show_only_recorded",
-        //     data: "show_only_recorded="+is_checked,
-        //     success: function(msg){
-        //       console.info( "Data Saved: " + msg );
-        //     }
-        //   });
-        //           
-        }
-      });
-
-
-
-          $(".patient_charge").click(function(){
-            patient.patient_name = $(this).find('.patient_name').html();
-            
-            console.log("@@@");
+      }
+    });
+          $(".record_charge_button").click(function(){
+              var record_edited=new Object();
+              record_edited.charge_id = $(this).parents().find('.charge_id').first().text();
+              
+              console.log(record_edited.charge_id)
+                   if($(this).parents().find('.recorded').first().text()=="true"){
+                     $(this).parents().find('.recorded').first().text("false");
+                     console.log("false");
+                   }
+                   else{
+                     console.log("true");
+                     $(this).parents().find('.recorded').first().text("true");
+                   }
+                   $.ajax({
+                         type: "POST",
+                         url: "/charges/update_charge_status",
+                         data: "charge_status="+record_edited.is_recorded+"&charge_id="+record_edited.charge_id,
+                           success: function(msg){
+                             console.info( "Data Saved: " + msg );
+                         }
+                   });
           });
 
-        
-    
-      
-      
-      
-        $(".patient_charge").each(function(){
-
-          var patient=new Object();
-          patient.patient_name = $(this).find('.patient_name').html();
-          patient.is_recorded = $(this).find('.recorded').html();
-            if(patient.is_recorded==true){
-             // $(this).show();
-            }
-
-          console.log("@@@ Name=>" + patient.patient_name + " Recorded? => " + patient.is_recorded);
-          });
-
-        
       $("#ex10")
       // attach the iButton behavior
       .iButton({
-        labelOn: "Yes"
-        , labelOff: "No"
-        , change: function ($input){
-          // update the text based on the status of the checkbox
-          $("#send-email").html($input.is(":checked") ? "Yes, send me more e-mail!" : "Ugh... no more e-mail already!");
-        }
+        labelOn: "Off",
+        labelOff: "On"
       })
       // trigger the change event (to update the text)
       .trigger("change");
   });
     //-->
-    </script>
+  </script>
 
+  <script type="text/javascript" charset="utf-8">
+  $(document).ready(function (){
+    $("#button_test").click(function(){
+        $('.patient_charge').each(function(){
+          if($(this).find('.recorded').text()=="true"){$(this).hide();  }
+        });
+    });
+  });
+  </script>
 
       <div id="user_id" class="user_id">
           <% if current_doctor %>
-            <%= link_to "Edit", edit_doctor_path(:current) %> | 
-            <%= link_to "Logout", logout_path%>
+            <%= link_to "Home", :controller => "home", :action => "index"%> 
+          
+            <%= link_to "Logout", logout_path %>
               <% form_for @search do |f| %>
                 <%= f.label :patient_name_like, "Patient Name" %>
                 <%= f.text_field :patient_name_like%>
                 <%= f.submit "Search" %>
               <% end%>
+                   
           <% else %>
-            <%= link_to "Register", new_doctor_path%>|
+           <!-- <%= link_to "Register", new_doctor_path%>|-->
             <%= link_to "Login", login_path%>
+            <%= link_to "Home", :controller => "home", :action => "index"%>
+            
          <%end%>
 
-
-<!-- Date Search Functions -->
+      <!-- Date Search Functions -->
          <script type="text/javascript" charset="utf-8">
-           $(function (){  
+           $(function(){  
                $('#search_created_at_gte').datepicker({ dateFormat: 'yy-mm-dd' }); 
                $('#search_created_at_lte').datepicker({ dateFormat: 'yy-mm-dd' });
            });
-           </script>
-
-<!-- Date Search Form -->           
-               <% form_for @search, :html => { :class => "input_form" , :id => "date_pick" }do |f| %>
-                 <%= f.label :date, "Range" %>
-                   <%= f.text_field :created_at_gte, :size => 12 %> - 
-                   <%= f.text_field :created_at_lte, :size => 12 %>
-                   <%= f.submit 'Search' %>
-               <% end %>
-<!-- End date search Form -->
-<br/>
-
+         </script>
 
 <div id="simple" class="group">
   <div class="row">
-    <label class="label" for="ex02">Only Recorded</label>
+    <label class="label" for="ex02">Only Show Unbilled</label>
     <input type="checkbox" id="ex02" checked="checked" />
   </div>
 </div>
 
-     <table class='stripeMe'>
+<!-- Date Search Form -->
+        <% form_for @search, :html => { :class => "input_form" , :id => "date_pick" }do |f| %>
+          <%= f.label :date, "Range" %>
+            <%= f.text_field :created_at_gte, :size => 12 %> - 
+            <%= f.text_field :created_at_lte, :size => 12 %>
+            <%= f.submit 'Search' %>
+        <% end %>
+ <!-- End date search Form -->
+ 
+    <table class='stripeMe'>
        <caption>Reports Patients</caption>
        <thead>
          <tr class='odd'>
-         <th><%= order @search, :by => :paitent_name,:as => "Paitent Name" %></th>
-         <th><%= order @search, :by => :procedure_name,:as => "Procedure Name" %></th>
-         <th><%= order @search, :by => :procedure_code,:as => "Code" %></th>
-         <th><%= order @search, :by => :doctor,:as => "Doctor" %></th>
-         <th><%= order @search, :by => :fin,:as => "ID" %></th>
-         <th><%= order @search, :by => :recorded,:as => "Billed?"%></th>
+         <th><%= sort_link @search,:paitent_name,"Paitent Name" %></th>
+         <th><%= sort_link @search,:procedure_name,"Procedure Name" %></th>
+         <th><%= sort_link @search,:procedure_code,"Code" %></th>
+         <th><%= sort_link @search,:doctor,"Doctor" %></th>
+         <th><%= sort_link @search,:fin,"ID" %></th>
+         <th><%= sort_link @search,:recorded,"Billed?"%></th>
          
          <th></th>
        </tr>
        
        <div id="current_reading">
-        </thead>
+    </thead>
         
-         <%= render :partial => "reports", :collection => @reports %>
-        </table>
-      </div>
+     <%= render :partial => "reports", :collection => @reports %>
+    </table>
+  </div>

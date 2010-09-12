@@ -2,9 +2,10 @@ module ReportsHelper
   
   def charge_recorded?(recorded)
      if !recorded
-       return "no"
+       return false
      else
-       return  image_tag("check_mark.png", :border=>0) 
+       return true
+       #image_tag("check_mark.png", :border=>0) 
      end
    end
    

@@ -10,7 +10,8 @@ class AdminController < ApplicationController
 
         if request.post? and data
           case params[:commit]
-            when "Import" : parse_with_hpricot( data )
+            when "Import" 
+              parse_with_hpricot( data )
               logger.info { "Successfully imported." }
   #            flash[:notice] = "Successfully imported."
               redirect_to :action => 'index'
