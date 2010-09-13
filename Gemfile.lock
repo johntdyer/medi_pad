@@ -5,6 +5,12 @@ GIT
     authlogic (2.1.6)
       activesupport
 
+GIT
+  remote: http://github.com/michaeldv/awesome_print.git
+  revision: c05a6abad7afe76d7bb176f2285f89a62511569e
+  specs:
+    awesome_print (0.2.1)
+
 GEM
   remote: http://rubygems.org/
   specs:
@@ -87,6 +93,7 @@ PLATFORMS
 
 DEPENDENCIES
   authlogic!
+  awesome_print!
   hpricot
   meta_search
   meta_where

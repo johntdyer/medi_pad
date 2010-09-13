@@ -49,7 +49,8 @@ class AdminController < ApplicationController
                     :age=>(item/"/I_AGE_PATN").inner_text.gsub(/Y/,"").sub(/\A0+/, ''),
                     :sex=>(item/"/F_SEX").inner_text,
                     :admitted=>(item/"/D_ADMS_PATN").inner_text,
-                    :attending_md=>(item/"/N_PS_1").inner_text
+                    :attending_md=>(item/"/N_PS_1").inner_text,
+                    
                   )
           if @patient.save
             logger.info {"@@@ Log: Patient #{(item/"/N_PATN").inner_text} was succesfully imported"}

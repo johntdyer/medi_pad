@@ -11,12 +11,14 @@ select.style01 option {border-bottom:0px solid #dadada; width:10px;}
 <%= stylesheet_link_tag 'checkbox' %>
 <body>  
 
+ 
   
   <% form_tag add_charges_path, :method => :put do %>
       <% @procedure_list = Procedure.find(:all, :order => "procedure_name") %>
       <%= hidden_field_tag :patient_id,charge.patient_id%>
 
         <table class="procedure_list">
+     
           <caption>Procedures</caption>
             <% @procedure_list.in_groups_of(3,false) do |procedure| %>
             <tr>
@@ -36,7 +38,7 @@ select.style01 option {border-bottom:0px solid #dadada; width:10px;}
             <tr>
               <td>
 
-              <%   cookies[:doctor] = current_doctor.doctor_name %>
+              <%  cookies[:doctor] = current_doctor.doctor_name %>
                 <!--<%= select :charge,:doctor,Doctor.find(:all).collect{|p| [p.doctor_name]}%>-->
                 <%= submit_tag 'Add' %>
               </td>

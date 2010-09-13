@@ -128,8 +128,8 @@
           
             <%= link_to "Logout", logout_path %>
               <% form_for @search do |f| %>
-                <%= f.label :patient_name_like, "Patient Name" %>
-                <%= f.text_field :patient_name_like%>
+                <%= f.label :patient_name_contains, "Patient Name" %>
+                <%= f.text_field :patient_name_contains %>
                 <%= f.submit "Search" %>
               <% end%>
                    
