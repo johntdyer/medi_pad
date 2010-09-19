@@ -125,19 +125,11 @@
       <div id="user_id" class="user_id">
           <% if current_doctor %>
             <%= link_to "Home", :controller => "home", :action => "index"%> 
-          
             <%= link_to "Logout", logout_path %>
-              <% form_for @search do |f| %>
-                <%= f.label :patient_name_contains, "Patient Name" %>
-                <%= f.text_field :patient_name_contains %>
-                <%= f.submit "Search" %>
-              <% end%>
-                   
           <% else %>
            <!-- <%= link_to "Register", new_doctor_path%>|-->
             <%= link_to "Login", login_path%>
             <%= link_to "Home", :controller => "home", :action => "index"%>
-            
          <%end%>
 
       <!-- Date Search Functions -->
@@ -148,39 +140,86 @@
            });
          </script>
 
-<div id="simple" class="group">
-  <div class="row">
-    <label class="label" for="ex02">Only Show Unbilled</label>
-    <input type="checkbox" id="ex02" checked="checked" />
-  </div>
-</div>
 
+<style type="text/css" media="screen">
+  a.button:active {
+      background-position: bottom right;
+      color: #000;
+      outline: none; /* hide dotted outline in Firefox */
+  }
+
+  a.button:active span {
+      background-position: bottom left;
+      padding: 6px 0 4px 18px; /* push text down 1px */
+  }
+  .clear { /* generic container (i.e. div) for floating buttons */
+      overflow: hidden;
+      width: 100%;
+  }
+
+  a.button {
+      background: transparent url('/images/bg_button_a.gif') no-repeat scroll top right;
+      color: #444;
+      display: block;
+      float: left;
+      font: normal 12px arial, sans-serif;
+      height: 24px;
+      margin-right: 6px;
+      padding-right: 18px; /* sliding doors padding */
+      text-decoration: none;
+  }
+
+  a.button span {
+      background: transparent url('/images/bg_button_span.gif') no-repeat;
+      display: block;
+      line-height: 14px;
+      padding: 5px 0 5px 18px;
+  }
+
+</style>
 <!-- Date Search Form -->
-        <% form_for @search, :html => { :class => "input_form" , :id => "date_pick" }do |f| %>
-          <%= f.label :date, "Range" %>
-            <%= f.text_field :created_at_gte, :size => 12 %> - 
-            <%= f.text_field :created_at_lte, :size => 12 %>
-            <%= f.submit 'Search' %>
-        <% end %>
- <!-- End date search Form -->
  
-    <table class='stripeMe'>
-       <caption>Reports Patients</caption>
-       <thead>
-         <tr class='odd'>
-         <th><%= sort_link @search,:paitent_name,"Paitent Name" %></th>
-         <th><%= sort_link @search,:procedure_name,"Procedure Name" %></th>
-         <th><%= sort_link @search,:procedure_code,"Code" %></th>
-         <th><%= sort_link @search,:doctor,"Doctor" %></th>
-         <th><%= sort_link @search,:fin,"ID" %></th>
-         <th><%= sort_link @search,:recorded,"Billed?"%></th>
+ <!-- End date search Form -->
+ <table>
+   <tr>
+     
+     <td>
+       <div id="simple" class="group">
+         <div class="row">
+           <label class="label" for="ex02">Only Show Unbilled</label>
+           <input type="checkbox" id="ex02" checked="checked" />
+         </div>
+         <br/>
+         <a class="button" href="/reports/search/last/hour"><span>Last  Hour</span></a><br/><br/>
+         <a class="button" href="/reports/search/last/day"><span>Last   Day</span></a><br/><br/>
+         <a class="button" href="/reports/search/last/week"><span>Last  Week</span></a><br/><br/>
+         <a class="button" href="/reports/search/last/month"><span>Last Month</span></a><br/><br/>
+         <a class="button" href="/reports/search/last/year"><span>Last Year</span></a>
+
          
-         <th></th>
-       </tr>
+       </div>
        
-       <div id="current_reading">
-    </thead>
-        
-     <%= render :partial => "reports", :collection => @reports %>
-    </table>
-  </div>
+       
+     </td>
+     <td>
+       <table class='stripeMe'>
+         <caption>Reports Patients</caption>
+         <thead>
+         <tr class='odd'>
+           <th><%= sort_link @search,:paitent_name,"Paitent Name" %></th>
+           <th><%= sort_link @search,:procedure_name,"Procedure Name" %></th>
+           <th><%= sort_link @search,:procedure_code,"Code" %></th>
+           <th><%= sort_link @search,:doctor,"Doctor" %></th>
+           <th><%= sort_link @search,:fin,"ID" %></th>
+           <th><%= sort_link @search,:recorded,"Billed?"%></th>
+           <th></th>
+         </tr>
+         <div id="current_reading">
+       </thead>
+
+       <%= render :partial => "reports", :collection => @reports %>
+      </table>
+    </div>
+   </td>
+  </tr>
+  </table>

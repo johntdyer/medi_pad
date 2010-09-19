@@ -11,7 +11,7 @@ class DoctorSessionsController < ApplicationController
     @doctor_session = DoctorSession.new(params[:doctor_session])
     if @doctor_session.save
       flash[:notice] = "Successfully logged in"
-      redirect_to "/patients"
+      redirect_to "/home"
     else
       render :action => 'new'
     end
@@ -21,6 +21,6 @@ class DoctorSessionsController < ApplicationController
     @doctor_session = DoctorSession.find(params[:id])
     @doctor_session.destroy
       flash[:notice] = "Successfully logged out"
-      redirect_to "/patients"
+      redirect_to "/home"
   end
 end

@@ -1,0 +1,42 @@
+<%@favorites.each do | i | %>
+<%= i.inspect %>
+<%end%>
+         <%end%>
+
+<% form_tag add_charges_path, :method => :put do %>
+    <%= hidden_field_tag :patient_id,charge.patient_id%>
+
+      <table class="procedure_list">
+   
+        <caption>Favorite Procedures</caption>
+          <% @favorites.in_groups_of(4,false) do |procedure| %>
+          <tr>
+            <% procedure.each do |p| %>
+            <div id="rounded">
+            <td>
+              <label class='checkbox'>
+                <%= check_box_tag "procedure_ids[]", p.procedure_code %>
+                <%= look_for_procecdure_nickname(p) %>
+              </label>
+              </div>
+            </td>
+            <% end %>
+          </tr>
+          <% end %>
+
+          <tr>
+            <td>
+
+            <%  cookies[:doctor] = current_doctor.doctor_name %>
+              <%= submit_tag 'Add' %>
+            </td>
+          </tr>
+        </table>
+<% end %>
+
+ <script type="text/javascript">
+  Event.observe(window, 'load', function() {
+      FancyForm.start();
+    });
+
+  </script>

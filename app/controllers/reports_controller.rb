@@ -6,6 +6,7 @@ class ReportsController < ApplicationController
   def index
 
     @search = Charge.search(params[:search])
+    #@search=Charge.where('updated_at < ?', Time.now - 60.minutes).search(params[:search])
     @reports=@search.all
     if request.xml_http_request?
       render :partial => "reports", :layout => false
@@ -19,44 +20,24 @@ class ReportsController < ApplicationController
   
   def search
     if params.has_key?(:time)
-      date = params[:time]
-      logger.debug { "#{date_convert(params[:time]).inspect}" }
-     # @search = Charge.search(params[:search])
+      #@search=Charge.where('updated_at < ?', Time.zone.now - 15.minute).search(params[:search])
+      if date_convert(params[:time])
+        @search=Charge.where('updated_at >= ?', Time.now - date_convert(params[:time])).search(params[:search])
+      else
+        logger.debug { "@@@@" }
+        
+      @search=Charge.search(params[:search])
+      flash[:notice] = "#{params[:time]} is not a valid search term"
+    end
     else params.has_key?(:name)
       @search = Charge.search(:patient_name_contains=>params[:name])
     end
     @reports=@search.all
-
-
+    
     render :action => "index"
    end
 
 
-   def date_convert(v)
-    case v.downcase
-      when 'hour'
-        @search=Charge.where('updated_at > ?', Time.zone.now - 60.minutes)
-        
-     #   return 60
-      when 'day'
-        return 1440
-      when 'week'
-        return 10080
-      when 'month'
-        @search=Charge.where('updated_at > ?', Time.now - 44640.minutes)
-        
-      #  return 44640
-        
-      when 'year'
-        @search=Charge.where('updated_at > ?', Time.now - 525600.minutes)
-        
-       # return 525600
-      else 
-        @search = Charge.search(params[:search])
-      end
-  end
-
-  
   def show_only_recorded
     logger.info { "" }
     logger.info { "@@@ Log: #{params.inspect}" }
@@ -73,11 +54,33 @@ class ReportsController < ApplicationController
         else
           logger.info { "show_only_recorded not boolean" }
         end
-        
         @reports=@search.all
-    
-#        redirect_to '/reports'
-
-    
+        #redirect_to '/reports'
   end
+  
+  
+  
+  private
+  
+  
+   def date_convert(v)
+    case v.downcase
+      when 'hour'
+        return 60.minutes.to_i
+      when 'day'
+        return 24.hours.to_i
+      when 'week'
+        return 168.hours.to_i
+      when 'month'
+        return 31.days.to_i
+      when 'year'
+        return 365.days.to_i
+      else 
+        return false
+      end
+  end
+
+
+
+
 end

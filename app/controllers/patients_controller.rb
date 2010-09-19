@@ -7,10 +7,14 @@ class PatientsController < ApplicationController
   # GET /patients
   # GET /patients.xml
   def index
+    
+   
+    
     params.each{|i| logger.debug { "@@@@ => #{i}" } }
 
       @list = Patient.all(:select=>"DISTINCT facility")
 
+      logger.debug { "@@@ current_doctor => #{@current_doctor}" }
       if params.has_key?(:search)
         logger.debug { "SEARCH PRESENT" }
         logger.debug { "" }
@@ -45,6 +49,8 @@ class PatientsController < ApplicationController
   def show
     @patient = Patient.find(params[:id])
 
+    @favorites = YAML.load(current_doctor.favorites)
+ 
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @patient }

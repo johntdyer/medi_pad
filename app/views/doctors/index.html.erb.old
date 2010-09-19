@@ -1,0 +1,29 @@
+<table class='stripeMe'>
+  <caption>Doctors</caption>
+
+  <thead>
+    <tr class='odd'>
+        <th>Doctor name</th>
+        <th>Username</th>
+        <th>Email</th>
+  </tr>
+</thead>
+<tbody>
+
+<% @doctors.each do |doctor| %>
+  <tr>
+    <td><%=h doctor.doctor_name %></td>
+    <td><%=h doctor.username %></td>
+    <td><%=h doctor.email %></td>
+   <!-- <td><%=h doctor.last_login_at %></td>
+        <td><%=h doctor.last_login_ip %></td> -->
+    <td><%= link_to 'Edit', edit_doctor_path(doctor) %></td>
+<!--    <td><%= link_to 'Destroy', doctor, :confirm => 'Are you sure?', :method => :delete %></td> -->
+  </tr>
+  <tr>
+  </tr>
+<% end %>
+<td><%= link_to 'Add doctor', new_doctor_path %></td>
+
+</table>
+</tbody>

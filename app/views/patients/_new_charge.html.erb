@@ -1,34 +1,28 @@
-<style type="text/css" media="screen">
-select.style01 {border:0px solid #A5A5A5; backgorund-color:#D0D0D0}
-select.style01 option {border-bottom:0px solid #dadada; width:10px;}
-</style>
-
-<% content_for(:head) do %>
-  <%= javascript_include_tag 'fancy-form-prototype' %>
-  <%= javascript_include_tag :defaults %>
-<% end %>
-
-<%= stylesheet_link_tag 'checkbox' %>
-<body>  
-
- 
-  
-  <% form_tag add_charges_path, :method => :put do %>
+    <% form_tag add_charges_path, :method => :put do %>
       <% @procedure_list = Procedure.find(:all, :order => "procedure_name") %>
       <%= hidden_field_tag :patient_id,charge.patient_id%>
 
+
+<script type="text/javascript" charset="utf-8">
+  $(document).ready(function(){
+    
+  });
+</script>
         <table class="procedure_list">
-     
           <caption>Procedures</caption>
-            <% @procedure_list.in_groups_of(3,false) do |procedure| %>
-            <tr>
+          
+            <% @procedure_list.in_groups_of(5,false) do |procedure| %>
+            <tr class="procedure_list_toggled_area">
               <% procedure.each do |p| %>
-              <div id="rounded">
               <td>
-                <label class='checkbox'>
-                  <%= check_box_tag "procedure_ids[]", p.procedure_code %>
-                  <%= look_for_procecdure_nickname(p) %>
-                </label>
+                <div id="content_area">
+                
+                  <label for="<%= p.procedure_code %>_f"><%= look_for_procecdure_nickname(p) %></label>
+                  <input name="procedure_ids[]" id="<%= p.procedure_code %>_f" type="checkbox" value="<%= p.procedure_code %>" class="crirHiddenJS" />
+                  <!--
+                  <%= check_box_tag "procedure_ids[]", p.procedure_code ,:class => 'crirHiddenJS' %>
+                  <%= look_for_procecdure_nickname(p) %> 
+                  -->
                 </div>
               </td>
               <% end %>
@@ -37,18 +31,9 @@ select.style01 option {border-bottom:0px solid #dadada; width:10px;}
 
             <tr>
               <td>
-
-              <%  cookies[:doctor] = current_doctor.doctor_name %>
-                <!--<%= select :charge,:doctor,Doctor.find(:all).collect{|p| [p.doctor_name]}%>-->
+                <%  cookies[:doctor] = current_doctor.doctor_name %>
                 <%= submit_tag 'Add' %>
               </td>
             </tr>
           </table>
-  <% end %>
-  
-   <script type="text/javascript">
-    Event.observe(window, 'load', function() {
-        FancyForm.start();
-      });
-
-    </script>
+        <% end %>

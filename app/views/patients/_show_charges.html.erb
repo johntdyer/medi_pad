@@ -1,8 +1,8 @@
-<table class='stripeMe' style="boarder: 0px; width: 300px; margin-right: 0px; margin-left: 30px;">
+<table class='charges_list'>
   <%if !charges.empty? %>
     <caption>Charges</caption>
     <thead>
-      <tr class='odd'>
+      <tr class='charges_hidden_div'>
         <th scope='col' abbr='Procedure'>Charge</th>
         <th scope='col' abbr='Doctor'>Doctor</th>
         <th></th>
@@ -13,7 +13,7 @@
     </thead>
 
     <% charges.in_groups_of(2,false) do |c| %>
-    <tr>
+    <tr class="charges_hidden_div">
         <% c.each do |procedure| %>
             <!-- Pulled from charges_helper -->
             <% get_info(procedure.procedure_code).each do |i| %>
@@ -23,8 +23,7 @@
               <td><%=procedure.doctor %></td>
               <td><%= link_to image_tag("delete.png", :border=>0), procedure, :confirm => 'Are you sure?', :method => :delete %></td>
         <% end %>
-        </tr>
+      </tr>
       <% end %>
     <%end%>
 </table>
-<br /><br />

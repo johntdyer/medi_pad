@@ -78,7 +78,7 @@ class ProceduresController < ApplicationController
     @procedure.destroy
 
     respond_to do |format|
-      format.html { redirect_to(procedures_url) }
+      format.html { redirect_to(patients_url) }
       format.xml  { head :ok }
     end
   end

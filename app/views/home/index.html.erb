@@ -1,6 +1,11 @@
-
 <%= link_to "Patients", patients_path %><br/>
 <%= link_to "Reports", reports_path %><br/>
 <%= link_to "Admin", {:controller => "admin", :action => "index"}, {:title => "Admin"} %><br>
-<%= link_to 'Profiles', edit_doctor_path(current_doctor) if !current_doctor.nil? %>
+<% if current_doctor %>   
+    <%= link_to 'Edit Profile', edit_doctor_path(current_doctor) %>   <br/>
+    <%= link_to "Logout", logout_path %>
+  <% else %>
+    <!-- <%= link_to "Register", new_doctor_path%>|-->
+    <%= link_to "Login", login_path%>      
+ <%end%>
 
