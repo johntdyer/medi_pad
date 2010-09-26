@@ -1,8 +1,26 @@
+<script type="text/javascript" charset="utf-8">
+  $(document).ready(function(){
+    $("td").click(function(){
+      var procedure_id = $("input[value*='charge_code']").attr('value').split('[')[1].split(']')[0];
+      console.log("@@@ DESTROY => " + procedure_id);
+     
+      // $.ajax({
+      //                type: "delete", 
+      //                    url: '/charges/destroy/'+procedure_id,
+      //                    success: function(data) {   
+      //                      $("td [value*='charge_code']").hide();
+      //                    }
+      //                  });
+      //  });
+  });      
+  
+</script>
+
 <table class='charges_list'>
   <%if !charges.empty? %>
-    <caption>Charges</caption>
+    <caption id="charges_banner">Charges</caption>
     <thead>
-      <tr class='charges_hidden_div'>
+      <tr class='show_charges_toggled_area'>
         <th scope='col' abbr='Procedure'>Charge</th>
         <th scope='col' abbr='Doctor'>Doctor</th>
         <th></th>
@@ -12,18 +30,25 @@
       </tr>
     </thead>
 
-    <% charges.in_groups_of(2,false) do |c| %>
-    <tr class="charges_hidden_div">
-        <% c.each do |procedure| %>
+    <%= charges.in_groups_of(2,false) do |c| %>
+    <tr class="show_charges_toggled_area">
+        <% c.each do |charges| %>
             <!-- Pulled from charges_helper -->
-            <% get_info(procedure.procedure_code).each do |i| %>
-              <td><%=	i.procedure_name %></td>
+            <% get_info(charges.procedure_code).each do |i| %>
+              <td id="charge_code[<%=charges %>]" class="charge"><%=	i.procedure_name %></td>
             <% end %>
             
-              <td><%=procedure.doctor %></td>
-              <td><%= link_to image_tag("delete.png", :border=>0), procedure, :confirm => 'Are you sure?', :method => :delete %></td>
+              <td id="charge_code[<%=charges.id %>]" class="charge"><%=charges.doctor %></td>
+              <input id="charge_code[<%=charges.id %>]" type="hidden" name="_method" value="charge_code[<%=charges.id %>]"/>   
+
+<!--              <td class="delete_charge_button"><%= image_tag("delete.png") %></td>         -->   
+             <td><%= button_to "Delete", { :controller => 'charges',:action => "destroy", :id => charges.id },:confirm => "Are you sure?", :method => :delete %></td>
+<!--             <td><%= link_to image_tag("delete.png"), { :controller => 'charges',:action => "destroy", :id => charges.id },:confirm => "Are you sure?", :method => :delete %></td>-->
+                                <!-- image_tag("delete.png")-->
+                   
         <% end %>
       </tr>
       <% end %>
     <%end%>
 </table>
+

@@ -8,7 +8,8 @@ MediPad::Application.routes.draw do
     resources :password_resets, :only => [ :new, :create, :edit, :update ]
     resources :procedures
 
-   # resources :charges, :collection => { :add => :put }
+#   resources :charges, :collection => { :add => :put }
+            
     
     resources :charges do
       collection do

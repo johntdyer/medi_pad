@@ -8,8 +8,6 @@ class PatientsController < ApplicationController
   # GET /patients.xml
   def index
     
-   
-    
     params.each{|i| logger.debug { "@@@@ => #{i}" } }
 
       @list = Patient.all(:select=>"DISTINCT facility")

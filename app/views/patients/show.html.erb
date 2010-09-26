@@ -2,32 +2,46 @@
   <%= link_to "Home", :controller => "home", :action => "index"%> |
   <%= link_to 'Edit', edit_patient_path(@patient) %> |
   <%= link_to 'Back', patients_path %>
-              
-  
-       
+
+
        <%  cookies[:doctor] = current_doctor.doctor_name %>
         <script type="text/javascript" charset="utf-8">
           $(document).ready(function(){
             
+            
+            // Hide stuff in view
             $('.procedure_list_toggled_area').hide();
+            $('.patient_data_toggle_area').hide();
             
             $('#show_favorites').click(function(){
-              console.log("@@@@");
               $('.favorites_toggled_area').toggle();
             });
-
-            $('#show_charges').click(function(){
-              console.log("@@@@");
-              $('.charges_hidden_div').toggle();
+            
+            $('#charges_banner').click(function(){
+              $('.show_charges_toggled_area').toggle();
             });
-
-            $('#new_charges').click(function(){
-              console.log("@@@@");
+            
+            $('#procedure_banner').click(function(){
               $('.procedure_list_toggled_area').toggle();
             });
+            
+            $('#patient_banner').click(function(){
+              $('.patient_data_toggle_area').toggle();
+            });
+               
+             $('#submit_button').click(function(){
+               console.log("SUBMIT PROCEDURES => " + procedureArray);
+                  $.ajax({
+                      type: "post", 
+                      url: '/charges/add',   
+                      data: "patient_id=<%=@patient.id%>&procedure_ids="+procedureArray,
+                            success: function(data) {   
+                              location.reload();
+                            }
+                   });
+              });
         });
         </script>
-
  <table class='patient_data'>
     <caption>Patient Data</caption>
     <tr>
@@ -51,41 +65,55 @@
  </table>
   
   <table class='patient_data'>
-    <caption>Location</caption>
-      <tr>
+    <caption id="patient_banner">Location</caption>
+    <tr class='patient_data_toggle_area'>
+
+      <tr class='patient_data_toggle_area'>
         <th scope='col' abbr='Room'>Room</th>
         <td><%= check_value(@patient.room)%></td>
       </tr>
-      <tr>
+      <tr class='patient_data_toggle_area'>
+
         <th scope='col' abbr='Bed'>Bed</th>
         <td><%= check_value(@patient.bed)%></td>
       </tr>
-      <tr>
+      <tr class='patient_data_toggle_area'>
+
         <th scope='col' abbr='Unit'>Unit</th>
         <td><%= check_value(@patient.unit)%></td>
       </tr>
-      <tr>
+      <tr class='patient_data_toggle_area'>
         <th scope='col' abbr='Age'>Age</th>
         <td><%= check_value(@patient.age.to_s)%></td
       </tr>
-      <tr>
+      <tr class='patient_data_toggle_area'>
         <th scope='col' abbr='Sex'>Sex</th>
         <td><%= check_value(@patient.sex)%></td>
       </tr>
   </table>
-<!--
+
   <div id="show_charges">
-render :partial=>"show_charges",	:locals=>{:charges=>@patient.charges,:orders=>@order}	%>
+    <%= render :partial=>"show_charges",	:locals=>{:charges=>@patient.charges,:orders=>@order}	%>
   </div>
-  
-  <br /><br />
-  
+
+  <br/><br/>
+
   <div id="show_favorites">
-render :partial=>"show_favorites",  :locals=>{:charge=>Charge.new(:patient_id=>@patient.id)}%>
+    <%= render :partial=>"show_favorites",  :locals=>{:charge=>Charge.new(:patient_id=>@patient.id)}%>
   </div>
--->  
-  <br /><br />
+
+  <br/><br/>
 
   <div id="new_charges">
     <%= render :partial=>"new_charge",  :locals=>{:charge=>Charge.new(:patient_id=>@patient.id)}%>
   </div>
+  
+  <table border=1 style="width: 400px; margin-left: 10px;">
+    <tr id="submit_button">
+      <br />                
+        <input id="hidden_submit" type="submit" style="visibility:hidden">
+      <td style="background-color:grey; color: black; font-size: 15px; ">Submit</td>
+    </tr>
+  </table>
+  
+  

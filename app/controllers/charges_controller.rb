@@ -102,8 +102,9 @@ class ChargesController < ApplicationController
   
   
   def add
-    @procedure_ids = params[:procedure_ids]
+    @procedure_ids = params[:procedure_ids].to_s.split(',')
     @doctor=cookies[:doctor]
+
 
     logger.info { "Cookie: Doctor Name=> #{@doctor}" }    
     logger.info { "procedure_ids : #{@procedure_ids.inspect}" }
@@ -113,13 +114,25 @@ class ChargesController < ApplicationController
     @patient.update_attributes :patient_been_seen => true
 
       @procedure_ids.each_with_index { | i,count | 
-        @procedure=Procedure.find_by_procedure_code(i)
-        logger.debug "#{@doctor} Has charged a #{@procedure.procedure_name} => [Code:#{i}]" 
+        @procedure=Procedure.find(i)
+        logger.debug { "" }*3
+        logger.debug { "@@@@ => #{@procedure.inspect}" }
+        logger.debug "#{@doctor} Has charged a #{@procedure.procedure_name} => [Code:#{@procedure.procedure_code}]" 
         
-        @charge = Charge.new(:doctor => @doctor, :fin=>@patient.fin,:patient_name=>@patient.patient_name,:procedure_name=>@procedure.procedure_name,:procedure_code => i, :patient_id => params[:patient_id])
+        @charge = Charge.new(
+              :doctor => @doctor, 
+              :fin=>@patient.fin,
+              :patient_name=>@patient.patient_name,
+              :procedure_name=>@procedure.procedure_name,
+              :procedure_code => @procedure.procedure_code, 
+              :patient_id => params[:patient_id],
+              :is_archived=>false
+              )
+              
         @charge.save
         
         }
         redirect_to "/patients/#{@charge.patient_id}"
+        
   end
 end

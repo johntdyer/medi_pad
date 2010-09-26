@@ -1,38 +1,69 @@
-    <% form_tag add_charges_path, :method => :put do %>
-      <% @procedure_list = Procedure.find(:all, :order => "procedure_name") %>
-      <%= hidden_field_tag :patient_id,charge.patient_id%>
-
+  <%= form_tag add_charges_path,:id=>'new_charge', :method => :put do %>
+    <% @procedure_list = Procedure.find(:all, :order => "procedure_name") %>
+  <%= hidden_field_tag :patient_id,charge.patient_id%>
 
 <script type="text/javascript" charset="utf-8">
+
+//Make sure all values are unique
+function unique(a){
+   var r = new Array();
+   o:for(var i = 0, n = a.length; i < n; i++){
+      for(var x = 0, y = r.length; x < y; x++){
+         if(r[x]==a[i]) continue o;
+      }
+      r[r.length] = a[i];
+   }
+   return r;
+}
+
+  var procedureArray=[];
   $(document).ready(function(){
     
-  });
+    $("td[id*='procedure_code']").toggle(
+      function(){
+        var valueToAdd = $(this).attr("id").split('[')[1].split(']')[0]
+        procedureArray.push(valueToAdd);
+        
+        console.log("Add => " + valueToAdd);
+        
+        $(this).css({'background-color' : 'green', 'font-weight' : 'bolder', 'color':'white'});
+      },
+      
+      function(){
+        var valueToDelete = $(this).attr("id").split('[')[1].split(']')[0]
+        procedureArray = $.grep(procedureArray, function(val) { return val != valueToDelete; });
+        $(this).css({'background-color' : 'white', 'font-weight' : 'bolder', 'color':'black'});
+      
+        console.log("Delete => " + valueToDelete);
+      }
+    )
+    
+    $('.search_form').click(function(){
+      console.log("@@@ " + unique(procedureArray));
+      
+      $('#data_to_post').attr("value",unique(procedureArray));
+      });
+    });
 </script>
         <table class="procedure_list">
-          <caption>Procedures</caption>
+          <caption id="procedure_banner">Procedures</caption>
           
             <% @procedure_list.in_groups_of(5,false) do |procedure| %>
             <tr class="procedure_list_toggled_area">
               <% procedure.each do |p| %>
-              <td>
-                <div id="content_area">
-                
-                  <label for="<%= p.procedure_code %>_f"><%= look_for_procecdure_nickname(p) %></label>
-                  <input name="procedure_ids[]" id="<%= p.procedure_code %>_f" type="checkbox" value="<%= p.procedure_code %>" class="crirHiddenJS" />
-                  <!--
-                  <%= check_box_tag "procedure_ids[]", p.procedure_code ,:class => 'crirHiddenJS' %>
-                  <%= look_for_procecdure_nickname(p) %> 
-                  -->
-                </div>
+              <td id="procedure_code[<%=p.id%>]">
+
+                  <%= look_for_procecdure_nickname(p) %>
+
               </td>
               <% end %>
             </tr>
             <% end %>
-
-            <tr>
+            <tr class="procedure_list_toggled_area">
               <td>
-                <%  cookies[:doctor] = current_doctor.doctor_name %>
-                <%= submit_tag 'Add' %>
+                <input type="hidden" id="data_to_post" name="procedure_ids" value=""> 
+                
+                <%= submit_tag 'Add', :class => 'search_form'  %>
               </td>
             </tr>
           </table>

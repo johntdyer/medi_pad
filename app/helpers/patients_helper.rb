@@ -47,4 +47,11 @@ module PatientsHelper
   @patient = Patient.find(patient_id) 
   return  @patient.fin
   end
+  
+  #find record ID for procedure code
+  def lookup_procedure_code(p)
+    @id =Procedure.find_by_procedure_code(p)
+    return @id
+  end
 end
+
