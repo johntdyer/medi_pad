@@ -4,8 +4,10 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
   <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
-  <%= javascript_include_tag 'jquery' %>
-  <%= javascript_include_tag 'crir' %>
+  <%= javascript_include_tag :all %>
+  <%= csrf_meta_tag %>
+
+<!--  <%= javascript_include_tag 'crir' %> -->
 
   <%= stylesheet_link_tag 'table' %>
 

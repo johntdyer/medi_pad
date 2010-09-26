@@ -15,7 +15,7 @@ MediPad::Application.routes.draw do
       collection do
         put :add
       end
-    end
+    end              
     
     resources :doctors
 

@@ -17,22 +17,22 @@ function unique(a){
 }
 
   var procedureArray=[];
-  $(document).ready(function(){
+  jQuery.(document).ready(function(){
     
-    $("td[id*='procedure_code']").toggle(
+    jQuery.("td[id*='procedure_code']").toggle(
       function(){
-        var valueToAdd = $(this).attr("id").split('[')[1].split(']')[0]
+        var valueToAdd = jQuery.(this).attr("id").split('[')[1].split(']')[0]
         procedureArray.push(valueToAdd);
         
         console.log("Add => " + valueToAdd);
         
-        $(this).css({'background-color' : 'green', 'font-weight' : 'bolder', 'color':'white'});
+        jQuery.(this).css({'background-color' : 'green', 'font-weight' : 'bolder', 'color':'white'});
       },
       
       function(){
-        var valueToDelete = $(this).attr("id").split('[')[1].split(']')[0]
-        procedureArray = $.grep(procedureArray, function(val) { return val != valueToDelete; });
-        $(this).css({'background-color' : 'white', 'font-weight' : 'bolder', 'color':'black'});
+        var valueToDelete = jQuery.(this).attr("id").split('[')[1].split(']')[0]
+        procedureArray = jQuery.grep(procedureArray, function(val) { return val != valueToDelete; });
+        jQuery.(this).css({'background-color' : 'white', 'font-weight' : 'bolder', 'color':'black'});
       
         console.log("Delete => " + valueToDelete);
       }
@@ -41,7 +41,7 @@ function unique(a){
     $('.search_form').click(function(){
       console.log("@@@ " + unique(procedureArray));
       
-      $('#data_to_post').attr("value",unique(procedureArray));
+      jQuery.('#data_to_post').attr("value",unique(procedureArray));
       });
     });
 </script>

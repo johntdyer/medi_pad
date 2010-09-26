@@ -1,20 +1,3 @@
-<script type="text/javascript" charset="utf-8">
-  $(document).ready(function(){
-    $("td").click(function(){
-      var procedure_id = $("input[value*='charge_code']").attr('value').split('[')[1].split(']')[0];
-      console.log("@@@ DESTROY => " + procedure_id);
-     
-      // $.ajax({
-      //                type: "delete", 
-      //                    url: '/charges/destroy/'+procedure_id,
-      //                    success: function(data) {   
-      //                      $("td [value*='charge_code']").hide();
-      //                    }
-      //                  });
-      //  });
-  });      
-  
-</script>
 
 <table class='charges_list'>
   <%if !charges.empty? %>
@@ -42,9 +25,10 @@
               <input id="charge_code[<%=charges.id %>]" type="hidden" name="_method" value="charge_code[<%=charges.id %>]"/>   
 
 <!--              <td class="delete_charge_button"><%= image_tag("delete.png") %></td>         -->   
-             <td><%= button_to "Delete", { :controller => 'charges',:action => "destroy", :id => charges.id },:confirm => "Are you sure?", :method => :delete %></td>
-<!--             <td><%= link_to image_tag("delete.png"), { :controller => 'charges',:action => "destroy", :id => charges.id },:confirm => "Are you sure?", :method => :delete %></td>-->
-                                <!-- image_tag("delete.png")-->
+             <!--<td><%= button_to "Delete", { :controller => 'charges',:action => "destroy", :id => charges.id },:confirm => "Are you sure?", :method => :delete %></td>-->
+              <td><%= link_to(image_tag("delete.png"), charges, :confirm => "Are you sure?", :method => :delete) %>
+           <!-- <%= link_to 'Destroy', charge_path(charges), :confirm => 'Are you sure?', :method => :post  %>                                                           -->
+         </td>
                    
         <% end %>
       </tr>
