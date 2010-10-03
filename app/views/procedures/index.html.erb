@@ -20,7 +20,10 @@
     <td><%=h procedure.procedure_nickname %></td>
     <td><%=h procedure.group_type %></td>
     <td><%= link_to image_tag("edit.png", :border=>0), edit_procedure_path(procedure) %></td>
-    <td><%= link_to image_tag("delete.png", :border=>0), procedure, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%= link_to(image_tag("delete.png"), procedure, :confirm => "Are you sure?", :method => :delete) %>
+      
+    
+    
   </tr>
 <% end %>
 </table>

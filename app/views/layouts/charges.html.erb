@@ -6,8 +6,10 @@
   <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
   <title>Orders: <%= controller.action_name %></title>
     <%= stylesheet_link_tag 'table' %>
+       <%= csrf_meta_tag %>
     
     <%= yield(:head) %>
+        <%= javascript_include_tag :jquery %>
 
 </head>
 <body>

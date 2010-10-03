@@ -15,21 +15,16 @@
 
     <%= charges.in_groups_of(2,false) do |c| %>
     <tr class="show_charges_toggled_area">
-        <% c.each do |charges| %>
+        <% c.each do |charge| %>
             <!-- Pulled from charges_helper -->
-            <% get_info(charges.procedure_code).each do |i| %>
-              <td id="charge_code[<%=charges %>]" class="charge"><%=	i.procedure_name %></td>
+            <% get_info(charge.procedure_code).each do |i| %>
+              <td id="charge_code[<%=charge %>]" class="charge"><%=	i.procedure_name %></td>
             <% end %>
             
-              <td id="charge_code[<%=charges.id %>]" class="charge"><%=charges.doctor %></td>
-              <input id="charge_code[<%=charges.id %>]" type="hidden" name="_method" value="charge_code[<%=charges.id %>]"/>   
-
-<!--              <td class="delete_charge_button"><%= image_tag("delete.png") %></td>         -->   
-             <!--<td><%= button_to "Delete", { :controller => 'charges',:action => "destroy", :id => charges.id },:confirm => "Are you sure?", :method => :delete %></td>-->
-              <td><%= link_to(image_tag("delete.png"), charges, :confirm => "Are you sure?", :method => :delete) %>
-           <!-- <%= link_to 'Destroy', charge_path(charges), :confirm => 'Are you sure?', :method => :post  %>                                                           -->
+              <td id="charge_code[<%=charge.id %>]" class="charge"><%=charge.doctor %></td>
+              <input id="charge_code[<%=charge.id %>]" type="hidden" name="_method" value="charge_code[<%=charge.id %>]"/>   
+              <td><%= link_to(image_tag("delete.png"), charge, :confirm => "Are you sure?", :method => :delete) %>
          </td>
-                   
         <% end %>
       </tr>
       <% end %>

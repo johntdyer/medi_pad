@@ -5,6 +5,7 @@
 
 
        <%  cookies[:doctor] = current_doctor.doctor_name %>
+       
         <script type="text/javascript" charset="utf-8">
           $(document).ready(function(){
             
@@ -34,13 +35,11 @@
                   $.ajax({
                       type: "post", 
                       url: '/charges/add',   
-                      data: "patient_id=<%=@patient.id%>&procedure_ids="+procedureArray,
-                            success: function(data) {   
-                              location.reload();
-                            }
-                   });
-              });
-        });
+                      data: "patient_id=<%=@patient.id%>&procedure_ids="+procedureArray
+                  });
+                  window.location.reload();
+             });
+          });
         </script>
  <table class='patient_data'>
     <caption>Patient Data</caption>

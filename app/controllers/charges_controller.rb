@@ -131,8 +131,11 @@ class ChargesController < ApplicationController
               
         @charge.save
         
-        }
+        }           
+
+                     
         redirect_to "/patients/#{@charge.patient_id}"
+        #redirect_to "/patients"
         
   end
 end

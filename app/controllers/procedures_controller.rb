@@ -61,7 +61,7 @@ class ProceduresController < ApplicationController
 
     respond_to do |format|
       if @procedure.update_attributes(params[:procedure])
-        format.html { redirect_to "/procedures/#{@procedure.procedure_id}"
+        format.html { redirect_to "/procedures"
          }
         format.xml  { head :ok }
       else
@@ -78,9 +78,11 @@ class ProceduresController < ApplicationController
     @procedure.destroy
 
     respond_to do |format|
-      format.html { redirect_to(patients_url) }
+      format.html { redirect_to "/procedures" }
       format.xml  { head :ok }
-    end
+    end   
+
+    
   end
 
 	def self.find_incomplete
