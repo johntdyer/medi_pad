@@ -1,6 +1,7 @@
 class ChargesController < ApplicationController
   
     before_filter :require_doctor
+      require 'json'
   
   
   
@@ -101,11 +102,19 @@ class ChargesController < ApplicationController
   end
   
   
-  def add
+  def add      
     @procedure_ids = params[:procedure_ids].to_s.split(',')
+    @charge_notes = ActiveSupport::JSON.decode(params[:myNotes])
+    logger.debug("### ====>  #{@charge_notes}")
+    #.split('],[')
     @doctor=cookies[:doctor]
-
-
+     
+    @charge_notes.split("\"], [\"").each_with_index { |v,i| 
+         logger.debug {" @charge_notes [0] => #{v[0]} "}
+         logger.debug {" @charge_notes [1] => #{v[1]} "}
+       }
+       
+              
     logger.info { "Cookie: Doctor Name=> #{@doctor}" }    
     logger.info { "procedure_ids : #{@procedure_ids.inspect}" }
 
@@ -117,6 +126,7 @@ class ChargesController < ApplicationController
         @procedure=Procedure.find(i)
         logger.debug { "" }*3
         logger.debug { "@@@@ => #{@procedure.inspect}" }
+#        logger.debug { "@@@@ Notes => #{@charge_notes[i]}" }        
         logger.debug "#{@doctor} Has charged a #{@procedure.procedure_name} => [Code:#{@procedure.procedure_code}]" 
         
         @charge = Charge.new(
@@ -127,6 +137,7 @@ class ChargesController < ApplicationController
               :procedure_code => @procedure.procedure_code, 
               :patient_id => params[:patient_id],
               :is_archived=>false
+              #,:note=>@charge_notes.split('], [')[count][1]
               )
               
         @charge.save

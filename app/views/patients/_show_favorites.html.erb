@@ -2,8 +2,9 @@
     <caption>Favorite Procedures</caption>
      <% @favorites.in_groups_of(4,false) do |favs| %>
       <tr class="favorites_toggled_area">
-        <% favs.each do | procedure | %>
-          <td id="procedure_code[<%=lookup_procedure_code(procedure).id%>]">
+        <% favs.each do | procedure | %>                                                  
+
+          <td id="procedure_code[<%=lookup_procedure_code(procedure).id%>]" noteRequired="<%= lookup_procedure_code(procedure).note_required %>">
             <%= get_procedure_name(procedure) %>
           </td>
         <% end %>

@@ -10,7 +10,8 @@ gem 'sqlite3-ruby', :require => 'sqlite3'
 # gem "searchlogic"
 gem "meta_search"
 gem "hpricot"
-gem "meta_where"
+gem "meta_where"  
+gem "json"
 #gem 'rd_searchlogic', :git => 'git://github.com/railsdog/searchlogic.git'
 gem 'authlogic', :git => 'http://github.com/binarylogic/authlogic.git'
 gem 'awesome_print', :git => 'http://github.com/michaeldv/awesome_print.git'

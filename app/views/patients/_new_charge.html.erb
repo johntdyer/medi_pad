@@ -1,8 +1,43 @@
   <%= form_tag add_charges_path,:id=>'new_charge', :method => :put do %>
     <% @procedure_list = Procedure.find(:all, :order => "procedure_name") %>
   <%= hidden_field_tag :patient_id,charge.patient_id%>
+  <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
+  <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="stylesheet" type="text/css"/>
 
+  <%= javascript_include_tag "json2.js" %>
+           
+
+<style type="text/css" media="screen">
+  textarea { 
+    resize: none;
+  }
+</style>
 <script type="text/javascript" charset="utf-8">
+  
+  // Checks to see if value exists in multidemnsional array holding notes, returns true if it exists
+  function duplicateCheck(Things,item){  
+    var valueExists = false;
+    for (var i = Things.length - 1; i >= 0; i--){
+        console.log($.inArray(item,Things[i]));    
+        if($.inArray(item,Things[i])!='-1'){
+            console.log("Found Key");    // Charge has note, dont duplicate
+            valueExists = true;
+            return valueExists
+        }
+    };  
+    return valueExists
+  }
+
+  function duplicateFind(Things,item){  
+    var valueExists = false;
+    for (var i = Things.length - 1; i >= 0; i--){
+        if($.inArray(item,Things[i])!='-1'){ 
+            return i
+        }
+    };  
+    return valueExists
+  }
+
 
 //Make sure all values are unique
 function unique(a){
@@ -15,46 +50,77 @@ function unique(a){
    }
    return r;
 }
+  var myNotes= new Array();
 
   var procedureArray=[];
   $(document).ready(function(){
     
-    $("td[id*='procedure_code']").toggle(
-      function(){
-        var valueToAdd = $(this).attr("id").split('[')[1].split(']')[0]
-        procedureArray.push(valueToAdd);
+    $("td[id*='procedure_code']").toggle(function(){
+        var valueToAdd = $(this).attr("id").split('[')[1].split(']')[0];
         
-        console.log("Add => " + valueToAdd);
+        // If a note is required we need to get the note and add it to our array
+        if($(this).attr('noteRequired')=='true'){
+          
+          if(duplicateCheck(myNotes,valueToAdd)){
+            console.log("@@ Charge already in notes array");            
+             alert("This is a duplicate charge, check favorites, you may have double selected this one");            
+           }else{   
+             console.log("@@ Note required for this procedure");
+             $("#inputNoteDialog").dialog({
+               modal: true,
+                open: function(event, ui){     
+                  $("#inputNoteDialog").attr('procedureId',valueToAdd);  
+                  console.log("Opened Dialog Boxs");
+                },
+                beforeclose: function(event,ui){
+                  var procedureId = $("#inputNoteDialog").attr("procedureId");
+                  var chargeNote = $("#chargeNote").val();
+                 myNotes[myNotes.length] = new Array(procedureId,chargeNote);
+               },
+               close: function(event,ui){   
+                $("#inputNoteDialog").attr('procedureId',"");  // Clear Dialog
+                $("#chargeNote").val("");
+                console.log("Dialog Closed");   
+                $.each(myNotes, function(index, value) {
+                  console.log("@@@@ HASH VALUES =>" + index + ': ' + value[0] + " | " +value[1]); 
+                });
+              }
+          });
+         
+        }
+      
+      }
+         procedureArray.push(valueToAdd);
+          console.log("Add => " + valueToAdd);
+          $(this).css({'background-color' : 'green', 'font-weight' : 'bolder', 'color':'white'});
+      
+    },
+      
+    function(){
+      var valueToDelete = $(this).attr("id").split('[')[1].split(']')[0]
+      procedureArray = $.grep(procedureArray, function(val) { return val != valueToDelete; });
+      console.log("@@@@ Deleting myNotes index["+valueToDelete+"]");
+      myNotes.splice([duplicateFind(myNotes,valueToDelete)]);
         
-        $(this).css({'background-color' : 'green', 'font-weight' : 'bolder', 'color':'white'});
-      },
-      
-      function(){
-        var valueToDelete = $.(this).attr("id").split('[')[1].split(']')[0]
-        procedureArray = $.grep(procedureArray, function(val) { return val != valueToDelete; });
-        $.(this).css({'background-color' : 'white', 'font-weight' : 'bolder', 'color':'black'});
-      
+        $(this).css({'background-color' : 'white', 'font-weight' : 'bolder', 'color':'black'});
         console.log("Delete => " + valueToDelete);
       }
     )
-    
     $('.search_form').click(function(){
       console.log("@@@ " + unique(procedureArray));
-      
       $('#data_to_post').attr("value",unique(procedureArray));
       });
     });
 </script>
+
         <table class="procedure_list">
-          <caption id="procedure_banner">Procedures</caption>
+          <caption id="procedure_banner">All Procedures</caption>
           
             <% @procedure_list.in_groups_of(5,false) do |procedure| %>
             <tr class="procedure_list_toggled_area">
               <% procedure.each do |p| %>
-              <td id="procedure_code[<%=p.id%>]">
-
-                  <%= look_for_procecdure_nickname(p) %>
-
+              <td id="procedure_code[<%=p.id%>]" noteRequired="<%= p.note_required %>">
+                  <%= p.procedure_name %>
               </td>
               <% end %>
             </tr>
@@ -63,8 +129,14 @@ function unique(a){
               <td>
                 <input type="hidden" id="data_to_post" name="procedure_ids" value=""> 
                 
-                <%= submit_tag 'Add', :class => 'search_form'  %>
+                <!-- <%= submit_tag 'Add', :class => 'search_form'  %>-->
               </td>
             </tr>
           </table>
         <% end %>
+
+        <div id="inputNoteDialog" title="Add Note" procedureId="" style="display:none"> 
+          <textarea cols="0" rows="0" id="chargeNote" >Some hidden text display none</textarea>
+        </div>
+
+                     

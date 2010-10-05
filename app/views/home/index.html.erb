@@ -1,11 +1,61 @@
-<%= link_to "Patients", patients_path %><br/>
-<%= link_to "Reports", reports_path %><br/>
-<%= link_to "Admin", {:controller => "admin", :action => "index"}, {:title => "Admin"} %><br>
-<% if current_doctor %>   
-    <%= link_to 'Edit Profile', edit_doctor_path(current_doctor) %>   <br/>
-    <%= link_to "Logout", logout_path %>
-  <% else %>
-    <!-- <%= link_to "Register", new_doctor_path%>|-->
-    <%= link_to "Login", login_path%>      
- <%end%>
+  <style type="text/css">
+    #vertmenu {
+      font-family: Verdana, Arial, Helvetica, sans-serif;
+      font-size: 250%;
+      width: 280px;
+      padding: 0px;
+      margin: 0px;
+    }
+
+    #vertmenu h1 {
+      display: block;
+      background-color:#FF9900;
+      font-size: 110%;
+      padding: 3px 0 5px 3px;
+      border: 1px solid #000000;
+      color: #333333;
+      margin: 0px;
+      width:280px;
+    }
+
+    #vertmenu ul {
+      list-style: none;
+      margin: 0px;
+      padding: 0px;
+      border: none;
+    }
+    #vertmenu ul li {
+      margin: 0px;
+      padding: 0px;
+    }
+    #vertmenu ul li a {
+      font-size: 120%;
+      display: block;
+      border-bottom: 1px dashed #C39C4E;
+      padding: 5px 0px 2px 4px;
+      text-decoration: none;
+      color: #666666;
+      width:280px;
+    }
+
+    #vertmenu ul li a:hover, #vertmenu ul li a:focus {
+      color: #000000;
+      background-color: #eeeeee;
+    }
+  </style>
+
+    <div id="vertmenu">
+      <h1>Medi-Pad</h1>
+        <ul>
+          <% if current_doctor %>
+            <li> <%= link_to "Patients", patients_path  %> </li>
+            <li> <%= link_to "Admin", {:controller => "admin", :action => "index"}  %> </li>
+            <li> <%= link_to "Reports", reports_path %> </li>
+            <li> <%= link_to 'Edit Profile', edit_doctor_path(current_doctor)  %> </li>
+            <li> <%= link_to "Logout", logout_path  %>  </li>
+          <% else %>
+            <li> <%= link_to "Login", login_path  %> </li>
+          <%end%>
+        </ul>
+    </div>
 
