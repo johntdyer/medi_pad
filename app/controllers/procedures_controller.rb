@@ -45,7 +45,7 @@ class ProceduresController < ApplicationController
 
     respond_to do |format|
       if @procedure.save
-        format.html { redirect_to(@procedure, :notice => 'Procedure was successfully created.') }
+        format.html { redirect_to("/procedures", :notice => 'Procedure was successfully created.') }
         format.xml  { render :xml => @procedure, :status => :created, :location => @procedure }
       else
         format.html { render :action => "new" }

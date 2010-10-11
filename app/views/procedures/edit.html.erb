@@ -1,38 +1,47 @@
-<h1>Editing procedure</h1>
-
-<%= form_for(@procedure) do |f| %>
+<table class='stripeMe' border=1 style="width: 400px; margin-left: 10px;">
+  <caption>Editing procedure</caption>
+  <thead>
+    <tr class='odd'>
+    <th></th>
+    <th>Note Required?</th>
+  </tr>
+</thead>
+  <%= form_for(@procedure) do |f| %>
   <%= f.error_messages %>
+  <tbody>
+   <%= hidden_field_tag :procedure_id,@procedure.procedure_id%>
+  <tr>
+    <td>Procedure Name</td>
+    <td><%= f.text_field :procedure_name %></td>
+  </tr>  
+  <tr>
+    <td>Procedure Code</td>
+    <td><%= f.text_field :procedure_code %></td>
+  </tr>
+  <tr>
+    <td>Procedure Nickname</td>
+    <td><%= f.text_field :procedure_nickname %></td>
+  </tr> 
+  <tr>
+    <td>Group Type</td>
+    <td><%= f.text_field :group_type %></td>
+  </tr>
+  <tr>
+    <td>Note Required?</td>
+    <td><%= f.check_box :note_required %></td>
+  </tr>
+  <tr>
+    <td></td>
+    <td><%= f.submit 'Update' %></td>
+  </tr>
 
-  <p>
-    <%= f.label :procedure_name %><br />
-    <%= f.text_field :procedure_name %>
-  </p>
-  <p>
-    <%= f.label :procedure_code %><br />
-    <%= f.text_field :procedure_code %>
-  </p>
-  <p>
-    <%= f.label :procedure_nickname %><br />
-    <%= f.text_field :procedure_nickname %>
-  </p>
-  <p>
-    <%= f.label :group_type %><br />
-    <%= f.text_field :group_type %>
-  </p>
- <!--
- <p>
-     # f.label :procedure_id %><br />
-    # f.text_field :procedure_id %>
-    
-    
-  </p>
-  -->    
-  <%= hidden_field_tag :procedure_id,@procedure.procedure_id%>
-  
-  <p>
-    <%= f.submit 'Update' %>
-  </p>
+   </table>
+  </tbody>
 <% end %>
 
 <%= link_to 'Show', @procedure %> |
 <%= link_to 'Back', procedures_path %>
+
+</table>
+
+</tbody>

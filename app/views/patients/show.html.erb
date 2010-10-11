@@ -4,7 +4,7 @@
   <%= link_to 'Back', patients_path %>
 
     
-  <script type="text/javascript" charset="utf-8">
+  <!-- <script type="text/javascript" charset="utf-8">
    $(document).ready(function(){ 
 
      $("#procedure_code\\[34\\]").click(function(){
@@ -12,7 +12,7 @@
       });  
       
    });
-  </script>
+  </script> -->
   
   <style type="text/css" media="screen">
     #fade { /*--Transparent background layer--*/
@@ -159,7 +159,8 @@
   <div id="new_charges">
     <%= render :partial=>"new_charge",  :locals=>{:charge=>Charge.new(:patient_id=>@patient.id)}%>
   </div>
-  
+    
+ 
   <table border=1 style="width: 400px; margin-left: 10px;">
     <tr id="submit_button">                
       <input id="hidden_submit" type="submit" style="visibility:hidden">

@@ -8,6 +8,10 @@
 
 
 <style type="text/css" media="screen">
+  div#user_id{
+    padding: 10px 0px 0px 0px;
+  }
+
   #fade { /*--Transparent background layer--*/
   	display: none; /*--hidden by default--*/
   	background: #000;
@@ -49,21 +53,26 @@
   
 </style>
 
-<style type="text/css" media="screen">
-  div#user_id{
-    padding: 10px 0px 0px 0px;
-  }  
-</style>
-
-
     <ul id="tabnav"> 
       <% get_list_of_facilities().each do |facility|%>
         <li><%= link_to "#{facility.capitalize}","/patients/search/#{facility}"%> </li>
       <% end%>
       <li><%= link_to "All", :controller => "patients", :action => "index", :search=>"All"%> </li>
-      
 </ul>
 
+<script type="text/javascript" charset="utf-8">
+  $(document).ready(function(){
+    // Redirects to patient if they click on row
+      $("tr[id^='patient_row']").click(function(){
+        function get_id(v){
+          var patient_id = v.substring(v.search(/\W/g)+1,v.length-1);
+          console.log("@@@ patient_id => " +  patient_id);
+          return patient_id
+        }
+        $(window.location).attr('href', '/patients/'+get_id($(this).attr("id")));
+      })
+  });
+</script>
 
 <table class='stripeMe'>
   <thead>
@@ -73,15 +82,11 @@
     <th><%= sort_link @search,:patient_name,"Name" %></th>
     <th><%= sort_link @search,:attending_md, "MD"%></th>
     <th><%= sort_link @search,:patient_been_seen, "Seen"%></th>
-    <th></th>             
-    
-    
+
   </tr>
   </thead>
 
- <%= render @patients  %> 
- 
- </table> 
- 
-   
+    <%= render @patients  %>
+
+ </table>
  

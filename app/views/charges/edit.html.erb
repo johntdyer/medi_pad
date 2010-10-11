@@ -1,27 +1,37 @@
-<h1>Editing charge</h1>
-
+<table class='stripeMe' border=1 style="width: 400px; margin-left: 10px;">
+  <caption>Editing Charge</caption>
+  <thead>
+    <tr class='odd'>
+    <th></th>
+    <th>Note Required?</th>
+  </tr>
+</thead>
 <% form_for(@charge) do |f| %>
   <%= f.error_messages %>
+  <tbody>
+  <tr>
+    <td>Procedure Name</td>
+    <td><%= f.text_field :procedure_name %></td>
+  </tr>  
+  <tr>
+    <td>Procedure Code</td>
+    <td><%= f.text_field :procedure_code %></td>
+  </tr>
+  <tr>
+    <td>Doctor</td>
+    <td><%= f.text_field :doctor %></td>
+  </tr> 
+  <tr>
+    <td>Patient ID</td>
+    <td><%= f.text_field :patient_id %></td>
+  </tr>
+  <tr>
+    <td></td>
+    <td><%= f.submit 'Update' %></td>
+  </tr>
 
-  <p>
-    <%= f.label :procedure_name %><br />
-    <%= f.text_field :procedure_name %>
-  </p>
-  <p>
-    <%= f.label :procedure_code %><br />
-    <%= f.text_field :procedure_code %>
-  </p>
-  <p>
-    <%= f.label :doctor %><br />
-    <%= f.text_field :doctor %>
-  </p>
-  <p>
-    <%= f.label :patient_id %><br />
-    <%= f.text_field :patient_id %>
-  </p>
-  <p>
-    <%= f.submit 'Update' %>
-  </p>
+   </table>
+  </tbody>
 <% end %>
 
 <%= link_to 'Show', @charge %> |

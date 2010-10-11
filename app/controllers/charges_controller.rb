@@ -145,8 +145,8 @@ class ChargesController < ApplicationController
         }           
 
                      
-        redirect_to "/patients/#{@charge.patient_id}"
-        #redirect_to "/patients"
+#        redirect_to "/patients/#{@charge.patient_id}"
+        redirect_to "/patients"
         
   end
 end
