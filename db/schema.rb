@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101005171326) do
+ActiveRecord::Schema.define(:version => 20101016170845) do
 
   create_table "charges", :force => true do |t|
     t.string   "procedure_name"
@@ -72,7 +72,8 @@ ActiveRecord::Schema.define(:version => 20101005171326) do
     t.boolean  "patient_been_seen"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "discharged", :default => false
+    t.boolean  "discharged"
+    t.datetime "date_last_added"
   end
 
   create_table "procedures", :force => true do |t|

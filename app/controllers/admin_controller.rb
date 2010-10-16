@@ -1,5 +1,7 @@
 class AdminController < ApplicationController
-      def index
+      def index  
+
+
         
       end
 
@@ -50,12 +52,16 @@ class AdminController < ApplicationController
                     :sex=>(item/"/F_SEX").inner_text,
                     :admitted=>(item/"/D_ADMS_PATN").inner_text,
                     :attending_md=>(item/"/N_PS_1").inner_text,
-                    
+                    #:patient_been_seen=>false,
+                    :date_last_added=>Time.now()
                   )
           if @patient.save
             logger.info {"@@@ Log: Patient #{(item/"/N_PATN").inner_text} was succesfully imported"}
             success_messages << "#{(item/"/N_PATN").inner_text} was succesfully imported"
           else 
+            @existing_patient=Patient.find_by_fin((item/"/I_ACCN").inner_text)
+            @existing_patient.update_attributes(:date_last_added=>Time.now())
+            @existing_patient.save
             logger.info {"@@@ Log: Patient #{(item/"/N_PATN").inner_text} already Exists" }
             failed_messages << "#{(item/"/N_PATN").inner_text} already Exists"
           end

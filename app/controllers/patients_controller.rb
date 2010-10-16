@@ -7,27 +7,30 @@ class PatientsController < ApplicationController
   # GET /patients
   # GET /patients.xml
   def index
-    
-    params.each{|i| logger.debug { "@@@@ => #{i}" } }
+     if Patient.all.length==0                                 
+       logger.debug("NO RECORDS")                            
+       redirect_to(:controller => "admin", :action => "index")       
+     else
+       params.each{|i| logger.debug { "@@@@ => #{i}" } }
 
-      @list = Patient.all(:select=>"DISTINCT facility")
+       @list = Patient.all(:select=>"DISTINCT facility")
 
-      logger.debug { "@@@ current_doctor => #{@current_doctor}" }
-      if params.has_key?(:search)
-        logger.debug { "SEARCH PRESENT" }
-        logger.debug { "" }
-        @search = Patient.search(:facility_contains=>params[:id])
-      else
-        @search = Patient.where(:facility=>@list[0].facility).search(params[:search]) 
-      end
-
+       logger.debug { "@@@ current_doctor => #{@current_doctor}" }
+       if params.has_key?(:search)
+         logger.debug { "SEARCH PRESENT" }
+         logger.debug { "" }
+         @search = Patient.search(:facility_contains=>params[:id])
+       else
+         @search = Patient.where(:facility=>@list[0].facility).search(params[:search]) 
+       end
       @patients = @search.all
 
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @patients }
     end
-  end
+  end 
+end
 
  
  def search
