@@ -47,6 +47,9 @@
 
   var myNotes= new Array();
   var procedureArray=[];
+  var chargeNote;
+  var calculatorTotal;
+  var optionalParams;
 
   $(document).ready(function(){
 
@@ -57,44 +60,52 @@
         if($(this).attr('noteRequired')=='true'){
           
           if(duplicateCheck(myNotes,valueToAdd)){
-            console.log("@@ Charge already in notes array");            
-             alert("This is a duplicate charge, check favorites, you may have double selected this one");
+              console.log("@@ Charge already in notes array");            
+              alert("This is a duplicate charge, check favorites, you may have double selected this one");
            }else{
              console.log("@@ Note required for this procedure");
              $("#inputNoteDialog").dialog({
                modal: true,
                 open: function(event, ui){     
                   $("#inputNoteDialog").attr('procedureId',valueToAdd);
-                  console.log("Opened Dialog Boxs");
+                  chargeNote = "";
+                  calculatorTotal = "";
+                  optionalParams = "";
                 },
                 beforeclose: function(event,ui){
                   var procedureId = $("#inputNoteDialog").attr("procedureId");
-                  var chargeNote = $("#chargeNote").val();
-                 myNotes[myNotes.length] = new Array(procedureId,chargeNote);
+                  var chargeNoteField = $("#chargeNote").val();
+
+                  chargeNotes = new Array(chargeNoteField,calculatorTotal,optionalParams);
+                  
+                  console.log("@@@ => {:calculatorTotal=>" + calculatorTotal+",:optionalParams=>"+optionalParams+",:chargeNoteField=>"+chargeNoteField+"}");
+                  console.log("@@@ [chargeNotes] Array =>" + chargeNotes);
+  
+                  myNotes[myNotes.length] = new Array(procedureId,chargeNotes);
                },
                close: function(event,ui){   
                 $("#inputNoteDialog").attr('procedureId',"");  // Clear Dialog
-                $("#chargeNote").val("");
+                $("#chargeNote").val(""); 
+                
                 console.log("Dialog Closed");   
                 $.each(myNotes, function(index, value) {
-                  console.log("@@@@ HASH VALUES =>" + index + ': ' + value[0] + " | " +value[1]);
+                  console.log("@@@@ HASH =>" + index + ': ' + value[0] + " | " +value[1]);
                 });
               }
           });
         }
       }
-         procedureArray.push(valueToAdd);
+          procedureArray.push(valueToAdd);
           console.log("Add => " + valueToAdd);
           $(this).css({'background-color' : 'green', 'font-weight' : 'bolder', 'color':'white'});
     },
     function(){
       var valueToDelete = $(this).attr("id").split('[')[1].split(']')[0]
-      procedureArray = $.grep(procedureArray, function(val) { return val != valueToDelete; });
-      console.log("@@@@ Deleting myNotes index["+valueToDelete+"]");
-      myNotes.splice([duplicateFind(myNotes,valueToDelete)]);
-
-        $(this).css({'background-color' : 'white', 'font-weight' : 'bolder', 'color':'black'});
-        console.log("Delete => " + valueToDelete);
+        procedureArray = $.grep(procedureArray, function(val) { return val != valueToDelete; });
+          console.log("@@@@ Deleting myNotes index["+valueToDelete+"]");
+          myNotes.splice([duplicateFind(myNotes,valueToDelete)]);
+          $(this).css({'background-color' : 'white', 'font-weight' : 'bolder', 'color':'black'});
+          console.log("Delete => " + valueToDelete);
       }
     )
     
@@ -105,25 +116,28 @@
     //   $('#data_to_post').attr("value",unique(procedureArray));
     //   });
     //                                
-    var number = "";
+    var calculatorTotal = "";
     
     // Set Calculator value
     $(".notesAttribute[name=number]").click(function(){
       var numericValue = parseFloat($(this).attr("value"));
       if (numericValue == parseFloat(numericValue)){
-          number = Number(number) + Number(numericValue);
-           console.log("@@@@ Total: " + number);
-           $("input[id=numericNoteValue]").val(number);
+          calculatorTotal = Number(calculatorTotal) + Number(numericValue);
+           console.log("@@@@ Total: " + calculatorTotal);
+           $("input[id=numericNoteValue]").val(calculatorTotal);
       }else{
         if(numericValue != parseFloat(numericValue)){
           console.log("Clear number var");
-          number = 0.0;
-          $("input[id=numericNoteValue]").val(number);
+          calculatorTotal = 0.0;
+          $("input[id=numericNoteValue]").val(calculatorTotal);
         }
       }
 
        //console.log("@@@@ " + testing);
 
+    });
+      $(".notesAttribute[name=parameter]").click(function(){
+       optionalParams = optionalParams +  $(this).attr("value");
     });
      });
     </script>
@@ -141,12 +155,13 @@
             <% end %>
             <tr class="procedure_list_toggled_area">
               <td>
-                <input type="hidden" id="data_to_post" name="procedure_ids" value=""> 
                 
                 <!-- <%= submit_tag 'Add', :class => 'search_form'  %>-->
               </td>
             </tr>
-          </table>
+          </table>   
+          <input type="hidden" id="data_to_post" name="procedure_ids" value=""> 
+          
         <% end %>
 
         <div id="inputNoteDialog" title="Add Note" procedureId="" style="display:none"> 
@@ -162,11 +177,11 @@
 
               <input type="text" readonly="true" id="numericNoteValue" size="2"><br><br>
               
-              <a href="#" id="form_left" class="notesAttribute regular" onclick='return false;'>Left</a>
-              <a href="#" id="form_right" class="notesAttribute regular" onclick='return false;'>Right</a>
-              <a href="#" id="form_biLat" class="notesAttribute regular" onclick='return false;'>Bi-Lat</a><br><br>
-              <a href="#" id="form_regular" class="notesAttribute regular" onclick='return false;'>Reg</a>
-              <a href="#" class="notesAttribute negative" onclick='return false;'>Cancel</a>
+              <a href="#" id="form_left" class="notesAttribute regular" name="parameter" value="[left]" onclick='return false;'>Left</a>
+              <a href="#" id="form_right" class="notesAttribute regular" name="parameter" value="[right]" onclick='return false;'>Right</a>
+              <a href="#" id="form_biLat" class="notesAttribute regular" name="parameter" value="[bi-lateral]" onclick='return false;'>Bi-Lat</a><br><br>
+              <a href="#" id="form_regular" class="notesAttribute regular" name="parameter" value="[regular]" onclick='return false;'>Reg</a>
+              <!-- <a href="#" class="notesAttribute negative" onclick='return false;'>Cancel</a> -->
           </div>
 
         </div>

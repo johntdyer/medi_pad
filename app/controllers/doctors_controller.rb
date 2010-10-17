@@ -71,12 +71,8 @@ class DoctorsController < ApplicationController
   def update
     logger.info("@@@@ #{params[:procedure_code]}")
     @doctor = current_doctor
-#    @test = Test.find_by_guid(params[:CallGuid])
-#    @test.update_attributes(:call_status=>"Recording Audio")
     
     @doctor = current_doctor
-
-   # count_favorites(params[:procedure_ids],@doctor)
 
     respond_to do |format|
       if @doctor.update_attributes(params[:doctor])

@@ -1,6 +1,6 @@
 class ChargesController < ApplicationController
   
-    before_filter :require_doctor
+  #s  before_filter :require_doctor
       require 'json'
   
   
@@ -105,17 +105,20 @@ class ChargesController < ApplicationController
   def add      
     @procedure_ids = params[:procedure_ids].to_s.split(',')
     @charge_notes = ActiveSupport::JSON.decode(params[:myNotes])
-    logger.debug("### ====>  #{@charge_notes}")
+    #.split("],["))
     #.split('],[')
     @doctor=cookies[:doctor]
-     
-    @charge_notes.split("\"], [\"").each_with_index { |v,i| 
-         logger.debug {" @charge_notes [0] => #{v[0]} "}
-         logger.debug {" @charge_notes [1] => #{v[1]} "}
-       }
-       
-              
-    logger.info { "Cookie: Doctor Name=> #{@doctor}" }    
+
+    logger.debug("@@ Count => #{@charge_notes.count}") 
+        
+      @charge_notes.each do | item | 
+        logger.debug {" Procedure.id => #{item[0]} "}
+            logger.debug {" \t Note => #{item[1][0]} "}
+            logger.debug {" \t Count=> #{item[1][1]} "}
+            logger.debug {" \t Param=> #{item[1][2]} "}
+      end 
+
+    logger.info { "Cookie: Doctor Name=> #{@doctor}" }
     logger.info { "procedure_ids : #{@procedure_ids.inspect}" }
 
     #Change patient_been_seen flag to true

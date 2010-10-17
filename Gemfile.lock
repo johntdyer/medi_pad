@@ -1,4 +1,10 @@
 GIT
+  remote: http://github.com/FooBarWidget/default_value_for.git
+  revision: 2a8c57c6a1a4f9e3cff412e43ae737557e0a55a6
+  specs:
+    default_value_for (1.0.0)
+
+GIT
   remote: http://github.com/binarylogic/authlogic.git
   revision: 66ed79515919fe13016911b10ebe734cf8718dc7
   specs:
@@ -95,6 +101,7 @@ PLATFORMS
 DEPENDENCIES
   authlogic!
   awesome_print!
+  default_value_for!
   hpricot
   json
   meta_search

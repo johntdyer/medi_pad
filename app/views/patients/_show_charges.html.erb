@@ -13,14 +13,13 @@
       </tr>
     </thead>
 
-    <%= charges.in_groups_of(2,false) do |c| %>
+    <%= get_unarchived_charges(charges).in_groups_of(2,false) do |c| %>
     <tr class="show_charges_toggled_area">
         <% c.each do |charge| %>
             <!-- Pulled from charges_helper -->
             <% get_info(charge.procedure_code).each do |i| %>
               <td id="charge_code[<%=charge %>]" class="charge"><%=	i.procedure_name %></td>
-            <% end %>
-            
+            <% end %>            
               <td id="charge_code[<%=charge.id %>]" class="charge"><%=charge.doctor %></td>
               <input id="charge_code[<%=charge.id %>]" type="hidden" name="_method" value="charge_code[<%=charge.id %>]"/>   
               <td><%= link_to(image_tag("delete.png"), charge, :confirm => "Are you sure?", :method => :delete) %>

@@ -52,6 +52,19 @@ module PatientsHelper
   def lookup_procedure_code(p)
     @id =Procedure.find_by_procedure_code(p)
     return @id
+  end             
+  
+  # We dont want to show charges associated with a patient that have been archived 
+  def get_unarchived_charges(charges)
+    current_charges =[]
+      charges.each do | charge | 
+        if !charge.is_archived   
+          logger.debug("Live Charge #{charge.procedure_name}")
+          current_charges<<charge
+        end
+      end
+      return current_charges
   end
+  
 end
 

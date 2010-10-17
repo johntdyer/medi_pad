@@ -7,4 +7,6 @@ module ChargesHelper
 	def lookup_procedure_name(procedure_code)
 	  @procedure =  Procedure.all(:conditions => { :procedure_code => procedure_code })
 	end
+	
+	
 end
