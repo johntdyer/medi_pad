@@ -1,5 +1,7 @@
-<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
-<link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="stylesheet" type="text/css"/>
+<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>                                 
+
+<%= stylesheet_link_tag "jquery-ui-1.8.5.custom.css" %>
+<%= stylesheet_link_tag "new_charge.css" %>
 
   <%= form_tag add_charges_path,:id=>'new_charge', :method => :put do %>
     <% @procedure_list = Procedure.find(:all, :order => "procedure_name") %>
@@ -66,11 +68,14 @@
              console.log("@@ Note required for this procedure");
              $("#inputNoteDialog").dialog({
                modal: true,
+               position:'left',
+               resizable: false,
                 open: function(event, ui){     
                   $("#inputNoteDialog").attr('procedureId',valueToAdd);
                   chargeNote = "";
                   calculatorTotal = "";
                   optionalParams = "";
+
                 },
                 beforeclose: function(event,ui){
                   var procedureId = $("#inputNoteDialog").attr("procedureId");
@@ -87,7 +92,7 @@
                 $("#inputNoteDialog").attr('procedureId',"");  // Clear Dialog
                 $("#chargeNote").val(""); 
                 
-                console.log("Dialog Closed");   
+                console.log("@@@ Notes window closed");   
                 $.each(myNotes, function(index, value) {
                   console.log("@@@@ HASH =>" + index + ': ' + value[0] + " | " +value[1]);
                 });
@@ -105,20 +110,15 @@
           console.log("@@@@ Deleting myNotes index["+valueToDelete+"]");
           myNotes.splice([duplicateFind(myNotes,valueToDelete)]);
           $(this).css({'background-color' : 'white', 'font-weight' : 'bolder', 'color':'black'});
-          console.log("Delete => " + valueToDelete);
       }
     )
-    
-    // Submit 
 
-    // $('.search_form').click(function(){
-    //  console.log("@@@ " + unique(procedureArray));
-    //   $('#data_to_post').attr("value",unique(procedureArray));
-    //   });
-    //                                
-    var calculatorTotal = "";
+    // Dialog box cancle button closes window
+    $("#closeNotesWindow").click(function(){ $("#inputNoteDialog").dialog('close'); });
     
-    // Set Calculator value
+    
+    // Set Calculator value    
+    var calculatorTotal = "";
     $(".notesAttribute[name=number]").click(function(){
       var numericValue = parseFloat($(this).attr("value"));
       if (numericValue == parseFloat(numericValue)){
@@ -137,8 +137,13 @@
 
     });
       $(".notesAttribute[name=parameter]").click(function(){
-       optionalParams = optionalParams +  $(this).attr("value");
+        optionalParams = $(this).attr("value");
+        console.log("@@@ SELECTED => " + optionalParams);
     });
+
+
+
+
      });
     </script>
 
@@ -166,6 +171,35 @@
 
         <div id="inputNoteDialog" title="Add Note" procedureId="" style="display:none"> 
 
+            
+   
+
+<script type="text/javascript"> 
+	$(function(){
+		//all hover and click logic for buttons
+		$(".fg-button:not(.ui-state-disabled)")
+		.hover(
+			function(){ 
+				$(this).addClass("ui-state-hover"); 
+			},
+			function(){ 
+				$(this).removeClass("ui-state-hover"); 
+			}
+		)
+		.mousedown(function(){
+				$(this).parents('.fg-buttonset-single:first').find(".fg-button.ui-state-active").removeClass("ui-state-active");
+				if( $(this).is('.ui-state-active.fg-button-toggleable, .fg-buttonset-multi .ui-state-active') ){ $(this).removeClass("ui-state-active"); }
+				else { $(this).addClass("ui-state-active"); }	
+		})
+		.mouseup(function(){
+			if(! $(this).is('.fg-button-toggleable, .fg-buttonset-single .fg-button,  .fg-buttonset-multi .fg-button') ){
+				$(this).removeClass("ui-state-active");
+			}
+		});
+	});
+</script>
+
+
           <textarea cols="0" rows="0" id="chargeNote" ></textarea>
           <div class="buttons">
 
@@ -176,12 +210,19 @@
               <a href="#" id="form_clr" class="notesAttribute positive" name="number" value="clr"  onclick='return false;'>clr</a>
 
               <input type="text" readonly="true" id="numericNoteValue" size="2"><br><br>
-              
-              <a href="#" id="form_left" class="notesAttribute regular" name="parameter" value="[left]" onclick='return false;'>Left</a>
-              <a href="#" id="form_right" class="notesAttribute regular" name="parameter" value="[right]" onclick='return false;'>Right</a>
-              <a href="#" id="form_biLat" class="notesAttribute regular" name="parameter" value="[bi-lateral]" onclick='return false;'>Bi-Lat</a><br><br>
-              <a href="#" id="form_regular" class="notesAttribute regular" name="parameter" value="[regular]" onclick='return false;'>Reg</a>
-              <!-- <a href="#" class="notesAttribute negative" onclick='return false;'>Cancel</a> -->
+
+
+              <div class="fg-buttonset fg-buttonset-single"> 
+              	<button id="form_left" class="notesAttribute regular fg-button ui-state-default ui-priority-primary ui-corner-left" name="parameter" value="[left]">Left</button> 
+              	<button id="form_right" class="notesAttribute regular fg-button ui-state-default ui-priority-primary" name="parameter" value="[right]">Right</button> 
+              	<button id="form_biLat" class="notesAttribute regular fg-button ui-state-default ui-priority-primary" name="parameter" value="[bi-lateral]">Bi-Lat</button> 
+              	<button id="form_regular" class="notesAttribute regular fg-button ui-state-default ui-priority-primary ui-corner-right" name="parameter" value="[regular]">Regular</button> 
+              </div>
+
+
+
+
+              <a href="#" id="closeNotesWindow" class="notesAttribute negative" onclick='return false;'>Cancel</a> 
           </div>
 
         </div>
