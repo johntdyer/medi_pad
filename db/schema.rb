@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101016170845) do
+ActiveRecord::Schema.define(:version => 20101017170951) do
 
   create_table "charges", :force => true do |t|
     t.string   "procedure_name"
@@ -54,6 +54,15 @@ ActiveRecord::Schema.define(:version => 20101016170845) do
     t.string   "patient_data_content_type"
     t.integer  "patient_data_file_size"
     t.datetime "patient_data_updated_at"
+  end
+
+  create_table "notes", :force => true do |t|
+    t.float    "count"
+    t.string   "parameter"
+    t.string   "descriptive_data"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "charge_id"
   end
 
   create_table "patients", :force => true do |t|

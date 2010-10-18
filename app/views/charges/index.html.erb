@@ -1,34 +1,41 @@
 <table class='stripeMe' border=1 style="width: 400px; margin-left: 10px;">
 	<caption>Charges</caption>
-	
+  <%= link_to "Home", "/home"  %> 
+ 
   <thead>
     <tr class='odd'>
-    <th>Procedure name</th>
-    <th>Procedure code</th>
-    <th>Doctor</th>
     <th>Patient</th>
+    <th>Procedure name</th>
+    <th>Doctor</th>
+    <th>Addtnl Data</th>
     <th>Date</th>
-    <th></th>
-    <th></th>
-    <th></th>
-    
   </tr>
 </thead>
 <tbody>
 <% @charges.each do |charge| %>
   <tr>
-    <% get_info(charge.procedure_code).each do |i| %>
-      <td><%=	i.procedure_name %></td>
-    <%end %>
-    
-    <td><%=h charge.procedure_code %></td>
+    <td><%=h charge.patient_name %></td>
+      <% get_info(charge.procedure_code).each do |i| %>
+    <td><%=	i.procedure_name %></td>
+      <%end %>    
     <td><%=h charge.doctor %></td>
-    <td><%=h charge.patient_id %></td>
-    <td><%=h charge.created_at %></td>
-    
+    <% if charge.note %>
+    <td>
+      <%=h charge.note.count  %>
+      <%=h charge.note.parameter  %>
+      <%=h charge.note.descriptive_data %>
+    </td> 
+    <% else %>
+    <td/>
+    <% end %>
+    <td><%=h charge.created_at.strftime("%m/%d/%Y  %I:%M%p")  %></td>
+
+<!--
     <td><%= link_to image_tag("find.png", :border=>0),charge %></td>
     <td><%= link_to image_tag("edit.png", :border=>0),edit_charge_path(charge) %></td>
     <td><%= link_to image_tag("delete.png", :border=>0),charge, :confirm => 'Are you sure?', :method => :delete %></td>
+-->
+
   </tr>
 <% end %>
 </table>

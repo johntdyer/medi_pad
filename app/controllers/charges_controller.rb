@@ -1,6 +1,6 @@
 class ChargesController < ApplicationController
   
-  #s  before_filter :require_doctor
+before_filter :require_doctor
       require 'json'
   
   
@@ -100,38 +100,23 @@ class ChargesController < ApplicationController
 
     redirect_to "/reports"
   end
-  
-  
-  def add      
+
+  def add
     @procedure_ids = params[:procedure_ids].to_s.split(',')
     @charge_notes = ActiveSupport::JSON.decode(params[:myNotes])
-    #.split("],["))
-    #.split('],[')
-    @doctor=cookies[:doctor]
 
-    logger.debug("@@ Count => #{@charge_notes.count}") 
-        
-      @charge_notes.each do | item | 
-        logger.debug {" Procedure.id => #{item[0]} "}
-            logger.debug {" \t Note => #{item[1][0]} "}
-            logger.debug {" \t Count=> #{item[1][1]} "}
-            logger.debug {" \t Param=> #{item[1][2]} "}
-      end 
+    @doctor=cookies[:doctor]
 
     logger.info { "Cookie: Doctor Name=> #{@doctor}" }
     logger.info { "procedure_ids : #{@procedure_ids.inspect}" }
 
-    #Change patient_been_seen flag to true
     @patient=Patient.find(params[:patient_id])
-    @patient.update_attributes :patient_been_seen => true
+    @patient.update_attributes :patient_been_seen => true #Change patient_been_seen flag to true
 
       @procedure_ids.each_with_index { | i,count | 
         @procedure=Procedure.find(i)
-        logger.debug { "" }*3
-        logger.debug { "@@@@ => #{@procedure.inspect}" }
-#        logger.debug { "@@@@ Notes => #{@charge_notes[i]}" }        
         logger.debug "#{@doctor} Has charged a #{@procedure.procedure_name} => [Code:#{@procedure.procedure_code}]" 
-        
+
         @charge = Charge.new(
               :doctor => @doctor, 
               :fin=>@patient.fin,
@@ -140,16 +125,21 @@ class ChargesController < ApplicationController
               :procedure_code => @procedure.procedure_code, 
               :patient_id => params[:patient_id],
               :is_archived=>false
-              #,:note=>@charge_notes.split('], [')[count][1]
               )
-              
+
         @charge.save
         
-        }           
+        if  @charge_notes[count].nil?  
+          logger.debug {"\t Charge has no notes; Nothing to do here, carry on carry on"}
+        else
+          logger.debug {" Procedure.id => #{@charge_notes[count][0]} "}
+          logger.debug {" \t Note => #{@charge_notes[count][1][0]} "}
+          logger.debug {" \t Count=> #{@charge_notes[count][1][1]} "}
+          logger.debug {" \t Param=> #{@charge_notes[count][1][2]} "} 
+          Note.create(:descriptive_data=>@charge_notes[count][1][0],:count=>@charge_notes[count][1][1],:parameter=>@charge_notes[count][1][2],:charge=>@charge)
+        end
+        }
 
-                     
-#        redirect_to "/patients/#{@charge.patient_id}"
         redirect_to "/patients"
-        
   end
 end

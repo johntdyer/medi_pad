@@ -1,0 +1,11 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  count: 1.5
+  parameter: MyString
+  descriptive_data: MyString
+
+two:
+  count: 1.5
+  parameter: MyString
+  descriptive_data: MyString
