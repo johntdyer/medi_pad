@@ -31614,3 +31614,222 @@ DEPRECATION WARNING: save(false) is deprecated, please give save(:validate => fa
 Rendered reports/_charges.erb (8.0ms)
 Rendered reports/index.html.erb within layouts/reports (15.4ms)
 Completed 200 OK in 69ms (Views: 19.4ms | ActiveRecord: 1.6ms)
+DEPRECATION WARNING: Use toplevel init.rb; rails/init.rb is deprecated: /Users/dyer/Dropbox/Development/medi_pad/vendor/plugins/paperclip/rails/init.rb. (called from /Users/dyer/Dropbox/Development/medi_pad/config/environment.rb:5)
+DEPRECATION WARNING: ActionController::Base.cookie_verifier_secret= is deprecated. Please configure it on your application with config.secret_token=. (called from /Users/dyer/Dropbox/Development/medi_pad/config/initializers/cookie_verification_secret.rb:7)
+
+
+Started GET "/reports" for 127.0.0.1 at Mon Oct 18 23:41:15 -0400 2010
+  Processing by ReportsController#index as HTML
+DEPRECATION WARNING: Base.named_scope has been deprecated, please use Base.scope instead. (called from included at /Users/dyer/.rvm/gems/ree-1.8.7-2010.02/bundler/gems/authlogic-66ed79515919/lib/authlogic/acts_as_authentic/logged_in_status.rb:35)
+DEPRECATION WARNING: Base.named_scope has been deprecated, please use Base.scope instead. (called from included at /Users/dyer/.rvm/gems/ree-1.8.7-2010.02/bundler/gems/authlogic-66ed79515919/lib/authlogic/acts_as_authentic/logged_in_status.rb:36)
+  [1m[36mDoctor Load (0.2ms)[0m  [1mSELECT "doctors".* FROM "doctors" WHERE ("doctors"."id" = 1) LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "doctors".* FROM "doctors" WHERE ("doctors"."id" = 1) LIMIT 1
+DEPRECATION WARNING: save(false) is deprecated, please give save(:validate => false) instead. (called from save_without_session_maintenance at /Users/dyer/.rvm/gems/ree-1.8.7-2010.02/bundler/gems/authlogic-66ed79515919/lib/authlogic/acts_as_authentic/session_maintenance.rb:73)
+  [1m[36mSQL (0.4ms)[0m  [1mUPDATE "doctors" SET "last_request_at" = '2010-10-19 03:41:15.370048', "perishable_token" = 'ZjaUjm8XkhFGf4BwcKvS', "updated_at" = '2010-10-19 03:41:15.370918' WHERE ("doctors"."id" = 1)[0m
+  [1m[35mCharge Load (1.0ms)[0m  SELECT "charges".* FROM "charges"
+Rendered reports/_charges.erb (11.4ms)
+Rendered reports/index.html.erb within layouts/reports (21.8ms)
+Completed 200 OK in 95ms (Views: 27.5ms | ActiveRecord: 2.1ms)
+
+
+Started POST "/charges/update_charge_status" for 127.0.0.1 at Mon Oct 18 23:41:20 -0400 2010
+  Processing by ChargesController#update_charge_status as */*
+  Parameters: {"charge_status"=>"true", "charge_id"=>"388"}
+DEPRECATION WARNING: Base.named_scope has been deprecated, please use Base.scope instead. (called from included at /Users/dyer/.rvm/gems/ree-1.8.7-2010.02/bundler/gems/authlogic-66ed79515919/lib/authlogic/acts_as_authentic/logged_in_status.rb:35)
+DEPRECATION WARNING: Base.named_scope has been deprecated, please use Base.scope instead. (called from included at /Users/dyer/.rvm/gems/ree-1.8.7-2010.02/bundler/gems/authlogic-66ed79515919/lib/authlogic/acts_as_authentic/logged_in_status.rb:36)
+  [1m[36mDoctor Load (0.2ms)[0m  [1mSELECT "doctors".* FROM "doctors" WHERE ("doctors"."id" = 1) LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "doctors".* FROM "doctors" WHERE ("doctors"."id" = 1) LIMIT 1
+DEPRECATION WARNING: save(false) is deprecated, please give save(:validate => false) instead. (called from save_without_session_maintenance at /Users/dyer/.rvm/gems/ree-1.8.7-2010.02/bundler/gems/authlogic-66ed79515919/lib/authlogic/acts_as_authentic/session_maintenance.rb:73)
+  [1m[36mSQL (0.3ms)[0m  [1mUPDATE "doctors" SET "last_request_at" = '2010-10-19 03:41:20.368724', "perishable_token" = 'xGhLWduNuNKhH21u2Rvq', "updated_at" = '2010-10-19 03:41:20.369343' WHERE ("doctors"."id" = 1)[0m
+
+
+
+	Charge Status => true
+	Charge ID => 388
+
+
+  [1m[35mCharge Load (0.2ms)[0m  SELECT "charges".* FROM "charges" WHERE ("charges"."id" = 388) LIMIT 1
+  [1m[36mSQL (0.4ms)[0m  [1mUPDATE "charges" SET "recorded" = 't', "updated_at" = '2010-10-19 03:41:20.390820' WHERE ("charges"."id" = 388)[0m
+Redirected to http://localhost:3000/reports
+Completed 302 Found in 131ms
+
+
+Started GET "/reports" for 127.0.0.1 at Mon Oct 18 23:41:20 -0400 2010
+  Processing by ReportsController#index as */*
+DEPRECATION WARNING: Base.named_scope has been deprecated, please use Base.scope instead. (called from included at /Users/dyer/.rvm/gems/ree-1.8.7-2010.02/bundler/gems/authlogic-66ed79515919/lib/authlogic/acts_as_authentic/logged_in_status.rb:35)
+DEPRECATION WARNING: Base.named_scope has been deprecated, please use Base.scope instead. (called from included at /Users/dyer/.rvm/gems/ree-1.8.7-2010.02/bundler/gems/authlogic-66ed79515919/lib/authlogic/acts_as_authentic/logged_in_status.rb:36)
+  [1m[35mDoctor Load (0.2ms)[0m  SELECT "doctors".* FROM "doctors" WHERE ("doctors"."id" = 1) LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "doctors".* FROM "doctors" WHERE ("doctors"."id" = 1) LIMIT 1[0m
+DEPRECATION WARNING: save(false) is deprecated, please give save(:validate => false) instead. (called from save_without_session_maintenance at /Users/dyer/.rvm/gems/ree-1.8.7-2010.02/bundler/gems/authlogic-66ed79515919/lib/authlogic/acts_as_authentic/session_maintenance.rb:73)
+  [1m[35mSQL (0.4ms)[0m  UPDATE "doctors" SET "last_request_at" = '2010-10-19 03:41:20.485537', "perishable_token" = 'L9Ulivz9XjTvs1pERf5E', "updated_at" = '2010-10-19 03:41:20.486551' WHERE ("doctors"."id" = 1)
+  [1m[36mCharge Load (0.9ms)[0m  [1mSELECT "charges".* FROM "charges"[0m
+Rendered reports/_charges.erb (1.3ms)
+Completed 200 OK in 79ms (Views: 7.5ms | ActiveRecord: 1.8ms)
+
+
+Started POST "/charges/update_charge_status" for 127.0.0.1 at Mon Oct 18 23:41:21 -0400 2010
+  Processing by ChargesController#update_charge_status as */*
+  Parameters: {"charge_status"=>"false", "charge_id"=>"388"}
+DEPRECATION WARNING: Base.named_scope has been deprecated, please use Base.scope instead. (called from included at /Users/dyer/.rvm/gems/ree-1.8.7-2010.02/bundler/gems/authlogic-66ed79515919/lib/authlogic/acts_as_authentic/logged_in_status.rb:35)
+DEPRECATION WARNING: Base.named_scope has been deprecated, please use Base.scope instead. (called from included at /Users/dyer/.rvm/gems/ree-1.8.7-2010.02/bundler/gems/authlogic-66ed79515919/lib/authlogic/acts_as_authentic/logged_in_status.rb:36)
+  [1m[35mDoctor Load (0.3ms)[0m  SELECT "doctors".* FROM "doctors" WHERE ("doctors"."id" = 1) LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "doctors".* FROM "doctors" WHERE ("doctors"."id" = 1) LIMIT 1[0m
+DEPRECATION WARNING: save(false) is deprecated, please give save(:validate => false) instead. (called from save_without_session_maintenance at /Users/dyer/.rvm/gems/ree-1.8.7-2010.02/bundler/gems/authlogic-66ed79515919/lib/authlogic/acts_as_authentic/session_maintenance.rb:73)
+  [1m[35mSQL (0.4ms)[0m  UPDATE "doctors" SET "last_request_at" = '2010-10-19 03:41:21.218548', "perishable_token" = 'Zf1ojHB37wvWmXZxbTcz', "updated_at" = '2010-10-19 03:41:21.219229' WHERE ("doctors"."id" = 1)
+
+
+
+	Charge Status => false
+	Charge ID => 388
+
+
+  [1m[36mCharge Load (0.3ms)[0m  [1mSELECT "charges".* FROM "charges" WHERE ("charges"."id" = 388) LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  UPDATE "charges" SET "recorded" = 'f', "updated_at" = '2010-10-19 03:41:21.245347' WHERE ("charges"."id" = 388)
+Redirected to http://localhost:3000/reports
+Completed 302 Found in 167ms
+
+
+Started GET "/reports" for 127.0.0.1 at Mon Oct 18 23:41:21 -0400 2010
+  Processing by ReportsController#index as */*
+DEPRECATION WARNING: Base.named_scope has been deprecated, please use Base.scope instead. (called from included at /Users/dyer/.rvm/gems/ree-1.8.7-2010.02/bundler/gems/authlogic-66ed79515919/lib/authlogic/acts_as_authentic/logged_in_status.rb:35)
+DEPRECATION WARNING: Base.named_scope has been deprecated, please use Base.scope instead. (called from included at /Users/dyer/.rvm/gems/ree-1.8.7-2010.02/bundler/gems/authlogic-66ed79515919/lib/authlogic/acts_as_authentic/logged_in_status.rb:36)
+  [1m[36mDoctor Load (0.2ms)[0m  [1mSELECT "doctors".* FROM "doctors" WHERE ("doctors"."id" = 1) LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "doctors".* FROM "doctors" WHERE ("doctors"."id" = 1) LIMIT 1
+DEPRECATION WARNING: save(false) is deprecated, please give save(:validate => false) instead. (called from save_without_session_maintenance at /Users/dyer/.rvm/gems/ree-1.8.7-2010.02/bundler/gems/authlogic-66ed79515919/lib/authlogic/acts_as_authentic/session_maintenance.rb:73)
+  [1m[36mSQL (0.3ms)[0m  [1mUPDATE "doctors" SET "last_request_at" = '2010-10-19 03:41:21.331389', "perishable_token" = '8VKiPOc8ukbzrHUr7cuA', "updated_at" = '2010-10-19 03:41:21.332047' WHERE ("doctors"."id" = 1)[0m
+  [1m[35mCharge Load (0.6ms)[0m  SELECT "charges".* FROM "charges"
+Rendered reports/_charges.erb (0.7ms)
+Completed 200 OK in 60ms (Views: 5.5ms | ActiveRecord: 1.3ms)
+
+
+Started POST "/charges/update_charge_status" for 127.0.0.1 at Mon Oct 18 23:41:23 -0400 2010
+  Processing by ChargesController#update_charge_status as */*
+  Parameters: {"charge_status"=>"true", "charge_id"=>"388"}
+DEPRECATION WARNING: Base.named_scope has been deprecated, please use Base.scope instead. (called from included at /Users/dyer/.rvm/gems/ree-1.8.7-2010.02/bundler/gems/authlogic-66ed79515919/lib/authlogic/acts_as_authentic/logged_in_status.rb:35)
+DEPRECATION WARNING: Base.named_scope has been deprecated, please use Base.scope instead. (called from included at /Users/dyer/.rvm/gems/ree-1.8.7-2010.02/bundler/gems/authlogic-66ed79515919/lib/authlogic/acts_as_authentic/logged_in_status.rb:36)
+  [1m[36mDoctor Load (0.3ms)[0m  [1mSELECT "doctors".* FROM "doctors" WHERE ("doctors"."id" = 1) LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "doctors".* FROM "doctors" WHERE ("doctors"."id" = 1) LIMIT 1
+DEPRECATION WARNING: save(false) is deprecated, please give save(:validate => false) instead. (called from save_without_session_maintenance at /Users/dyer/.rvm/gems/ree-1.8.7-2010.02/bundler/gems/authlogic-66ed79515919/lib/authlogic/acts_as_authentic/session_maintenance.rb:73)
+  [1m[36mSQL (0.3ms)[0m  [1mUPDATE "doctors" SET "last_request_at" = '2010-10-19 03:41:23.838829', "perishable_token" = 'pnwAlbAtG0WzVfAg', "updated_at" = '2010-10-19 03:41:23.839413' WHERE ("doctors"."id" = 1)[0m
+
+
+
+	Charge Status => true
+	Charge ID => 388
+
+
+  [1m[35mCharge Load (0.3ms)[0m  SELECT "charges".* FROM "charges" WHERE ("charges"."id" = 388) LIMIT 1
+  [1m[36mSQL (0.3ms)[0m  [1mUPDATE "charges" SET "recorded" = 't', "updated_at" = '2010-10-19 03:41:23.944794' WHERE ("charges"."id" = 388)[0m
+Redirected to http://localhost:3000/reports
+Completed 302 Found in 143ms
+
+
+Started GET "/reports" for 127.0.0.1 at Mon Oct 18 23:41:23 -0400 2010
+  Processing by ReportsController#index as */*
+DEPRECATION WARNING: Base.named_scope has been deprecated, please use Base.scope instead. (called from included at /Users/dyer/.rvm/gems/ree-1.8.7-2010.02/bundler/gems/authlogic-66ed79515919/lib/authlogic/acts_as_authentic/logged_in_status.rb:35)
+DEPRECATION WARNING: Base.named_scope has been deprecated, please use Base.scope instead. (called from included at /Users/dyer/.rvm/gems/ree-1.8.7-2010.02/bundler/gems/authlogic-66ed79515919/lib/authlogic/acts_as_authentic/logged_in_status.rb:36)
+  [1m[35mDoctor Load (0.3ms)[0m  SELECT "doctors".* FROM "doctors" WHERE ("doctors"."id" = 1) LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "doctors".* FROM "doctors" WHERE ("doctors"."id" = 1) LIMIT 1[0m
+DEPRECATION WARNING: save(false) is deprecated, please give save(:validate => false) instead. (called from save_without_session_maintenance at /Users/dyer/.rvm/gems/ree-1.8.7-2010.02/bundler/gems/authlogic-66ed79515919/lib/authlogic/acts_as_authentic/session_maintenance.rb:73)
+  [1m[35mSQL (0.3ms)[0m  UPDATE "doctors" SET "last_request_at" = '2010-10-19 03:41:24.035089', "perishable_token" = 'bBdXHfNY303kBzVZMp', "updated_at" = '2010-10-19 03:41:24.036045' WHERE ("doctors"."id" = 1)
+  [1m[36mCharge Load (1.0ms)[0m  [1mSELECT "charges".* FROM "charges"[0m
+Rendered reports/_charges.erb (0.5ms)
+Completed 200 OK in 72ms (Views: 6.3ms | ActiveRecord: 1.9ms)
+
+
+Started GET "/reports" for 127.0.0.1 at Mon Oct 18 23:44:17 -0400 2010
+  Processing by ReportsController#index as HTML
+DEPRECATION WARNING: Base.named_scope has been deprecated, please use Base.scope instead. (called from included at /Users/dyer/.rvm/gems/ree-1.8.7-2010.02/bundler/gems/authlogic-66ed79515919/lib/authlogic/acts_as_authentic/logged_in_status.rb:35)
+DEPRECATION WARNING: Base.named_scope has been deprecated, please use Base.scope instead. (called from included at /Users/dyer/.rvm/gems/ree-1.8.7-2010.02/bundler/gems/authlogic-66ed79515919/lib/authlogic/acts_as_authentic/logged_in_status.rb:36)
+  [1m[35mDoctor Load (0.2ms)[0m  SELECT "doctors".* FROM "doctors" WHERE ("doctors"."id" = 1) LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "doctors".* FROM "doctors" WHERE ("doctors"."id" = 1) LIMIT 1[0m
+DEPRECATION WARNING: save(false) is deprecated, please give save(:validate => false) instead. (called from save_without_session_maintenance at /Users/dyer/.rvm/gems/ree-1.8.7-2010.02/bundler/gems/authlogic-66ed79515919/lib/authlogic/acts_as_authentic/session_maintenance.rb:73)
+  [1m[35mSQL (0.3ms)[0m  UPDATE "doctors" SET "last_request_at" = '2010-10-19 03:44:18.028660', "perishable_token" = 'iV1h4hy0uNcQAgoY5s8B', "updated_at" = '2010-10-19 03:44:18.029439' WHERE ("doctors"."id" = 1)
+  [1m[36mCharge Load (0.6ms)[0m  [1mSELECT "charges".* FROM "charges"[0m
+Rendered reports/_charges.erb (12.2ms)
+Rendered reports/index.html.erb within layouts/reports (21.4ms)
+Completed 200 OK in 75ms (Views: 26.0ms | ActiveRecord: 1.3ms)
+
+
+Started POST "/charges/update_charge_status" for 127.0.0.1 at Mon Oct 18 23:44:21 -0400 2010
+  Processing by ChargesController#update_charge_status as */*
+  Parameters: {"charge_status"=>"false", "charge_id"=>"383"}
+DEPRECATION WARNING: Base.named_scope has been deprecated, please use Base.scope instead. (called from included at /Users/dyer/.rvm/gems/ree-1.8.7-2010.02/bundler/gems/authlogic-66ed79515919/lib/authlogic/acts_as_authentic/logged_in_status.rb:35)
+DEPRECATION WARNING: Base.named_scope has been deprecated, please use Base.scope instead. (called from included at /Users/dyer/.rvm/gems/ree-1.8.7-2010.02/bundler/gems/authlogic-66ed79515919/lib/authlogic/acts_as_authentic/logged_in_status.rb:36)
+  [1m[35mDoctor Load (0.2ms)[0m  SELECT "doctors".* FROM "doctors" WHERE ("doctors"."id" = 1) LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "doctors".* FROM "doctors" WHERE ("doctors"."id" = 1) LIMIT 1[0m
+DEPRECATION WARNING: save(false) is deprecated, please give save(:validate => false) instead. (called from save_without_session_maintenance at /Users/dyer/.rvm/gems/ree-1.8.7-2010.02/bundler/gems/authlogic-66ed79515919/lib/authlogic/acts_as_authentic/session_maintenance.rb:73)
+  [1m[35mSQL (0.3ms)[0m  UPDATE "doctors" SET "last_request_at" = '2010-10-19 03:44:21.545476', "perishable_token" = 'tsIQS50hRtPjB62R04', "updated_at" = '2010-10-19 03:44:21.546076' WHERE ("doctors"."id" = 1)
+
+
+
+	Charge Status => false
+	Charge ID => 383
+
+
+  [1m[36mCharge Load (0.2ms)[0m  [1mSELECT "charges".* FROM "charges" WHERE ("charges"."id" = 383) LIMIT 1[0m
+  [1m[35mSQL (0.4ms)[0m  UPDATE "charges" SET "recorded" = 'f', "updated_at" = '2010-10-19 03:44:21.566703' WHERE ("charges"."id" = 383)
+Redirected to http://localhost:3000/reports
+Completed 302 Found in 64ms
+
+
+Started GET "/reports" for 127.0.0.1 at Mon Oct 18 23:44:21 -0400 2010
+  Processing by ReportsController#index as */*
+DEPRECATION WARNING: Base.named_scope has been deprecated, please use Base.scope instead. (called from included at /Users/dyer/.rvm/gems/ree-1.8.7-2010.02/bundler/gems/authlogic-66ed79515919/lib/authlogic/acts_as_authentic/logged_in_status.rb:35)
+DEPRECATION WARNING: Base.named_scope has been deprecated, please use Base.scope instead. (called from included at /Users/dyer/.rvm/gems/ree-1.8.7-2010.02/bundler/gems/authlogic-66ed79515919/lib/authlogic/acts_as_authentic/logged_in_status.rb:36)
+  [1m[36mDoctor Load (0.2ms)[0m  [1mSELECT "doctors".* FROM "doctors" WHERE ("doctors"."id" = 1) LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "doctors".* FROM "doctors" WHERE ("doctors"."id" = 1) LIMIT 1
+DEPRECATION WARNING: save(false) is deprecated, please give save(:validate => false) instead. (called from save_without_session_maintenance at /Users/dyer/.rvm/gems/ree-1.8.7-2010.02/bundler/gems/authlogic-66ed79515919/lib/authlogic/acts_as_authentic/session_maintenance.rb:73)
+  [1m[36mSQL (0.3ms)[0m  [1mUPDATE "doctors" SET "last_request_at" = '2010-10-19 03:44:21.655044', "perishable_token" = 'V9OBcgyywBSCm0OiSLKC', "updated_at" = '2010-10-19 03:44:21.655706' WHERE ("doctors"."id" = 1)[0m
+  [1m[35mCharge Load (0.6ms)[0m  SELECT "charges".* FROM "charges"
+Rendered reports/_charges.erb (0.5ms)
+Completed 200 OK in 143ms (Views: 4.6ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/reports" for 127.0.0.1 at Mon Oct 18 23:44:45 -0400 2010
+  Processing by ReportsController#index as HTML
+DEPRECATION WARNING: Base.named_scope has been deprecated, please use Base.scope instead. (called from included at /Users/dyer/.rvm/gems/ree-1.8.7-2010.02/bundler/gems/authlogic-66ed79515919/lib/authlogic/acts_as_authentic/logged_in_status.rb:35)
+DEPRECATION WARNING: Base.named_scope has been deprecated, please use Base.scope instead. (called from included at /Users/dyer/.rvm/gems/ree-1.8.7-2010.02/bundler/gems/authlogic-66ed79515919/lib/authlogic/acts_as_authentic/logged_in_status.rb:36)
+  [1m[36mDoctor Load (0.2ms)[0m  [1mSELECT "doctors".* FROM "doctors" WHERE ("doctors"."id" = 1) LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "doctors".* FROM "doctors" WHERE ("doctors"."id" = 1) LIMIT 1
+DEPRECATION WARNING: save(false) is deprecated, please give save(:validate => false) instead. (called from save_without_session_maintenance at /Users/dyer/.rvm/gems/ree-1.8.7-2010.02/bundler/gems/authlogic-66ed79515919/lib/authlogic/acts_as_authentic/session_maintenance.rb:73)
+  [1m[36mSQL (0.3ms)[0m  [1mUPDATE "doctors" SET "last_request_at" = '2010-10-19 03:44:45.348243', "perishable_token" = 'co1EPvlBTMaiAZgrV19Q', "updated_at" = '2010-10-19 03:44:45.349066' WHERE ("doctors"."id" = 1)[0m
+  [1m[35mCharge Load (0.6ms)[0m  SELECT "charges".* FROM "charges"
+Rendered reports/_charges.erb (10.2ms)
+Rendered reports/index.html.erb within layouts/reports (19.0ms)
+Completed 200 OK in 73ms (Views: 22.9ms | ActiveRecord: 1.4ms)
+
+
+Started POST "/charges/update_charge_status" for 127.0.0.1 at Mon Oct 18 23:44:46 -0400 2010
+  Processing by ChargesController#update_charge_status as */*
+  Parameters: {"charge_status"=>"true", "charge_id"=>"383"}
+DEPRECATION WARNING: Base.named_scope has been deprecated, please use Base.scope instead. (called from included at /Users/dyer/.rvm/gems/ree-1.8.7-2010.02/bundler/gems/authlogic-66ed79515919/lib/authlogic/acts_as_authentic/logged_in_status.rb:35)
+DEPRECATION WARNING: Base.named_scope has been deprecated, please use Base.scope instead. (called from included at /Users/dyer/.rvm/gems/ree-1.8.7-2010.02/bundler/gems/authlogic-66ed79515919/lib/authlogic/acts_as_authentic/logged_in_status.rb:36)
+  [1m[36mDoctor Load (0.2ms)[0m  [1mSELECT "doctors".* FROM "doctors" WHERE ("doctors"."id" = 1) LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "doctors".* FROM "doctors" WHERE ("doctors"."id" = 1) LIMIT 1
+DEPRECATION WARNING: save(false) is deprecated, please give save(:validate => false) instead. (called from save_without_session_maintenance at /Users/dyer/.rvm/gems/ree-1.8.7-2010.02/bundler/gems/authlogic-66ed79515919/lib/authlogic/acts_as_authentic/session_maintenance.rb:73)
+  [1m[36mSQL (0.3ms)[0m  [1mUPDATE "doctors" SET "last_request_at" = '2010-10-19 03:44:46.720172', "perishable_token" = 'KI3nQKAH6tKjk5vVEM6', "updated_at" = '2010-10-19 03:44:46.720864' WHERE ("doctors"."id" = 1)[0m
+
+
+
+	Charge Status => true
+	Charge ID => 383
+
+
+  [1m[35mCharge Load (0.2ms)[0m  SELECT "charges".* FROM "charges" WHERE ("charges"."id" = 383) LIMIT 1
+  [1m[36mSQL (0.3ms)[0m  [1mUPDATE "charges" SET "recorded" = 't', "updated_at" = '2010-10-19 03:44:46.740442' WHERE ("charges"."id" = 383)[0m
+Redirected to http://localhost:3000/reports
+Completed 302 Found in 130ms
+
+
+Started GET "/reports" for 127.0.0.1 at Mon Oct 18 23:44:46 -0400 2010
+  Processing by ReportsController#index as */*
+DEPRECATION WARNING: Base.named_scope has been deprecated, please use Base.scope instead. (called from included at /Users/dyer/.rvm/gems/ree-1.8.7-2010.02/bundler/gems/authlogic-66ed79515919/lib/authlogic/acts_as_authentic/logged_in_status.rb:35)
+DEPRECATION WARNING: Base.named_scope has been deprecated, please use Base.scope instead. (called from included at /Users/dyer/.rvm/gems/ree-1.8.7-2010.02/bundler/gems/authlogic-66ed79515919/lib/authlogic/acts_as_authentic/logged_in_status.rb:36)
+  [1m[35mDoctor Load (0.4ms)[0m  SELECT "doctors".* FROM "doctors" WHERE ("doctors"."id" = 1) LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "doctors".* FROM "doctors" WHERE ("doctors"."id" = 1) LIMIT 1[0m
+DEPRECATION WARNING: save(false) is deprecated, please give save(:validate => false) instead. (called from save_without_session_maintenance at /Users/dyer/.rvm/gems/ree-1.8.7-2010.02/bundler/gems/authlogic-66ed79515919/lib/authlogic/acts_as_authentic/session_maintenance.rb:73)
+  [1m[35mSQL (0.3ms)[0m  UPDATE "doctors" SET "last_request_at" = '2010-10-19 03:44:46.828914', "perishable_token" = 'GYrCsvqifMyHyS4TL80o', "updated_at" = '2010-10-19 03:44:46.829574' WHERE ("doctors"."id" = 1)
+  [1m[36mCharge Load (0.8ms)[0m  [1mSELECT "charges".* FROM "charges"[0m
+Rendered reports/_charges.erb (0.5ms)
+Completed 200 OK in 70ms (Views: 4.6ms | ActiveRecord: 1.7ms)
