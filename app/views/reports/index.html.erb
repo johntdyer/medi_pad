@@ -1,125 +1,80 @@
-<title>Home</title>
-
-<%= javascript_include_tag "jquery-1.4.2.min.js" %>  
-<%= stylesheet_link_tag "http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/themes/redmond/jquery-ui.css" %>  
-<%= javascript_include_tag "http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.1/jquery-ui.min.js" %>
+<%= stylesheet_link_tag "jquery-ui.css" %>  
+<%= javascript_include_tag "jquery-ui-min.js" %>
 <%= javascript_include_tag "jquery.ibutton", :cache => true %>
 <%= stylesheet_link_tag "jquery.ibutton" %>  
 
-
-  <style type="text/css">
-    h4, h5 {
-      margin-bottom: 0;
-    }
-
-    .examples pre {
-      margin-top: 0;
-    }
-
-    label.label {
-      display: block;
-      width: 120px;
-      float: left;
-      padding-top: 5px;
-      font-weight: bold;
-      height: 30px;
-    }
-
-    div.row {
-      margin-top: 10px;
-    }
-
-    input.button {
-      margin-top: 5px;
-    }
-
-  /* shows overwriting styles via CSS */
-    #css .ibutton-container {
-      width: 175px;
-    }
-
-    #css .ibutton-container .ibutton-handle {
-      width: 5px;
-    }
-  </style>
-
   <script type="text/javascript">
-	<!--//
-	function debug(){
-    if( window.console && window.console.log ) console.log(arguments);
-  }
+
+    function debug(){ if( window.console && window.console.log ) console.log(arguments); }
 
   // on DOM ready
-  $(document).ready(function (){
-    
-      // Hide recorded charges by default
-      $('.patient_charge').each(function(){
-        if($(this).find('.recorded').text()=="true"){$(this).hide();  }
-      });
-          
-    $(".group").iButton({
-      init: function (){
-        debug("init", arguments);
-      }, 
-      change: function (){
-        if ($('#ex02').attr('checked')) {
-          console.info("Hide Toggle");
-          var is_checked = true;
-          $('.patient_charge').each(function(){
-            if($(this).find('.recorded').text()=="true"){ $(this).hide(); }
-          });
-        }else{
-          console.info("Show Toggle");
-          var is_checked = false;
-            $('.patient_charge').each(function(){
-              if($(this).find('.recorded').text()=="true"){   $(this).show(); }
-            });
-        }
-      }
-    });
-          $(".record_charge_button").click(function(){
-              var record_edited=new Object();
-              record_edited.charge_id = $(this).parents().find('.charge_id').first().text();
-              
-              console.log(record_edited.charge_id)
-                   if($(this).parents().find('.recorded').first().text()=="true"){
-                     $(this).parents().find('.recorded').first().text("false");
-                     console.log("false");
-                   }
-                   else{
-                     console.log("true");
-                     $(this).parents().find('.recorded').first().text("true");
-                   }
-                   $.ajax({
-                         type: "POST",
-                         url: "/charges/update_charge_status",
-                         data: "charge_status="+record_edited.is_recorded+"&charge_id="+record_edited.charge_id,
-                           success: function(msg){
-                             console.info( "Data Saved: " + msg );
-                         }
-                   });
-          });
+      $(document).ready(function (){
 
-      $("#ex10")
-      // attach the iButton behavior
-      .iButton({
-        labelOn: "Off",
-        labelOff: "On"
-      })
-      // trigger the change event (to update the text)
-      .trigger("change");
-  });
-    //-->
-  </script>
-
-  <script type="text/javascript" charset="utf-8">
-  $(document).ready(function (){
-    $("#button_test").click(function(){
+        // Hide recorded charges by default
         $('.patient_charge').each(function(){
           if($(this).find('.recorded').text()=="true"){$(this).hide();  }
         });
+          
+        $(".group").iButton({
+          init: function (){
+            debug("init", arguments);
+          }, 
+          change: function (){
+            if ($('#ex02').attr('checked')) {
+              console.info("Hide Toggle");
+              var is_checked = true;
+              $('.patient_charge').each(function(){
+                if($(this).find('.recorded').text()=="true"){ $(this).hide(); }
+              });
+            }else{
+              console.info("Show Toggle");
+              var is_checked = false;
+              $('.patient_charge').each(function(){
+                if($(this).find('.recorded').text()=="true"){   $(this).show(); }
+              });
+            }
+          }
+        });
+        
+        $(".record_charge_button").click(function(){
+          var record_edited=new Object();
+          record_edited.charge_id = $(this).parents().find('.patient_name').attr('patientId');
+//          record_edited.charge_id = $(this).parents().find('.charge_id').first().text();
+          
+          console.log(record_edited.charge_id)
+          if($(this).parents().find('.recorded').first().text()=="true"){
+            $(this).parents().find('.recorded').first().text("false");
+            console.log("@@false"); 
+            record_edited.is_recorded = false
+          }
+          else{
+            console.log("@@ true");
+            $(this).parents().find('.recorded').first().text("true");
+            record_edited.is_recorded = true
+          }
+          $.ajax({
+            type: "POST",
+            url: "/charges/update_charge_status",
+            data: "charge_status="+record_edited.is_recorded+"&charge_id="+record_edited.charge_id,
+            success: function(msg){
+              console.info( "Data Saved: " + msg );
+            }
+          });
+        });
+        $("#ex10")  // attach the iButton behavior
+        .iButton({
+          labelOn: "Off",
+          labelOff: "On"
+        })      // trigger the change event (to update the text)
+      .trigger("change");
     });
-  });
+
+    $("#button_test").click(function(){
+      $('.patient_charge').each(function(){
+        if($(this).find('.recorded').text()=="true"){$(this).hide();  }
+      });
+    });
+
   </script>
 
       <div id="user_id" class="user_id">
@@ -131,95 +86,58 @@
             <%= link_to "Login", login_path%>
             <%= link_to "Home", :controller => "home", :action => "index"%>
          <%end%>
-
-      <!-- Date Search Functions -->
+       </div>
+      <!-- Date Search Functions 
          <script type="text/javascript" charset="utf-8">
            $(function(){  
                $('#search_created_at_gte').datepicker({ dateFormat: 'yy-mm-dd' }); 
                $('#search_created_at_lte').datepicker({ dateFormat: 'yy-mm-dd' });
            });
          </script>
-
-
-<style type="text/css" media="screen">
-  a.button:active {
-      background-position: bottom right;
-      color: #000;
-      outline: none; /* hide dotted outline in Firefox */
-  }
-
-  a.button:active span {
-      background-position: bottom left;
-      padding: 6px 0 4px 18px; /* push text down 1px */
-  }
-  .clear { /* generic container (i.e. div) for floating buttons */
-      overflow: hidden;
-      width: 100%;
-  }
-
-  a.button {
-      background: transparent url('/images/bg_button_a.gif') no-repeat scroll top right;
-      color: #444;
-      display: block;
-      float: left;
-      font: normal 12px arial, sans-serif;
-      height: 24px;
-      margin-right: 6px;
-      padding-right: 18px; /* sliding doors padding */
-      text-decoration: none;
-  }
-
-  a.button span {
-      background: transparent url('/images/bg_button_span.gif') no-repeat;
-      display: block;
-      line-height: 14px;
-      padding: 5px 0 5px 18px;
-  }
-
-</style>
-<!-- Date Search Form -->
+         Date Search Form 
  
- <!-- End date search Form -->
- <table>
-   <tr>
-     
-     <td>
-       <div id="simple" class="group">
-         <div class="row">
-           <label class="label" for="ex02">Only Show Unbilled</label>
-           <input type="checkbox" id="ex02" checked="checked" />
-         </div>
-         <br/>
-         <a class="button" href="/reports/search/last/hour"><span>Last  Hour</span></a><br/><br/>
-         <a class="button" href="/reports/search/last/day"><span>Last   Day</span></a><br/><br/>
-         <a class="button" href="/reports/search/last/week"><span>Last  Week</span></a><br/><br/>
-         <a class="button" href="/reports/search/last/month"><span>Last Month</span></a><br/><br/>
-         <a class="button" href="/reports/search/last/year"><span>Last Year</span></a>
+        End date search Form 
+        -->
 
-         
-       </div>
-       
-       
-     </td>
-     <td>
-       <table class='stripeMe'>
-         <caption>Reports Patients</caption>
-         <thead>
-         <tr class='odd'>
-           <th><%= sort_link @search,:paitent_name,"Paitent Name" %></th>
-           <th><%= sort_link @search,:procedure_name,"Procedure Name" %></th>
-           <th><%= sort_link @search,:procedure_code,"Code" %></th>
-           <th><%= sort_link @search,:doctor,"Doctor" %></th>
-           <th><%= sort_link @search,:fin,"ID" %></th>
-           <th><%= sort_link @search,:recorded,"Billed?"%></th>
-           <th></th>
-         </tr>
-         <div id="current_reading">
-       </thead>
+        <div id="simple" class="group">
+          <div class="row">
+            <input type="checkbox" id="ex02" checked="checked" />     
+            <label class="label" for="ex02">Only Show Unbilled</label><br><br><br>
+          </div>
+        </div>
 
-       <%= render :partial => "reports", :collection => @reports %>
-      </table>
-    </div>
-   </td>
-  </tr>
-  </table>
+        <a class="button" href="/reports/search/last/hour"><span>Last  Hour</span></a><br/><br/>
+        <a class="button" href="/reports/search/last/day"><span>Last   Day</span></a><br/><br/>
+        <a class="button" href="/reports/search/last/week"><span>Last  Week</span></a><br/><br/>
+        <a class="button" href="/reports/search/last/month"><span>Last Month</span></a><br/><br/>
+        <a class="button" href="/reports/search/last/year"><span>Last Year</span></a> <br/><br/>
+        <a class="button" href="/reports"><span>All</span></a>
+
+        <div id="reports">
+          <table>
+            <tr>
+              <td>
+                <table class='stripeMe'>
+                  <caption>Patient Charges</caption>
+                  <thead>
+                    <tr class='odd'>
+                      <th><%= sort_link @search,:paitent_name,"Paitent Name" %></th>
+                      <th><%= sort_link @search,:procedure_name,"Procedure Name" %></th>
+                      <th><%= sort_link @search,:procedure_code,"Code" %></th>
+                      <th><%= sort_link @search,:doctor,"Doctor" %></th>
+                      <th><%= sort_link @search,:fin,"FIN" %></th>
+                      <th><%= sort_link @search,:created_at,"Date Charged"%></th>
+                      <th><%= sort_link @search,:recorded,"Billed?"%></th>
+                      <th></th>
+                    </tr>
+                  </thead>
+                  <!-- <div id="current_reading"> -->
+
+                    <%= render :partial => "charges", :collection => @charges %>
+
+                  </table>
+                  <!-- </div> -->
+                </td>
+              </tr>
+            </table>
+          </div>

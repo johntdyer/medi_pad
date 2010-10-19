@@ -124,4 +124,16 @@ table.favorites_list{
     margin-left: 20px;
     padding:3px 7px 2px 7px;
     
+}  
+
+td.patient_button{
+border-bottom: none;
+border-left: none;
+}
+
+div#reports{
+  position:absolute;
+  top:30px;
+  left:150px;
+  border-width:0px;
 }

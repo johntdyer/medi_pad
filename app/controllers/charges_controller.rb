@@ -1,7 +1,7 @@
 class ChargesController < ApplicationController
   
 before_filter :require_doctor
-      require 'json'
+  require 'json'
   
   
   
@@ -91,14 +91,18 @@ before_filter :require_doctor
   end
   
   def update_charge_status
-    logger.debug { "Charge Status => #{params[:charge_status]}" }
-    logger.debug { "Charge ID => #{params[:charge_id]}" }
+    logger.debug { "\n\n\n\tCharge Status => #{params[:charge_status]}" }
+    logger.debug { "\tCharge ID => #{params[:charge_id]}\n\n\n" }
 
     @charge = Charge.find(params[:charge_id])
     @charge.toggle(:recorded)
     @charge.save
+    respond_to do |format|
+      format.html {     redirect_to "/reports"}
+      format.xml  { head :ok }
+    end
+    
 
-    redirect_to "/reports"
   end
 
   def add
@@ -109,7 +113,8 @@ before_filter :require_doctor
 
     logger.info { "Cookie: Doctor Name=> #{@doctor}" }
     logger.info { "procedure_ids : #{@procedure_ids.inspect}" }
-
+    logger.info {"\n\n@@@ #{@charge_notes}"}
+    
     @patient=Patient.find(params[:patient_id])
     @patient.update_attributes :patient_been_seen => true #Change patient_been_seen flag to true
 

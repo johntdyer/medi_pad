@@ -1,12 +1,12 @@
 <%= stylesheet_link_tag 'tabs' %>
-
-<%= javascript_include_tag "jquery-1.4.2.min.js" %>  
-<%= stylesheet_link_tag "http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/themes/redmond/jquery-ui.css" %>  
-<%= javascript_include_tag "http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.1/jquery-ui.min.js" %>
-
+<!--
+ javascript_include_tag "jquery-1.4.2.min.js" %>  
+ stylesheet_link_tag "http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/themes/redmond/jquery-ui.css" %>  
+ javascript_include_tag "http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.1/jquery-ui.min.js" %>
+-->
 <li><%= link_to "Home", :controller => "home", :action => "index"%> | <%= link_to "Add Patient", new_patient_path %> </li>
 
-
+<!--
 <style type="text/css" media="screen">
   div#user_id{
     padding: 10px 0px 0px 0px;
@@ -52,7 +52,7 @@
   }
   
 </style>
-
+-->
     <ul id="tabnav"> 
       <% get_list_of_facilities().each do |facility|%>
         <li><%= link_to "#{facility.capitalize}","/patients/search/#{facility}"%> </li>

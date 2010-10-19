@@ -10,13 +10,28 @@ module PatientsHelper
   def get_lastname(name)
     return name.split(',', 2)[0]
   end
-	
-  def been_seen(patient)
-    if !patient.charges.empty?
-      logger.debug { "Logged Unseen Patient" }
-      return image_tag("check_mark.png", :border=>0) 
-    end
-  end
+
+	   # Patient been seen in last 24 hours?
+
+	def been_seen(patient)
+     been_seen = false;
+     time_now = Time.now
+     if !patient.charges.empty?  
+       patient.charges.each { | charge | been_seen = true unless charge.created_at > Time.now - 1440.minutes }     
+     end
+     if been_seen
+        logger.debug { "Logged Unseen Patient" }
+       return image_tag("check_mark.png", :border=>0)
+     end                                                                                                      
+   end
+   
+  #  
+  # def been_seen(patient)
+  #   if !patient.charges.empty?
+  #     logger.debug { "Logged Unseen Patient" }
+  #     return image_tag("check_mark.png", :border=>0) 
+  #   end
+  # end 
 
   #Returns a unique array of facilities in our database, used for tabs on patients/index.html.erb
   def get_list_of_facilities()
@@ -64,7 +79,19 @@ module PatientsHelper
         end
       end
       return current_charges
+  end  
+     
+  def get_unrecorded_charges(charges)
+    unrecorded_charges =[]
+      charges.each do | charge | 
+        if !charge.recorded   
+          logger.debug("Live Charge #{charge.procedure_name}")
+          unrecorded_charges<<charge
+        end
+      end
+      return unrecorded_charges
   end
+  
   
 end
 

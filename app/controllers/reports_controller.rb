@@ -7,15 +7,10 @@ class ReportsController < ApplicationController
 
     @search = Charge.search(params[:search])
     #@search=Charge.where('updated_at < ?', Time.now - 60.minutes).search(params[:search])
-    @reports=@search.all
+    @charges=@search.all
     if request.xml_http_request?
-      render :partial => "reports", :layout => false
+      render :partial => "charges", :layout => false
     end
-    
-     respond_to do |format|
-        format.html # index.html.erb
-        format.xml  { render :xml => @reports }
-      end
   end
   
   def search
@@ -57,11 +52,9 @@ class ReportsController < ApplicationController
         @reports=@search.all
         #redirect_to '/reports'
   end
-  
-  
-  
+
   private
-  
+
   
    def date_convert(v)
     case v.downcase

@@ -159,19 +159,10 @@
   <div id="new_charges">
     <%= render :partial=>"new_charge",  :locals=>{:charge=>Charge.new(:patient_id=>@patient.id)}%>
   </div>
-    
- 
+
   <table border=1 style="width: 400px; margin-left: 10px;">
     <tr id="submit_button">                
-      <input id="hidden_submit" type="submit" style="visibility:hidden">
       <td style="background-color:grey; color: black; font-size: 15px; ">Submit</td>
     </tr>
   </table>
-  
-  
-  
-
-
-  
-  
-  
+  <input id="hidden_submit" type="submit" style="visibility:hidden">

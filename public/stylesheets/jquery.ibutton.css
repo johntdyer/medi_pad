@@ -193,3 +193,74 @@ div.ibutton-label-off span {
 .ibutton-disabled div.ibutton-label-off {
 	color: #cbcbcb;
 }
+   
+
+  h4, h5 {
+    margin-bottom: 0;
+  }
+
+  .examples pre {
+    margin-top: 0;
+  }
+
+  label.label {
+    display: block;
+    width: 120px;
+    float: left;
+    padding-top: 5px;
+    font-weight: bold;
+    height: 30px;
+  }
+
+  div.row {
+    margin-top: 10px;
+  }
+
+  input.button {
+    margin-top: 5px;
+  }
+
+/* shows overwriting styles via CSS */
+  #css .ibutton-container {
+    width: 175px;
+  }
+
+  #css .ibutton-container .ibutton-handle {
+    width: 5px;
+  }
+  
+  a.button:active {
+      background-position: bottom right;
+      color: #000;
+      outline: none; /* hide dotted outline in Firefox */ 
+  }
+
+  a.button:active span {
+      background-position: bottom left;
+      padding: 6px 0 4px 18px; /* push text down 1px */   
+  }
+  .clear { /* generic container (i.e. div) for floating buttons */
+      overflow: hidden;
+      width: 100%;           
+  }
+
+  a.button {
+      background: transparent url('/images/bg_button_a.gif') no-repeat scroll top right;
+      color: #444;
+      display: block;
+      float: left;
+      font: normal 12px arial, sans-serif;
+      height: 24px;
+      margin-right: 6px;
+      padding-right: 18px; /* sliding doors padding */
+      text-decoration: none;
+      border-width:0px;
+  }
+
+  a.button span {
+      background: transparent url('/images/bg_button_span.gif') no-repeat;
+      display: block;
+      line-height: 14px;
+      padding: 5px 0 5px 18px;
+  }
+  
