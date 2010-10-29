@@ -1,15 +1,10 @@
 class AdminController < ApplicationController
-      def index  
-
-
-        
+      def index   
       end
-
-
+      
       def upload
         uploaded_file = params[:xml_file]
         data = uploaded_file.read if uploaded_file.respond_to? :read
-
         if request.post? and data
           case params[:commit]
             when "Import" 
@@ -52,8 +47,9 @@ class AdminController < ApplicationController
                     :sex=>(item/"/F_SEX").inner_text,
                     :admitted=>(item/"/D_ADMS_PATN").inner_text,
                     :attending_md=>(item/"/N_PS_1").inner_text,
-                    #:patient_been_seen=>false,
-                    :date_last_added=>Time.now()
+                    :date_last_added=>Time.now(),
+                    :patient_been_seen=>false,
+                    :discharged=>false
                   )
           if @patient.save
             logger.info {"@@@ Log: Patient #{(item/"/N_PATN").inner_text} was succesfully imported"}
@@ -61,6 +57,7 @@ class AdminController < ApplicationController
           else 
             @existing_patient=Patient.find_by_fin((item/"/I_ACCN").inner_text)
             @existing_patient.update_attributes(:date_last_added=>Time.now())
+            undischarge_patient(@existing_patient)
             @existing_patient.save
             logger.info {"@@@ Log: Patient #{(item/"/N_PATN").inner_text} already Exists" }
             failed_messages << "#{(item/"/N_PATN").inner_text} already Exists"
@@ -69,6 +66,15 @@ class AdminController < ApplicationController
         flash[:notice] = success_messages
         flash[:error] = failed_messages
       end
-  
-  
+ 
+ private
+ 
+ def undischarge_patient(patient)
+   if patient.discharged 
+     logger.info("\n\n\n \t\t #{patient.patient_name} was discharged, re-admitting her \n\n\n")
+     patient.update_attributes(:discharged=>false,:patient_been_seen=>false) 
+     
+   end 
+end
+
 end

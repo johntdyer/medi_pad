@@ -1,10 +1,71 @@
-<%= form_tag( {:action => 'upload'}, {:multipart => true} ) do -%>
-<p>
-  <label for="file">File:</label><%= file_field_tag "xml_file" %><br/>
-  <%= submit_tag "Import" %>
-</p>
+<style type="text/css">
+  #vertmenu {
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+    font-size: 250%;
+    width: 280px;
+    padding: 20px;
+    margin: 20px;
+  }
 
-<% end -%>
+  #vertmenu h1 {
+    display: block;
+    background-color:#FF9900;
+    font-size: 110%;
+    padding: 3px 0 5px 3px;
+    border: 1px solid #000000;
+    color: #333333;
+    margin: 0px;
+    width:280px;
+  }
+
+  #vertmenu ul {
+    list-style: none;
+    margin: 0px;
+    padding: 0px;
+    border: none;
+  }
+  #vertmenu ul li {
+    margin: 0px;
+    padding: 0px;
+  }
+  #vertmenu ul li a {
+    font-size: 120%;
+    display: block;
+    border-bottom: 1px dashed #C39C4E;
+    padding: 5px 0px 2px 4px;
+    text-decoration: none;
+    color: #666666;
+    width:280px;
+  }
+
+  #vertmenu ul li a:hover, #vertmenu ul li a:focus {
+    color: #000000;
+    background-color: #eeeeee;
+  }
+</style>
+
+<div id="vertmenu">
+<h1>Edit</h1>
+
+<ul>
+	  <% if current_doctor %>
+     <li> <%= link_to "Home", :controller => "home", :action => "index"%> </li>
+     <li> <%= link_to "Logout", logout_path %></li>
+     <li><%= link_to "Procedures", procedures_path %></td></li>
+   	 <li><%= link_to 'Add doctor', new_doctor_path %></li>
+    <% else %>
+      <li><%= link_to "Login", login_path%></li>
+      <li><%= link_to "Home", :controller => "home", :action => "index"%></li>
+      
+   <%end%> 
+      <%= form_tag( {:action => 'upload'}, {:multipart => true} ) do -%>
+        <li>
+          <%= file_field_tag "xml_file" %></li>
+         <li> <%= submit_tag "Import" %></li>
+        <% end -%>
+    </ul>
+</div>
+
 <%= stylesheet_link_tag 'table' %>
 
 <% if !flash.empty? %>
@@ -51,14 +112,4 @@
    </table>
    <%end%>
 <%end%>
-
-<table>
-  <tr>
-    <td>Edit Procedures:</td>
-    <td><%= link_to "Procedures", procedures_path %></td>
-    </tr>
-    <tr>
-      <td>Add User</td>
-      <td><%= link_to 'Add doctor', new_doctor_path %></td>
-      </tr>
-      </table>
+   
