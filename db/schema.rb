@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101017170951) do
+ActiveRecord::Schema.define(:version => 20101029005524) do
 
   create_table "charges", :force => true do |t|
     t.string   "procedure_name"
@@ -22,7 +22,6 @@ ActiveRecord::Schema.define(:version => 20101017170951) do
     t.boolean  "recorded",       :default => false
     t.string   "fin"
     t.string   "patient_name"
-    t.boolean  "is_archived"
     t.string   "note"
   end
 
@@ -83,6 +82,7 @@ ActiveRecord::Schema.define(:version => 20101017170951) do
     t.datetime "updated_at"
     t.boolean  "discharged"
     t.datetime "date_last_added"
+    t.string   "charges"
   end
 
   create_table "procedures", :force => true do |t|
