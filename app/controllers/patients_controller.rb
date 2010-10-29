@@ -19,9 +19,9 @@ class PatientsController < ApplicationController
        if params.has_key?(:search)
          logger.debug { "SEARCH PRESENT" }
          logger.debug { "" }
-         @search = Patient.search(:facility_contains=>params[:id])
+         @search = Patient.search(:facility_contains=>params[:id],:discharged=>false)
        else
-         @search = Patient.where(:facility=>@list[0].facility).search(params[:search]) 
+         @search = Patient.where(:facility=>@list[0].facility,:discharged=>false).search(params[:search])
        end
       @patients = @search.all
 
@@ -34,9 +34,10 @@ end
 
  
  def search
-   @search = Patient.search(:facility_contains=>params[:id])
-   @patients=@search.all
-   logger.debug { "@@@@ => #{@patients.class}" }
+   @search = Patient.search(:facility_contains=>params[:id],:discharged_equals=>false)
+   p @search.class
+   @patients=@search.all#(:discharged=>false)
+   logger.debug { "\n\n\n@@@@ => #{@patients.class}\n\n\n" }
    
    
    render :action => "index"

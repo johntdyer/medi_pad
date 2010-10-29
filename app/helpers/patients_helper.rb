@@ -11,18 +11,18 @@ module PatientsHelper
     return name.split(',', 2)[0]
   end
 
-	   # Patient been seen in last 24 hours?
+  # Patient been seen in last 24 hours?
 
 	def been_seen(patient)
      been_seen = false;
      time_now = Time.now
      if !patient.charges.empty?  
-       patient.charges.each { | charge | been_seen = true unless charge.created_at > Time.now - 1440.minutes }     
+       patient.charges.each { | charge | been_seen = true unless charge.created_at < Time.now - 1440.minutes }
      end
      if been_seen
         logger.debug { "Logged Unseen Patient" }
        return image_tag("check_mark.png", :border=>0)
-     end                                                                                                      
+     end
    end
    
   #  

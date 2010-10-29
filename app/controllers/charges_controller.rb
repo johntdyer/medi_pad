@@ -128,8 +128,8 @@ before_filter :require_doctor
               :patient_name=>@patient.patient_name,
               :procedure_name=>@procedure.procedure_name,
               :procedure_code => @procedure.procedure_code, 
-              :patient_id => params[:patient_id],
-              :is_archived=>false
+              :patient_id => params[:patient_id]
+              #,:is_archived=>false
               )
 
         @charge.save
