@@ -8,7 +8,7 @@ gem 'rails', '3.0.0'
 gem 'sqlite3-ruby', :require => 'sqlite3'
 
 #gem "searchlogic", :git=>"http://github.com/railsdog/searchlogic.git"
-# gem "meta_search"
+gem "meta_search"
 gem "hpricot"
 gem "meta_where"  
 gem "json"
