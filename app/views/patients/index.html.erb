@@ -54,39 +54,41 @@
 </style>
 -->
     <ul id="tabnav"> 
-      <% get_list_of_facilities().each do |facility|%>
-        <li><%= link_to "#{facility.capitalize}","/patients/search/#{facility}"%> </li>
-      <% end%>
-      <li><%= link_to "All", :controller => "patients", :action => "index", :search=>"All"%> </li>
-</ul>
+      <% get_list_of_facilities().each do |facility| %>
+        <li><%= link_to "#{facility.capitalize}", :controller => "patients", :action => "index", :id => facility, :location_search => true %></li>
+      <% end %>
+        <li><%= link_to "All", :controller => "patients", :action => "index", :search=>"All", :location_search => true%></li>      <br>
+          <% form_tag patients_path, :method => 'GET' do %>  
+            <%= text_field_tag :search_name, params[:search_name] %>  
+            <%= submit_tag "Search", :name => nil %>  
+          <% end %> 
 
-<script type="text/javascript" charset="utf-8">
-  $(document).ready(function(){
-    // Redirects to patient if they click on row
-      $("tr[id^='patient_row']").click(function(){
-        function get_id(v){
-          var patient_id = v.substring(v.search(/\W/g)+1,v.length-1);
-          console.log("@@@ patient_id => " +  patient_id);
-          return patient_id
-        }
-        $(window.location).attr('href', '/patients/'+get_id($(this).attr("id")));
-      })
-  });
-</script>
+    </ul>
+      <script type="text/javascript" charset="utf-8">
+        $(document).ready(function(){
+          // Redirects to patient if they click on row
+          $("tr[id^='patient_row']").click(function(){
+            function get_id(v){
+              var patient_id = v.substring(v.search(/\W/g)+1,v.length-1);
+              console.log("@@@ patient_id => " +  patient_id);
+              return patient_id
+            }
+            $(window.location).attr('href', '/patients/'+get_id($(this).attr("id")));
+          })
+        });
+      </script>
 
-<table class='stripeMe'>
-  <thead>
-    <tr class='odd'>
-    <th><%= sort_link @search,:facility, "Hospital" %></th>
-    <th><%= sort_link @search,:room,"Location" %></th>
-    <th><%= sort_link @search,:patient_name,"Name" %></th>
-    <th><%= sort_link @search,:attending_md, "MD"%></th>
-    <th><%= sort_link @search,:patient_been_seen, "Seen"%></th>
+        <table class='stripeMe'>
+          <thead>
+            <tr class='odd'>
+              <th><%= sort_link @search,:facility, "Hospital" %></th>
+              <th><%= sort_link @search,:room,"Location" %></th>
+              <th><%= sort_link @search,:patient_name,"Name" %></th>
+              <th><%= sort_link @search,:attending_md, "MD"%></th>
+              <th><%= sort_link @search,:patient_been_seen, "Seen"%></th>
+            </tr>
+          </thead>
 
-  </tr>
-  </thead>
-
-    <%= render @patients  %>
-
- </table>
+          <%= render @patients  %>
+        </table>
  
