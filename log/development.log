@@ -1,2 +1,2435 @@
 DEPRECATION WARNING: Use toplevel init.rb; rails/init.rb is deprecated: /Users/dyer/Dropbox/Development/medi_pad/vendor/plugins/paperclip/rails/init.rb. (called from /Users/dyer/Dropbox/Development/medi_pad/config/environment.rb:5)
 DEPRECATION WARNING: ActionController::Base.cookie_verifier_secret= is deprecated. Please configure it on your application with config.secret_token=. (called from /Users/dyer/Dropbox/Development/medi_pad/config/initializers/cookie_verification_secret.rb:7)
+DEPRECATION WARNING: Use toplevel init.rb; rails/init.rb is deprecated: /Users/dyer/Dropbox/Development/medi_pad/vendor/plugins/paperclip/rails/init.rb. (called from /Users/dyer/Dropbox/Development/medi_pad/config/environment.rb:5)
+DEPRECATION WARNING: ActionController::Base.cookie_verifier_secret= is deprecated. Please configure it on your application with config.secret_token=. (called from /Users/dyer/Dropbox/Development/medi_pad/config/initializers/cookie_verification_secret.rb:7)
+DEPRECATION WARNING: Use toplevel init.rb; rails/init.rb is deprecated: /Users/dyer/Dropbox/Development/medi_pad/vendor/plugins/paperclip/rails/init.rb. (called from /Users/dyer/Dropbox/Development/medi_pad/config/environment.rb:5)
+DEPRECATION WARNING: ActionController::Base.cookie_verifier_secret= is deprecated. Please configure it on your application with config.secret_token=. (called from /Users/dyer/Dropbox/Development/medi_pad/config/initializers/cookie_verification_secret.rb:7)
+DEPRECATION WARNING: Use toplevel init.rb; rails/init.rb is deprecated: /Users/dyer/Dropbox/Development/medi_pad/vendor/plugins/paperclip/rails/init.rb. (called from /Users/dyer/Dropbox/Development/medi_pad/config/environment.rb:5)
+DEPRECATION WARNING: ActionController::Base.cookie_verifier_secret= is deprecated. Please configure it on your application with config.secret_token=. (called from /Users/dyer/Dropbox/Development/medi_pad/config/initializers/cookie_verification_secret.rb:7)
+DEPRECATION WARNING: Use toplevel init.rb; rails/init.rb is deprecated: /Users/dyer/Dropbox/Development/medi_pad/vendor/plugins/paperclip/rails/init.rb. (called from /Users/dyer/Dropbox/Development/medi_pad/config/environment.rb:5)
+DEPRECATION WARNING: ActionController::Base.cookie_verifier_secret= is deprecated. Please configure it on your application with config.secret_token=. (called from /Users/dyer/Dropbox/Development/medi_pad/config/initializers/cookie_verification_secret.rb:7)
+  [1m[36mSQL (0.7ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.3ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.3ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations"[0m
+Migrating to CreatePatients (20100805000725)
+Migrating to CreateCharges (20100805000806)
+Migrating to CreateProcedures (20100805000918)
+Migrating to CreateDoctors (20100805001234)
+Migrating to AddDoctorsPasswordResetFields (20100816001208)
+Migrating to CreateImports (20100828002004)
+Migrating to AddAttachmentsPatientDataToImport (20100828002456)
+Migrating to CreateSessions (20100829021759)
+Migrating to AddFavoritesToDoctors (20100829210910)
+Migrating to AddRecordedToCharges (20100829221742)
+Migrating to AddFinToCharges (20100829233912)
+Migrating to AddPatientNameToCharges (20100830000211)
+Migrating to AddArchivedToCharge (20100912195730)
+Migrating to AddNoteToCharges (20101004143655)
+Migrating to AddRequiresNoteToProcedures (20101004144222)
+Migrating to AddDischargedToPatients (20101005171326)
+Migrating to AddDateLastAddedToPatients (20101016170845)
+Migrating to CreateNotes (20101017164507)
+Migrating to AddChargeIdToNotes (20101017170951)
+Migrating to AddChargeToPatients (20101029005029)
+Migrating to RemoveArchivedFromCharges (20101029005524)
+Migrating to DeviseCreateUsers (20101031041708)
+  [1m[35mSQL (0.1ms)[0m  select sqlite_version(*)
+  [1m[36mSQL (0.5ms)[0m  [1mCREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar(255) DEFAULT '' NOT NULL, "encrypted_password" varchar(128) DEFAULT '' NOT NULL, "password_salt" varchar(255) DEFAULT '' NOT NULL, "reset_password_token" varchar(255), "remember_token" varchar(255), "remember_created_at" datetime, "sign_in_count" integer DEFAULT 0, "current_sign_in_at" datetime, "last_sign_in_at" datetime, "current_sign_in_ip" varchar(255), "last_sign_in_ip" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("users")
+  [1m[36mSQL (0.8ms)[0m  [1mCREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")[0m
+  [1m[35mSQL (0.1ms)[0m  PRAGMA index_list("users")
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_info('index_users_on_email')[0m
+  [1m[35mSQL (0.2ms)[0m  CREATE UNIQUE INDEX "index_users_on_reset_password_token" ON "users" ("reset_password_token")
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20101031041708')[0m
+  [1m[35mSQL (0.3ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.5ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations"[0m
+  [1m[35mSQL (0.2ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("charges")[0m
+  [1m[35mSQL (0.1ms)[0m  PRAGMA index_list("doctors")
+  [1m[36mSQL (0.1ms)[0m  [1mPRAGMA index_info('index_doctors_on_perishable_token')[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("imports")
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("notes")[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("patients")
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("procedures")[0m
+  [1m[35mSQL (0.1ms)[0m  PRAGMA index_list("sessions")
+  [1m[36mSQL (0.1ms)[0m  [1mPRAGMA index_info('index_sessions_on_updated_at')[0m
+  [1m[35mSQL (0.1ms)[0m  PRAGMA index_info('index_sessions_on_session_id')
+  [1m[36mSQL (0.1ms)[0m  [1mPRAGMA index_list("users")[0m
+  [1m[35mSQL (0.1ms)[0m  PRAGMA index_info('index_users_on_reset_password_token')
+  [1m[36mSQL (0.1ms)[0m  [1mPRAGMA index_info('index_users_on_email')[0m
+DEPRECATION WARNING: Use toplevel init.rb; rails/init.rb is deprecated: /Users/dyer/Dropbox/Development/medi_pad/vendor/plugins/paperclip/rails/init.rb. (called from /Users/dyer/Dropbox/Development/medi_pad/config/environment.rb:5)
+DEPRECATION WARNING: ActionController::Base.cookie_verifier_secret= is deprecated. Please configure it on your application with config.secret_token=. (called from /Users/dyer/Dropbox/Development/medi_pad/config/initializers/cookie_verification_secret.rb:7)
+
+
+Started GET "/user/sign_up" for 127.0.0.1 at Sun Oct 31 00:19:06 -0400 2010
+
+ActionController::RoutingError (No route matches "/user/sign_up"):
+  actionpack (3.0.0) lib/action_dispatch/middleware/show_exceptions.rb:53:in `call'
+  railties (3.0.0) lib/rails/rack/logger.rb:13:in `call'
+  rack (1.2.1) lib/rack/runtime.rb:17:in `call'
+  activesupport (3.0.0) lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  rack (1.2.1) lib/rack/lock.rb:11:in `call'
+  rack (1.2.1) lib/rack/lock.rb:11:in `synchronize'
+  rack (1.2.1) lib/rack/lock.rb:11:in `call'
+  actionpack (3.0.0) lib/action_dispatch/middleware/static.rb:30:in `call'
+  railties (3.0.0) lib/rails/application.rb:168:in `call'
+  railties (3.0.0) lib/rails/application.rb:77:in `send'
+  railties (3.0.0) lib/rails/application.rb:77:in `method_missing'
+  railties (3.0.0) lib/rails/rack/log_tailer.rb:14:in `call'
+  rack (1.2.1) lib/rack/content_length.rb:13:in `call'
+  rack (1.2.1) lib/rack/handler/webrick.rb:52:in `service'
+  /Users/dyer/.rvm/rubies/ree-1.8.7-2010.02/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /Users/dyer/.rvm/rubies/ree-1.8.7-2010.02/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /Users/dyer/.rvm/rubies/ree-1.8.7-2010.02/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /Users/dyer/.rvm/rubies/ree-1.8.7-2010.02/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /Users/dyer/.rvm/rubies/ree-1.8.7-2010.02/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /Users/dyer/.rvm/rubies/ree-1.8.7-2010.02/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /Users/dyer/.rvm/rubies/ree-1.8.7-2010.02/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /Users/dyer/.rvm/rubies/ree-1.8.7-2010.02/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /Users/dyer/.rvm/rubies/ree-1.8.7-2010.02/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /Users/dyer/.rvm/rubies/ree-1.8.7-2010.02/lib/ruby/1.8/webrick/server.rb:82:in `start'
+  rack (1.2.1) lib/rack/handler/webrick.rb:13:in `run'
+  rack (1.2.1) lib/rack/server.rb:213:in `start'
+  railties (3.0.0) lib/rails/commands/server.rb:65:in `start'
+  railties (3.0.0) lib/rails/commands.rb:30
+  railties (3.0.0) lib/rails/commands.rb:27:in `tap'
+  railties (3.0.0) lib/rails/commands.rb:27
+  script/rails:6:in `require'
+  script/rails:6
+
+Rendered /Users/dyer/.rvm/gems/ree-1.8.7-2010.02/gems/actionpack-3.0.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.7ms)
+
+
+Started GET "/user/sign_up" for 127.0.0.1 at Sun Oct 31 00:19:07 -0400 2010
+
+ActionController::RoutingError (No route matches "/user/sign_up"):
+  actionpack (3.0.0) lib/action_dispatch/middleware/show_exceptions.rb:53:in `call'
+  railties (3.0.0) lib/rails/rack/logger.rb:13:in `call'
+  rack (1.2.1) lib/rack/runtime.rb:17:in `call'
+  activesupport (3.0.0) lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  rack (1.2.1) lib/rack/lock.rb:11:in `call'
+  rack (1.2.1) lib/rack/lock.rb:11:in `synchronize'
+  rack (1.2.1) lib/rack/lock.rb:11:in `call'
+  actionpack (3.0.0) lib/action_dispatch/middleware/static.rb:30:in `call'
+  railties (3.0.0) lib/rails/application.rb:168:in `call'
+  railties (3.0.0) lib/rails/application.rb:77:in `send'
+  railties (3.0.0) lib/rails/application.rb:77:in `method_missing'
+  railties (3.0.0) lib/rails/rack/log_tailer.rb:14:in `call'
+  rack (1.2.1) lib/rack/content_length.rb:13:in `call'
+  rack (1.2.1) lib/rack/handler/webrick.rb:52:in `service'
+  /Users/dyer/.rvm/rubies/ree-1.8.7-2010.02/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /Users/dyer/.rvm/rubies/ree-1.8.7-2010.02/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /Users/dyer/.rvm/rubies/ree-1.8.7-2010.02/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /Users/dyer/.rvm/rubies/ree-1.8.7-2010.02/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /Users/dyer/.rvm/rubies/ree-1.8.7-2010.02/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /Users/dyer/.rvm/rubies/ree-1.8.7-2010.02/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /Users/dyer/.rvm/rubies/ree-1.8.7-2010.02/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /Users/dyer/.rvm/rubies/ree-1.8.7-2010.02/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /Users/dyer/.rvm/rubies/ree-1.8.7-2010.02/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /Users/dyer/.rvm/rubies/ree-1.8.7-2010.02/lib/ruby/1.8/webrick/server.rb:82:in `start'
+  rack (1.2.1) lib/rack/handler/webrick.rb:13:in `run'
+  rack (1.2.1) lib/rack/server.rb:213:in `start'
+  railties (3.0.0) lib/rails/commands/server.rb:65:in `start'
+  railties (3.0.0) lib/rails/commands.rb:30
+  railties (3.0.0) lib/rails/commands.rb:27:in `tap'
+  railties (3.0.0) lib/rails/commands.rb:27
+  script/rails:6:in `require'
+  script/rails:6
+
+Rendered /Users/dyer/.rvm/gems/ree-1.8.7-2010.02/gems/actionpack-3.0.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.6ms)
+
+
+Started GET "/user/sign_up" for 127.0.0.1 at Sun Oct 31 00:19:07 -0400 2010
+
+ActionController::RoutingError (No route matches "/user/sign_up"):
+  actionpack (3.0.0) lib/action_dispatch/middleware/show_exceptions.rb:53:in `call'
+  railties (3.0.0) lib/rails/rack/logger.rb:13:in `call'
+  rack (1.2.1) lib/rack/runtime.rb:17:in `call'
+  activesupport (3.0.0) lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  rack (1.2.1) lib/rack/lock.rb:11:in `call'
+  rack (1.2.1) lib/rack/lock.rb:11:in `synchronize'
+  rack (1.2.1) lib/rack/lock.rb:11:in `call'
+  actionpack (3.0.0) lib/action_dispatch/middleware/static.rb:30:in `call'
+  railties (3.0.0) lib/rails/application.rb:168:in `call'
+  railties (3.0.0) lib/rails/application.rb:77:in `send'
+  railties (3.0.0) lib/rails/application.rb:77:in `method_missing'
+  railties (3.0.0) lib/rails/rack/log_tailer.rb:14:in `call'
+  rack (1.2.1) lib/rack/content_length.rb:13:in `call'
+  rack (1.2.1) lib/rack/handler/webrick.rb:52:in `service'
+  /Users/dyer/.rvm/rubies/ree-1.8.7-2010.02/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /Users/dyer/.rvm/rubies/ree-1.8.7-2010.02/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /Users/dyer/.rvm/rubies/ree-1.8.7-2010.02/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /Users/dyer/.rvm/rubies/ree-1.8.7-2010.02/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /Users/dyer/.rvm/rubies/ree-1.8.7-2010.02/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /Users/dyer/.rvm/rubies/ree-1.8.7-2010.02/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /Users/dyer/.rvm/rubies/ree-1.8.7-2010.02/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /Users/dyer/.rvm/rubies/ree-1.8.7-2010.02/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /Users/dyer/.rvm/rubies/ree-1.8.7-2010.02/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /Users/dyer/.rvm/rubies/ree-1.8.7-2010.02/lib/ruby/1.8/webrick/server.rb:82:in `start'
+  rack (1.2.1) lib/rack/handler/webrick.rb:13:in `run'
+  rack (1.2.1) lib/rack/server.rb:213:in `start'
+  railties (3.0.0) lib/rails/commands/server.rb:65:in `start'
+  railties (3.0.0) lib/rails/commands.rb:30
+  railties (3.0.0) lib/rails/commands.rb:27:in `tap'
+  railties (3.0.0) lib/rails/commands.rb:27
+  script/rails:6:in `require'
+  script/rails:6
+
+Rendered /Users/dyer/.rvm/gems/ree-1.8.7-2010.02/gems/actionpack-3.0.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.7ms)
+DEPRECATION WARNING: Use toplevel init.rb; rails/init.rb is deprecated: /Users/dyer/Dropbox/Development/medi_pad/vendor/plugins/paperclip/rails/init.rb. (called from /Users/dyer/Dropbox/Development/medi_pad/config/environment.rb:5)
+DEPRECATION WARNING: ActionController::Base.cookie_verifier_secret= is deprecated. Please configure it on your application with config.secret_token=. (called from /Users/dyer/Dropbox/Development/medi_pad/config/initializers/cookie_verification_secret.rb:7)
+
+
+Started GET "/user/sign_up" for 127.0.0.1 at Sun Oct 31 00:20:33 -0400 2010
+
+ActionController::RoutingError (No route matches "/user/sign_up"):
+  actionpack (3.0.0) lib/action_dispatch/middleware/show_exceptions.rb:53:in `call'
+  railties (3.0.0) lib/rails/rack/logger.rb:13:in `call'
+  rack (1.2.1) lib/rack/runtime.rb:17:in `call'
+  activesupport (3.0.0) lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  rack (1.2.1) lib/rack/lock.rb:11:in `call'
+  rack (1.2.1) lib/rack/lock.rb:11:in `synchronize'
+  rack (1.2.1) lib/rack/lock.rb:11:in `call'
+  actionpack (3.0.0) lib/action_dispatch/middleware/static.rb:30:in `call'
+  railties (3.0.0) lib/rails/application.rb:168:in `call'
+  railties (3.0.0) lib/rails/application.rb:77:in `send'
+  railties (3.0.0) lib/rails/application.rb:77:in `method_missing'
+  railties (3.0.0) lib/rails/rack/log_tailer.rb:14:in `call'
+  rack (1.2.1) lib/rack/content_length.rb:13:in `call'
+  rack (1.2.1) lib/rack/handler/webrick.rb:52:in `service'
+  /Users/dyer/.rvm/rubies/ree-1.8.7-2010.02/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /Users/dyer/.rvm/rubies/ree-1.8.7-2010.02/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /Users/dyer/.rvm/rubies/ree-1.8.7-2010.02/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /Users/dyer/.rvm/rubies/ree-1.8.7-2010.02/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /Users/dyer/.rvm/rubies/ree-1.8.7-2010.02/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /Users/dyer/.rvm/rubies/ree-1.8.7-2010.02/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /Users/dyer/.rvm/rubies/ree-1.8.7-2010.02/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /Users/dyer/.rvm/rubies/ree-1.8.7-2010.02/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /Users/dyer/.rvm/rubies/ree-1.8.7-2010.02/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /Users/dyer/.rvm/rubies/ree-1.8.7-2010.02/lib/ruby/1.8/webrick/server.rb:82:in `start'
+  rack (1.2.1) lib/rack/handler/webrick.rb:13:in `run'
+  rack (1.2.1) lib/rack/server.rb:213:in `start'
+  railties (3.0.0) lib/rails/commands/server.rb:65:in `start'
+  railties (3.0.0) lib/rails/commands.rb:30
+  railties (3.0.0) lib/rails/commands.rb:27:in `tap'
+  railties (3.0.0) lib/rails/commands.rb:27
+  script/rails:6:in `require'
+  script/rails:6
+
+Rendered /Users/dyer/.rvm/gems/ree-1.8.7-2010.02/gems/actionpack-3.0.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.7ms)
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at Sun Oct 31 00:20:38 -0400 2010
+  Processing by Devise::RegistrationsController#new as HTML
+Rendered /Users/dyer/.rvm/gems/ree-1.8.7-2010.02/gems/devise-1.1.3/app/views/devise/shared/_links.erb (1.7ms)
+Rendered /Users/dyer/.rvm/gems/ree-1.8.7-2010.02/gems/devise-1.1.3/app/views/devise/registrations/new.html.erb within layouts/application (19.3ms)
+Completed 200 OK in 42ms (Views: 35.0ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/users" for 127.0.0.1 at Sun Oct 31 00:20:48 -0400 2010
+  Processing by Devise::RegistrationsController#create as HTML
+  Parameters: {"commit"=>"Sign up", "authenticity_token"=>"HfBMYJj5F6eD7JHojmVzNvMWlleP3I06vbOB1+vM0yk=", "utf8"=>"\342\234\223", "user"=>{"password_confirmation"=>"[FILTERED]", "password"=>"[FILTERED]", "email"=>"dyer"}}
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users"."id" FROM "users" WHERE (LOWER("users"."email") = LOWER('dyer')) LIMIT 1[0m
+Rendered /Users/dyer/.rvm/gems/ree-1.8.7-2010.02/gems/devise-1.1.3/app/views/devise/shared/_links.erb (1.2ms)
+Rendered /Users/dyer/.rvm/gems/ree-1.8.7-2010.02/gems/devise-1.1.3/app/views/devise/registrations/new.html.erb within layouts/application (13.9ms)
+Completed 200 OK in 128ms (Views: 28.3ms | ActiveRecord: 0.4ms)
+
+
+Started POST "/users" for 127.0.0.1 at Sun Oct 31 00:20:57 -0400 2010
+  Processing by Devise::RegistrationsController#create as HTML
+  Parameters: {"commit"=>"Sign up", "authenticity_token"=>"HfBMYJj5F6eD7JHojmVzNvMWlleP3I06vbOB1+vM0yk=", "utf8"=>"\342\234\223", "user"=>{"password_confirmation"=>"[FILTERED]", "password"=>"[FILTERED]", "email"=>"johndyer@me.com"}}
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users"."id" FROM "users" WHERE (LOWER("users"."email") = LOWER('johndyer@me.com')) LIMIT 1
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "users" ("created_at", "current_sign_in_at", "current_sign_in_ip", "email", "encrypted_password", "last_sign_in_at", "last_sign_in_ip", "password_salt", "remember_created_at", "remember_token", "reset_password_token", "sign_in_count", "updated_at") VALUES ('2010-10-31 04:20:58.124023', NULL, NULL, 'johndyer@me.com', '$2a$10$8loKxng79mUEMZUdf.GTG..oCK/5H50cVC41J8Ma2da8sXXnpsPqi', NULL, NULL, '$2a$10$8loKxng79mUEMZUdf.GTG.', NULL, NULL, NULL, 0, '2010-10-31 04:20:58.124023')[0m
+  [1m[35mSQL (0.4ms)[0m  UPDATE "users" SET "current_sign_in_at" = '2010-10-31 04:20:58.132077', "current_sign_in_ip" = '127.0.0.1', "last_sign_in_at" = '2010-10-31 04:20:58.132077', "last_sign_in_ip" = '127.0.0.1', "sign_in_count" = 1, "updated_at" = '2010-10-31 04:20:58.132669' WHERE ("users"."id" = 1)
+Redirected to http://localhost:3000/
+Completed 302 Found in 123ms
+
+
+Started GET "/" for 127.0.0.1 at Sun Oct 31 00:20:58 -0400 2010
+  Processing by HomeController#index as HTML
+DEPRECATION WARNING: Base.named_scope has been deprecated, please use Base.scope instead. (called from included at /Users/dyer/.rvm/gems/ree-1.8.7-2010.02/bundler/gems/authlogic-66ed79515919/lib/authlogic/acts_as_authentic/logged_in_status.rb:35)
+DEPRECATION WARNING: Base.named_scope has been deprecated, please use Base.scope instead. (called from included at /Users/dyer/.rvm/gems/ree-1.8.7-2010.02/bundler/gems/authlogic-66ed79515919/lib/authlogic/acts_as_authentic/logged_in_status.rb:36)
+  [1m[36mDoctor Load (0.5ms)[0m  [1mSELECT "doctors".* FROM "doctors" WHERE ("doctors"."id" = 1) LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "doctors".* FROM "doctors" WHERE ("doctors"."id" = 1) LIMIT 1
+DEPRECATION WARNING: save(false) is deprecated, please give save(:validate => false) instead. (called from save_without_session_maintenance at /Users/dyer/.rvm/gems/ree-1.8.7-2010.02/bundler/gems/authlogic-66ed79515919/lib/authlogic/acts_as_authentic/session_maintenance.rb:73)
+  [1m[36mSQL (0.4ms)[0m  [1mUPDATE "doctors" SET "last_request_at" = '2010-10-31 04:20:58.450097', "perishable_token" = 'PABQsYteAhYHGo0qsZ38', "updated_at" = '2010-10-31 04:20:58.451332' WHERE ("doctors"."id" = 1)[0m
+Rendered home/index.html.erb within layouts/home (101.5ms)
+Completed 200 OK in 106ms (Views: 104.7ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at Sun Oct 31 00:21:55 -0400 2010
+  Processing by Devise::SessionsController#new as HTML
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 1) LIMIT 1
+Redirected to http://localhost:3000/
+Completed 302 Found in 18ms
+
+
+Started GET "/" for 127.0.0.1 at Sun Oct 31 00:21:55 -0400 2010
+  Processing by HomeController#index as HTML
+DEPRECATION WARNING: Base.named_scope has been deprecated, please use Base.scope instead. (called from included at /Users/dyer/.rvm/gems/ree-1.8.7-2010.02/bundler/gems/authlogic-66ed79515919/lib/authlogic/acts_as_authentic/logged_in_status.rb:35)
+DEPRECATION WARNING: Base.named_scope has been deprecated, please use Base.scope instead. (called from included at /Users/dyer/.rvm/gems/ree-1.8.7-2010.02/bundler/gems/authlogic-66ed79515919/lib/authlogic/acts_as_authentic/logged_in_status.rb:36)
+  [1m[36mDoctor Load (0.4ms)[0m  [1mSELECT "doctors".* FROM "doctors" WHERE ("doctors"."id" = 1) LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "doctors".* FROM "doctors" WHERE ("doctors"."id" = 1) LIMIT 1
+DEPRECATION WARNING: save(false) is deprecated, please give save(:validate => false) instead. (called from save_without_session_maintenance at /Users/dyer/.rvm/gems/ree-1.8.7-2010.02/bundler/gems/authlogic-66ed79515919/lib/authlogic/acts_as_authentic/session_maintenance.rb:73)
+  [1m[36mSQL (0.5ms)[0m  [1mUPDATE "doctors" SET "last_request_at" = '2010-10-31 04:21:55.573738', "perishable_token" = 'n0BFg6lvBfOz701vs5BK', "updated_at" = '2010-10-31 04:21:55.574581' WHERE ("doctors"."id" = 1)[0m
+Rendered home/index.html.erb within layouts/home (208.3ms)
+Completed 200 OK in 217ms (Views: 215.3ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/logout" for 127.0.0.1 at Sun Oct 31 00:21:59 -0400 2010
+  Processing by DoctorSessionsController#destroy as HTML
+DEPRECATION WARNING: Base.named_scope has been deprecated, please use Base.scope instead. (called from included at /Users/dyer/.rvm/gems/ree-1.8.7-2010.02/bundler/gems/authlogic-66ed79515919/lib/authlogic/acts_as_authentic/logged_in_status.rb:35)
+DEPRECATION WARNING: Base.named_scope has been deprecated, please use Base.scope instead. (called from included at /Users/dyer/.rvm/gems/ree-1.8.7-2010.02/bundler/gems/authlogic-66ed79515919/lib/authlogic/acts_as_authentic/logged_in_status.rb:36)
+  [1m[35mDoctor Load (0.3ms)[0m  SELECT "doctors".* FROM "doctors" WHERE ("doctors"."id" = 1) LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "doctors".* FROM "doctors" WHERE ("doctors"."id" = 1) LIMIT 1[0m
+DEPRECATION WARNING: save(false) is deprecated, please give save(:validate => false) instead. (called from save_without_session_maintenance at /Users/dyer/.rvm/gems/ree-1.8.7-2010.02/bundler/gems/authlogic-66ed79515919/lib/authlogic/acts_as_authentic/session_maintenance.rb:73)
+  [1m[35mSQL (0.4ms)[0m  UPDATE "doctors" SET "last_request_at" = '2010-10-31 04:21:59.926039', "perishable_token" = '688S7qVLe4YdcrCjw0ej', "updated_at" = '2010-10-31 04:21:59.927315' WHERE ("doctors"."id" = 1)
+  [1m[36mDoctor Load (0.4ms)[0m  [1mSELECT "doctors".* FROM "doctors" WHERE ("doctors"."id" = 1) LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "doctors".* FROM "doctors" WHERE ("doctors"."id" = 1) LIMIT 1
+DEPRECATION WARNING: save(false) is deprecated, please give save(:validate => false) instead. (called from save_without_session_maintenance at /Users/dyer/.rvm/gems/ree-1.8.7-2010.02/bundler/gems/authlogic-66ed79515919/lib/authlogic/acts_as_authentic/session_maintenance.rb:73)
+  [1m[36mSQL (0.5ms)[0m  [1mUPDATE "doctors" SET "last_request_at" = '2010-10-31 04:21:59.953568', "perishable_token" = '1jfccYqA2k7bBMe3cbVG', "updated_at" = '2010-10-31 04:21:59.954627' WHERE ("doctors"."id" = 1)[0m
+Redirected to http://localhost:3000/home
+Completed 302 Found in 100ms
+
+
+Started GET "/home" for 127.0.0.1 at Sun Oct 31 00:22:00 -0400 2010
+  Processing by HomeController#index as HTML
+DEPRECATION WARNING: Base.named_scope has been deprecated, please use Base.scope instead. (called from included at /Users/dyer/.rvm/gems/ree-1.8.7-2010.02/bundler/gems/authlogic-66ed79515919/lib/authlogic/acts_as_authentic/logged_in_status.rb:35)
+DEPRECATION WARNING: Base.named_scope has been deprecated, please use Base.scope instead. (called from included at /Users/dyer/.rvm/gems/ree-1.8.7-2010.02/bundler/gems/authlogic-66ed79515919/lib/authlogic/acts_as_authentic/logged_in_status.rb:36)
+Rendered home/index.html.erb within layouts/home (51.9ms)
+Completed 200 OK in 58ms (Views: 57.0ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at Sun Oct 31 00:22:04 -0400 2010
+  Processing by Devise::SessionsController#new as HTML
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 1) LIMIT 1
+Redirected to http://localhost:3000/
+Completed 302 Found in 23ms
+
+
+Started GET "/" for 127.0.0.1 at Sun Oct 31 00:22:04 -0400 2010
+  Processing by HomeController#index as HTML
+DEPRECATION WARNING: Base.named_scope has been deprecated, please use Base.scope instead. (called from included at /Users/dyer/.rvm/gems/ree-1.8.7-2010.02/bundler/gems/authlogic-66ed79515919/lib/authlogic/acts_as_authentic/logged_in_status.rb:35)
+DEPRECATION WARNING: Base.named_scope has been deprecated, please use Base.scope instead. (called from included at /Users/dyer/.rvm/gems/ree-1.8.7-2010.02/bundler/gems/authlogic-66ed79515919/lib/authlogic/acts_as_authentic/logged_in_status.rb:36)
+Rendered home/index.html.erb within layouts/home (64.2ms)
+Completed 200 OK in 73ms (Views: 72.2ms | ActiveRecord: 0.2ms)
+DEPRECATION WARNING: Use toplevel init.rb; rails/init.rb is deprecated: /Users/dyer/Dropbox/Development/medi_pad/vendor/plugins/paperclip/rails/init.rb. (called from /Users/dyer/Dropbox/Development/medi_pad/config/environment.rb:5)
+DEPRECATION WARNING: ActionController::Base.cookie_verifier_secret= is deprecated. Please configure it on your application with config.secret_token=. (called from /Users/dyer/Dropbox/Development/medi_pad/config/initializers/cookie_verification_secret.rb:7)
+
+
+Started GET "/user/sign_up" for 127.0.0.1 at Sun Oct 31 00:27:11 -0400 2010
+
+ActionController::RoutingError (No route matches "/user/sign_up"):
+  actionpack (3.0.0) lib/action_dispatch/middleware/show_exceptions.rb:53:in `call'
+  railties (3.0.0) lib/rails/rack/logger.rb:13:in `call'
+  rack (1.2.1) lib/rack/runtime.rb:17:in `call'
+  activesupport (3.0.0) lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  rack (1.2.1) lib/rack/lock.rb:11:in `call'
+  rack (1.2.1) lib/rack/lock.rb:11:in `synchronize'
+  rack (1.2.1) lib/rack/lock.rb:11:in `call'
+  actionpack (3.0.0) lib/action_dispatch/middleware/static.rb:30:in `call'
+  railties (3.0.0) lib/rails/application.rb:168:in `call'
+  railties (3.0.0) lib/rails/application.rb:77:in `send'
+  railties (3.0.0) lib/rails/application.rb:77:in `method_missing'
+  railties (3.0.0) lib/rails/rack/log_tailer.rb:14:in `call'
+  rack (1.2.1) lib/rack/content_length.rb:13:in `call'
+  rack (1.2.1) lib/rack/handler/webrick.rb:52:in `service'
+  /Users/dyer/.rvm/rubies/ree-1.8.7-2010.02/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /Users/dyer/.rvm/rubies/ree-1.8.7-2010.02/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /Users/dyer/.rvm/rubies/ree-1.8.7-2010.02/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /Users/dyer/.rvm/rubies/ree-1.8.7-2010.02/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /Users/dyer/.rvm/rubies/ree-1.8.7-2010.02/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /Users/dyer/.rvm/rubies/ree-1.8.7-2010.02/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /Users/dyer/.rvm/rubies/ree-1.8.7-2010.02/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /Users/dyer/.rvm/rubies/ree-1.8.7-2010.02/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /Users/dyer/.rvm/rubies/ree-1.8.7-2010.02/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /Users/dyer/.rvm/rubies/ree-1.8.7-2010.02/lib/ruby/1.8/webrick/server.rb:82:in `start'
+  rack (1.2.1) lib/rack/handler/webrick.rb:13:in `run'
+  rack (1.2.1) lib/rack/server.rb:213:in `start'
+  railties (3.0.0) lib/rails/commands/server.rb:65:in `start'
+  railties (3.0.0) lib/rails/commands.rb:30
+  railties (3.0.0) lib/rails/commands.rb:27:in `tap'
+  railties (3.0.0) lib/rails/commands.rb:27
+  script/rails:6:in `require'
+  script/rails:6
+
+Rendered /Users/dyer/.rvm/gems/ree-1.8.7-2010.02/gems/actionpack-3.0.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.6ms)
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at Sun Oct 31 00:27:14 -0400 2010
+  Processing by Devise::RegistrationsController#new as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 22ms
+
+
+Started GET "/" for 127.0.0.1 at Sun Oct 31 00:27:14 -0400 2010
+  Processing by HomeController#index as HTML
+DEPRECATION WARNING: Base.named_scope has been deprecated, please use Base.scope instead. (called from included at /Users/dyer/.rvm/gems/ree-1.8.7-2010.02/bundler/gems/authlogic-66ed79515919/lib/authlogic/acts_as_authentic/logged_in_status.rb:35)
+DEPRECATION WARNING: Base.named_scope has been deprecated, please use Base.scope instead. (called from included at /Users/dyer/.rvm/gems/ree-1.8.7-2010.02/bundler/gems/authlogic-66ed79515919/lib/authlogic/acts_as_authentic/logged_in_status.rb:36)
+Rendered home/index.html.erb within layouts/home (30.5ms)
+Completed 200 OK in 36ms (Views: 35.1ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at Sun Oct 31 00:27:23 -0400 2010
+  Processing by Devise::RegistrationsController#new as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 1) LIMIT 1
+Redirected to http://localhost:3000/
+Completed 302 Found in 17ms
+
+
+Started GET "/" for 127.0.0.1 at Sun Oct 31 00:27:23 -0400 2010
+  Processing by HomeController#index as HTML
+DEPRECATION WARNING: Base.named_scope has been deprecated, please use Base.scope instead. (called from included at /Users/dyer/.rvm/gems/ree-1.8.7-2010.02/bundler/gems/authlogic-66ed79515919/lib/authlogic/acts_as_authentic/logged_in_status.rb:35)
+DEPRECATION WARNING: Base.named_scope has been deprecated, please use Base.scope instead. (called from included at /Users/dyer/.rvm/gems/ree-1.8.7-2010.02/bundler/gems/authlogic-66ed79515919/lib/authlogic/acts_as_authentic/logged_in_status.rb:36)
+Rendered home/index.html.erb within layouts/home (22.0ms)
+Completed 200 OK in 26ms (Views: 24.8ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/" for 127.0.0.1 at Sun Oct 31 00:27:46 -0400 2010
+  Processing by HomeController#index as HTML
+DEPRECATION WARNING: Base.named_scope has been deprecated, please use Base.scope instead. (called from included at /Users/dyer/.rvm/gems/ree-1.8.7-2010.02/bundler/gems/authlogic-66ed79515919/lib/authlogic/acts_as_authentic/logged_in_status.rb:35)
+DEPRECATION WARNING: Base.named_scope has been deprecated, please use Base.scope instead. (called from included at /Users/dyer/.rvm/gems/ree-1.8.7-2010.02/bundler/gems/authlogic-66ed79515919/lib/authlogic/acts_as_authentic/logged_in_status.rb:36)
+Rendered home/index.html.erb within layouts/home (36.6ms)
+Completed 200 OK in 42ms (Views: 40.8ms | ActiveRecord: 0.8ms)
+
+
+Started POST "/users" for 127.0.0.1 at Sun Oct 31 00:29:02 -0400 2010
+  Processing by Devise::RegistrationsController#create as HTML
+  Parameters: {"commit"=>"Sign up", "authenticity_token"=>"HfBMYJj5F6eD7JHojmVzNvMWlleP3I06vbOB1+vM0yk=", "utf8"=>"\342\234\223", "user"=>{"password_confirmation"=>"[FILTERED]", "password"=>"[FILTERED]", "email"=>"john@krumpt.com"}}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 16ms
+
+
+Started GET "/" for 127.0.0.1 at Sun Oct 31 00:29:02 -0400 2010
+  Processing by HomeController#index as HTML
+DEPRECATION WARNING: Base.named_scope has been deprecated, please use Base.scope instead. (called from included at /Users/dyer/.rvm/gems/ree-1.8.7-2010.02/bundler/gems/authlogic-66ed79515919/lib/authlogic/acts_as_authentic/logged_in_status.rb:35)
+DEPRECATION WARNING: Base.named_scope has been deprecated, please use Base.scope instead. (called from included at /Users/dyer/.rvm/gems/ree-1.8.7-2010.02/bundler/gems/authlogic-66ed79515919/lib/authlogic/acts_as_authentic/logged_in_status.rb:36)
+Rendered home/index.html.erb within layouts/home (19.9ms)
+Completed 200 OK in 24ms (Views: 23.1ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at Sun Oct 31 00:33:02 -0400 2010
+  Processing by Devise::RegistrationsController#new as HTML
+Rendered /Users/dyer/.rvm/gems/ree-1.8.7-2010.02/gems/devise-1.1.3/app/views/devise/shared/_links.erb (1.4ms)
+Rendered /Users/dyer/.rvm/gems/ree-1.8.7-2010.02/gems/devise-1.1.3/app/views/devise/registrations/new.html.erb within layouts/application (34.9ms)
+Completed 200 OK in 76ms (Views: 66.0ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/users" for 127.0.0.1 at Sun Oct 31 00:33:12 -0400 2010
+  Processing by Devise::RegistrationsController#create as HTML
+  Parameters: {"commit"=>"Sign up", "authenticity_token"=>"JFHr9euHX3+ZsN5dQ58XldRsIdbNeMu32ezhfPJ8dio=", "utf8"=>"\342\234\223", "user"=>{"password_confirmation"=>"[FILTERED]", "password"=>"[FILTERED]", "email"=>"john@krumpt.com"}}
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users"."id" FROM "users" WHERE (LOWER("users"."email") = LOWER('john@krumpt.com')) LIMIT 1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "users" ("created_at", "current_sign_in_at", "current_sign_in_ip", "email", "encrypted_password", "last_sign_in_at", "last_sign_in_ip", "password_salt", "remember_created_at", "remember_token", "reset_password_token", "sign_in_count", "updated_at") VALUES ('2010-10-31 04:33:12.510179', NULL, NULL, 'john@krumpt.com', '$2a$10$DA2nXjXbv1M8TLeXfktv0OvKtfgslhrYo2WkkHUPJs8F6xdgHtskG', NULL, NULL, '$2a$10$DA2nXjXbv1M8TLeXfktv0O', NULL, NULL, NULL, 0, '2010-10-31 04:33:12.510179')[0m
+  [1m[35mSQL (0.4ms)[0m  UPDATE "users" SET "current_sign_in_at" = '2010-10-31 04:33:12.515535', "current_sign_in_ip" = '127.0.0.1', "last_sign_in_at" = '2010-10-31 04:33:12.515535', "last_sign_in_ip" = '127.0.0.1', "sign_in_count" = 1, "updated_at" = '2010-10-31 04:33:12.515885' WHERE ("users"."id" = 2)
+Redirected to http://localhost:3000/
+Completed 302 Found in 125ms
+
+
+Started GET "/" for 127.0.0.1 at Sun Oct 31 00:33:12 -0400 2010
+  Processing by HomeController#index as HTML
+DEPRECATION WARNING: Base.named_scope has been deprecated, please use Base.scope instead. (called from included at /Users/dyer/.rvm/gems/ree-1.8.7-2010.02/bundler/gems/authlogic-66ed79515919/lib/authlogic/acts_as_authentic/logged_in_status.rb:35)
+DEPRECATION WARNING: Base.named_scope has been deprecated, please use Base.scope instead. (called from included at /Users/dyer/.rvm/gems/ree-1.8.7-2010.02/bundler/gems/authlogic-66ed79515919/lib/authlogic/acts_as_authentic/logged_in_status.rb:36)
+Rendered home/index.html.erb within layouts/home (146.1ms)
+Completed 200 OK in 154ms (Views: 153.2ms | ActiveRecord: 2.6ms)
+
+
+Started GET "/users/password/new" for 127.0.0.1 at Sun Oct 31 00:34:53 -0400 2010
+  Processing by Devise::PasswordsController#new as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 2) LIMIT 1[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 17ms
+
+
+Started GET "/" for 127.0.0.1 at Sun Oct 31 00:34:53 -0400 2010
+  Processing by HomeController#index as HTML
+DEPRECATION WARNING: Base.named_scope has been deprecated, please use Base.scope instead. (called from included at /Users/dyer/.rvm/gems/ree-1.8.7-2010.02/bundler/gems/authlogic-66ed79515919/lib/authlogic/acts_as_authentic/logged_in_status.rb:35)
+DEPRECATION WARNING: Base.named_scope has been deprecated, please use Base.scope instead. (called from included at /Users/dyer/.rvm/gems/ree-1.8.7-2010.02/bundler/gems/authlogic-66ed79515919/lib/authlogic/acts_as_authentic/logged_in_status.rb:36)
+Rendered home/index.html.erb within layouts/home (59.5ms)
+Completed 200 OK in 68ms (Views: 66.8ms | ActiveRecord: 1.0ms)
+DEPRECATION WARNING: Use toplevel init.rb; rails/init.rb is deprecated: /Users/dyer/Dropbox/Development/medi_pad/vendor/plugins/paperclip/rails/init.rb. (called from /Users/dyer/Dropbox/Development/medi_pad/config/environment.rb:5)
+DEPRECATION WARNING: ActionController::Base.cookie_verifier_secret= is deprecated. Please configure it on your application with config.secret_token=. (called from /Users/dyer/Dropbox/Development/medi_pad/config/initializers/cookie_verification_secret.rb:7)
+
+
+Started GET "/users/password/new" for 127.0.0.1 at Sun Oct 31 00:35:10 -0400 2010
+  Processing by Devise::PasswordsController#new as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 2) LIMIT 1[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 16ms
+
+
+Started GET "/" for 127.0.0.1 at Sun Oct 31 00:35:10 -0400 2010
+  Processing by HomeController#index as HTML
+DEPRECATION WARNING: Base.named_scope has been deprecated, please use Base.scope instead. (called from included at /Users/dyer/.rvm/gems/ree-1.8.7-2010.02/bundler/gems/authlogic-66ed79515919/lib/authlogic/acts_as_authentic/logged_in_status.rb:35)
+DEPRECATION WARNING: Base.named_scope has been deprecated, please use Base.scope instead. (called from included at /Users/dyer/.rvm/gems/ree-1.8.7-2010.02/bundler/gems/authlogic-66ed79515919/lib/authlogic/acts_as_authentic/logged_in_status.rb:36)
+Rendered home/index.html.erb within layouts/home (22.5ms)
+Completed 200 OK in 26ms (Views: 25.8ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at Sun Oct 31 00:35:21 -0400 2010
+  Processing by Devise::RegistrationsController#new as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 2) LIMIT 1
+Redirected to http://localhost:3000/
+Completed 302 Found in 16ms
+
+
+Started GET "/" for 127.0.0.1 at Sun Oct 31 00:35:21 -0400 2010
+  Processing by HomeController#index as HTML
+DEPRECATION WARNING: Base.named_scope has been deprecated, please use Base.scope instead. (called from included at /Users/dyer/.rvm/gems/ree-1.8.7-2010.02/bundler/gems/authlogic-66ed79515919/lib/authlogic/acts_as_authentic/logged_in_status.rb:35)
+DEPRECATION WARNING: Base.named_scope has been deprecated, please use Base.scope instead. (called from included at /Users/dyer/.rvm/gems/ree-1.8.7-2010.02/bundler/gems/authlogic-66ed79515919/lib/authlogic/acts_as_authentic/logged_in_status.rb:36)
+Rendered home/index.html.erb within layouts/home (22.3ms)
+Completed 200 OK in 26ms (Views: 25.4ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/" for 127.0.0.1 at Sun Oct 31 00:35:38 -0400 2010
+  Processing by HomeController#index as HTML
+DEPRECATION WARNING: Base.named_scope has been deprecated, please use Base.scope instead. (called from included at /Users/dyer/.rvm/gems/ree-1.8.7-2010.02/bundler/gems/authlogic-66ed79515919/lib/authlogic/acts_as_authentic/logged_in_status.rb:35)
+DEPRECATION WARNING: Base.named_scope has been deprecated, please use Base.scope instead. (called from included at /Users/dyer/.rvm/gems/ree-1.8.7-2010.02/bundler/gems/authlogic-66ed79515919/lib/authlogic/acts_as_authentic/logged_in_status.rb:36)
+Rendered home/index.html.erb within layouts/home (29.2ms)
+Completed 200 OK in 33ms (Views: 32.3ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/" for 127.0.0.1 at Sun Oct 31 00:35:39 -0400 2010
+  Processing by HomeController#index as HTML
+DEPRECATION WARNING: Base.named_scope has been deprecated, please use Base.scope instead. (called from included at /Users/dyer/.rvm/gems/ree-1.8.7-2010.02/bundler/gems/authlogic-66ed79515919/lib/authlogic/acts_as_authentic/logged_in_status.rb:35)
+DEPRECATION WARNING: Base.named_scope has been deprecated, please use Base.scope instead. (called from included at /Users/dyer/.rvm/gems/ree-1.8.7-2010.02/bundler/gems/authlogic-66ed79515919/lib/authlogic/acts_as_authentic/logged_in_status.rb:36)
+Rendered home/index.html.erb within layouts/home (27.9ms)
+Completed 200 OK in 32ms (Views: 31.3ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/" for 127.0.0.1 at Sun Oct 31 00:35:39 -0400 2010
+  Processing by HomeController#index as HTML
+DEPRECATION WARNING: Base.named_scope has been deprecated, please use Base.scope instead. (called from included at /Users/dyer/.rvm/gems/ree-1.8.7-2010.02/bundler/gems/authlogic-66ed79515919/lib/authlogic/acts_as_authentic/logged_in_status.rb:35)
+DEPRECATION WARNING: Base.named_scope has been deprecated, please use Base.scope instead. (called from included at /Users/dyer/.rvm/gems/ree-1.8.7-2010.02/bundler/gems/authlogic-66ed79515919/lib/authlogic/acts_as_authentic/logged_in_status.rb:36)
+Rendered home/index.html.erb within layouts/home (125.5ms)
+Completed 200 OK in 129ms (Views: 128.8ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/login" for 127.0.0.1 at Sun Oct 31 00:35:40 -0400 2010
+  Processing by DoctorSessionsController#new as HTML
+DEPRECATION WARNING: Base.named_scope has been deprecated, please use Base.scope instead. (called from included at /Users/dyer/.rvm/gems/ree-1.8.7-2010.02/bundler/gems/authlogic-66ed79515919/lib/authlogic/acts_as_authentic/logged_in_status.rb:35)
+DEPRECATION WARNING: Base.named_scope has been deprecated, please use Base.scope instead. (called from included at /Users/dyer/.rvm/gems/ree-1.8.7-2010.02/bundler/gems/authlogic-66ed79515919/lib/authlogic/acts_as_authentic/logged_in_status.rb:36)
+DEPRECATION WARNING: <% %> style block helpers are deprecated. Please use <%= %>. (called from _app_views_doctor_sessions_new_html_erb___1823001377_2179107920_0 at /Users/dyer/Dropbox/Development/medi_pad/app/views/doctor_sessions/new.html.erb:25)
+DEPRECATION WARNING: <% %> style block helpers are deprecated. Please use <%= %>. (called from _app_views_doctor_sessions_new_html_erb___1823001377_2179107920_0 at /Users/dyer/Dropbox/Development/medi_pad/app/views/doctor_sessions/new.html.erb:13)
+Rendered doctor_sessions/new.html.erb within layouts/doctor_sessions (4.8ms)
+Completed 200 OK in 31ms (Views: 10.3ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/users/password/new" for 127.0.0.1 at Sun Oct 31 00:35:45 -0400 2010
+  Processing by Devise::PasswordsController#new as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 2) LIMIT 1[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 20ms
+
+
+Started GET "/" for 127.0.0.1 at Sun Oct 31 00:35:45 -0400 2010
+  Processing by HomeController#index as HTML
+DEPRECATION WARNING: Base.named_scope has been deprecated, please use Base.scope instead. (called from included at /Users/dyer/.rvm/gems/ree-1.8.7-2010.02/bundler/gems/authlogic-66ed79515919/lib/authlogic/acts_as_authentic/logged_in_status.rb:35)
+DEPRECATION WARNING: Base.named_scope has been deprecated, please use Base.scope instead. (called from included at /Users/dyer/.rvm/gems/ree-1.8.7-2010.02/bundler/gems/authlogic-66ed79515919/lib/authlogic/acts_as_authentic/logged_in_status.rb:36)
+Rendered home/index.html.erb within layouts/home (24.3ms)
+Completed 200 OK in 29ms (Views: 28.1ms | ActiveRecord: 0.7ms)
+DEPRECATION WARNING: Use toplevel init.rb; rails/init.rb is deprecated: /Users/dyer/Dropbox/Development/medi_pad/vendor/plugins/paperclip/rails/init.rb. (called from /Users/dyer/Dropbox/Development/medi_pad/config/environment.rb:5)
+DEPRECATION WARNING: ActionController::Base.cookie_verifier_secret= is deprecated. Please configure it on your application with config.secret_token=. (called from /Users/dyer/Dropbox/Development/medi_pad/config/initializers/cookie_verification_secret.rb:7)
+
+
+Started GET "/" for 127.0.0.1 at Sun Oct 31 00:38:57 -0400 2010
+  Processing by HomeController#index as HTML
+Rendered home/index.html.erb within layouts/home (7.7ms)
+Completed   in 11ms
+
+ActionView::Template::Error (uninitialized constant Authlogic):
+    47:     <div id="vertmenu">
+    48:       <h1>Medi-Pad</h1>
+    49:         <ul>
+    50:           <% if current_doctor %>
+    51:             <li> <%= link_to "Patients", patients_path  %> </li>
+    52:             <li> <%= link_to "Admin", {:controller => "admin", :action => "index"}  %> </li>
+    53:             <li> <%= link_to "Reports", reports_path %> </li>
+  app/models/doctor_session.rb:1
+  app/controllers/application_controller.rb:12:in `current_doctor_session'
+  app/controllers/application_controller.rb:17:in `current_doctor'
+  actionpack (3.0.0) lib/abstract_controller/helpers.rb:55:in `send'
+  actionpack (3.0.0) lib/abstract_controller/helpers.rb:55:in `current_doctor'
+  app/views/home/index.html.erb:50:in `_app_views_home_index_html_erb___1670002308_2174465220_0'
+  actionpack (3.0.0) lib/action_view/template.rb:135:in `send'
+  actionpack (3.0.0) lib/action_view/template.rb:135:in `render'
+  activesupport (3.0.0) lib/active_support/notifications.rb:54:in `instrument'
+  actionpack (3.0.0) lib/action_view/template.rb:127:in `render'
+  actionpack (3.0.0) lib/action_view/render/rendering.rb:59:in `_render_template'
+  activesupport (3.0.0) lib/active_support/notifications.rb:52:in `instrument'
+  activesupport (3.0.0) lib/active_support/notifications/instrumenter.rb:21:in `instrument'
+  activesupport (3.0.0) lib/active_support/notifications.rb:52:in `instrument'
+  actionpack (3.0.0) lib/action_view/render/rendering.rb:56:in `_render_template'
+  actionpack (3.0.0) lib/action_view/render/rendering.rb:26:in `render'
+  actionpack (3.0.0) lib/abstract_controller/rendering.rb:114:in `_render_template'
+  actionpack (3.0.0) lib/abstract_controller/rendering.rb:108:in `render_to_body'
+  actionpack (3.0.0) lib/action_controller/metal/renderers.rb:47:in `render_to_body'
+  actionpack (3.0.0) lib/action_controller/metal/compatibility.rb:55:in `render_to_body'
+  actionpack (3.0.0) lib/abstract_controller/rendering.rb:101:in `render_to_string'
+  actionpack (3.0.0) lib/abstract_controller/rendering.rb:92:in `render'
+  actionpack (3.0.0) lib/action_controller/metal/rendering.rb:17:in `render'
+  actionpack (3.0.0) lib/action_controller/metal/instrumentation.rb:40:in `render'
+  activesupport (3.0.0) lib/active_support/core_ext/benchmark.rb:5:in `ms'
+  /Users/dyer/.rvm/rubies/ree-1.8.7-2010.02/lib/ruby/1.8/benchmark.rb:308:in `realtime'
+  activesupport (3.0.0) lib/active_support/core_ext/benchmark.rb:5:in `ms'
+  actionpack (3.0.0) lib/action_controller/metal/instrumentation.rb:40:in `render'
+  actionpack (3.0.0) lib/action_controller/metal/instrumentation.rb:78:in `cleanup_view_runtime'
+  activerecord (3.0.0) lib/active_record/railties/controller_runtime.rb:15:in `cleanup_view_runtime'
+  actionpack (3.0.0) lib/action_controller/metal/instrumentation.rb:39:in `render'
+  actionpack (3.0.0) lib/action_controller/metal/implicit_render.rb:10:in `default_render'
+  actionpack (3.0.0) lib/action_controller/metal/implicit_render.rb:4:in `send_action'
+  actionpack (3.0.0) lib/action_controller/metal/implicit_render.rb:4:in `send_action'
+  actionpack (3.0.0) lib/abstract_controller/base.rb:150:in `process_action'
+  actionpack (3.0.0) lib/action_controller/metal/rendering.rb:11:in `process_action'
+  actionpack (3.0.0) lib/abstract_controller/callbacks.rb:18:in `process_action'
+  activesupport (3.0.0) lib/active_support/callbacks.rb:435:in `_run__738958071__process_action__662920150__callbacks'
+  activesupport (3.0.0) lib/active_support/callbacks.rb:409:in `send'
+  activesupport (3.0.0) lib/active_support/callbacks.rb:409:in `_run_process_action_callbacks'
+  activesupport (3.0.0) lib/active_support/callbacks.rb:93:in `send'
+  activesupport (3.0.0) lib/active_support/callbacks.rb:93:in `run_callbacks'
+  actionpack (3.0.0) lib/abstract_controller/callbacks.rb:17:in `process_action'
+  actionpack (3.0.0) lib/action_controller/metal/instrumentation.rb:30:in `process_action'
+  activesupport (3.0.0) lib/active_support/notifications.rb:52:in `instrument'
+  activesupport (3.0.0) lib/active_support/notifications/instrumenter.rb:21:in `instrument'
+  activesupport (3.0.0) lib/active_support/notifications.rb:52:in `instrument'
+  actionpack (3.0.0) lib/action_controller/metal/instrumentation.rb:29:in `process_action'
+  actionpack (3.0.0) lib/action_controller/metal/rescue.rb:17:in `process_action'
+  actionpack (3.0.0) lib/abstract_controller/base.rb:119:in `process'
+  actionpack (3.0.0) lib/abstract_controller/rendering.rb:40:in `process'
+  actionpack (3.0.0) lib/action_controller/metal.rb:133:in `dispatch'
+  actionpack (3.0.0) lib/action_controller/metal/rack_delegation.rb:14:in `dispatch'
+  actionpack (3.0.0) lib/action_controller/metal.rb:173:in `action'
+  actionpack (3.0.0) lib/action_dispatch/routing/route_set.rb:62:in `call'
+  actionpack (3.0.0) lib/action_dispatch/routing/route_set.rb:62:in `dispatch'
+  actionpack (3.0.0) lib/action_dispatch/routing/route_set.rb:27:in `call'
+  rack-mount (0.6.13) lib/rack/mount/route_set.rb:148:in `call'
+  rack-mount (0.6.13) lib/rack/mount/code_generation.rb:93:in `recognize'
+  rack-mount (0.6.13) lib/rack/mount/code_generation.rb:75:in `optimized_each'
+  rack-mount (0.6.13) lib/rack/mount/code_generation.rb:92:in `recognize'
+  rack-mount (0.6.13) lib/rack/mount/route_set.rb:139:in `call'
+  actionpack (3.0.0) lib/action_dispatch/routing/route_set.rb:492:in `call'
+  oa-core (0.1.6) lib/omniauth/strategy.rb:50:in `call_app!'
+  oa-core (0.1.6) lib/omniauth/strategy.rb:32:in `call!'
+  oa-core (0.1.6) lib/omniauth/strategy.rb:19:in `call'
+  oa-core (0.1.6) lib/omniauth/builder.rb:30:in `call'
+  warden (0.10.7) lib/warden/manager.rb:35:in `call'
+  warden (0.10.7) lib/warden/manager.rb:34:in `catch'
+  warden (0.10.7) lib/warden/manager.rb:34:in `call'
+  actionpack (3.0.0) lib/action_dispatch/middleware/best_standards_support.rb:17:in `call'
+  actionpack (3.0.0) lib/action_dispatch/middleware/head.rb:14:in `call'
+  rack (1.2.1) lib/rack/methodoverride.rb:24:in `call'
+  actionpack (3.0.0) lib/action_dispatch/middleware/params_parser.rb:21:in `call'
+  actionpack (3.0.0) lib/action_dispatch/middleware/flash.rb:182:in `call'
+  actionpack (3.0.0) lib/action_dispatch/middleware/session/abstract_store.rb:149:in `call'
+  actionpack (3.0.0) lib/action_dispatch/middleware/cookies.rb:287:in `call'
+  activerecord (3.0.0) lib/active_record/query_cache.rb:32:in `call'
+  activerecord (3.0.0) lib/active_record/connection_adapters/abstract/query_cache.rb:28:in `cache'
+  activerecord (3.0.0) lib/active_record/query_cache.rb:12:in `cache'
+  activerecord (3.0.0) lib/active_record/query_cache.rb:31:in `call'
+  activerecord (3.0.0) lib/active_record/connection_adapters/abstract/connection_pool.rb:355:in `call'
+  actionpack (3.0.0) lib/action_dispatch/middleware/callbacks.rb:46:in `call'
+  activesupport (3.0.0) lib/active_support/callbacks.rb:415:in `_run_call_callbacks'
+  actionpack (3.0.0) lib/action_dispatch/middleware/callbacks.rb:44:in `call'
+  rack (1.2.1) lib/rack/sendfile.rb:107:in `call'
+  actionpack (3.0.0) lib/action_dispatch/middleware/remote_ip.rb:48:in `call'
+  actionpack (3.0.0) lib/action_dispatch/middleware/show_exceptions.rb:46:in `call'
+  railties (3.0.0) lib/rails/rack/logger.rb:13:in `call'
+  rack (1.2.1) lib/rack/runtime.rb:17:in `call'
+  activesupport (3.0.0) lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  rack (1.2.1) lib/rack/lock.rb:11:in `call'
+  rack (1.2.1) lib/rack/lock.rb:11:in `synchronize'
+  rack (1.2.1) lib/rack/lock.rb:11:in `call'
+  actionpack (3.0.0) lib/action_dispatch/middleware/static.rb:30:in `call'
+  railties (3.0.0) lib/rails/application.rb:168:in `call'
+  railties (3.0.0) lib/rails/application.rb:77:in `send'
+  railties (3.0.0) lib/rails/application.rb:77:in `method_missing'
+  railties (3.0.0) lib/rails/rack/log_tailer.rb:14:in `call'
+  rack (1.2.1) lib/rack/content_length.rb:13:in `call'
+  rack (1.2.1) lib/rack/handler/webrick.rb:52:in `service'
+  /Users/dyer/.rvm/rubies/ree-1.8.7-2010.02/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /Users/dyer/.rvm/rubies/ree-1.8.7-2010.02/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /Users/dyer/.rvm/rubies/ree-1.8.7-2010.02/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /Users/dyer/.rvm/rubies/ree-1.8.7-2010.02/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /Users/dyer/.rvm/rubies/ree-1.8.7-2010.02/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /Users/dyer/.rvm/rubies/ree-1.8.7-2010.02/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /Users/dyer/.rvm/rubies/ree-1.8.7-2010.02/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /Users/dyer/.rvm/rubies/ree-1.8.7-2010.02/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /Users/dyer/.rvm/rubies/ree-1.8.7-2010.02/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /Users/dyer/.rvm/rubies/ree-1.8.7-2010.02/lib/ruby/1.8/webrick/server.rb:82:in `start'
+  rack (1.2.1) lib/rack/handler/webrick.rb:13:in `run'
+  rack (1.2.1) lib/rack/server.rb:213:in `start'
+  railties (3.0.0) lib/rails/commands/server.rb:65:in `start'
+  railties (3.0.0) lib/rails/commands.rb:30
+  railties (3.0.0) lib/rails/commands.rb:27:in `tap'
+  railties (3.0.0) lib/rails/commands.rb:27
+  script/rails:6:in `require'
+  script/rails:6
+
+Rendered /Users/dyer/.rvm/gems/ree-1.8.7-2010.02/gems/actionpack-3.0.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (0.9ms)
+Rendered /Users/dyer/.rvm/gems/ree-1.8.7-2010.02/gems/actionpack-3.0.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (704.1ms)
+Rendered /Users/dyer/.rvm/gems/ree-1.8.7-2010.02/gems/actionpack-3.0.0/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (712.5ms)
+
+
+Started GET "/" for 127.0.0.1 at Sun Oct 31 00:39:14 -0400 2010
+  Processing by HomeController#index as HTML
+Rendered home/index.html.erb within layouts/home (5.8ms)
+Completed   in 10ms
+
+ActionView::Template::Error (uninitialized constant Authlogic):
+    51:             <li> <%= link_to "Patients", patients_path  %> </li>
+    52:             <li> <%= link_to "Admin", {:controller => "admin", :action => "index"}  %> </li>
+    53:             <li> <%= link_to "Reports", reports_path %> </li>
+    54:             <li> <%= link_to 'Edit Profile', edit_doctor_path(current_doctor)  %> </li>
+    55:             <li> <%= link_to "Logout", logout_path  %>  </li>
+    56:           <% else %>
+    57:             <li> <%= link_to "Login", login_path  %> </li>
+  app/models/doctor_session.rb:1
+  app/controllers/application_controller.rb:12:in `current_doctor_session'
+  app/controllers/application_controller.rb:17:in `current_doctor'
+  actionpack (3.0.0) lib/abstract_controller/helpers.rb:55:in `send'
+  actionpack (3.0.0) lib/abstract_controller/helpers.rb:55:in `current_doctor'
+  app/views/home/index.html.erb:54:in `_app_views_home_index_html_erb___1670002308_2179872160_0'
+  actionpack (3.0.0) lib/action_view/template.rb:135:in `send'
+  actionpack (3.0.0) lib/action_view/template.rb:135:in `render'
+  activesupport (3.0.0) lib/active_support/notifications.rb:54:in `instrument'
+  actionpack (3.0.0) lib/action_view/template.rb:127:in `render'
+  actionpack (3.0.0) lib/action_view/render/rendering.rb:59:in `_render_template'
+  activesupport (3.0.0) lib/active_support/notifications.rb:52:in `instrument'
+  activesupport (3.0.0) lib/active_support/notifications/instrumenter.rb:21:in `instrument'
+  activesupport (3.0.0) lib/active_support/notifications.rb:52:in `instrument'
+  actionpack (3.0.0) lib/action_view/render/rendering.rb:56:in `_render_template'
+  actionpack (3.0.0) lib/action_view/render/rendering.rb:26:in `render'
+  actionpack (3.0.0) lib/abstract_controller/rendering.rb:114:in `_render_template'
+  actionpack (3.0.0) lib/abstract_controller/rendering.rb:108:in `render_to_body'
+  actionpack (3.0.0) lib/action_controller/metal/renderers.rb:47:in `render_to_body'
+  actionpack (3.0.0) lib/action_controller/metal/compatibility.rb:55:in `render_to_body'
+  actionpack (3.0.0) lib/abstract_controller/rendering.rb:101:in `render_to_string'
+  actionpack (3.0.0) lib/abstract_controller/rendering.rb:92:in `render'
+  actionpack (3.0.0) lib/action_controller/metal/rendering.rb:17:in `render'
+  actionpack (3.0.0) lib/action_controller/metal/instrumentation.rb:40:in `render'
+  activesupport (3.0.0) lib/active_support/core_ext/benchmark.rb:5:in `ms'
+  /Users/dyer/.rvm/rubies/ree-1.8.7-2010.02/lib/ruby/1.8/benchmark.rb:308:in `realtime'
+  activesupport (3.0.0) lib/active_support/core_ext/benchmark.rb:5:in `ms'
+  actionpack (3.0.0) lib/action_controller/metal/instrumentation.rb:40:in `render'
+  actionpack (3.0.0) lib/action_controller/metal/instrumentation.rb:78:in `cleanup_view_runtime'
+  activerecord (3.0.0) lib/active_record/railties/controller_runtime.rb:15:in `cleanup_view_runtime'
+  actionpack (3.0.0) lib/action_controller/metal/instrumentation.rb:39:in `render'
+  actionpack (3.0.0) lib/action_controller/metal/implicit_render.rb:10:in `default_render'
+  actionpack (3.0.0) lib/action_controller/metal/implicit_render.rb:4:in `send_action'
+  actionpack (3.0.0) lib/action_controller/metal/implicit_render.rb:4:in `send_action'
+  actionpack (3.0.0) lib/abstract_controller/base.rb:150:in `process_action'
+  actionpack (3.0.0) lib/action_controller/metal/rendering.rb:11:in `process_action'
+  actionpack (3.0.0) lib/abstract_controller/callbacks.rb:18:in `process_action'
+  activesupport (3.0.0) lib/active_support/callbacks.rb:435:in `_run__738958071__process_action__662920150__callbacks'
+  activesupport (3.0.0) lib/active_support/callbacks.rb:409:in `send'
+  activesupport (3.0.0) lib/active_support/callbacks.rb:409:in `_run_process_action_callbacks'
+  activesupport (3.0.0) lib/active_support/callbacks.rb:93:in `send'
+  activesupport (3.0.0) lib/active_support/callbacks.rb:93:in `run_callbacks'
+  actionpack (3.0.0) lib/abstract_controller/callbacks.rb:17:in `process_action'
+  actionpack (3.0.0) lib/action_controller/metal/instrumentation.rb:30:in `process_action'
+  activesupport (3.0.0) lib/active_support/notifications.rb:52:in `instrument'
+  activesupport (3.0.0) lib/active_support/notifications/instrumenter.rb:21:in `instrument'
+  activesupport (3.0.0) lib/active_support/notifications.rb:52:in `instrument'
+  actionpack (3.0.0) lib/action_controller/metal/instrumentation.rb:29:in `process_action'
+  actionpack (3.0.0) lib/action_controller/metal/rescue.rb:17:in `process_action'
+  actionpack (3.0.0) lib/abstract_controller/base.rb:119:in `process'
+  actionpack (3.0.0) lib/abstract_controller/rendering.rb:40:in `process'
+  actionpack (3.0.0) lib/action_controller/metal.rb:133:in `dispatch'
+  actionpack (3.0.0) lib/action_controller/metal/rack_delegation.rb:14:in `dispatch'
+  actionpack (3.0.0) lib/action_controller/metal.rb:173:in `action'
+  actionpack (3.0.0) lib/action_dispatch/routing/route_set.rb:62:in `call'
+  actionpack (3.0.0) lib/action_dispatch/routing/route_set.rb:62:in `dispatch'
+  actionpack (3.0.0) lib/action_dispatch/routing/route_set.rb:27:in `call'
+  rack-mount (0.6.13) lib/rack/mount/route_set.rb:148:in `call'
+  rack-mount (0.6.13) lib/rack/mount/code_generation.rb:93:in `recognize'
+  rack-mount (0.6.13) lib/rack/mount/code_generation.rb:75:in `optimized_each'
+  rack-mount (0.6.13) lib/rack/mount/code_generation.rb:92:in `recognize'
+  rack-mount (0.6.13) lib/rack/mount/route_set.rb:139:in `call'
+  actionpack (3.0.0) lib/action_dispatch/routing/route_set.rb:492:in `call'
+  oa-core (0.1.6) lib/omniauth/strategy.rb:50:in `call_app!'
+  oa-core (0.1.6) lib/omniauth/strategy.rb:32:in `call!'
+  oa-core (0.1.6) lib/omniauth/strategy.rb:19:in `call'
+  oa-core (0.1.6) lib/omniauth/builder.rb:30:in `call'
+  warden (0.10.7) lib/warden/manager.rb:35:in `call'
+  warden (0.10.7) lib/warden/manager.rb:34:in `catch'
+  warden (0.10.7) lib/warden/manager.rb:34:in `call'
+  actionpack (3.0.0) lib/action_dispatch/middleware/best_standards_support.rb:17:in `call'
+  actionpack (3.0.0) lib/action_dispatch/middleware/head.rb:14:in `call'
+  rack (1.2.1) lib/rack/methodoverride.rb:24:in `call'
+  actionpack (3.0.0) lib/action_dispatch/middleware/params_parser.rb:21:in `call'
+  actionpack (3.0.0) lib/action_dispatch/middleware/flash.rb:182:in `call'
+  actionpack (3.0.0) lib/action_dispatch/middleware/session/abstract_store.rb:149:in `call'
+  actionpack (3.0.0) lib/action_dispatch/middleware/cookies.rb:287:in `call'
+  activerecord (3.0.0) lib/active_record/query_cache.rb:32:in `call'
+  activerecord (3.0.0) lib/active_record/connection_adapters/abstract/query_cache.rb:28:in `cache'
+  activerecord (3.0.0) lib/active_record/query_cache.rb:12:in `cache'
+  activerecord (3.0.0) lib/active_record/query_cache.rb:31:in `call'
+  activerecord (3.0.0) lib/active_record/connection_adapters/abstract/connection_pool.rb:355:in `call'
+  actionpack (3.0.0) lib/action_dispatch/middleware/callbacks.rb:46:in `call'
+  activesupport (3.0.0) lib/active_support/callbacks.rb:415:in `_run_call_callbacks'
+  actionpack (3.0.0) lib/action_dispatch/middleware/callbacks.rb:44:in `call'
+  rack (1.2.1) lib/rack/sendfile.rb:107:in `call'
+  actionpack (3.0.0) lib/action_dispatch/middleware/remote_ip.rb:48:in `call'
+  actionpack (3.0.0) lib/action_dispatch/middleware/show_exceptions.rb:46:in `call'
+  railties (3.0.0) lib/rails/rack/logger.rb:13:in `call'
+  rack (1.2.1) lib/rack/runtime.rb:17:in `call'
+  activesupport (3.0.0) lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  rack (1.2.1) lib/rack/lock.rb:11:in `call'
+  rack (1.2.1) lib/rack/lock.rb:11:in `synchronize'
+  rack (1.2.1) lib/rack/lock.rb:11:in `call'
+  actionpack (3.0.0) lib/action_dispatch/middleware/static.rb:30:in `call'
+  railties (3.0.0) lib/rails/application.rb:168:in `call'
+  railties (3.0.0) lib/rails/application.rb:77:in `send'
+  railties (3.0.0) lib/rails/application.rb:77:in `method_missing'
+  railties (3.0.0) lib/rails/rack/log_tailer.rb:14:in `call'
+  rack (1.2.1) lib/rack/content_length.rb:13:in `call'
+  rack (1.2.1) lib/rack/handler/webrick.rb:52:in `service'
+  /Users/dyer/.rvm/rubies/ree-1.8.7-2010.02/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /Users/dyer/.rvm/rubies/ree-1.8.7-2010.02/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /Users/dyer/.rvm/rubies/ree-1.8.7-2010.02/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /Users/dyer/.rvm/rubies/ree-1.8.7-2010.02/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /Users/dyer/.rvm/rubies/ree-1.8.7-2010.02/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /Users/dyer/.rvm/rubies/ree-1.8.7-2010.02/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /Users/dyer/.rvm/rubies/ree-1.8.7-2010.02/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /Users/dyer/.rvm/rubies/ree-1.8.7-2010.02/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /Users/dyer/.rvm/rubies/ree-1.8.7-2010.02/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /Users/dyer/.rvm/rubies/ree-1.8.7-2010.02/lib/ruby/1.8/webrick/server.rb:82:in `start'
+  rack (1.2.1) lib/rack/handler/webrick.rb:13:in `run'
+  rack (1.2.1) lib/rack/server.rb:213:in `start'
+  railties (3.0.0) lib/rails/commands/server.rb:65:in `start'
+  railties (3.0.0) lib/rails/commands.rb:30
+  railties (3.0.0) lib/rails/commands.rb:27:in `tap'
+  railties (3.0.0) lib/rails/commands.rb:27
+  script/rails:6:in `require'
+  script/rails:6
+
+Rendered /Users/dyer/.rvm/gems/ree-1.8.7-2010.02/gems/actionpack-3.0.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (0.9ms)
+Rendered /Users/dyer/.rvm/gems/ree-1.8.7-2010.02/gems/actionpack-3.0.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (713.7ms)
+Rendered /Users/dyer/.rvm/gems/ree-1.8.7-2010.02/gems/actionpack-3.0.0/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (786.5ms)
+
+
+Started GET "/" for 127.0.0.1 at Sun Oct 31 00:41:25 -0400 2010
+  Processing by HomeController#index as HTML
+Rendered home/index.html.erb within layouts/home (2.0ms)
+Completed 200 OK in 5ms (Views: 4.7ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/patients" for 127.0.0.1 at Sun Oct 31 00:41:28 -0400 2010
+  Processing by PatientsController#index as HTML
+  [1m[36mPatient Load (15.7ms)[0m  [1mSELECT "patients".* FROM "patients"[0m
+  [1m[35mPatient Load (0.9ms)[0m  SELECT DISTINCT facility FROM "patients"
+  [1m[36mPatient Load (2.1ms)[0m  [1mSELECT "patients".* FROM "patients" WHERE ("patients"."discharged" = 'f') AND ("patients"."facility" = 'ALTAMONTE')[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT DISTINCT facility FROM "patients"
+DEPRECATION WARNING: <% %> style block helpers are deprecated. Please use <%= %>. (called from _app_views_patients_index_html_erb___901617420_2179243040_0 at /Users/dyer/Dropbox/Development/medi_pad/app/views/patients/index.html.erb:61)
+  [1m[36mSQL (0.2ms)[0m  [1mSELECT COUNT(*) AS count_id FROM (SELECT 1 FROM "charges" WHERE ("charges".patient_id = 3002)) AS subquery[0m
+  [1m[35mSQL (0.2ms)[0m  SELECT COUNT(*) AS count_id FROM (SELECT 1 FROM "charges" WHERE ("charges".patient_id = 3009)) AS subquery
+  [1m[36mSQL (0.1ms)[0m  [1mSELECT COUNT(*) AS count_id FROM (SELECT 1 FROM "charges" WHERE ("charges".patient_id = 3025)) AS subquery[0m
+  [1m[35mSQL (0.2ms)[0m  SELECT COUNT(*) AS count_id FROM (SELECT 1 FROM "charges" WHERE ("charges".patient_id = 3034)) AS subquery
+  [1m[36mSQL (0.2ms)[0m  [1mSELECT COUNT(*) AS count_id FROM (SELECT 1 FROM "charges" WHERE ("charges".patient_id = 3037)) AS subquery[0m
+  [1m[35mSQL (0.1ms)[0m  SELECT COUNT(*) AS count_id FROM (SELECT 1 FROM "charges" WHERE ("charges".patient_id = 3039)) AS subquery
+  [1m[36mSQL (0.1ms)[0m  [1mSELECT COUNT(*) AS count_id FROM (SELECT 1 FROM "charges" WHERE ("charges".patient_id = 3042)) AS subquery[0m
+  [1m[35mSQL (0.1ms)[0m  SELECT COUNT(*) AS count_id FROM (SELECT 1 FROM "charges" WHERE ("charges".patient_id = 3043)) AS subquery
+  [1m[36mSQL (0.1ms)[0m  [1mSELECT COUNT(*) AS count_id FROM (SELECT 1 FROM "charges" WHERE ("charges".patient_id = 3049)) AS subquery[0m
+  [1m[35mSQL (0.2ms)[0m  SELECT COUNT(*) AS count_id FROM (SELECT 1 FROM "charges" WHERE ("charges".patient_id = 3057)) AS subquery
+  [1m[36mSQL (0.1ms)[0m  [1mSELECT COUNT(*) AS count_id FROM (SELECT 1 FROM "charges" WHERE ("charges".patient_id = 3062)) AS subquery[0m
+  [1m[35mSQL (0.1ms)[0m  SELECT COUNT(*) AS count_id FROM (SELECT 1 FROM "charges" WHERE ("charges".patient_id = 3067)) AS subquery
+  [1m[36mSQL (0.1ms)[0m  [1mSELECT COUNT(*) AS count_id FROM (SELECT 1 FROM "charges" WHERE ("charges".patient_id = 3077)) AS subquery[0m
+  [1m[35mSQL (0.1ms)[0m  SELECT COUNT(*) AS count_id FROM (SELECT 1 FROM "charges" WHERE ("charges".patient_id = 3084)) AS subquery
+  [1m[36mSQL (0.1ms)[0m  [1mSELECT COUNT(*) AS count_id FROM (SELECT 1 FROM "charges" WHERE ("charges".patient_id = 3092)) AS subquery[0m
+  [1m[35mSQL (0.1ms)[0m  SELECT COUNT(*) AS count_id FROM (SELECT 1 FROM "charges" WHERE ("charges".patient_id = 3093)) AS subquery
+  [1m[36mSQL (0.1ms)[0m  [1mSELECT COUNT(*) AS count_id FROM (SELECT 1 FROM "charges" WHERE ("charges".patient_id = 3096)) AS subquery[0m
+  [1m[35mSQL (0.1ms)[0m  SELECT COUNT(*) AS count_id FROM (SELECT 1 FROM "charges" WHERE ("charges".patient_id = 3098)) AS subquery
+  [1m[36mSQL (0.1ms)[0m  [1mSELECT COUNT(*) AS count_id FROM (SELECT 1 FROM "charges" WHERE ("charges".patient_id = 3100)) AS subquery[0m
+  [1m[35mSQL (0.1ms)[0m  SELECT COUNT(*) AS count_id FROM (SELECT 1 FROM "charges" WHERE ("charges".patient_id = 3104)) AS subquery
+  [1m[36mSQL (0.1ms)[0m  [1mSELECT COUNT(*) AS count_id FROM (SELECT 1 FROM "charges" WHERE ("charges".patient_id = 3105)) AS subquery[0m
+  [1m[35mSQL (0.2ms)[0m  SELECT COUNT(*) AS count_id FROM (SELECT 1 FROM "charges" WHERE ("charges".patient_id = 3107)) AS subquery
+  [1m[36mSQL (0.1ms)[0m  [1mSELECT COUNT(*) AS count_id FROM (SELECT 1 FROM "charges" WHERE ("charges".patient_id = 3108)) AS subquery[0m
+  [1m[35mSQL (0.1ms)[0m  SELECT COUNT(*) AS count_id FROM (SELECT 1 FROM "charges" WHERE ("charges".patient_id = 3109)) AS subquery
+  [1m[36mSQL (0.1ms)[0m  [1mSELECT COUNT(*) AS count_id FROM (SELECT 1 FROM "charges" WHERE ("charges".patient_id = 3111)) AS subquery[0m
+  [1m[35mSQL (0.1ms)[0m  SELECT COUNT(*) AS count_id FROM (SELECT 1 FROM "charges" WHERE ("charges".patient_id = 3118)) AS subquery
+  [1m[36mSQL (0.1ms)[0m  [1mSELECT COUNT(*) AS count_id FROM (SELECT 1 FROM "charges" WHERE ("charges".patient_id = 3125)) AS subquery[0m
+  [1m[35mSQL (0.2ms)[0m  SELECT COUNT(*) AS count_id FROM (SELECT 1 FROM "charges" WHERE ("charges".patient_id = 3127)) AS subquery
+  [1m[36mSQL (0.1ms)[0m  [1mSELECT COUNT(*) AS count_id FROM (SELECT 1 FROM "charges" WHERE ("charges".patient_id = 3132)) AS subquery[0m
+  [1m[35mSQL (0.1ms)[0m  SELECT COUNT(*) AS count_id FROM (SELECT 1 FROM "charges" WHERE ("charges".patient_id = 3141)) AS subquery
+  [1m[36mSQL (0.1ms)[0m  [1mSELECT COUNT(*) AS count_id FROM (SELECT 1 FROM "charges" WHERE ("charges".patient_id = 3143)) AS subquery[0m
+  [1m[35mSQL (0.1ms)[0m  SELECT COUNT(*) AS count_id FROM (SELECT 1 FROM "charges" WHERE ("charges".patient_id = 3148)) AS subquery
+  [1m[36mSQL (0.2ms)[0m  [1mSELECT COUNT(*) AS count_id FROM (SELECT 1 FROM "charges" WHERE ("charges".patient_id = 3149)) AS subquery[0m
+  [1m[35mSQL (0.1ms)[0m  SELECT COUNT(*) AS count_id FROM (SELECT 1 FROM "charges" WHERE ("charges".patient_id = 3152)) AS subquery
+  [1m[36mSQL (0.1ms)[0m  [1mSELECT COUNT(*) AS count_id FROM (SELECT 1 FROM "charges" WHERE ("charges".patient_id = 3163)) AS subquery[0m
+  [1m[35mSQL (0.3ms)[0m  SELECT COUNT(*) AS count_id FROM (SELECT 1 FROM "charges" WHERE ("charges".patient_id = 3170)) AS subquery
+  [1m[36mSQL (0.2ms)[0m  [1mSELECT COUNT(*) AS count_id FROM (SELECT 1 FROM "charges" WHERE ("charges".patient_id = 3171)) AS subquery[0m
+  [1m[35mSQL (0.1ms)[0m  SELECT COUNT(*) AS count_id FROM (SELECT 1 FROM "charges" WHERE ("charges".patient_id = 3175)) AS subquery
+  [1m[36mSQL (0.2ms)[0m  [1mSELECT COUNT(*) AS count_id FROM (SELECT 1 FROM "charges" WHERE ("charges".patient_id = 3176)) AS subquery[0m
+Rendered patients/_patient.erb (259.6ms)
+Rendered patients/index.html.erb within layouts/patients (272.9ms)
+Completed   in 453ms
+
+ActionView::Template::Error (uninitialized constant Authlogic):
+    15: <body>
+    16: 
+    17: <p style="color: green"><%= flash[:notice] %></p>
+    18: <%  cookies[:doctor] = current_doctor.doctor_name %>
+    19: 
+    20: <%= yield %>
+    21: 
+  app/models/doctor_session.rb:1
+  app/controllers/application_controller.rb:12:in `current_doctor_session'
+  app/controllers/application_controller.rb:17:in `current_doctor'
+  actionpack (3.0.0) lib/abstract_controller/helpers.rb:55:in `send'
+  actionpack (3.0.0) lib/abstract_controller/helpers.rb:55:in `current_doctor'
+  app/views/layouts/patients.html.erb:18:in `_app_views_layouts_patients_html_erb__548945129_2179239400_0'
+  actionpack (3.0.0) lib/action_view/template.rb:135:in `send'
+  actionpack (3.0.0) lib/action_view/template.rb:135:in `render'
+  activesupport (3.0.0) lib/active_support/notifications.rb:54:in `instrument'
+  actionpack (3.0.0) lib/action_view/template.rb:127:in `render'
+  actionpack (3.0.0) lib/action_view/render/layouts.rb:80:in `_render_layout'
+  actionpack (3.0.0) lib/action_view/render/rendering.rb:62:in `_render_template'
+  activesupport (3.0.0) lib/active_support/notifications.rb:52:in `instrument'
+  activesupport (3.0.0) lib/active_support/notifications/instrumenter.rb:21:in `instrument'
+  activesupport (3.0.0) lib/active_support/notifications.rb:52:in `instrument'
+  actionpack (3.0.0) lib/action_view/render/rendering.rb:56:in `_render_template'
+  actionpack (3.0.0) lib/action_view/render/rendering.rb:26:in `render'
+  actionpack (3.0.0) lib/abstract_controller/rendering.rb:114:in `_render_template'
+  actionpack (3.0.0) lib/abstract_controller/rendering.rb:108:in `render_to_body'
+  actionpack (3.0.0) lib/action_controller/metal/renderers.rb:47:in `render_to_body'
+  actionpack (3.0.0) lib/action_controller/metal/compatibility.rb:55:in `render_to_body'
+  actionpack (3.0.0) lib/abstract_controller/rendering.rb:101:in `render_to_string'
+  actionpack (3.0.0) lib/abstract_controller/rendering.rb:92:in `render'
+  actionpack (3.0.0) lib/action_controller/metal/rendering.rb:17:in `render'
+  actionpack (3.0.0) lib/action_controller/metal/instrumentation.rb:40:in `render'
+  activesupport (3.0.0) lib/active_support/core_ext/benchmark.rb:5:in `ms'
+  /Users/dyer/.rvm/rubies/ree-1.8.7-2010.02/lib/ruby/1.8/benchmark.rb:308:in `realtime'
+  activesupport (3.0.0) lib/active_support/core_ext/benchmark.rb:5:in `ms'
+  actionpack (3.0.0) lib/action_controller/metal/instrumentation.rb:40:in `render'
+  actionpack (3.0.0) lib/action_controller/metal/instrumentation.rb:78:in `cleanup_view_runtime'
+  activerecord (3.0.0) lib/active_record/railties/controller_runtime.rb:15:in `cleanup_view_runtime'
+  actionpack (3.0.0) lib/action_controller/metal/instrumentation.rb:39:in `render'
+  actionpack (3.0.0) lib/action_controller/metal/implicit_render.rb:10:in `default_render'
+  actionpack (3.0.0) lib/action_controller/metal/mime_responds.rb:261:in `retrieve_response_from_mimes'
+  actionpack (3.0.0) lib/action_controller/metal/mime_responds.rb:192:in `call'
+  actionpack (3.0.0) lib/action_controller/metal/mime_responds.rb:192:in `respond_to'
+  app/controllers/patients_controller.rb:28:in `index'
+  actionpack (3.0.0) lib/action_controller/metal/implicit_render.rb:4:in `send_action'
+  actionpack (3.0.0) lib/action_controller/metal/implicit_render.rb:4:in `send_action'
+  actionpack (3.0.0) lib/abstract_controller/base.rb:150:in `process_action'
+  actionpack (3.0.0) lib/action_controller/metal/rendering.rb:11:in `process_action'
+  actionpack (3.0.0) lib/abstract_controller/callbacks.rb:18:in `process_action'
+  activesupport (3.0.0) lib/active_support/callbacks.rb:430:in `_run__140063474__process_action__199225275__callbacks'
+  activesupport (3.0.0) lib/active_support/callbacks.rb:409:in `send'
+  activesupport (3.0.0) lib/active_support/callbacks.rb:409:in `_run_process_action_callbacks'
+  activesupport (3.0.0) lib/active_support/callbacks.rb:93:in `send'
+  activesupport (3.0.0) lib/active_support/callbacks.rb:93:in `run_callbacks'
+  actionpack (3.0.0) lib/abstract_controller/callbacks.rb:17:in `process_action'
+  actionpack (3.0.0) lib/action_controller/metal/instrumentation.rb:30:in `process_action'
+  activesupport (3.0.0) lib/active_support/notifications.rb:52:in `instrument'
+  activesupport (3.0.0) lib/active_support/notifications/instrumenter.rb:21:in `instrument'
+  activesupport (3.0.0) lib/active_support/notifications.rb:52:in `instrument'
+  actionpack (3.0.0) lib/action_controller/metal/instrumentation.rb:29:in `process_action'
+  actionpack (3.0.0) lib/action_controller/metal/rescue.rb:17:in `process_action'
+  actionpack (3.0.0) lib/abstract_controller/base.rb:119:in `process'
+  actionpack (3.0.0) lib/abstract_controller/rendering.rb:40:in `process'
+  actionpack (3.0.0) lib/action_controller/metal.rb:133:in `dispatch'
+  actionpack (3.0.0) lib/action_controller/metal/rack_delegation.rb:14:in `dispatch'
+  actionpack (3.0.0) lib/action_controller/metal.rb:173:in `action'
+  actionpack (3.0.0) lib/action_dispatch/routing/route_set.rb:62:in `call'
+  actionpack (3.0.0) lib/action_dispatch/routing/route_set.rb:62:in `dispatch'
+  actionpack (3.0.0) lib/action_dispatch/routing/route_set.rb:27:in `call'
+  rack-mount (0.6.13) lib/rack/mount/route_set.rb:148:in `call'
+  rack-mount (0.6.13) lib/rack/mount/code_generation.rb:93:in `recognize'
+  rack-mount (0.6.13) lib/rack/mount/code_generation.rb:68:in `optimized_each'
+  rack-mount (0.6.13) lib/rack/mount/code_generation.rb:92:in `recognize'
+  rack-mount (0.6.13) lib/rack/mount/route_set.rb:139:in `call'
+  actionpack (3.0.0) lib/action_dispatch/routing/route_set.rb:492:in `call'
+  oa-core (0.1.6) lib/omniauth/strategy.rb:50:in `call_app!'
+  oa-core (0.1.6) lib/omniauth/strategy.rb:32:in `call!'
+  oa-core (0.1.6) lib/omniauth/strategy.rb:19:in `call'
+  oa-core (0.1.6) lib/omniauth/builder.rb:30:in `call'
+  warden (0.10.7) lib/warden/manager.rb:35:in `call'
+  warden (0.10.7) lib/warden/manager.rb:34:in `catch'
+  warden (0.10.7) lib/warden/manager.rb:34:in `call'
+  actionpack (3.0.0) lib/action_dispatch/middleware/best_standards_support.rb:17:in `call'
+  actionpack (3.0.0) lib/action_dispatch/middleware/head.rb:14:in `call'
+  rack (1.2.1) lib/rack/methodoverride.rb:24:in `call'
+  actionpack (3.0.0) lib/action_dispatch/middleware/params_parser.rb:21:in `call'
+  actionpack (3.0.0) lib/action_dispatch/middleware/flash.rb:182:in `call'
+  actionpack (3.0.0) lib/action_dispatch/middleware/session/abstract_store.rb:149:in `call'
+  actionpack (3.0.0) lib/action_dispatch/middleware/cookies.rb:287:in `call'
+  activerecord (3.0.0) lib/active_record/query_cache.rb:32:in `call'
+  activerecord (3.0.0) lib/active_record/connection_adapters/abstract/query_cache.rb:28:in `cache'
+  activerecord (3.0.0) lib/active_record/query_cache.rb:12:in `cache'
+  activerecord (3.0.0) lib/active_record/query_cache.rb:31:in `call'
+  activerecord (3.0.0) lib/active_record/connection_adapters/abstract/connection_pool.rb:355:in `call'
+  actionpack (3.0.0) lib/action_dispatch/middleware/callbacks.rb:46:in `call'
+  activesupport (3.0.0) lib/active_support/callbacks.rb:415:in `_run_call_callbacks'
+  actionpack (3.0.0) lib/action_dispatch/middleware/callbacks.rb:44:in `call'
+  rack (1.2.1) lib/rack/sendfile.rb:107:in `call'
+  actionpack (3.0.0) lib/action_dispatch/middleware/remote_ip.rb:48:in `call'
+  actionpack (3.0.0) lib/action_dispatch/middleware/show_exceptions.rb:46:in `call'
+  railties (3.0.0) lib/rails/rack/logger.rb:13:in `call'
+  rack (1.2.1) lib/rack/runtime.rb:17:in `call'
+  activesupport (3.0.0) lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  rack (1.2.1) lib/rack/lock.rb:11:in `call'
+  rack (1.2.1) lib/rack/lock.rb:11:in `synchronize'
+  rack (1.2.1) lib/rack/lock.rb:11:in `call'
+  actionpack (3.0.0) lib/action_dispatch/middleware/static.rb:30:in `call'
+  railties (3.0.0) lib/rails/application.rb:168:in `call'
+  railties (3.0.0) lib/rails/application.rb:77:in `send'
+  railties (3.0.0) lib/rails/application.rb:77:in `method_missing'
+  railties (3.0.0) lib/rails/rack/log_tailer.rb:14:in `call'
+  rack (1.2.1) lib/rack/content_length.rb:13:in `call'
+  rack (1.2.1) lib/rack/handler/webrick.rb:52:in `service'
+  /Users/dyer/.rvm/rubies/ree-1.8.7-2010.02/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /Users/dyer/.rvm/rubies/ree-1.8.7-2010.02/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /Users/dyer/.rvm/rubies/ree-1.8.7-2010.02/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /Users/dyer/.rvm/rubies/ree-1.8.7-2010.02/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /Users/dyer/.rvm/rubies/ree-1.8.7-2010.02/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /Users/dyer/.rvm/rubies/ree-1.8.7-2010.02/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /Users/dyer/.rvm/rubies/ree-1.8.7-2010.02/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /Users/dyer/.rvm/rubies/ree-1.8.7-2010.02/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /Users/dyer/.rvm/rubies/ree-1.8.7-2010.02/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /Users/dyer/.rvm/rubies/ree-1.8.7-2010.02/lib/ruby/1.8/webrick/server.rb:82:in `start'
+  rack (1.2.1) lib/rack/handler/webrick.rb:13:in `run'
+  rack (1.2.1) lib/rack/server.rb:213:in `start'
+  railties (3.0.0) lib/rails/commands/server.rb:65:in `start'
+  railties (3.0.0) lib/rails/commands.rb:30
+  railties (3.0.0) lib/rails/commands.rb:27:in `tap'
+  railties (3.0.0) lib/rails/commands.rb:27
+  script/rails:6:in `require'
+  script/rails:6
+
+Rendered /Users/dyer/.rvm/gems/ree-1.8.7-2010.02/gems/actionpack-3.0.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (0.8ms)
+  [1m[35mSQL (0.6ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.1ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.3ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.1ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.3ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.2ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+Rendered /Users/dyer/.rvm/gems/ree-1.8.7-2010.02/gems/actionpack-3.0.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (736.7ms)
+Rendered /Users/dyer/.rvm/gems/ree-1.8.7-2010.02/gems/actionpack-3.0.0/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (803.9ms)
+
+
+Started GET "/users/sign-" for 127.0.0.1 at Sun Oct 31 00:41:48 -0400 2010
+
+ActionController::RoutingError (No route matches "/users/sign-"):
+  actionpack (3.0.0) lib/action_dispatch/middleware/show_exceptions.rb:53:in `call'
+  railties (3.0.0) lib/rails/rack/logger.rb:13:in `call'
+  rack (1.2.1) lib/rack/runtime.rb:17:in `call'
+  activesupport (3.0.0) lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  rack (1.2.1) lib/rack/lock.rb:11:in `call'
+  rack (1.2.1) lib/rack/lock.rb:11:in `synchronize'
+  rack (1.2.1) lib/rack/lock.rb:11:in `call'
+  actionpack (3.0.0) lib/action_dispatch/middleware/static.rb:30:in `call'
+  railties (3.0.0) lib/rails/application.rb:168:in `call'
+  railties (3.0.0) lib/rails/application.rb:77:in `send'
+  railties (3.0.0) lib/rails/application.rb:77:in `method_missing'
+  railties (3.0.0) lib/rails/rack/log_tailer.rb:14:in `call'
+  rack (1.2.1) lib/rack/content_length.rb:13:in `call'
+  rack (1.2.1) lib/rack/handler/webrick.rb:52:in `service'
+  /Users/dyer/.rvm/rubies/ree-1.8.7-2010.02/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /Users/dyer/.rvm/rubies/ree-1.8.7-2010.02/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /Users/dyer/.rvm/rubies/ree-1.8.7-2010.02/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /Users/dyer/.rvm/rubies/ree-1.8.7-2010.02/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /Users/dyer/.rvm/rubies/ree-1.8.7-2010.02/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /Users/dyer/.rvm/rubies/ree-1.8.7-2010.02/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /Users/dyer/.rvm/rubies/ree-1.8.7-2010.02/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /Users/dyer/.rvm/rubies/ree-1.8.7-2010.02/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /Users/dyer/.rvm/rubies/ree-1.8.7-2010.02/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /Users/dyer/.rvm/rubies/ree-1.8.7-2010.02/lib/ruby/1.8/webrick/server.rb:82:in `start'
+  rack (1.2.1) lib/rack/handler/webrick.rb:13:in `run'
+  rack (1.2.1) lib/rack/server.rb:213:in `start'
+  railties (3.0.0) lib/rails/commands/server.rb:65:in `start'
+  railties (3.0.0) lib/rails/commands.rb:30
+  railties (3.0.0) lib/rails/commands.rb:27:in `tap'
+  railties (3.0.0) lib/rails/commands.rb:27
+  script/rails:6:in `require'
+  script/rails:6
+
+Rendered /Users/dyer/.rvm/gems/ree-1.8.7-2010.02/gems/actionpack-3.0.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.6ms)
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at Sun Oct 31 00:41:51 -0400 2010
+  Processing by Devise::RegistrationsController#new as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 2) LIMIT 1
+Redirected to http://localhost:3000/
+Completed 302 Found in 16ms
+
+
+Started GET "/" for 127.0.0.1 at Sun Oct 31 00:41:51 -0400 2010
+  Processing by HomeController#index as HTML
+Rendered home/index.html.erb within layouts/home (2.1ms)
+Completed 200 OK in 5ms (Views: 5.0ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/" for 127.0.0.1 at Sun Oct 31 00:45:39 -0400 2010
+  Processing by HomeController#index as HTML
+Rendered home/index.html.erb within layouts/home (2.1ms)
+Completed   in 6ms
+
+ActionView::Template::Error (No route matches {:action=>"destroy", :controller=>"doctor_sessions"}):
+    52:             <li> <%= link_to "Admin", {:controller => "admin", :action => "index"}  %> </li>
+    53:             <li> <%= link_to "Reports", reports_path %> </li>
+    54:             <li> link_to 'Edit Profile', edit_doctor_path(current_doctor)  %> </li>
+    55:             <li> <%= link_to "Logout", logout_path  %>  </li>
+    56:           <% else %>
+    57:             <li> <%= link_to "Login", login_path  %> </li>
+    58:           <%end%>
+  actionpack (3.0.0) lib/action_dispatch/routing/route_set.rb:424:in `raise_routing_error'
+  actionpack (3.0.0) lib/action_dispatch/routing/route_set.rb:406:in `generate'
+  actionpack (3.0.0) lib/action_dispatch/routing/route_set.rb:453:in `generate'
+  actionpack (3.0.0) lib/action_dispatch/routing/route_set.rb:481:in `url_for'
+  actionpack (3.0.0) lib/action_dispatch/routing/url_for.rb:132:in `url_for'
+  actionpack (3.0.0) lib/action_view/helpers/url_helper.rb:99:in `url_for'
+  actionpack (3.0.0) lib/action_dispatch/routing/route_set.rb:195:in `logout_path'
+  app/views/home/index.html.erb:55:in `_app_views_home_index_html_erb___1670002308_2176651140_0'
+  actionpack (3.0.0) lib/action_view/template.rb:135:in `send'
+  actionpack (3.0.0) lib/action_view/template.rb:135:in `render'
+  activesupport (3.0.0) lib/active_support/notifications.rb:54:in `instrument'
+  actionpack (3.0.0) lib/action_view/template.rb:127:in `render'
+  actionpack (3.0.0) lib/action_view/render/rendering.rb:59:in `_render_template'
+  activesupport (3.0.0) lib/active_support/notifications.rb:52:in `instrument'
+  activesupport (3.0.0) lib/active_support/notifications/instrumenter.rb:21:in `instrument'
+  activesupport (3.0.0) lib/active_support/notifications.rb:52:in `instrument'
+  actionpack (3.0.0) lib/action_view/render/rendering.rb:56:in `_render_template'
+  actionpack (3.0.0) lib/action_view/render/rendering.rb:26:in `render'
+  actionpack (3.0.0) lib/abstract_controller/rendering.rb:114:in `_render_template'
+  actionpack (3.0.0) lib/abstract_controller/rendering.rb:108:in `render_to_body'
+  actionpack (3.0.0) lib/action_controller/metal/renderers.rb:47:in `render_to_body'
+  actionpack (3.0.0) lib/action_controller/metal/compatibility.rb:55:in `render_to_body'
+  actionpack (3.0.0) lib/abstract_controller/rendering.rb:101:in `render_to_string'
+  actionpack (3.0.0) lib/abstract_controller/rendering.rb:92:in `render'
+  actionpack (3.0.0) lib/action_controller/metal/rendering.rb:17:in `render'
+  actionpack (3.0.0) lib/action_controller/metal/instrumentation.rb:40:in `render'
+  activesupport (3.0.0) lib/active_support/core_ext/benchmark.rb:5:in `ms'
+  /Users/dyer/.rvm/rubies/ree-1.8.7-2010.02/lib/ruby/1.8/benchmark.rb:308:in `realtime'
+  activesupport (3.0.0) lib/active_support/core_ext/benchmark.rb:5:in `ms'
+  actionpack (3.0.0) lib/action_controller/metal/instrumentation.rb:40:in `render'
+  actionpack (3.0.0) lib/action_controller/metal/instrumentation.rb:78:in `cleanup_view_runtime'
+  activerecord (3.0.0) lib/active_record/railties/controller_runtime.rb:15:in `cleanup_view_runtime'
+  actionpack (3.0.0) lib/action_controller/metal/instrumentation.rb:39:in `render'
+  actionpack (3.0.0) lib/action_controller/metal/implicit_render.rb:10:in `default_render'
+  actionpack (3.0.0) lib/action_controller/metal/implicit_render.rb:4:in `send_action'
+  actionpack (3.0.0) lib/action_controller/metal/implicit_render.rb:4:in `send_action'
+  actionpack (3.0.0) lib/abstract_controller/base.rb:150:in `process_action'
+  actionpack (3.0.0) lib/action_controller/metal/rendering.rb:11:in `process_action'
+  actionpack (3.0.0) lib/abstract_controller/callbacks.rb:18:in `process_action'
+  activesupport (3.0.0) lib/active_support/callbacks.rb:435:in `_run__738958071__process_action__662920150__callbacks'
+  activesupport (3.0.0) lib/active_support/callbacks.rb:409:in `send'
+  activesupport (3.0.0) lib/active_support/callbacks.rb:409:in `_run_process_action_callbacks'
+  activesupport (3.0.0) lib/active_support/callbacks.rb:93:in `send'
+  activesupport (3.0.0) lib/active_support/callbacks.rb:93:in `run_callbacks'
+  actionpack (3.0.0) lib/abstract_controller/callbacks.rb:17:in `process_action'
+  actionpack (3.0.0) lib/action_controller/metal/instrumentation.rb:30:in `process_action'
+  activesupport (3.0.0) lib/active_support/notifications.rb:52:in `instrument'
+  activesupport (3.0.0) lib/active_support/notifications/instrumenter.rb:21:in `instrument'
+  activesupport (3.0.0) lib/active_support/notifications.rb:52:in `instrument'
+  actionpack (3.0.0) lib/action_controller/metal/instrumentation.rb:29:in `process_action'
+  actionpack (3.0.0) lib/action_controller/metal/rescue.rb:17:in `process_action'
+  actionpack (3.0.0) lib/abstract_controller/base.rb:119:in `process'
+  actionpack (3.0.0) lib/abstract_controller/rendering.rb:40:in `process'
+  actionpack (3.0.0) lib/action_controller/metal.rb:133:in `dispatch'
+  actionpack (3.0.0) lib/action_controller/metal/rack_delegation.rb:14:in `dispatch'
+  actionpack (3.0.0) lib/action_controller/metal.rb:173:in `action'
+  actionpack (3.0.0) lib/action_dispatch/routing/route_set.rb:62:in `call'
+  actionpack (3.0.0) lib/action_dispatch/routing/route_set.rb:62:in `dispatch'
+  actionpack (3.0.0) lib/action_dispatch/routing/route_set.rb:27:in `call'
+  rack-mount (0.6.13) lib/rack/mount/route_set.rb:148:in `call'
+  rack-mount (0.6.13) lib/rack/mount/code_generation.rb:93:in `recognize'
+  rack-mount (0.6.13) lib/rack/mount/code_generation.rb:75:in `optimized_each'
+  rack-mount (0.6.13) lib/rack/mount/code_generation.rb:92:in `recognize'
+  rack-mount (0.6.13) lib/rack/mount/route_set.rb:139:in `call'
+  actionpack (3.0.0) lib/action_dispatch/routing/route_set.rb:492:in `call'
+  oa-core (0.1.6) lib/omniauth/strategy.rb:50:in `call_app!'
+  oa-core (0.1.6) lib/omniauth/strategy.rb:32:in `call!'
+  oa-core (0.1.6) lib/omniauth/strategy.rb:19:in `call'
+  oa-core (0.1.6) lib/omniauth/builder.rb:30:in `call'
+  warden (0.10.7) lib/warden/manager.rb:35:in `call'
+  warden (0.10.7) lib/warden/manager.rb:34:in `catch'
+  warden (0.10.7) lib/warden/manager.rb:34:in `call'
+  actionpack (3.0.0) lib/action_dispatch/middleware/best_standards_support.rb:17:in `call'
+  actionpack (3.0.0) lib/action_dispatch/middleware/head.rb:14:in `call'
+  rack (1.2.1) lib/rack/methodoverride.rb:24:in `call'
+  actionpack (3.0.0) lib/action_dispatch/middleware/params_parser.rb:21:in `call'
+  actionpack (3.0.0) lib/action_dispatch/middleware/flash.rb:182:in `call'
+  actionpack (3.0.0) lib/action_dispatch/middleware/session/abstract_store.rb:149:in `call'
+  actionpack (3.0.0) lib/action_dispatch/middleware/cookies.rb:287:in `call'
+  activerecord (3.0.0) lib/active_record/query_cache.rb:32:in `call'
+  activerecord (3.0.0) lib/active_record/connection_adapters/abstract/query_cache.rb:28:in `cache'
+  activerecord (3.0.0) lib/active_record/query_cache.rb:12:in `cache'
+  activerecord (3.0.0) lib/active_record/query_cache.rb:31:in `call'
+  activerecord (3.0.0) lib/active_record/connection_adapters/abstract/connection_pool.rb:355:in `call'
+  actionpack (3.0.0) lib/action_dispatch/middleware/callbacks.rb:46:in `call'
+  activesupport (3.0.0) lib/active_support/callbacks.rb:415:in `_run_call_callbacks'
+  actionpack (3.0.0) lib/action_dispatch/middleware/callbacks.rb:44:in `call'
+  rack (1.2.1) lib/rack/sendfile.rb:107:in `call'
+  actionpack (3.0.0) lib/action_dispatch/middleware/remote_ip.rb:48:in `call'
+  actionpack (3.0.0) lib/action_dispatch/middleware/show_exceptions.rb:46:in `call'
+  railties (3.0.0) lib/rails/rack/logger.rb:13:in `call'
+  rack (1.2.1) lib/rack/runtime.rb:17:in `call'
+  activesupport (3.0.0) lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  rack (1.2.1) lib/rack/lock.rb:11:in `call'
+  rack (1.2.1) lib/rack/lock.rb:11:in `synchronize'
+  rack (1.2.1) lib/rack/lock.rb:11:in `call'
+  actionpack (3.0.0) lib/action_dispatch/middleware/static.rb:30:in `call'
+  railties (3.0.0) lib/rails/application.rb:168:in `call'
+  railties (3.0.0) lib/rails/application.rb:77:in `send'
+  railties (3.0.0) lib/rails/application.rb:77:in `method_missing'
+  railties (3.0.0) lib/rails/rack/log_tailer.rb:14:in `call'
+  rack (1.2.1) lib/rack/content_length.rb:13:in `call'
+  rack (1.2.1) lib/rack/handler/webrick.rb:52:in `service'
+  /Users/dyer/.rvm/rubies/ree-1.8.7-2010.02/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /Users/dyer/.rvm/rubies/ree-1.8.7-2010.02/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /Users/dyer/.rvm/rubies/ree-1.8.7-2010.02/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /Users/dyer/.rvm/rubies/ree-1.8.7-2010.02/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /Users/dyer/.rvm/rubies/ree-1.8.7-2010.02/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /Users/dyer/.rvm/rubies/ree-1.8.7-2010.02/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /Users/dyer/.rvm/rubies/ree-1.8.7-2010.02/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /Users/dyer/.rvm/rubies/ree-1.8.7-2010.02/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /Users/dyer/.rvm/rubies/ree-1.8.7-2010.02/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /Users/dyer/.rvm/rubies/ree-1.8.7-2010.02/lib/ruby/1.8/webrick/server.rb:82:in `start'
+  rack (1.2.1) lib/rack/handler/webrick.rb:13:in `run'
+  rack (1.2.1) lib/rack/server.rb:213:in `start'
+  railties (3.0.0) lib/rails/commands/server.rb:65:in `start'
+  railties (3.0.0) lib/rails/commands.rb:30
+  railties (3.0.0) lib/rails/commands.rb:27:in `tap'
+  railties (3.0.0) lib/rails/commands.rb:27
+  script/rails:6:in `require'
+  script/rails:6
+
+Rendered /Users/dyer/.rvm/gems/ree-1.8.7-2010.02/gems/actionpack-3.0.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (0.9ms)
+Rendered /Users/dyer/.rvm/gems/ree-1.8.7-2010.02/gems/actionpack-3.0.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (644.9ms)
+Rendered /Users/dyer/.rvm/gems/ree-1.8.7-2010.02/gems/actionpack-3.0.0/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (653.4ms)
+
+
+Started POST "/users" for 127.0.0.1 at Sun Oct 31 00:45:42 -0400 2010
+  Processing by Devise::RegistrationsController#create as HTML
+  Parameters: {"commit"=>"Sign up", "authenticity_token"=>"HfBMYJj5F6eD7JHojmVzNvMWlleP3I06vbOB1+vM0yk=", "utf8"=>"\342\234\223", "user"=>{"password_confirmation"=>"[FILTERED]", "password"=>"[FILTERED]", "email"=>"dyer"}}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 18ms
+
+
+Started GET "/" for 127.0.0.1 at Sun Oct 31 00:45:43 -0400 2010
+  Processing by HomeController#index as HTML
+Rendered home/index.html.erb within layouts/home (2.0ms)
+Completed   in 6ms
+
+ActionView::Template::Error (No route matches {:action=>"destroy", :controller=>"doctor_sessions"}):
+    52:             <li> <%= link_to "Admin", {:controller => "admin", :action => "index"}  %> </li>
+    53:             <li> <%= link_to "Reports", reports_path %> </li>
+    54:             <li> link_to 'Edit Profile', edit_doctor_path(current_doctor)  %> </li>
+    55:             <li> <%= link_to "Logout", logout_path  %>  </li>
+    56:           <% else %>
+    57:             <li> <%= link_to "Login", login_path  %> </li>
+    58:           <%end%>
+  actionpack (3.0.0) lib/action_dispatch/routing/route_set.rb:424:in `raise_routing_error'
+  actionpack (3.0.0) lib/action_dispatch/routing/route_set.rb:406:in `generate'
+  actionpack (3.0.0) lib/action_dispatch/routing/route_set.rb:453:in `generate'
+  actionpack (3.0.0) lib/action_dispatch/routing/route_set.rb:481:in `url_for'
+  actionpack (3.0.0) lib/action_dispatch/routing/url_for.rb:132:in `url_for'
+  actionpack (3.0.0) lib/action_view/helpers/url_helper.rb:99:in `url_for'
+  actionpack (3.0.0) lib/action_dispatch/routing/route_set.rb:195:in `logout_path'
+  app/views/home/index.html.erb:55:in `_app_views_home_index_html_erb___1670002308_2178468460_0'
+  actionpack (3.0.0) lib/action_view/template.rb:135:in `send'
+  actionpack (3.0.0) lib/action_view/template.rb:135:in `render'
+  activesupport (3.0.0) lib/active_support/notifications.rb:54:in `instrument'
+  actionpack (3.0.0) lib/action_view/template.rb:127:in `render'
+  actionpack (3.0.0) lib/action_view/render/rendering.rb:59:in `_render_template'
+  activesupport (3.0.0) lib/active_support/notifications.rb:52:in `instrument'
+  activesupport (3.0.0) lib/active_support/notifications/instrumenter.rb:21:in `instrument'
+  activesupport (3.0.0) lib/active_support/notifications.rb:52:in `instrument'
+  actionpack (3.0.0) lib/action_view/render/rendering.rb:56:in `_render_template'
+  actionpack (3.0.0) lib/action_view/render/rendering.rb:26:in `render'
+  actionpack (3.0.0) lib/abstract_controller/rendering.rb:114:in `_render_template'
+  actionpack (3.0.0) lib/abstract_controller/rendering.rb:108:in `render_to_body'
+  actionpack (3.0.0) lib/action_controller/metal/renderers.rb:47:in `render_to_body'
+  actionpack (3.0.0) lib/action_controller/metal/compatibility.rb:55:in `render_to_body'
+  actionpack (3.0.0) lib/abstract_controller/rendering.rb:101:in `render_to_string'
+  actionpack (3.0.0) lib/abstract_controller/rendering.rb:92:in `render'
+  actionpack (3.0.0) lib/action_controller/metal/rendering.rb:17:in `render'
+  actionpack (3.0.0) lib/action_controller/metal/instrumentation.rb:40:in `render'
+  activesupport (3.0.0) lib/active_support/core_ext/benchmark.rb:5:in `ms'
+  /Users/dyer/.rvm/rubies/ree-1.8.7-2010.02/lib/ruby/1.8/benchmark.rb:308:in `realtime'
+  activesupport (3.0.0) lib/active_support/core_ext/benchmark.rb:5:in `ms'
+  actionpack (3.0.0) lib/action_controller/metal/instrumentation.rb:40:in `render'
+  actionpack (3.0.0) lib/action_controller/metal/instrumentation.rb:78:in `cleanup_view_runtime'
+  activerecord (3.0.0) lib/active_record/railties/controller_runtime.rb:15:in `cleanup_view_runtime'
+  actionpack (3.0.0) lib/action_controller/metal/instrumentation.rb:39:in `render'
+  actionpack (3.0.0) lib/action_controller/metal/implicit_render.rb:10:in `default_render'
+  actionpack (3.0.0) lib/action_controller/metal/implicit_render.rb:4:in `send_action'
+  actionpack (3.0.0) lib/action_controller/metal/implicit_render.rb:4:in `send_action'
+  actionpack (3.0.0) lib/abstract_controller/base.rb:150:in `process_action'
+  actionpack (3.0.0) lib/action_controller/metal/rendering.rb:11:in `process_action'
+  actionpack (3.0.0) lib/abstract_controller/callbacks.rb:18:in `process_action'
+  activesupport (3.0.0) lib/active_support/callbacks.rb:435:in `_run__738958071__process_action__662920150__callbacks'
+  activesupport (3.0.0) lib/active_support/callbacks.rb:409:in `send'
+  activesupport (3.0.0) lib/active_support/callbacks.rb:409:in `_run_process_action_callbacks'
+  activesupport (3.0.0) lib/active_support/callbacks.rb:93:in `send'
+  activesupport (3.0.0) lib/active_support/callbacks.rb:93:in `run_callbacks'
+  actionpack (3.0.0) lib/abstract_controller/callbacks.rb:17:in `process_action'
+  actionpack (3.0.0) lib/action_controller/metal/instrumentation.rb:30:in `process_action'
+  activesupport (3.0.0) lib/active_support/notifications.rb:52:in `instrument'
+  activesupport (3.0.0) lib/active_support/notifications/instrumenter.rb:21:in `instrument'
+  activesupport (3.0.0) lib/active_support/notifications.rb:52:in `instrument'
+  actionpack (3.0.0) lib/action_controller/metal/instrumentation.rb:29:in `process_action'
+  actionpack (3.0.0) lib/action_controller/metal/rescue.rb:17:in `process_action'
+  actionpack (3.0.0) lib/abstract_controller/base.rb:119:in `process'
+  actionpack (3.0.0) lib/abstract_controller/rendering.rb:40:in `process'
+  actionpack (3.0.0) lib/action_controller/metal.rb:133:in `dispatch'
+  actionpack (3.0.0) lib/action_controller/metal/rack_delegation.rb:14:in `dispatch'
+  actionpack (3.0.0) lib/action_controller/metal.rb:173:in `action'
+  actionpack (3.0.0) lib/action_dispatch/routing/route_set.rb:62:in `call'
+  actionpack (3.0.0) lib/action_dispatch/routing/route_set.rb:62:in `dispatch'
+  actionpack (3.0.0) lib/action_dispatch/routing/route_set.rb:27:in `call'
+  rack-mount (0.6.13) lib/rack/mount/route_set.rb:148:in `call'
+  rack-mount (0.6.13) lib/rack/mount/code_generation.rb:93:in `recognize'
+  rack-mount (0.6.13) lib/rack/mount/code_generation.rb:75:in `optimized_each'
+  rack-mount (0.6.13) lib/rack/mount/code_generation.rb:92:in `recognize'
+  rack-mount (0.6.13) lib/rack/mount/route_set.rb:139:in `call'
+  actionpack (3.0.0) lib/action_dispatch/routing/route_set.rb:492:in `call'
+  oa-core (0.1.6) lib/omniauth/strategy.rb:50:in `call_app!'
+  oa-core (0.1.6) lib/omniauth/strategy.rb:32:in `call!'
+  oa-core (0.1.6) lib/omniauth/strategy.rb:19:in `call'
+  oa-core (0.1.6) lib/omniauth/builder.rb:30:in `call'
+  warden (0.10.7) lib/warden/manager.rb:35:in `call'
+  warden (0.10.7) lib/warden/manager.rb:34:in `catch'
+  warden (0.10.7) lib/warden/manager.rb:34:in `call'
+  actionpack (3.0.0) lib/action_dispatch/middleware/best_standards_support.rb:17:in `call'
+  actionpack (3.0.0) lib/action_dispatch/middleware/head.rb:14:in `call'
+  rack (1.2.1) lib/rack/methodoverride.rb:24:in `call'
+  actionpack (3.0.0) lib/action_dispatch/middleware/params_parser.rb:21:in `call'
+  actionpack (3.0.0) lib/action_dispatch/middleware/flash.rb:182:in `call'
+  actionpack (3.0.0) lib/action_dispatch/middleware/session/abstract_store.rb:149:in `call'
+  actionpack (3.0.0) lib/action_dispatch/middleware/cookies.rb:287:in `call'
+  activerecord (3.0.0) lib/active_record/query_cache.rb:32:in `call'
+  activerecord (3.0.0) lib/active_record/connection_adapters/abstract/query_cache.rb:28:in `cache'
+  activerecord (3.0.0) lib/active_record/query_cache.rb:12:in `cache'
+  activerecord (3.0.0) lib/active_record/query_cache.rb:31:in `call'
+  activerecord (3.0.0) lib/active_record/connection_adapters/abstract/connection_pool.rb:355:in `call'
+  actionpack (3.0.0) lib/action_dispatch/middleware/callbacks.rb:46:in `call'
+  activesupport (3.0.0) lib/active_support/callbacks.rb:415:in `_run_call_callbacks'
+  actionpack (3.0.0) lib/action_dispatch/middleware/callbacks.rb:44:in `call'
+  rack (1.2.1) lib/rack/sendfile.rb:107:in `call'
+  actionpack (3.0.0) lib/action_dispatch/middleware/remote_ip.rb:48:in `call'
+  actionpack (3.0.0) lib/action_dispatch/middleware/show_exceptions.rb:46:in `call'
+  railties (3.0.0) lib/rails/rack/logger.rb:13:in `call'
+  rack (1.2.1) lib/rack/runtime.rb:17:in `call'
+  activesupport (3.0.0) lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  rack (1.2.1) lib/rack/lock.rb:11:in `call'
+  rack (1.2.1) lib/rack/lock.rb:11:in `synchronize'
+  rack (1.2.1) lib/rack/lock.rb:11:in `call'
+  actionpack (3.0.0) lib/action_dispatch/middleware/static.rb:30:in `call'
+  railties (3.0.0) lib/rails/application.rb:168:in `call'
+  railties (3.0.0) lib/rails/application.rb:77:in `send'
+  railties (3.0.0) lib/rails/application.rb:77:in `method_missing'
+  railties (3.0.0) lib/rails/rack/log_tailer.rb:14:in `call'
+  rack (1.2.1) lib/rack/content_length.rb:13:in `call'
+  rack (1.2.1) lib/rack/handler/webrick.rb:52:in `service'
+  /Users/dyer/.rvm/rubies/ree-1.8.7-2010.02/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /Users/dyer/.rvm/rubies/ree-1.8.7-2010.02/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /Users/dyer/.rvm/rubies/ree-1.8.7-2010.02/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /Users/dyer/.rvm/rubies/ree-1.8.7-2010.02/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /Users/dyer/.rvm/rubies/ree-1.8.7-2010.02/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /Users/dyer/.rvm/rubies/ree-1.8.7-2010.02/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /Users/dyer/.rvm/rubies/ree-1.8.7-2010.02/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /Users/dyer/.rvm/rubies/ree-1.8.7-2010.02/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /Users/dyer/.rvm/rubies/ree-1.8.7-2010.02/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /Users/dyer/.rvm/rubies/ree-1.8.7-2010.02/lib/ruby/1.8/webrick/server.rb:82:in `start'
+  rack (1.2.1) lib/rack/handler/webrick.rb:13:in `run'
+  rack (1.2.1) lib/rack/server.rb:213:in `start'
+  railties (3.0.0) lib/rails/commands/server.rb:65:in `start'
+  railties (3.0.0) lib/rails/commands.rb:30
+  railties (3.0.0) lib/rails/commands.rb:27:in `tap'
+  railties (3.0.0) lib/rails/commands.rb:27
+  script/rails:6:in `require'
+  script/rails:6
+
+Rendered /Users/dyer/.rvm/gems/ree-1.8.7-2010.02/gems/actionpack-3.0.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (0.8ms)
+Rendered /Users/dyer/.rvm/gems/ree-1.8.7-2010.02/gems/actionpack-3.0.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (566.1ms)
+Rendered /Users/dyer/.rvm/gems/ree-1.8.7-2010.02/gems/actionpack-3.0.0/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (574.3ms)
+
+
+Started GET "/" for 127.0.0.1 at Sun Oct 31 00:46:55 -0400 2010
+  Processing by HomeController#index as HTML
+Rendered home/index.html.erb within layouts/home (2.2ms)
+Completed 200 OK in 83ms (Views: 82.1ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/patients" for 127.0.0.1 at Sun Oct 31 00:46:57 -0400 2010
+  Processing by PatientsController#index as HTML
+  [1m[35mPatient Load (11.3ms)[0m  SELECT "patients".* FROM "patients"
+  [1m[36mPatient Load (0.6ms)[0m  [1mSELECT DISTINCT facility FROM "patients"[0m
+  [1m[35mPatient Load (2.0ms)[0m  SELECT "patients".* FROM "patients" WHERE ("patients"."discharged" = 'f') AND ("patients"."facility" = 'ALTAMONTE')
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT DISTINCT facility FROM "patients"[0m
+DEPRECATION WARNING: <% %> style block helpers are deprecated. Please use <%= %>. (called from _app_views_patients_index_html_erb___901617420_2176734280_0 at /Users/dyer/Dropbox/Development/medi_pad/app/views/patients/index.html.erb:61)
+  [1m[35mSQL (0.2ms)[0m  SELECT COUNT(*) AS count_id FROM (SELECT 1 FROM "charges" WHERE ("charges".patient_id = 3002)) AS subquery
+  [1m[36mSQL (0.2ms)[0m  [1mSELECT COUNT(*) AS count_id FROM (SELECT 1 FROM "charges" WHERE ("charges".patient_id = 3009)) AS subquery[0m
+  [1m[35mSQL (0.1ms)[0m  SELECT COUNT(*) AS count_id FROM (SELECT 1 FROM "charges" WHERE ("charges".patient_id = 3025)) AS subquery
+  [1m[36mSQL (0.1ms)[0m  [1mSELECT COUNT(*) AS count_id FROM (SELECT 1 FROM "charges" WHERE ("charges".patient_id = 3034)) AS subquery[0m
+  [1m[35mSQL (0.2ms)[0m  SELECT COUNT(*) AS count_id FROM (SELECT 1 FROM "charges" WHERE ("charges".patient_id = 3037)) AS subquery
+  [1m[36mSQL (0.1ms)[0m  [1mSELECT COUNT(*) AS count_id FROM (SELECT 1 FROM "charges" WHERE ("charges".patient_id = 3039)) AS subquery[0m
+  [1m[35mSQL (0.1ms)[0m  SELECT COUNT(*) AS count_id FROM (SELECT 1 FROM "charges" WHERE ("charges".patient_id = 3042)) AS subquery
+  [1m[36mSQL (0.1ms)[0m  [1mSELECT COUNT(*) AS count_id FROM (SELECT 1 FROM "charges" WHERE ("charges".patient_id = 3043)) AS subquery[0m
+  [1m[35mSQL (0.1ms)[0m  SELECT COUNT(*) AS count_id FROM (SELECT 1 FROM "charges" WHERE ("charges".patient_id = 3049)) AS subquery
+  [1m[36mSQL (0.1ms)[0m  [1mSELECT COUNT(*) AS count_id FROM (SELECT 1 FROM "charges" WHERE ("charges".patient_id = 3057)) AS subquery[0m
+  [1m[35mSQL (0.1ms)[0m  SELECT COUNT(*) AS count_id FROM (SELECT 1 FROM "charges" WHERE ("charges".patient_id = 3062)) AS subquery
+  [1m[36mSQL (0.2ms)[0m  [1mSELECT COUNT(*) AS count_id FROM (SELECT 1 FROM "charges" WHERE ("charges".patient_id = 3067)) AS subquery[0m
+  [1m[35mSQL (0.2ms)[0m  SELECT COUNT(*) AS count_id FROM (SELECT 1 FROM "charges" WHERE ("charges".patient_id = 3077)) AS subquery
+  [1m[36mSQL (0.2ms)[0m  [1mSELECT COUNT(*) AS count_id FROM (SELECT 1 FROM "charges" WHERE ("charges".patient_id = 3084)) AS subquery[0m
+  [1m[35mSQL (0.1ms)[0m  SELECT COUNT(*) AS count_id FROM (SELECT 1 FROM "charges" WHERE ("charges".patient_id = 3092)) AS subquery
+  [1m[36mSQL (0.1ms)[0m  [1mSELECT COUNT(*) AS count_id FROM (SELECT 1 FROM "charges" WHERE ("charges".patient_id = 3093)) AS subquery[0m
+  [1m[35mSQL (0.1ms)[0m  SELECT COUNT(*) AS count_id FROM (SELECT 1 FROM "charges" WHERE ("charges".patient_id = 3096)) AS subquery
+  [1m[36mSQL (0.1ms)[0m  [1mSELECT COUNT(*) AS count_id FROM (SELECT 1 FROM "charges" WHERE ("charges".patient_id = 3098)) AS subquery[0m
+  [1m[35mSQL (0.1ms)[0m  SELECT COUNT(*) AS count_id FROM (SELECT 1 FROM "charges" WHERE ("charges".patient_id = 3100)) AS subquery
+  [1m[36mSQL (0.2ms)[0m  [1mSELECT COUNT(*) AS count_id FROM (SELECT 1 FROM "charges" WHERE ("charges".patient_id = 3104)) AS subquery[0m
+  [1m[35mSQL (0.1ms)[0m  SELECT COUNT(*) AS count_id FROM (SELECT 1 FROM "charges" WHERE ("charges".patient_id = 3105)) AS subquery
+  [1m[36mSQL (0.3ms)[0m  [1mSELECT COUNT(*) AS count_id FROM (SELECT 1 FROM "charges" WHERE ("charges".patient_id = 3107)) AS subquery[0m
+  [1m[35mSQL (0.2ms)[0m  SELECT COUNT(*) AS count_id FROM (SELECT 1 FROM "charges" WHERE ("charges".patient_id = 3108)) AS subquery
+  [1m[36mSQL (0.2ms)[0m  [1mSELECT COUNT(*) AS count_id FROM (SELECT 1 FROM "charges" WHERE ("charges".patient_id = 3109)) AS subquery[0m
+  [1m[35mSQL (0.2ms)[0m  SELECT COUNT(*) AS count_id FROM (SELECT 1 FROM "charges" WHERE ("charges".patient_id = 3111)) AS subquery
+  [1m[36mSQL (0.2ms)[0m  [1mSELECT COUNT(*) AS count_id FROM (SELECT 1 FROM "charges" WHERE ("charges".patient_id = 3118)) AS subquery[0m
+  [1m[35mSQL (0.2ms)[0m  SELECT COUNT(*) AS count_id FROM (SELECT 1 FROM "charges" WHERE ("charges".patient_id = 3125)) AS subquery
+  [1m[36mSQL (0.2ms)[0m  [1mSELECT COUNT(*) AS count_id FROM (SELECT 1 FROM "charges" WHERE ("charges".patient_id = 3127)) AS subquery[0m
+  [1m[35mSQL (0.1ms)[0m  SELECT COUNT(*) AS count_id FROM (SELECT 1 FROM "charges" WHERE ("charges".patient_id = 3132)) AS subquery
+  [1m[36mSQL (0.2ms)[0m  [1mSELECT COUNT(*) AS count_id FROM (SELECT 1 FROM "charges" WHERE ("charges".patient_id = 3141)) AS subquery[0m
+  [1m[35mSQL (0.1ms)[0m  SELECT COUNT(*) AS count_id FROM (SELECT 1 FROM "charges" WHERE ("charges".patient_id = 3143)) AS subquery
+  [1m[36mSQL (0.2ms)[0m  [1mSELECT COUNT(*) AS count_id FROM (SELECT 1 FROM "charges" WHERE ("charges".patient_id = 3148)) AS subquery[0m
+  [1m[35mSQL (0.2ms)[0m  SELECT COUNT(*) AS count_id FROM (SELECT 1 FROM "charges" WHERE ("charges".patient_id = 3149)) AS subquery
+  [1m[36mSQL (0.2ms)[0m  [1mSELECT COUNT(*) AS count_id FROM (SELECT 1 FROM "charges" WHERE ("charges".patient_id = 3152)) AS subquery[0m
+  [1m[35mSQL (0.1ms)[0m  SELECT COUNT(*) AS count_id FROM (SELECT 1 FROM "charges" WHERE ("charges".patient_id = 3163)) AS subquery
+  [1m[36mSQL (0.2ms)[0m  [1mSELECT COUNT(*) AS count_id FROM (SELECT 1 FROM "charges" WHERE ("charges".patient_id = 3170)) AS subquery[0m
+  [1m[35mSQL (0.2ms)[0m  SELECT COUNT(*) AS count_id FROM (SELECT 1 FROM "charges" WHERE ("charges".patient_id = 3171)) AS subquery
+  [1m[36mSQL (0.1ms)[0m  [1mSELECT COUNT(*) AS count_id FROM (SELECT 1 FROM "charges" WHERE ("charges".patient_id = 3175)) AS subquery[0m
+  [1m[35mSQL (0.2ms)[0m  SELECT COUNT(*) AS count_id FROM (SELECT 1 FROM "charges" WHERE ("charges".patient_id = 3176)) AS subquery
+Rendered patients/_patient.erb (259.9ms)
+Rendered patients/index.html.erb within layouts/patients (272.2ms)
+Completed   in 325ms
+
+ActionView::Template::Error (uninitialized constant Authlogic):
+    15: <body>
+    16: 
+    17: <p style="color: green"><%= flash[:notice] %></p>
+    18: <%  cookies[:doctor] = current_doctor.doctor_name %>
+    19: 
+    20: <%= yield %>
+    21: 
+  app/models/doctor_session.rb:1
+  app/controllers/application_controller.rb:12:in `current_doctor_session'
+  app/controllers/application_controller.rb:17:in `current_doctor'
+  actionpack (3.0.0) lib/abstract_controller/helpers.rb:55:in `send'
+  actionpack (3.0.0) lib/abstract_controller/helpers.rb:55:in `current_doctor'
+  app/views/layouts/patients.html.erb:18:in `_app_views_layouts_patients_html_erb__548945129_2176731760_0'
+  actionpack (3.0.0) lib/action_view/template.rb:135:in `send'
+  actionpack (3.0.0) lib/action_view/template.rb:135:in `render'
+  activesupport (3.0.0) lib/active_support/notifications.rb:54:in `instrument'
+  actionpack (3.0.0) lib/action_view/template.rb:127:in `render'
+  actionpack (3.0.0) lib/action_view/render/layouts.rb:80:in `_render_layout'
+  actionpack (3.0.0) lib/action_view/render/rendering.rb:62:in `_render_template'
+  activesupport (3.0.0) lib/active_support/notifications.rb:52:in `instrument'
+  activesupport (3.0.0) lib/active_support/notifications/instrumenter.rb:21:in `instrument'
+  activesupport (3.0.0) lib/active_support/notifications.rb:52:in `instrument'
+  actionpack (3.0.0) lib/action_view/render/rendering.rb:56:in `_render_template'
+  actionpack (3.0.0) lib/action_view/render/rendering.rb:26:in `render'
+  actionpack (3.0.0) lib/abstract_controller/rendering.rb:114:in `_render_template'
+  actionpack (3.0.0) lib/abstract_controller/rendering.rb:108:in `render_to_body'
+  actionpack (3.0.0) lib/action_controller/metal/renderers.rb:47:in `render_to_body'
+  actionpack (3.0.0) lib/action_controller/metal/compatibility.rb:55:in `render_to_body'
+  actionpack (3.0.0) lib/abstract_controller/rendering.rb:101:in `render_to_string'
+  actionpack (3.0.0) lib/abstract_controller/rendering.rb:92:in `render'
+  actionpack (3.0.0) lib/action_controller/metal/rendering.rb:17:in `render'
+  actionpack (3.0.0) lib/action_controller/metal/instrumentation.rb:40:in `render'
+  activesupport (3.0.0) lib/active_support/core_ext/benchmark.rb:5:in `ms'
+  /Users/dyer/.rvm/rubies/ree-1.8.7-2010.02/lib/ruby/1.8/benchmark.rb:308:in `realtime'
+  activesupport (3.0.0) lib/active_support/core_ext/benchmark.rb:5:in `ms'
+  actionpack (3.0.0) lib/action_controller/metal/instrumentation.rb:40:in `render'
+  actionpack (3.0.0) lib/action_controller/metal/instrumentation.rb:78:in `cleanup_view_runtime'
+  activerecord (3.0.0) lib/active_record/railties/controller_runtime.rb:15:in `cleanup_view_runtime'
+  actionpack (3.0.0) lib/action_controller/metal/instrumentation.rb:39:in `render'
+  actionpack (3.0.0) lib/action_controller/metal/implicit_render.rb:10:in `default_render'
+  actionpack (3.0.0) lib/action_controller/metal/mime_responds.rb:261:in `retrieve_response_from_mimes'
+  actionpack (3.0.0) lib/action_controller/metal/mime_responds.rb:192:in `call'
+  actionpack (3.0.0) lib/action_controller/metal/mime_responds.rb:192:in `respond_to'
+  app/controllers/patients_controller.rb:28:in `index'
+  actionpack (3.0.0) lib/action_controller/metal/implicit_render.rb:4:in `send_action'
+  actionpack (3.0.0) lib/action_controller/metal/implicit_render.rb:4:in `send_action'
+  actionpack (3.0.0) lib/abstract_controller/base.rb:150:in `process_action'
+  actionpack (3.0.0) lib/action_controller/metal/rendering.rb:11:in `process_action'
+  actionpack (3.0.0) lib/abstract_controller/callbacks.rb:18:in `process_action'
+  activesupport (3.0.0) lib/active_support/callbacks.rb:430:in `_run__140063474__process_action__199225275__callbacks'
+  activesupport (3.0.0) lib/active_support/callbacks.rb:409:in `send'
+  activesupport (3.0.0) lib/active_support/callbacks.rb:409:in `_run_process_action_callbacks'
+  activesupport (3.0.0) lib/active_support/callbacks.rb:93:in `send'
+  activesupport (3.0.0) lib/active_support/callbacks.rb:93:in `run_callbacks'
+  actionpack (3.0.0) lib/abstract_controller/callbacks.rb:17:in `process_action'
+  actionpack (3.0.0) lib/action_controller/metal/instrumentation.rb:30:in `process_action'
+  activesupport (3.0.0) lib/active_support/notifications.rb:52:in `instrument'
+  activesupport (3.0.0) lib/active_support/notifications/instrumenter.rb:21:in `instrument'
+  activesupport (3.0.0) lib/active_support/notifications.rb:52:in `instrument'
+  actionpack (3.0.0) lib/action_controller/metal/instrumentation.rb:29:in `process_action'
+  actionpack (3.0.0) lib/action_controller/metal/rescue.rb:17:in `process_action'
+  actionpack (3.0.0) lib/abstract_controller/base.rb:119:in `process'
+  actionpack (3.0.0) lib/abstract_controller/rendering.rb:40:in `process'
+  actionpack (3.0.0) lib/action_controller/metal.rb:133:in `dispatch'
+  actionpack (3.0.0) lib/action_controller/metal/rack_delegation.rb:14:in `dispatch'
+  actionpack (3.0.0) lib/action_controller/metal.rb:173:in `action'
+  actionpack (3.0.0) lib/action_dispatch/routing/route_set.rb:62:in `call'
+  actionpack (3.0.0) lib/action_dispatch/routing/route_set.rb:62:in `dispatch'
+  actionpack (3.0.0) lib/action_dispatch/routing/route_set.rb:27:in `call'
+  rack-mount (0.6.13) lib/rack/mount/route_set.rb:148:in `call'
+  rack-mount (0.6.13) lib/rack/mount/code_generation.rb:93:in `recognize'
+  rack-mount (0.6.13) lib/rack/mount/code_generation.rb:68:in `optimized_each'
+  rack-mount (0.6.13) lib/rack/mount/code_generation.rb:92:in `recognize'
+  rack-mount (0.6.13) lib/rack/mount/route_set.rb:139:in `call'
+  actionpack (3.0.0) lib/action_dispatch/routing/route_set.rb:492:in `call'
+  oa-core (0.1.6) lib/omniauth/strategy.rb:50:in `call_app!'
+  oa-core (0.1.6) lib/omniauth/strategy.rb:32:in `call!'
+  oa-core (0.1.6) lib/omniauth/strategy.rb:19:in `call'
+  oa-core (0.1.6) lib/omniauth/builder.rb:30:in `call'
+  warden (0.10.7) lib/warden/manager.rb:35:in `call'
+  warden (0.10.7) lib/warden/manager.rb:34:in `catch'
+  warden (0.10.7) lib/warden/manager.rb:34:in `call'
+  actionpack (3.0.0) lib/action_dispatch/middleware/best_standards_support.rb:17:in `call'
+  actionpack (3.0.0) lib/action_dispatch/middleware/head.rb:14:in `call'
+  rack (1.2.1) lib/rack/methodoverride.rb:24:in `call'
+  actionpack (3.0.0) lib/action_dispatch/middleware/params_parser.rb:21:in `call'
+  actionpack (3.0.0) lib/action_dispatch/middleware/flash.rb:182:in `call'
+  actionpack (3.0.0) lib/action_dispatch/middleware/session/abstract_store.rb:149:in `call'
+  actionpack (3.0.0) lib/action_dispatch/middleware/cookies.rb:287:in `call'
+  activerecord (3.0.0) lib/active_record/query_cache.rb:32:in `call'
+  activerecord (3.0.0) lib/active_record/connection_adapters/abstract/query_cache.rb:28:in `cache'
+  activerecord (3.0.0) lib/active_record/query_cache.rb:12:in `cache'
+  activerecord (3.0.0) lib/active_record/query_cache.rb:31:in `call'
+  activerecord (3.0.0) lib/active_record/connection_adapters/abstract/connection_pool.rb:355:in `call'
+  actionpack (3.0.0) lib/action_dispatch/middleware/callbacks.rb:46:in `call'
+  activesupport (3.0.0) lib/active_support/callbacks.rb:415:in `_run_call_callbacks'
+  actionpack (3.0.0) lib/action_dispatch/middleware/callbacks.rb:44:in `call'
+  rack (1.2.1) lib/rack/sendfile.rb:107:in `call'
+  actionpack (3.0.0) lib/action_dispatch/middleware/remote_ip.rb:48:in `call'
+  actionpack (3.0.0) lib/action_dispatch/middleware/show_exceptions.rb:46:in `call'
+  railties (3.0.0) lib/rails/rack/logger.rb:13:in `call'
+  rack (1.2.1) lib/rack/runtime.rb:17:in `call'
+  activesupport (3.0.0) lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  rack (1.2.1) lib/rack/lock.rb:11:in `call'
+  rack (1.2.1) lib/rack/lock.rb:11:in `synchronize'
+  rack (1.2.1) lib/rack/lock.rb:11:in `call'
+  actionpack (3.0.0) lib/action_dispatch/middleware/static.rb:30:in `call'
+  railties (3.0.0) lib/rails/application.rb:168:in `call'
+  railties (3.0.0) lib/rails/application.rb:77:in `send'
+  railties (3.0.0) lib/rails/application.rb:77:in `method_missing'
+  railties (3.0.0) lib/rails/rack/log_tailer.rb:14:in `call'
+  rack (1.2.1) lib/rack/content_length.rb:13:in `call'
+  rack (1.2.1) lib/rack/handler/webrick.rb:52:in `service'
+  /Users/dyer/.rvm/rubies/ree-1.8.7-2010.02/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /Users/dyer/.rvm/rubies/ree-1.8.7-2010.02/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /Users/dyer/.rvm/rubies/ree-1.8.7-2010.02/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /Users/dyer/.rvm/rubies/ree-1.8.7-2010.02/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /Users/dyer/.rvm/rubies/ree-1.8.7-2010.02/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /Users/dyer/.rvm/rubies/ree-1.8.7-2010.02/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /Users/dyer/.rvm/rubies/ree-1.8.7-2010.02/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /Users/dyer/.rvm/rubies/ree-1.8.7-2010.02/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /Users/dyer/.rvm/rubies/ree-1.8.7-2010.02/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /Users/dyer/.rvm/rubies/ree-1.8.7-2010.02/lib/ruby/1.8/webrick/server.rb:82:in `start'
+  rack (1.2.1) lib/rack/handler/webrick.rb:13:in `run'
+  rack (1.2.1) lib/rack/server.rb:213:in `start'
+  railties (3.0.0) lib/rails/commands/server.rb:65:in `start'
+  railties (3.0.0) lib/rails/commands.rb:30
+  railties (3.0.0) lib/rails/commands.rb:27:in `tap'
+  railties (3.0.0) lib/rails/commands.rb:27
+  script/rails:6:in `require'
+  script/rails:6
+
+Rendered /Users/dyer/.rvm/gems/ree-1.8.7-2010.02/gems/actionpack-3.0.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.0ms)
+  [1m[36mSQL (0.5ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.2ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.3ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.1ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.3ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.2ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+Rendered /Users/dyer/.rvm/gems/ree-1.8.7-2010.02/gems/actionpack-3.0.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (623.9ms)
+Rendered /Users/dyer/.rvm/gems/ree-1.8.7-2010.02/gems/actionpack-3.0.0/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (631.6ms)
+
+
+Started GET "/users" for 127.0.0.1 at Sun Oct 31 00:47:13 -0400 2010
+
+ActionController::RoutingError (No route matches "/users"):
+  actionpack (3.0.0) lib/action_dispatch/middleware/show_exceptions.rb:53:in `call'
+  railties (3.0.0) lib/rails/rack/logger.rb:13:in `call'
+  rack (1.2.1) lib/rack/runtime.rb:17:in `call'
+  activesupport (3.0.0) lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  rack (1.2.1) lib/rack/lock.rb:11:in `call'
+  rack (1.2.1) lib/rack/lock.rb:11:in `synchronize'
+  rack (1.2.1) lib/rack/lock.rb:11:in `call'
+  actionpack (3.0.0) lib/action_dispatch/middleware/static.rb:30:in `call'
+  railties (3.0.0) lib/rails/application.rb:168:in `call'
+  railties (3.0.0) lib/rails/application.rb:77:in `send'
+  railties (3.0.0) lib/rails/application.rb:77:in `method_missing'
+  railties (3.0.0) lib/rails/rack/log_tailer.rb:14:in `call'
+  rack (1.2.1) lib/rack/content_length.rb:13:in `call'
+  rack (1.2.1) lib/rack/handler/webrick.rb:52:in `service'
+  /Users/dyer/.rvm/rubies/ree-1.8.7-2010.02/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /Users/dyer/.rvm/rubies/ree-1.8.7-2010.02/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /Users/dyer/.rvm/rubies/ree-1.8.7-2010.02/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /Users/dyer/.rvm/rubies/ree-1.8.7-2010.02/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /Users/dyer/.rvm/rubies/ree-1.8.7-2010.02/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /Users/dyer/.rvm/rubies/ree-1.8.7-2010.02/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /Users/dyer/.rvm/rubies/ree-1.8.7-2010.02/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /Users/dyer/.rvm/rubies/ree-1.8.7-2010.02/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /Users/dyer/.rvm/rubies/ree-1.8.7-2010.02/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /Users/dyer/.rvm/rubies/ree-1.8.7-2010.02/lib/ruby/1.8/webrick/server.rb:82:in `start'
+  rack (1.2.1) lib/rack/handler/webrick.rb:13:in `run'
+  rack (1.2.1) lib/rack/server.rb:213:in `start'
+  railties (3.0.0) lib/rails/commands/server.rb:65:in `start'
+  railties (3.0.0) lib/rails/commands.rb:30
+  railties (3.0.0) lib/rails/commands.rb:27:in `tap'
+  railties (3.0.0) lib/rails/commands.rb:27
+  script/rails:6:in `require'
+  script/rails:6
+
+Rendered /Users/dyer/.rvm/gems/ree-1.8.7-2010.02/gems/actionpack-3.0.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.7ms)
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at Sun Oct 31 00:47:17 -0400 2010
+  Processing by Devise::RegistrationsController#new as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 16ms
+
+
+Started GET "/" for 127.0.0.1 at Sun Oct 31 00:47:17 -0400 2010
+  Processing by HomeController#index as HTML
+Rendered home/index.html.erb within layouts/home (2.0ms)
+Completed 200 OK in 5ms (Views: 5.1ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/users/register" for 127.0.0.1 at Sun Oct 31 00:47:24 -0400 2010
+
+ActionController::RoutingError (No route matches "/users/register"):
+  actionpack (3.0.0) lib/action_dispatch/middleware/show_exceptions.rb:53:in `call'
+  railties (3.0.0) lib/rails/rack/logger.rb:13:in `call'
+  rack (1.2.1) lib/rack/runtime.rb:17:in `call'
+  activesupport (3.0.0) lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  rack (1.2.1) lib/rack/lock.rb:11:in `call'
+  rack (1.2.1) lib/rack/lock.rb:11:in `synchronize'
+  rack (1.2.1) lib/rack/lock.rb:11:in `call'
+  actionpack (3.0.0) lib/action_dispatch/middleware/static.rb:30:in `call'
+  railties (3.0.0) lib/rails/application.rb:168:in `call'
+  railties (3.0.0) lib/rails/application.rb:77:in `send'
+  railties (3.0.0) lib/rails/application.rb:77:in `method_missing'
+  railties (3.0.0) lib/rails/rack/log_tailer.rb:14:in `call'
+  rack (1.2.1) lib/rack/content_length.rb:13:in `call'
+  rack (1.2.1) lib/rack/handler/webrick.rb:52:in `service'
+  /Users/dyer/.rvm/rubies/ree-1.8.7-2010.02/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /Users/dyer/.rvm/rubies/ree-1.8.7-2010.02/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /Users/dyer/.rvm/rubies/ree-1.8.7-2010.02/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /Users/dyer/.rvm/rubies/ree-1.8.7-2010.02/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /Users/dyer/.rvm/rubies/ree-1.8.7-2010.02/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /Users/dyer/.rvm/rubies/ree-1.8.7-2010.02/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /Users/dyer/.rvm/rubies/ree-1.8.7-2010.02/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /Users/dyer/.rvm/rubies/ree-1.8.7-2010.02/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /Users/dyer/.rvm/rubies/ree-1.8.7-2010.02/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /Users/dyer/.rvm/rubies/ree-1.8.7-2010.02/lib/ruby/1.8/webrick/server.rb:82:in `start'
+  rack (1.2.1) lib/rack/handler/webrick.rb:13:in `run'
+  rack (1.2.1) lib/rack/server.rb:213:in `start'
+  railties (3.0.0) lib/rails/commands/server.rb:65:in `start'
+  railties (3.0.0) lib/rails/commands.rb:30
+  railties (3.0.0) lib/rails/commands.rb:27:in `tap'
+  railties (3.0.0) lib/rails/commands.rb:27
+  script/rails:6:in `require'
+  script/rails:6
+
+Rendered /Users/dyer/.rvm/gems/ree-1.8.7-2010.02/gems/actionpack-3.0.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (1.0ms)
+
+
+Started GET "/users/password" for 127.0.0.1 at Sun Oct 31 00:47:29 -0400 2010
+
+ActionController::RoutingError (No route matches "/users/password"):
+  actionpack (3.0.0) lib/action_dispatch/middleware/show_exceptions.rb:53:in `call'
+  railties (3.0.0) lib/rails/rack/logger.rb:13:in `call'
+  rack (1.2.1) lib/rack/runtime.rb:17:in `call'
+  activesupport (3.0.0) lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  rack (1.2.1) lib/rack/lock.rb:11:in `call'
+  rack (1.2.1) lib/rack/lock.rb:11:in `synchronize'
+  rack (1.2.1) lib/rack/lock.rb:11:in `call'
+  actionpack (3.0.0) lib/action_dispatch/middleware/static.rb:30:in `call'
+  railties (3.0.0) lib/rails/application.rb:168:in `call'
+  railties (3.0.0) lib/rails/application.rb:77:in `send'
+  railties (3.0.0) lib/rails/application.rb:77:in `method_missing'
+  railties (3.0.0) lib/rails/rack/log_tailer.rb:14:in `call'
+  rack (1.2.1) lib/rack/content_length.rb:13:in `call'
+  rack (1.2.1) lib/rack/handler/webrick.rb:52:in `service'
+  /Users/dyer/.rvm/rubies/ree-1.8.7-2010.02/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /Users/dyer/.rvm/rubies/ree-1.8.7-2010.02/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /Users/dyer/.rvm/rubies/ree-1.8.7-2010.02/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /Users/dyer/.rvm/rubies/ree-1.8.7-2010.02/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /Users/dyer/.rvm/rubies/ree-1.8.7-2010.02/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /Users/dyer/.rvm/rubies/ree-1.8.7-2010.02/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /Users/dyer/.rvm/rubies/ree-1.8.7-2010.02/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /Users/dyer/.rvm/rubies/ree-1.8.7-2010.02/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /Users/dyer/.rvm/rubies/ree-1.8.7-2010.02/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /Users/dyer/.rvm/rubies/ree-1.8.7-2010.02/lib/ruby/1.8/webrick/server.rb:82:in `start'
+  rack (1.2.1) lib/rack/handler/webrick.rb:13:in `run'
+  rack (1.2.1) lib/rack/server.rb:213:in `start'
+  railties (3.0.0) lib/rails/commands/server.rb:65:in `start'
+  railties (3.0.0) lib/rails/commands.rb:30
+  railties (3.0.0) lib/rails/commands.rb:27:in `tap'
+  railties (3.0.0) lib/rails/commands.rb:27
+  script/rails:6:in `require'
+  script/rails:6
+
+Rendered /Users/dyer/.rvm/gems/ree-1.8.7-2010.02/gems/actionpack-3.0.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.7ms)
+
+
+Started GET "/users/sign_out" for 127.0.0.1 at Sun Oct 31 00:47:45 -0400 2010
+  Processing by Devise::SessionsController#destroy as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 1) LIMIT 1
+Redirected to http://localhost:3000/
+Completed 302 Found in 17ms
+
+
+Started GET "/" for 127.0.0.1 at Sun Oct 31 00:47:45 -0400 2010
+  Processing by HomeController#index as HTML
+Rendered home/index.html.erb within layouts/home (2.9ms)
+Completed 200 OK in 8ms (Views: 7.2ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at Sun Oct 31 00:47:52 -0400 2010
+  Processing by Devise::RegistrationsController#new as HTML
+Rendered /Users/dyer/.rvm/gems/ree-1.8.7-2010.02/gems/devise-1.1.3/app/views/devise/shared/_links.erb (1.4ms)
+Rendered /Users/dyer/.rvm/gems/ree-1.8.7-2010.02/gems/devise-1.1.3/app/views/devise/registrations/new.html.erb within layouts/application (26.5ms)
+Completed 200 OK in 59ms (Views: 50.7ms | ActiveRecord: 0.7ms)
+
+
+Started POST "/users" for 127.0.0.1 at Sun Oct 31 00:48:02 -0400 2010
+  Processing by Devise::RegistrationsController#create as HTML
+  Parameters: {"commit"=>"Sign up", "authenticity_token"=>"HfBMYJj5F6eD7JHojmVzNvMWlleP3I06vbOB1+vM0yk=", "utf8"=>"\342\234\223", "user"=>{"password_confirmation"=>"[FILTERED]", "password"=>"[FILTERED]", "email"=>"john@krumpt.com"}}
+  [1m[36mUser Load (0.9ms)[0m  [1mSELECT "users"."id" FROM "users" WHERE (LOWER("users"."email") = LOWER('john@krumpt.com')) LIMIT 1[0m
+Rendered /Users/dyer/.rvm/gems/ree-1.8.7-2010.02/gems/devise-1.1.3/app/views/devise/shared/_links.erb (2.4ms)
+Rendered /Users/dyer/.rvm/gems/ree-1.8.7-2010.02/gems/devise-1.1.3/app/views/devise/registrations/new.html.erb within layouts/application (18.2ms)
+Completed 200 OK in 185ms (Views: 41.5ms | ActiveRecord: 2.1ms)
+
+
+Started POST "/users" for 127.0.0.1 at Sun Oct 31 00:48:16 -0400 2010
+  Processing by Devise::RegistrationsController#create as HTML
+  Parameters: {"commit"=>"Sign up", "authenticity_token"=>"HfBMYJj5F6eD7JHojmVzNvMWlleP3I06vbOB1+vM0yk=", "utf8"=>"\342\234\223", "user"=>{"password_confirmation"=>"[FILTERED]", "password"=>"[FILTERED]", "email"=>"john@tropo.com"}}
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users"."id" FROM "users" WHERE (LOWER("users"."email") = LOWER('john@tropo.com')) LIMIT 1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "users" ("created_at", "current_sign_in_at", "current_sign_in_ip", "email", "encrypted_password", "last_sign_in_at", "last_sign_in_ip", "password_salt", "remember_created_at", "remember_token", "reset_password_token", "sign_in_count", "updated_at") VALUES ('2010-10-31 04:48:16.194815', NULL, NULL, 'john@tropo.com', '$2a$10$auFlY5lMWHHRhHYie8fxhOi6IcNlAUO5Xy6iBG2qgXpQvG6KnLeQC', NULL, NULL, '$2a$10$auFlY5lMWHHRhHYie8fxhO', NULL, NULL, NULL, 0, '2010-10-31 04:48:16.194815')[0m
+  [1m[35mSQL (0.4ms)[0m  UPDATE "users" SET "current_sign_in_at" = '2010-10-31 04:48:16.200172', "current_sign_in_ip" = '127.0.0.1', "last_sign_in_at" = '2010-10-31 04:48:16.200172', "last_sign_in_ip" = '127.0.0.1', "sign_in_count" = 1, "updated_at" = '2010-10-31 04:48:16.200703' WHERE ("users"."id" = 3)
+Redirected to http://localhost:3000/
+Completed 302 Found in 104ms
+
+
+Started GET "/" for 127.0.0.1 at Sun Oct 31 00:48:16 -0400 2010
+  Processing by HomeController#index as HTML
+Rendered home/index.html.erb within layouts/home (3.3ms)
+Completed 200 OK in 8ms (Views: 7.2ms | ActiveRecord: 0.4ms)
+DEPRECATION WARNING: Use toplevel init.rb; rails/init.rb is deprecated: /Users/dyer/Dropbox/Development/medi_pad/vendor/plugins/paperclip/rails/init.rb. (called from /Users/dyer/Dropbox/Development/medi_pad/config/environment.rb:5)
+DEPRECATION WARNING: ActionController::Base.cookie_verifier_secret= is deprecated. Please configure it on your application with config.secret_token=. (called from /Users/dyer/Dropbox/Development/medi_pad/config/initializers/cookie_verification_secret.rb:7)
+
+
+Started GET "/" for 127.0.0.1 at Sun Oct 31 00:52:05 -0400 2010
+  Processing by HomeController#index as HTML
+Rendered home/index.html.erb within layouts/home (1.7ms)
+Completed 200 OK in 5ms (Views: 4.8ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/users/sign_out" for 127.0.0.1 at Sun Oct 31 00:52:07 -0400 2010
+  Processing by Devise::SessionsController#destroy as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 2) LIMIT 1[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 122ms
+
+
+Started GET "/" for 127.0.0.1 at Sun Oct 31 00:52:07 -0400 2010
+  Processing by HomeController#index as HTML
+Rendered home/index.html.erb within layouts/home (9.5ms)
+Completed 200 OK in 17ms (Views: 16.0ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/" for 127.0.0.1 at Sun Oct 31 00:52:20 -0400 2010
+  Processing by HomeController#index as HTML
+ERROR: compiling _app_views_home_index_html_erb___1670002308_2178741980_0 RAISED compile error
+/Users/dyer/Dropbox/Development/medi_pad/app/views/home/index.html.erb:59: unknown regexp option - l
+/Users/dyer/Dropbox/Development/medi_pad/app/views/home/index.html.erb:59: unmatched ): /li>
+');          end
+@output_buffer.safe_concat('        </
+/Users/dyer/Dropbox/Development/medi_pad/app/views/home/index.html.erb:60: syntax error, unexpected '<'
+    </div>
+     ^
+/Users/dyer/Dropbox/Development/medi_pad/app/views/home/index.html.erb:60: unterminated string meets end of file
+Function body:           def _app_views_home_index_html_erb___1670002308_2178741980_0(local_assigns)
+            _old_virtual_path, @_virtual_path = @_virtual_path, "home/index";_old_output_buffer = @output_buffer;;@output_buffer = ActionView::OutputBuffer.new;@output_buffer.safe_concat('  <style type="text/css">
+    #vertmenu {
+      font-family: Verdana, Arial, Helvetica, sans-serif;
+      font-size: 250%;
+      width: 280px;
+      padding: 0px;
+      margin: 0px;
+    }
+
+    #vertmenu h1 {
+      display: block;
+      background-color:#FF9900;
+      font-size: 110%;
+      padding: 3px 0 5px 3px;
+      border: 1px solid #000000;
+      color: #333333;
+      margin: 0px;
+      width:280px;
+    }
+
+    #vertmenu ul {
+      list-style: none;
+      margin: 0px;
+      padding: 0px;
+      border: none;
+    }
+    #vertmenu ul li {
+      margin: 0px;
+      padding: 0px;
+    }
+    #vertmenu ul li a {
+      font-size: 120%;
+      display: block;
+      border-bottom: 1px dashed #C39C4E;
+      padding: 5px 0px 2px 4px;
+      text-decoration: none;
+      color: #666666;
+      width:280px;
+    }
+
+    #vertmenu ul li a:hover, #vertmenu ul li a:focus {
+      color: #000000;
+      background-color: #eeeeee;
+    }
+  </style>
+
+    <div id="vertmenu">
+      <h1>Medi-Pad</h1>
+        <ul>
+');           if 1 
+@output_buffer.safe_concat('            <li> ');@output_buffer.append= ( link_to "Patients", patients_path  );@output_buffer.safe_concat(' </li>
+            <li> ');@output_buffer.append= ( link_to "Admin", {:controller => "admin", :action => "index"}  );@output_buffer.safe_concat(' </li>
+            <li> ');@output_buffer.append= ( link_to "Reports", reports_path );@output_buffer.safe_concat(' </li>
+            <li> link_to \'Edit Profile\', edit_doctor_path(current_doctor)  %> </li>
+            <li> ');@output_buffer.append= ( link_to "Logout", '/users/sign_out' );@output_buffer.safe_concat('  </li>
+');           else 
+@output_buffer.safe_concat('            <li> ');@output_buffer.append= ( link_to "Login", '/users/sign_in'' );@output_buffer.safe_concat(' </li>
+');          end
+@output_buffer.safe_concat('        </ul>
+    </div>
+
+');@output_buffer.to_s
+          ensure
+            @_virtual_path, @output_buffer = _old_virtual_path, _old_output_buffer
+          end
+Backtrace: /Users/dyer/Dropbox/Development/medi_pad/app/views/home/index.html.erb:60:in `compile'
+/Users/dyer/.rvm/gems/ree-1.8.7-2010.02/gems/actionpack-3.0.0/lib/action_view/template.rb:134:in `render'
+/Users/dyer/.rvm/gems/ree-1.8.7-2010.02/gems/activesupport-3.0.0/lib/active_support/notifications.rb:54:in `instrument'
+/Users/dyer/.rvm/gems/ree-1.8.7-2010.02/gems/actionpack-3.0.0/lib/action_view/template.rb:127:in `render'
+/Users/dyer/.rvm/gems/ree-1.8.7-2010.02/gems/actionpack-3.0.0/lib/action_view/render/rendering.rb:59:in `_render_template'
+/Users/dyer/.rvm/gems/ree-1.8.7-2010.02/gems/activesupport-3.0.0/lib/active_support/notifications.rb:52:in `instrument'
+/Users/dyer/.rvm/gems/ree-1.8.7-2010.02/gems/activesupport-3.0.0/lib/active_support/notifications/instrumenter.rb:21:in `instrument'
+/Users/dyer/.rvm/gems/ree-1.8.7-2010.02/gems/activesupport-3.0.0/lib/active_support/notifications.rb:52:in `instrument'
+/Users/dyer/.rvm/gems/ree-1.8.7-2010.02/gems/actionpack-3.0.0/lib/action_view/render/rendering.rb:56:in `_render_template'
+/Users/dyer/.rvm/gems/ree-1.8.7-2010.02/gems/actionpack-3.0.0/lib/action_view/render/rendering.rb:26:in `render'
+/Users/dyer/.rvm/gems/ree-1.8.7-2010.02/gems/actionpack-3.0.0/lib/abstract_controller/rendering.rb:114:in `_render_template'
+/Users/dyer/.rvm/gems/ree-1.8.7-2010.02/gems/actionpack-3.0.0/lib/abstract_controller/rendering.rb:108:in `render_to_body'
+/Users/dyer/.rvm/gems/ree-1.8.7-2010.02/gems/actionpack-3.0.0/lib/action_controller/metal/renderers.rb:47:in `render_to_body'
+/Users/dyer/.rvm/gems/ree-1.8.7-2010.02/gems/actionpack-3.0.0/lib/action_controller/metal/compatibility.rb:55:in `render_to_body'
+/Users/dyer/.rvm/gems/ree-1.8.7-2010.02/gems/actionpack-3.0.0/lib/abstract_controller/rendering.rb:101:in `render_to_string'
+/Users/dyer/.rvm/gems/ree-1.8.7-2010.02/gems/actionpack-3.0.0/lib/abstract_controller/rendering.rb:92:in `render'
+/Users/dyer/.rvm/gems/ree-1.8.7-2010.02/gems/actionpack-3.0.0/lib/action_controller/metal/rendering.rb:17:in `render'
+/Users/dyer/.rvm/gems/ree-1.8.7-2010.02/gems/actionpack-3.0.0/lib/action_controller/metal/instrumentation.rb:40:in `render'
+/Users/dyer/.rvm/gems/ree-1.8.7-2010.02/gems/activesupport-3.0.0/lib/active_support/core_ext/benchmark.rb:5:in `ms'
+/Users/dyer/.rvm/rubies/ree-1.8.7-2010.02/lib/ruby/1.8/benchmark.rb:308:in `realtime'
+/Users/dyer/.rvm/gems/ree-1.8.7-2010.02/gems/activesupport-3.0.0/lib/active_support/core_ext/benchmark.rb:5:in `ms'
+/Users/dyer/.rvm/gems/ree-1.8.7-2010.02/gems/actionpack-3.0.0/lib/action_controller/metal/instrumentation.rb:40:in `render'
+/Users/dyer/.rvm/gems/ree-1.8.7-2010.02/gems/actionpack-3.0.0/lib/action_controller/metal/instrumentation.rb:78:in `cleanup_view_runtime'
+/Users/dyer/.rvm/gems/ree-1.8.7-2010.02/gems/activerecord-3.0.0/lib/active_record/railties/controller_runtime.rb:15:in `cleanup_view_runtime'
+/Users/dyer/.rvm/gems/ree-1.8.7-2010.02/gems/actionpack-3.0.0/lib/action_controller/metal/instrumentation.rb:39:in `render'
+/Users/dyer/.rvm/gems/ree-1.8.7-2010.02/gems/actionpack-3.0.0/lib/action_controller/metal/implicit_render.rb:10:in `default_render'
+/Users/dyer/.rvm/gems/ree-1.8.7-2010.02/gems/actionpack-3.0.0/lib/action_controller/metal/implicit_render.rb:4:in `send_action'
+/Users/dyer/.rvm/gems/ree-1.8.7-2010.02/gems/actionpack-3.0.0/lib/action_controller/metal/implicit_render.rb:4:in `send_action'
+/Users/dyer/.rvm/gems/ree-1.8.7-2010.02/gems/actionpack-3.0.0/lib/abstract_controller/base.rb:150:in `process_action'
+/Users/dyer/.rvm/gems/ree-1.8.7-2010.02/gems/actionpack-3.0.0/lib/action_controller/metal/rendering.rb:11:in `process_action'
+/Users/dyer/.rvm/gems/ree-1.8.7-2010.02/gems/actionpack-3.0.0/lib/abstract_controller/callbacks.rb:18:in `process_action'
+/Users/dyer/.rvm/gems/ree-1.8.7-2010.02/gems/activesupport-3.0.0/lib/active_support/callbacks.rb:435:in `_run__738958071__process_action__662920150__callbacks'
+/Users/dyer/.rvm/gems/ree-1.8.7-2010.02/gems/activesupport-3.0.0/lib/active_support/callbacks.rb:409:in `send'
+/Users/dyer/.rvm/gems/ree-1.8.7-2010.02/gems/activesupport-3.0.0/lib/active_support/callbacks.rb:409:in `_run_process_action_callbacks'
+/Users/dyer/.rvm/gems/ree-1.8.7-2010.02/gems/activesupport-3.0.0/lib/active_support/callbacks.rb:93:in `send'
+/Users/dyer/.rvm/gems/ree-1.8.7-2010.02/gems/activesupport-3.0.0/lib/active_support/callbacks.rb:93:in `run_callbacks'
+/Users/dyer/.rvm/gems/ree-1.8.7-2010.02/gems/actionpack-3.0.0/lib/abstract_controller/callbacks.rb:17:in `process_action'
+/Users/dyer/.rvm/gems/ree-1.8.7-2010.02/gems/actionpack-3.0.0/lib/action_controller/metal/instrumentation.rb:30:in `process_action'
+/Users/dyer/.rvm/gems/ree-1.8.7-2010.02/gems/activesupport-3.0.0/lib/active_support/notifications.rb:52:in `instrument'
+/Users/dyer/.rvm/gems/ree-1.8.7-2010.02/gems/activesupport-3.0.0/lib/active_support/notifications/instrumenter.rb:21:in `instrument'
+/Users/dyer/.rvm/gems/ree-1.8.7-2010.02/gems/activesupport-3.0.0/lib/active_support/notifications.rb:52:in `instrument'
+/Users/dyer/.rvm/gems/ree-1.8.7-2010.02/gems/actionpack-3.0.0/lib/action_controller/metal/instrumentation.rb:29:in `process_action'
+/Users/dyer/.rvm/gems/ree-1.8.7-2010.02/gems/actionpack-3.0.0/lib/action_controller/metal/rescue.rb:17:in `process_action'
+/Users/dyer/.rvm/gems/ree-1.8.7-2010.02/gems/actionpack-3.0.0/lib/abstract_controller/base.rb:119:in `process'
+/Users/dyer/.rvm/gems/ree-1.8.7-2010.02/gems/actionpack-3.0.0/lib/abstract_controller/rendering.rb:40:in `process'
+/Users/dyer/.rvm/gems/ree-1.8.7-2010.02/gems/actionpack-3.0.0/lib/action_controller/metal.rb:133:in `dispatch'
+/Users/dyer/.rvm/gems/ree-1.8.7-2010.02/gems/actionpack-3.0.0/lib/action_controller/metal/rack_delegation.rb:14:in `dispatch'
+/Users/dyer/.rvm/gems/ree-1.8.7-2010.02/gems/actionpack-3.0.0/lib/action_controller/metal.rb:173:in `action'
+/Users/dyer/.rvm/gems/ree-1.8.7-2010.02/gems/actionpack-3.0.0/lib/action_dispatch/routing/route_set.rb:62:in `call'
+/Users/dyer/.rvm/gems/ree-1.8.7-2010.02/gems/actionpack-3.0.0/lib/action_dispatch/routing/route_set.rb:62:in `dispatch'
+/Users/dyer/.rvm/gems/ree-1.8.7-2010.02/gems/actionpack-3.0.0/lib/action_dispatch/routing/route_set.rb:27:in `call'
+/Users/dyer/.rvm/gems/ree-1.8.7-2010.02/gems/rack-mount-0.6.13/lib/rack/mount/route_set.rb:148:in `call'
+/Users/dyer/.rvm/gems/ree-1.8.7-2010.02/gems/rack-mount-0.6.13/lib/rack/mount/code_generation.rb:93:in `recognize'
+/Users/dyer/.rvm/gems/ree-1.8.7-2010.02/gems/rack-mount-0.6.13/lib/rack/mount/code_generation.rb:75:in `optimized_each'
+/Users/dyer/.rvm/gems/ree-1.8.7-2010.02/gems/rack-mount-0.6.13/lib/rack/mount/code_generation.rb:92:in `recognize'
+/Users/dyer/.rvm/gems/ree-1.8.7-2010.02/gems/rack-mount-0.6.13/lib/rack/mount/route_set.rb:139:in `call'
+/Users/dyer/.rvm/gems/ree-1.8.7-2010.02/gems/actionpack-3.0.0/lib/action_dispatch/routing/route_set.rb:492:in `call'
+/Users/dyer/.rvm/gems/ree-1.8.7-2010.02/gems/oa-core-0.1.6/lib/omniauth/strategy.rb:50:in `call_app!'
+/Users/dyer/.rvm/gems/ree-1.8.7-2010.02/gems/oa-core-0.1.6/lib/omniauth/strategy.rb:32:in `call!'
+/Users/dyer/.rvm/gems/ree-1.8.7-2010.02/gems/oa-core-0.1.6/lib/omniauth/strategy.rb:19:in `call'
+/Users/dyer/.rvm/gems/ree-1.8.7-2010.02/gems/oa-core-0.1.6/lib/omniauth/builder.rb:30:in `call'
+/Users/dyer/.rvm/gems/ree-1.8.7-2010.02/gems/warden-0.10.7/lib/warden/manager.rb:35:in `call'
+/Users/dyer/.rvm/gems/ree-1.8.7-2010.02/gems/warden-0.10.7/lib/warden/manager.rb:34:in `catch'
+/Users/dyer/.rvm/gems/ree-1.8.7-2010.02/gems/warden-0.10.7/lib/warden/manager.rb:34:in `call'
+/Users/dyer/.rvm/gems/ree-1.8.7-2010.02/gems/actionpack-3.0.0/lib/action_dispatch/middleware/best_standards_support.rb:17:in `call'
+/Users/dyer/.rvm/gems/ree-1.8.7-2010.02/gems/actionpack-3.0.0/lib/action_dispatch/middleware/head.rb:14:in `call'
+/Users/dyer/.rvm/gems/ree-1.8.7-2010.02/gems/rack-1.2.1/lib/rack/methodoverride.rb:24:in `call'
+/Users/dyer/.rvm/gems/ree-1.8.7-2010.02/gems/actionpack-3.0.0/lib/action_dispatch/middleware/params_parser.rb:21:in `call'
+/Users/dyer/.rvm/gems/ree-1.8.7-2010.02/gems/actionpack-3.0.0/lib/action_dispatch/middleware/flash.rb:182:in `call'
+/Users/dyer/.rvm/gems/ree-1.8.7-2010.02/gems/actionpack-3.0.0/lib/action_dispatch/middleware/session/abstract_store.rb:149:in `call'
+/Users/dyer/.rvm/gems/ree-1.8.7-2010.02/gems/actionpack-3.0.0/lib/action_dispatch/middleware/cookies.rb:287:in `call'
+/Users/dyer/.rvm/gems/ree-1.8.7-2010.02/gems/activerecord-3.0.0/lib/active_record/query_cache.rb:32:in `call'
+/Users/dyer/.rvm/gems/ree-1.8.7-2010.02/gems/activerecord-3.0.0/lib/active_record/connection_adapters/abstract/query_cache.rb:28:in `cache'
+/Users/dyer/.rvm/gems/ree-1.8.7-2010.02/gems/activerecord-3.0.0/lib/active_record/query_cache.rb:12:in `cache'
+/Users/dyer/.rvm/gems/ree-1.8.7-2010.02/gems/activerecord-3.0.0/lib/active_record/query_cache.rb:31:in `call'
+/Users/dyer/.rvm/gems/ree-1.8.7-2010.02/gems/activerecord-3.0.0/lib/active_record/connection_adapters/abstract/connection_pool.rb:355:in `call'
+/Users/dyer/.rvm/gems/ree-1.8.7-2010.02/gems/actionpack-3.0.0/lib/action_dispatch/middleware/callbacks.rb:46:in `call'
+/Users/dyer/.rvm/gems/ree-1.8.7-2010.02/gems/activesupport-3.0.0/lib/active_support/callbacks.rb:415:in `_run_call_callbacks'
+/Users/dyer/.rvm/gems/ree-1.8.7-2010.02/gems/actionpack-3.0.0/lib/action_dispatch/middleware/callbacks.rb:44:in `call'
+/Users/dyer/.rvm/gems/ree-1.8.7-2010.02/gems/rack-1.2.1/lib/rack/sendfile.rb:107:in `call'
+/Users/dyer/.rvm/gems/ree-1.8.7-2010.02/gems/actionpack-3.0.0/lib/action_dispatch/middleware/remote_ip.rb:48:in `call'
+/Users/dyer/.rvm/gems/ree-1.8.7-2010.02/gems/actionpack-3.0.0/lib/action_dispatch/middleware/show_exceptions.rb:46:in `call'
+/Users/dyer/.rvm/gems/ree-1.8.7-2010.02/gems/railties-3.0.0/lib/rails/rack/logger.rb:13:in `call'
+/Users/dyer/.rvm/gems/ree-1.8.7-2010.02/gems/rack-1.2.1/lib/rack/runtime.rb:17:in `call'
+/Users/dyer/.rvm/gems/ree-1.8.7-2010.02/gems/activesupport-3.0.0/lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+/Users/dyer/.rvm/gems/ree-1.8.7-2010.02/gems/rack-1.2.1/lib/rack/lock.rb:11:in `call'
+/Users/dyer/.rvm/gems/ree-1.8.7-2010.02/gems/rack-1.2.1/lib/rack/lock.rb:11:in `synchronize'
+/Users/dyer/.rvm/gems/ree-1.8.7-2010.02/gems/rack-1.2.1/lib/rack/lock.rb:11:in `call'
+/Users/dyer/.rvm/gems/ree-1.8.7-2010.02/gems/actionpack-3.0.0/lib/action_dispatch/middleware/static.rb:30:in `call'
+/Users/dyer/.rvm/gems/ree-1.8.7-2010.02/gems/railties-3.0.0/lib/rails/application.rb:168:in `call'
+/Users/dyer/.rvm/gems/ree-1.8.7-2010.02/gems/railties-3.0.0/lib/rails/application.rb:77:in `send'
+/Users/dyer/.rvm/gems/ree-1.8.7-2010.02/gems/railties-3.0.0/lib/rails/application.rb:77:in `method_missing'
+/Users/dyer/.rvm/gems/ree-1.8.7-2010.02/gems/railties-3.0.0/lib/rails/rack/log_tailer.rb:14:in `call'
+/Users/dyer/.rvm/gems/ree-1.8.7-2010.02/gems/rack-1.2.1/lib/rack/content_length.rb:13:in `call'
+/Users/dyer/.rvm/gems/ree-1.8.7-2010.02/gems/rack-1.2.1/lib/rack/handler/webrick.rb:52:in `service'
+/Users/dyer/.rvm/rubies/ree-1.8.7-2010.02/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+/Users/dyer/.rvm/rubies/ree-1.8.7-2010.02/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+/Users/dyer/.rvm/rubies/ree-1.8.7-2010.02/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+/Users/dyer/.rvm/rubies/ree-1.8.7-2010.02/lib/ruby/1.8/webrick/server.rb:162:in `start'
+/Users/dyer/.rvm/rubies/ree-1.8.7-2010.02/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+/Users/dyer/.rvm/rubies/ree-1.8.7-2010.02/lib/ruby/1.8/webrick/server.rb:95:in `start'
+/Users/dyer/.rvm/rubies/ree-1.8.7-2010.02/lib/ruby/1.8/webrick/server.rb:92:in `each'
+/Users/dyer/.rvm/rubies/ree-1.8.7-2010.02/lib/ruby/1.8/webrick/server.rb:92:in `start'
+/Users/dyer/.rvm/rubies/ree-1.8.7-2010.02/lib/ruby/1.8/webrick/server.rb:23:in `start'
+/Users/dyer/.rvm/rubies/ree-1.8.7-2010.02/lib/ruby/1.8/webrick/server.rb:82:in `start'
+/Users/dyer/.rvm/gems/ree-1.8.7-2010.02/gems/rack-1.2.1/lib/rack/handler/webrick.rb:13:in `run'
+/Users/dyer/.rvm/gems/ree-1.8.7-2010.02/gems/rack-1.2.1/lib/rack/server.rb:213:in `start'
+/Users/dyer/.rvm/gems/ree-1.8.7-2010.02/gems/railties-3.0.0/lib/rails/commands/server.rb:65:in `start'
+/Users/dyer/.rvm/gems/ree-1.8.7-2010.02/gems/railties-3.0.0/lib/rails/commands.rb:30
+/Users/dyer/.rvm/gems/ree-1.8.7-2010.02/gems/railties-3.0.0/lib/rails/commands.rb:27:in `tap'
+/Users/dyer/.rvm/gems/ree-1.8.7-2010.02/gems/railties-3.0.0/lib/rails/commands.rb:27
+script/rails:6:in `require'
+script/rails:6
+Rendered home/index.html.erb within layouts/home (3.3ms)
+Completed   in 8ms
+
+ActionView::Template::Error (compile error
+/Users/dyer/Dropbox/Development/medi_pad/app/views/home/index.html.erb:59: unknown regexp option - l
+/Users/dyer/Dropbox/Development/medi_pad/app/views/home/index.html.erb:59: unmatched ): /li>
+');          end
+@output_buffer.safe_concat('        </
+/Users/dyer/Dropbox/Development/medi_pad/app/views/home/index.html.erb:60: syntax error, unexpected '<'
+    </div>
+     ^
+/Users/dyer/Dropbox/Development/medi_pad/app/views/home/index.html.erb:60: unterminated string meets end of file):
+    56:           <% else %>
+    57:             <li> <%= link_to "Login", '/users/sign_in'' %> </li>
+    58:           <%end%>
+    59:         </ul>
+    60:     </div>
+  app/views/home/index.html.erb:60:in `compile'
+  actionpack (3.0.0) lib/action_view/template.rb:134:in `render'
+  activesupport (3.0.0) lib/active_support/notifications.rb:54:in `instrument'
+  actionpack (3.0.0) lib/action_view/template.rb:127:in `render'
+  actionpack (3.0.0) lib/action_view/render/rendering.rb:59:in `_render_template'
+  activesupport (3.0.0) lib/active_support/notifications.rb:52:in `instrument'
+  activesupport (3.0.0) lib/active_support/notifications/instrumenter.rb:21:in `instrument'
+  activesupport (3.0.0) lib/active_support/notifications.rb:52:in `instrument'
+  actionpack (3.0.0) lib/action_view/render/rendering.rb:56:in `_render_template'
+  actionpack (3.0.0) lib/action_view/render/rendering.rb:26:in `render'
+  actionpack (3.0.0) lib/abstract_controller/rendering.rb:114:in `_render_template'
+  actionpack (3.0.0) lib/abstract_controller/rendering.rb:108:in `render_to_body'
+  actionpack (3.0.0) lib/action_controller/metal/renderers.rb:47:in `render_to_body'
+  actionpack (3.0.0) lib/action_controller/metal/compatibility.rb:55:in `render_to_body'
+  actionpack (3.0.0) lib/abstract_controller/rendering.rb:101:in `render_to_string'
+  actionpack (3.0.0) lib/abstract_controller/rendering.rb:92:in `render'
+  actionpack (3.0.0) lib/action_controller/metal/rendering.rb:17:in `render'
+  actionpack (3.0.0) lib/action_controller/metal/instrumentation.rb:40:in `render'
+  activesupport (3.0.0) lib/active_support/core_ext/benchmark.rb:5:in `ms'
+  /Users/dyer/.rvm/rubies/ree-1.8.7-2010.02/lib/ruby/1.8/benchmark.rb:308:in `realtime'
+  activesupport (3.0.0) lib/active_support/core_ext/benchmark.rb:5:in `ms'
+  actionpack (3.0.0) lib/action_controller/metal/instrumentation.rb:40:in `render'
+  actionpack (3.0.0) lib/action_controller/metal/instrumentation.rb:78:in `cleanup_view_runtime'
+  activerecord (3.0.0) lib/active_record/railties/controller_runtime.rb:15:in `cleanup_view_runtime'
+  actionpack (3.0.0) lib/action_controller/metal/instrumentation.rb:39:in `render'
+  actionpack (3.0.0) lib/action_controller/metal/implicit_render.rb:10:in `default_render'
+  actionpack (3.0.0) lib/action_controller/metal/implicit_render.rb:4:in `send_action'
+  actionpack (3.0.0) lib/action_controller/metal/implicit_render.rb:4:in `send_action'
+  actionpack (3.0.0) lib/abstract_controller/base.rb:150:in `process_action'
+  actionpack (3.0.0) lib/action_controller/metal/rendering.rb:11:in `process_action'
+  actionpack (3.0.0) lib/abstract_controller/callbacks.rb:18:in `process_action'
+  activesupport (3.0.0) lib/active_support/callbacks.rb:435:in `_run__738958071__process_action__662920150__callbacks'
+  activesupport (3.0.0) lib/active_support/callbacks.rb:409:in `send'
+  activesupport (3.0.0) lib/active_support/callbacks.rb:409:in `_run_process_action_callbacks'
+  activesupport (3.0.0) lib/active_support/callbacks.rb:93:in `send'
+  activesupport (3.0.0) lib/active_support/callbacks.rb:93:in `run_callbacks'
+  actionpack (3.0.0) lib/abstract_controller/callbacks.rb:17:in `process_action'
+  actionpack (3.0.0) lib/action_controller/metal/instrumentation.rb:30:in `process_action'
+  activesupport (3.0.0) lib/active_support/notifications.rb:52:in `instrument'
+  activesupport (3.0.0) lib/active_support/notifications/instrumenter.rb:21:in `instrument'
+  activesupport (3.0.0) lib/active_support/notifications.rb:52:in `instrument'
+  actionpack (3.0.0) lib/action_controller/metal/instrumentation.rb:29:in `process_action'
+  actionpack (3.0.0) lib/action_controller/metal/rescue.rb:17:in `process_action'
+  actionpack (3.0.0) lib/abstract_controller/base.rb:119:in `process'
+  actionpack (3.0.0) lib/abstract_controller/rendering.rb:40:in `process'
+  actionpack (3.0.0) lib/action_controller/metal.rb:133:in `dispatch'
+  actionpack (3.0.0) lib/action_controller/metal/rack_delegation.rb:14:in `dispatch'
+  actionpack (3.0.0) lib/action_controller/metal.rb:173:in `action'
+  actionpack (3.0.0) lib/action_dispatch/routing/route_set.rb:62:in `call'
+  actionpack (3.0.0) lib/action_dispatch/routing/route_set.rb:62:in `dispatch'
+  actionpack (3.0.0) lib/action_dispatch/routing/route_set.rb:27:in `call'
+  rack-mount (0.6.13) lib/rack/mount/route_set.rb:148:in `call'
+  rack-mount (0.6.13) lib/rack/mount/code_generation.rb:93:in `recognize'
+  rack-mount (0.6.13) lib/rack/mount/code_generation.rb:75:in `optimized_each'
+  rack-mount (0.6.13) lib/rack/mount/code_generation.rb:92:in `recognize'
+  rack-mount (0.6.13) lib/rack/mount/route_set.rb:139:in `call'
+  actionpack (3.0.0) lib/action_dispatch/routing/route_set.rb:492:in `call'
+  oa-core (0.1.6) lib/omniauth/strategy.rb:50:in `call_app!'
+  oa-core (0.1.6) lib/omniauth/strategy.rb:32:in `call!'
+  oa-core (0.1.6) lib/omniauth/strategy.rb:19:in `call'
+  oa-core (0.1.6) lib/omniauth/builder.rb:30:in `call'
+  warden (0.10.7) lib/warden/manager.rb:35:in `call'
+  warden (0.10.7) lib/warden/manager.rb:34:in `catch'
+  warden (0.10.7) lib/warden/manager.rb:34:in `call'
+  actionpack (3.0.0) lib/action_dispatch/middleware/best_standards_support.rb:17:in `call'
+  actionpack (3.0.0) lib/action_dispatch/middleware/head.rb:14:in `call'
+  rack (1.2.1) lib/rack/methodoverride.rb:24:in `call'
+  actionpack (3.0.0) lib/action_dispatch/middleware/params_parser.rb:21:in `call'
+  actionpack (3.0.0) lib/action_dispatch/middleware/flash.rb:182:in `call'
+  actionpack (3.0.0) lib/action_dispatch/middleware/session/abstract_store.rb:149:in `call'
+  actionpack (3.0.0) lib/action_dispatch/middleware/cookies.rb:287:in `call'
+  activerecord (3.0.0) lib/active_record/query_cache.rb:32:in `call'
+  activerecord (3.0.0) lib/active_record/connection_adapters/abstract/query_cache.rb:28:in `cache'
+  activerecord (3.0.0) lib/active_record/query_cache.rb:12:in `cache'
+  activerecord (3.0.0) lib/active_record/query_cache.rb:31:in `call'
+  activerecord (3.0.0) lib/active_record/connection_adapters/abstract/connection_pool.rb:355:in `call'
+  actionpack (3.0.0) lib/action_dispatch/middleware/callbacks.rb:46:in `call'
+  activesupport (3.0.0) lib/active_support/callbacks.rb:415:in `_run_call_callbacks'
+  actionpack (3.0.0) lib/action_dispatch/middleware/callbacks.rb:44:in `call'
+  rack (1.2.1) lib/rack/sendfile.rb:107:in `call'
+  actionpack (3.0.0) lib/action_dispatch/middleware/remote_ip.rb:48:in `call'
+  actionpack (3.0.0) lib/action_dispatch/middleware/show_exceptions.rb:46:in `call'
+  railties (3.0.0) lib/rails/rack/logger.rb:13:in `call'
+  rack (1.2.1) lib/rack/runtime.rb:17:in `call'
+  activesupport (3.0.0) lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  rack (1.2.1) lib/rack/lock.rb:11:in `call'
+  rack (1.2.1) lib/rack/lock.rb:11:in `synchronize'
+  rack (1.2.1) lib/rack/lock.rb:11:in `call'
+  actionpack (3.0.0) lib/action_dispatch/middleware/static.rb:30:in `call'
+  railties (3.0.0) lib/rails/application.rb:168:in `call'
+  railties (3.0.0) lib/rails/application.rb:77:in `send'
+  railties (3.0.0) lib/rails/application.rb:77:in `method_missing'
+  railties (3.0.0) lib/rails/rack/log_tailer.rb:14:in `call'
+  rack (1.2.1) lib/rack/content_length.rb:13:in `call'
+  rack (1.2.1) lib/rack/handler/webrick.rb:52:in `service'
+  /Users/dyer/.rvm/rubies/ree-1.8.7-2010.02/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /Users/dyer/.rvm/rubies/ree-1.8.7-2010.02/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /Users/dyer/.rvm/rubies/ree-1.8.7-2010.02/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /Users/dyer/.rvm/rubies/ree-1.8.7-2010.02/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /Users/dyer/.rvm/rubies/ree-1.8.7-2010.02/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /Users/dyer/.rvm/rubies/ree-1.8.7-2010.02/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /Users/dyer/.rvm/rubies/ree-1.8.7-2010.02/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /Users/dyer/.rvm/rubies/ree-1.8.7-2010.02/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /Users/dyer/.rvm/rubies/ree-1.8.7-2010.02/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /Users/dyer/.rvm/rubies/ree-1.8.7-2010.02/lib/ruby/1.8/webrick/server.rb:82:in `start'
+  rack (1.2.1) lib/rack/handler/webrick.rb:13:in `run'
+  rack (1.2.1) lib/rack/server.rb:213:in `start'
+  railties (3.0.0) lib/rails/commands/server.rb:65:in `start'
+  railties (3.0.0) lib/rails/commands.rb:30
+  railties (3.0.0) lib/rails/commands.rb:27:in `tap'
+  railties (3.0.0) lib/rails/commands.rb:27
+  script/rails:6:in `require'
+  script/rails:6
+
+Rendered /Users/dyer/.rvm/gems/ree-1.8.7-2010.02/gems/actionpack-3.0.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (0.8ms)
+Rendered /Users/dyer/.rvm/gems/ree-1.8.7-2010.02/gems/actionpack-3.0.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (573.7ms)
+Rendered /Users/dyer/.rvm/gems/ree-1.8.7-2010.02/gems/actionpack-3.0.0/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (581.3ms)
+
+
+Started GET "/" for 127.0.0.1 at Sun Oct 31 00:52:25 -0400 2010
+  Processing by HomeController#index as HTML
+Rendered home/index.html.erb within layouts/home (2.3ms)
+Completed 200 OK in 79ms (Views: 5.5ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/users/sign_out" for 127.0.0.1 at Sun Oct 31 00:52:27 -0400 2010
+  Processing by Devise::SessionsController#destroy as HTML
+Redirected to http://localhost:3000/
+Completed 302 Found in 15ms
+
+
+Started GET "/" for 127.0.0.1 at Sun Oct 31 00:52:27 -0400 2010
+  Processing by HomeController#index as HTML
+Rendered home/index.html.erb within layouts/home (2.0ms)
+Completed 200 OK in 7ms (Views: 6.1ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/users/sign_out" for 127.0.0.1 at Sun Oct 31 00:52:31 -0400 2010
+  Processing by Devise::SessionsController#destroy as HTML
+Redirected to http://localhost:3000/
+Completed 302 Found in 7ms
+
+
+Started GET "/" for 127.0.0.1 at Sun Oct 31 00:52:31 -0400 2010
+  Processing by HomeController#index as HTML
+Rendered home/index.html.erb within layouts/home (1.9ms)
+Completed 200 OK in 5ms (Views: 4.9ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/" for 127.0.0.1 at Sun Oct 31 00:52:35 -0400 2010
+  Processing by HomeController#index as HTML
+Rendered home/index.html.erb within layouts/home (1.9ms)
+Completed 200 OK in 6ms (Views: 5.3ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/" for 127.0.0.1 at Sun Oct 31 00:52:43 -0400 2010
+  Processing by HomeController#index as HTML
+Rendered home/index.html.erb within layouts/home (2.2ms)
+Completed 200 OK in 6ms (Views: 5.1ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at Sun Oct 31 00:52:43 -0400 2010
+  Processing by Devise::SessionsController#new as HTML
+Rendered /Users/dyer/.rvm/gems/ree-1.8.7-2010.02/gems/devise-1.1.3/app/views/devise/shared/_links.erb (1.0ms)
+Rendered /Users/dyer/.rvm/gems/ree-1.8.7-2010.02/gems/devise-1.1.3/app/views/devise/sessions/new.html.erb within layouts/application (12.9ms)
+Completed 200 OK in 40ms (Views: 28.5ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/users/password/new" for 127.0.0.1 at Sun Oct 31 00:52:46 -0400 2010
+  Processing by Devise::PasswordsController#new as HTML
+Rendered /Users/dyer/.rvm/gems/ree-1.8.7-2010.02/gems/devise-1.1.3/app/views/devise/shared/_links.erb (2.1ms)
+Rendered /Users/dyer/.rvm/gems/ree-1.8.7-2010.02/gems/devise-1.1.3/app/views/devise/passwords/new.html.erb within layouts/application (32.1ms)
+Completed 200 OK in 69ms (Views: 59.3ms | ActiveRecord: 0.2ms)
+
+
+Started POST "/users/password" for 127.0.0.1 at Sun Oct 31 00:52:52 -0400 2010
+  Processing by Devise::PasswordsController#create as HTML
+  Parameters: {"commit"=>"Send me reset password instructions", "authenticity_token"=>"JFHr9euHX3+ZsN5dQ58XldRsIdbNeMu32ezhfPJ8dio=", "utf8"=>"\342\234\223", "user"=>{"email"=>"john@krumpt.com"}}
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."email" = 'john@krumpt.com') LIMIT 1
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."reset_password_token" = '8zFFzdKVUB6ZTp-LvUCi') LIMIT 1[0m
+  [1m[35mSQL (0.5ms)[0m  UPDATE "users" SET "reset_password_token" = '8zFFzdKVUB6ZTp-LvUCi', "updated_at" = '2010-10-31 04:52:52.127806' WHERE ("users"."id" = 2)
+Rendered /Users/dyer/.rvm/gems/ree-1.8.7-2010.02/gems/devise-1.1.3/app/views/devise/mailer/reset_password_instructions.html.erb (1.2ms)
+
+Sent mail to john@krumpt.com (1631ms)
+Date: Sun, 31 Oct 2010 00:52:52 -0400
+From: john@techbounds.com
+To: john@krumpt.com
+Message-ID: <4cccf6245bba4_15a3c81b29ff476273@aleph.local.mail>
+Subject: Reset password instructions
+Mime-Version: 1.0
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<p>Hello john@krumpt.com!</p>
+
+<p>Someone has requested a link to change your password, and you can do this through the link below.</p>
+
+<p><a href="http://localhost:3000/users/password/edit?reset_password_token=8zFFzdKVUB6ZTp-LvUCi">Change my password</a></p>
+
+<p>If you didn't request this, please ignore this email.</p>
+<p>Your password won't change until you access the link above and create a new one.</p>
+Redirected to http://localhost:3000/users/sign_in
+Completed 302 Found in 1892ms
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at Sun Oct 31 00:52:54 -0400 2010
+  Processing by Devise::SessionsController#new as HTML
+Rendered /Users/dyer/.rvm/gems/ree-1.8.7-2010.02/gems/devise-1.1.3/app/views/devise/shared/_links.erb (1.9ms)
+Rendered /Users/dyer/.rvm/gems/ree-1.8.7-2010.02/gems/devise-1.1.3/app/views/devise/sessions/new.html.erb within layouts/application (19.4ms)
+Completed 200 OK in 52ms (Views: 37.4ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/home" for 127.0.0.1 at Sun Oct 31 00:54:39 -0400 2010
+  Processing by HomeController#index as HTML
+Rendered home/index.html.erb within layouts/home (2.8ms)
+Completed 200 OK in 7ms (Views: 7.0ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at Sun Oct 31 00:54:41 -0400 2010
+  Processing by Devise::SessionsController#new as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 3) LIMIT 1[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 129ms
+
+
+Started GET "/" for 127.0.0.1 at Sun Oct 31 00:54:41 -0400 2010
+  Processing by HomeController#index as HTML
+Rendered home/index.html.erb within layouts/home (3.0ms)
+Completed 200 OK in 8ms (Views: 7.7ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/users/sign_out" for 127.0.0.1 at Sun Oct 31 00:54:42 -0400 2010
+  Processing by Devise::SessionsController#destroy as HTML
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 3) LIMIT 1
+Redirected to http://localhost:3000/
+Completed 302 Found in 21ms
+
+
+Started GET "/" for 127.0.0.1 at Sun Oct 31 00:54:42 -0400 2010
+  Processing by HomeController#index as HTML
+Rendered home/index.html.erb within layouts/home (3.3ms)
+Completed 200 OK in 9ms (Views: 8.9ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at Sun Oct 31 00:54:43 -0400 2010
+  Processing by Devise::SessionsController#new as HTML
+Rendered /Users/dyer/.rvm/gems/ree-1.8.7-2010.02/gems/devise-1.1.3/app/views/devise/shared/_links.erb (2.1ms)
+Rendered /Users/dyer/.rvm/gems/ree-1.8.7-2010.02/gems/devise-1.1.3/app/views/devise/sessions/new.html.erb within layouts/application (30.2ms)
+Completed 200 OK in 75ms (Views: 58.4ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/users/password/new" for 127.0.0.1 at Sun Oct 31 00:54:45 -0400 2010
+  Processing by Devise::PasswordsController#new as HTML
+Rendered /Users/dyer/.rvm/gems/ree-1.8.7-2010.02/gems/devise-1.1.3/app/views/devise/shared/_links.erb (1.9ms)
+Rendered /Users/dyer/.rvm/gems/ree-1.8.7-2010.02/gems/devise-1.1.3/app/views/devise/passwords/new.html.erb within layouts/application (20.6ms)
+Completed 200 OK in 44ms (Views: 36.1ms | ActiveRecord: 0.7ms)
+
+
+Started POST "/users/password" for 127.0.0.1 at Sun Oct 31 00:54:50 -0400 2010
+  Processing by Devise::PasswordsController#create as HTML
+  Parameters: {"commit"=>"Send me reset password instructions", "authenticity_token"=>"HfBMYJj5F6eD7JHojmVzNvMWlleP3I06vbOB1+vM0yk=", "utf8"=>"\342\234\223", "user"=>{"email"=>"john@krumpt.com"}}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."email" = 'john@krumpt.com') LIMIT 1[0m
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."reset_password_token" = '6PfZqjqQTY9JFaCOFXoU') LIMIT 1
+  [1m[36mSQL (0.6ms)[0m  [1mUPDATE "users" SET "reset_password_token" = '6PfZqjqQTY9JFaCOFXoU', "updated_at" = '2010-10-31 04:54:50.112437' WHERE ("users"."id" = 2)[0m
+Rendered /Users/dyer/.rvm/gems/ree-1.8.7-2010.02/gems/devise-1.1.3/app/views/devise/mailer/reset_password_instructions.html.erb (1.2ms)
+
+Sent mail to john@krumpt.com (483ms)
+Date: Sun, 31 Oct 2010 00:54:50 -0400
+From: john@techbounds.com
+To: john@krumpt.com
+Message-ID: <4cccf69a2bcea_15a3c81cfe7d0763e8@aleph.local.mail>
+Subject: Reset password instructions
+Mime-Version: 1.0
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<p>Hello john@krumpt.com!</p>
+
+<p>Someone has requested a link to change your password, and you can do this through the link below.</p>
+
+<p><a href="http://localhost:3000/users/password/edit?reset_password_token=6PfZqjqQTY9JFaCOFXoU">Change my password</a></p>
+
+<p>If you didn't request this, please ignore this email.</p>
+<p>Your password won't change until you access the link above and create a new one.</p>
+Redirected to http://localhost:3000/users/sign_in
+Completed 302 Found in 568ms
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at Sun Oct 31 00:54:50 -0400 2010
+  Processing by Devise::SessionsController#new as HTML
+Rendered /Users/dyer/.rvm/gems/ree-1.8.7-2010.02/gems/devise-1.1.3/app/views/devise/shared/_links.erb (1.3ms)
+Rendered /Users/dyer/.rvm/gems/ree-1.8.7-2010.02/gems/devise-1.1.3/app/views/devise/sessions/new.html.erb within layouts/application (16.2ms)
+Completed 200 OK in 44ms (Views: 31.6ms | ActiveRecord: 0.2ms)
+DEPRECATION WARNING: Use toplevel init.rb; rails/init.rb is deprecated: /Users/dyer/Dropbox/Development/medi_pad/vendor/plugins/paperclip/rails/init.rb. (called from /Users/dyer/Dropbox/Development/medi_pad/config/environment.rb:5)
+DEPRECATION WARNING: ActionController::Base.cookie_verifier_secret= is deprecated. Please configure it on your application with config.secret_token=. (called from /Users/dyer/Dropbox/Development/medi_pad/config/initializers/cookie_verification_secret.rb:7)
+
+
+Started GET "/users/password/new" for 127.0.0.1 at Sun Oct 31 00:55:02 -0400 2010
+  Processing by Devise::PasswordsController#new as HTML
+Rendered /Users/dyer/.rvm/gems/ree-1.8.7-2010.02/gems/devise-1.1.3/app/views/devise/shared/_links.erb (2.3ms)
+Rendered /Users/dyer/.rvm/gems/ree-1.8.7-2010.02/gems/devise-1.1.3/app/views/devise/passwords/new.html.erb within layouts/application (47.8ms)
+Completed 200 OK in 91ms (Views: 87.8ms | ActiveRecord: 0.8ms)
+
+
+Started POST "/users/password" for 127.0.0.1 at Sun Oct 31 00:55:05 -0400 2010
+  Processing by Devise::PasswordsController#create as HTML
+  Parameters: {"commit"=>"Send me reset password instructions", "authenticity_token"=>"HfBMYJj5F6eD7JHojmVzNvMWlleP3I06vbOB1+vM0yk=", "utf8"=>"\342\234\223", "user"=>{"email"=>"john@krumpt.com"}}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."email" = 'john@krumpt.com') LIMIT 1[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."reset_password_token" = 'ZNZaJ5NrgKLameLhzEhD') LIMIT 1
+  [1m[36mSQL (0.7ms)[0m  [1mUPDATE "users" SET "reset_password_token" = 'ZNZaJ5NrgKLameLhzEhD', "updated_at" = '2010-10-31 04:55:06.024397' WHERE ("users"."id" = 2)[0m
+Rendered /Users/dyer/.rvm/gems/ree-1.8.7-2010.02/gems/devise-1.1.3/app/views/devise/mailer/reset_password_instructions.html.erb (0.8ms)
+
+Sent mail to john@krumpt.com (473ms)
+Date: Sun, 31 Oct 2010 00:55:06 -0400
+From: cfpgtestone2@gmail.com
+To: john@krumpt.com
+Message-ID: <4cccf6aa1b2d7_15adf81b54150817b6@aleph.local.mail>
+Subject: Reset password instructions
+Mime-Version: 1.0
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<p>Hello john@krumpt.com!</p>
+
+<p>Someone has requested a link to change your password, and you can do this through the link below.</p>
+
+<p><a href="http://localhost:3000/users/password/edit?reset_password_token=ZNZaJ5NrgKLameLhzEhD">Change my password</a></p>
+
+<p>If you didn't request this, please ignore this email.</p>
+<p>Your password won't change until you access the link above and create a new one.</p>
+Redirected to http://localhost:3000/users/sign_in
+Completed 302 Found in 685ms
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at Sun Oct 31 00:55:06 -0400 2010
+  Processing by Devise::SessionsController#new as HTML
+Rendered /Users/dyer/.rvm/gems/ree-1.8.7-2010.02/gems/devise-1.1.3/app/views/devise/shared/_links.erb (1.5ms)
+Rendered /Users/dyer/.rvm/gems/ree-1.8.7-2010.02/gems/devise-1.1.3/app/views/devise/sessions/new.html.erb within layouts/application (18.1ms)
+Completed 200 OK in 68ms (Views: 41.5ms | ActiveRecord: 2.9ms)
+DEPRECATION WARNING: Use toplevel init.rb; rails/init.rb is deprecated: /Users/dyer/Dropbox/Development/medi_pad/vendor/plugins/paperclip/rails/init.rb. (called from /Users/dyer/Dropbox/Development/medi_pad/config/environment.rb:5)
+DEPRECATION WARNING: ActionController::Base.cookie_verifier_secret= is deprecated. Please configure it on your application with config.secret_token=. (called from /Users/dyer/Dropbox/Development/medi_pad/config/initializers/cookie_verification_secret.rb:7)
+
+
+Started POST "/users/password" for 127.0.0.1 at Sun Oct 31 00:55:31 -0400 2010
+  Processing by Devise::PasswordsController#create as HTML
+  Parameters: {"commit"=>"Send me reset password instructions", "authenticity_token"=>"HfBMYJj5F6eD7JHojmVzNvMWlleP3I06vbOB1+vM0yk=", "utf8"=>"\342\234\223", "user"=>{"email"=>"john@krumpt.com"}}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."email" = 'john@krumpt.com') LIMIT 1[0m
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."reset_password_token" = 'SLz4pHf7a5gHUGwZZnuE') LIMIT 1
+  [1m[36mSQL (0.6ms)[0m  [1mUPDATE "users" SET "reset_password_token" = 'SLz4pHf7a5gHUGwZZnuE', "updated_at" = '2010-10-31 04:55:31.416804' WHERE ("users"."id" = 2)[0m
+Rendered /Users/dyer/.rvm/gems/ree-1.8.7-2010.02/gems/devise-1.1.3/app/views/devise/mailer/reset_password_instructions.html.erb (0.8ms)
+
+Sent mail to john@krumpt.com (470ms)
+Date: Sun, 31 Oct 2010 00:55:31 -0400
+From: cfpgtestone@gmail.com
+To: john@krumpt.com
+Message-ID: <4cccf6c37a96b_15b6181b54178178a8@aleph.local.mail>
+Subject: Reset password instructions
+Mime-Version: 1.0
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<p>Hello john@krumpt.com!</p>
+
+<p>Someone has requested a link to change your password, and you can do this through the link below.</p>
+
+<p><a href="http://localhost:3000/users/password/edit?reset_password_token=SLz4pHf7a5gHUGwZZnuE">Change my password</a></p>
+
+<p>If you didn't request this, please ignore this email.</p>
+<p>Your password won't change until you access the link above and create a new one.</p>
+Redirected to http://localhost:3000/users/sign_in
+Completed 302 Found in 568ms
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at Sun Oct 31 00:55:32 -0400 2010
+  Processing by Devise::SessionsController#new as HTML
+Rendered /Users/dyer/.rvm/gems/ree-1.8.7-2010.02/gems/devise-1.1.3/app/views/devise/shared/_links.erb (1.2ms)
+Rendered /Users/dyer/.rvm/gems/ree-1.8.7-2010.02/gems/devise-1.1.3/app/views/devise/sessions/new.html.erb within layouts/application (15.0ms)
+Completed 200 OK in 51ms (Views: 35.7ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/users/password/edit?reset_password_token=SLz4pHf7a5gHUGwZZnuE" for 127.0.0.1 at Sun Oct 31 00:56:26 -0400 2010
+  Processing by Devise::PasswordsController#edit as HTML
+  Parameters: {"reset_password_token"=>"[FILTERED]"}
+Rendered /Users/dyer/.rvm/gems/ree-1.8.7-2010.02/gems/devise-1.1.3/app/views/devise/shared/_links.erb (1.1ms)
+Rendered /Users/dyer/.rvm/gems/ree-1.8.7-2010.02/gems/devise-1.1.3/app/views/devise/passwords/edit.html.erb within layouts/application (12.6ms)
+Completed 200 OK in 39ms (Views: 26.5ms | ActiveRecord: 0.2ms)
+
+
+Started POST "/users/password" for 127.0.0.1 at Sun Oct 31 00:56:31 -0400 2010
+  Processing by Devise::PasswordsController#update as HTML
+  Parameters: {"commit"=>"Change my password", "authenticity_token"=>"HfBMYJj5F6eD7JHojmVzNvMWlleP3I06vbOB1+vM0yk=", "utf8"=>"\342\234\223", "user"=>{"password_confirmation"=>"[FILTERED]", "reset_password_token"=>"[FILTERED]", "password"=>"[FILTERED]"}}
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."reset_password_token" = 'SLz4pHf7a5gHUGwZZnuE') LIMIT 1
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users"."id" FROM "users" WHERE (LOWER("users"."email") = LOWER('john@krumpt.com')) AND ("users".id <> 2) LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users"."id" FROM "users" WHERE (LOWER("users"."email") = LOWER('john@krumpt.com')) AND ("users".id <> 2) LIMIT 1
+  [1m[36mSQL (0.5ms)[0m  [1mUPDATE "users" SET "encrypted_password" = '$2a$10$G7BMHLj7q6o9fY/YZht8teq9Q3BSiGWyyKna.0M95ou.FFRha/pWW', "password_salt" = '$2a$10$G7BMHLj7q6o9fY/YZht8te', "reset_password_token" = NULL, "updated_at" = '2010-10-31 04:56:31.866872' WHERE ("users"."id" = 2)[0m
+  [1m[35mSQL (0.3ms)[0m  UPDATE "users" SET "current_sign_in_at" = '2010-10-31 04:56:31.871906', "sign_in_count" = 2, "updated_at" = '2010-10-31 04:56:31.872336' WHERE ("users"."id" = 2)
+Redirected to http://localhost:3000/
+Completed 302 Found in 205ms
+
+
+Started GET "/" for 127.0.0.1 at Sun Oct 31 00:56:31 -0400 2010
+  Processing by HomeController#index as HTML
+Rendered home/index.html.erb within layouts/home (5.2ms)
+Completed 200 OK in 14ms (Views: 12.5ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/" for 127.0.0.1 at Sun Oct 31 00:56:54 -0400 2010
+  Processing by HomeController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 2) LIMIT 1[0m
+Rendered home/index.html.erb within layouts/home (19.1ms)
+Completed 200 OK in 23ms (Views: 21.5ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/" for 127.0.0.1 at Sun Oct 31 00:56:55 -0400 2010
+  Processing by HomeController#index as HTML
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 2) LIMIT 1
+Rendered home/index.html.erb within layouts/home (30.3ms)
+Completed 200 OK in 36ms (Views: 34.8ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/users/sign_out" for 127.0.0.1 at Sun Oct 31 00:56:56 -0400 2010
+  Processing by Devise::SessionsController#destroy as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 2) LIMIT 1[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 105ms
+
+
+Started GET "/" for 127.0.0.1 at Sun Oct 31 00:56:56 -0400 2010
+  Processing by HomeController#index as HTML
+Rendered home/index.html.erb within layouts/home (15.3ms)
+Completed 200 OK in 19ms (Views: 18.7ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at Sun Oct 31 00:57:04 -0400 2010
+  Processing by Devise::SessionsController#new as HTML
+Rendered /Users/dyer/.rvm/gems/ree-1.8.7-2010.02/gems/devise-1.1.3/app/views/devise/shared/_links.erb (1.2ms)
+Rendered /Users/dyer/.rvm/gems/ree-1.8.7-2010.02/gems/devise-1.1.3/app/views/devise/sessions/new.html.erb within layouts/application (16.1ms)
+Completed 200 OK in 43ms (Views: 30.8ms | ActiveRecord: 0.6ms)

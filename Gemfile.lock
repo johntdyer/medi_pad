@@ -12,13 +12,6 @@ GIT
     default_value_for (1.0.0)
 
 GIT
-  remote: http://github.com/binarylogic/authlogic.git
-  revision: 66ed79515919fe13016911b10ebe734cf8718dc7
-  specs:
-    authlogic (2.1.6)
-      activesupport
-
-GIT
   remote: http://github.com/michaeldv/awesome_print.git
   revision: c05a6abad7afe76d7bb176f2285f89a62511569e
   specs:
@@ -164,7 +157,6 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  authlogic!
   awesome_print!
   default_value_for!
   devise (= 1.1.3)

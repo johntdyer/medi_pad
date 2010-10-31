@@ -1,11 +1,13 @@
 MediPad::Application.routes.draw do
 
  
-    match "login", :to =>"doctor_sessions#new", :as => 'login'
-    match "logout", :to =>"doctor_sessions#destroy", :as => 'logout'
+  devise_for :users
 
-    resources :doctor_sessions
-    resources :password_resets, :only => [ :new, :create, :edit, :update ]
+   # match "login", :to =>"doctor_sessions#new", :as => 'login'
+   # match "logout", :to =>"doctor_sessions#destroy", :as => 'logout'
+
+   # resources :doctor_sessions
+   # resources :password_resets, :only => [ :new, :create, :edit, :update ]
     resources :procedures
 
 #   resources :charges, :collection => { :add => :put }

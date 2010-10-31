@@ -47,14 +47,16 @@
     <div id="vertmenu">
       <h1>Medi-Pad</h1>
         <ul>
-          <% if current_doctor %>
+          <% if current_user %>
             <li> <%= link_to "Patients", patients_path  %> </li>
             <li> <%= link_to "Admin", {:controller => "admin", :action => "index"}  %> </li>
             <li> <%= link_to "Reports", reports_path %> </li>
-            <li> <%= link_to 'Edit Profile', edit_doctor_path(current_doctor)  %> </li>
-            <li> <%= link_to "Logout", logout_path  %>  </li>
+            <li> link_to 'Edit Profile', edit_doctor_path(current_doctor)  %> </li>
+            <li> <%= link_to "Logout", '/users/sign_out' %>  </li>
+            <li> <%= link_to "Login", '/users/sign_in' %> </li>
+            
           <% else %>
-            <li> <%= link_to "Login", login_path  %> </li>
+            <li> <%= link_to "Login", '/users/sign_in' %> </li>
           <%end%>
         </ul>
     </div>

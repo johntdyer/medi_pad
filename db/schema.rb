@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101029005524) do
+ActiveRecord::Schema.define(:version => 20101031041708) do
 
   create_table "charges", :force => true do |t|
     t.string   "procedure_name"
@@ -105,5 +105,24 @@ ActiveRecord::Schema.define(:version => 20101029005524) do
 
   add_index "sessions", ["session_id"], :name => "index_sessions_on_session_id"
   add_index "sessions", ["updated_at"], :name => "index_sessions_on_updated_at"
+
+  create_table "users", :force => true do |t|
+    t.string   "email",                               :default => "", :null => false
+    t.string   "encrypted_password",   :limit => 128, :default => "", :null => false
+    t.string   "password_salt",                       :default => "", :null => false
+    t.string   "reset_password_token"
+    t.string   "remember_token"
+    t.datetime "remember_created_at"
+    t.integer  "sign_in_count",                       :default => 0
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string   "current_sign_in_ip"
+    t.string   "last_sign_in_ip"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "users", ["email"], :name => "index_users_on_email", :unique => true
+  add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
 
 end
