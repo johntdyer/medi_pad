@@ -10,12 +10,11 @@
   <%= stylesheet_link_tag 'table' %>
 
   <%= yield(:head) %>
-  
+
 </head>
 <body>
 
 <p style="color: green"><%= flash[:notice] %></p>
-<%  cookies[:doctor] = current_doctor.doctor_name %>
 
 <%= yield %>
 
