@@ -47,6 +47,7 @@ MediPad::Application.routes.draw do
     
     match '/:controller(/:action(/:id))'
     
+    match '/auth/:provider/callback', :to => 'sessions#create'
 
 
     root :to=>"home#index"
