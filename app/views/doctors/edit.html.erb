@@ -77,7 +77,7 @@
             console.log("@ LOG => {action=>" + action + ",:procedure_code=>"+ jQuery(this).val()+"}");
              $.ajax({
                        async:true, 
-                       url:'/doctors/edit_procedure',
+                       url:'/users/edit_procedure',
                        type:'POST',
                        data: {
                             'commit':action,
