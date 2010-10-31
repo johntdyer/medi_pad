@@ -1,37 +1,44 @@
 class ReportsController < ApplicationController
   
   before_filter :require_doctor
-  
-  
+    
   def index
-
-    @search = Charge.search(params[:search])
-    #@search=Charge.where('updated_at < ?', Time.now - 60.minutes).search(params[:search])
-    @charges=@search.all
+   
+    if params.has_key?(:time)        
+       @search=Charge.where('updated_at >= ?', Time.now - date_convert(params[:time])).search(params[:search])
+    
+    elsif params.has_key?(:search_name)
+      @search = Charge.search(:patient_name_contains=>params[:search_name])
+    else
+      @search = Charge.search(:recorded_equals=>false)
+    
+    end
+      @charges=@search.all 
+    
     if request.xml_http_request?
       render :partial => "charges", :layout => false
     end
   end
   
-  def search
-    if params.has_key?(:time)
-      #@search=Charge.where('updated_at < ?', Time.zone.now - 15.minute).search(params[:search])
-      if date_convert(params[:time])
-        @search=Charge.where('updated_at >= ?', Time.now - date_convert(params[:time])).search(params[:search])
-      else
-        logger.debug { "@@@@" }
-        
-      @search=Charge.search(params[:search])
-      flash[:notice] = "#{params[:time]} is not a valid search term"
-    end
-    else params.has_key?(:name)
-      @search = Charge.search(:patient_name_contains=>params[:name])
-    end
-    @reports=@search.all
-    
-    render :action => "index"
-   end
-
+  # def search
+  #   if params.has_key?(:time)
+  #     #@search=Charge.where('updated_at < ?', Time.zone.now - 15.minute).search(params[:search])
+  #     if date_convert(params[:time])
+  #       @search=Charge.where('updated_at >= ?', Time.now - date_convert(params[:time])).search(params[:search])
+  #     else
+  #       logger.debug { "@@@@" }
+  #       
+  #     @search=Charge.search(params[:search])
+  #     flash[:notice] = "#{params[:time]} is not a valid search term"
+  #   end
+  #   else params.has_key?(:name)
+  #     @search = Charge.search(:patient_name_contains=>params[:name])
+  #   end
+  #   @reports=@search.all
+  #   
+  #   render :action => "index"
+  #  end
+  #            
 
   def show_only_recorded
     logger.info { "" }
@@ -55,7 +62,6 @@ class ReportsController < ApplicationController
 
   private
 
-  
    def date_convert(v)
     case v.downcase
       when 'hour'
@@ -72,8 +78,5 @@ class ReportsController < ApplicationController
         return false
       end
   end
-
-
-
 
 end

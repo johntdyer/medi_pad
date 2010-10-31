@@ -16,10 +16,8 @@ MediPad::Application.routes.draw do
         put :add
         post :delete
       end
-    end              
-   
+    end
 
-    
     resources :doctors
 
     resources :admin
@@ -43,9 +41,9 @@ MediPad::Application.routes.draw do
     match '/patients' => 'patients#search', :as=>'facility_search'
     
       #http://localhost:3000/charges/search/name/john
-    match 'reports/search/name(/:name)' => 'reports#search', :as=>'reports_name_search'
+    #match 'reports/search/name(/:name)' => 'reports#search', :as=>'reports_name_search'
       #( week,day,month)
-    match 'reports/search/last(/:time)' => 'reports#search', :as=>'reports_date_search'
+    #match 'reports/search/last(/:time)' => 'reports#search', :as=>'reports_date_search'
     
     match '/:controller(/:action(/:id))'
     

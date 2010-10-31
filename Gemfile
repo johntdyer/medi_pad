@@ -7,12 +7,12 @@ gem 'rails', '3.0.0'
 
 gem 'sqlite3-ruby', :require => 'sqlite3'
 
-# gem "searchlogic"
-gem "meta_search"
+#gem "searchlogic", :git=>"http://github.com/railsdog/searchlogic.git"
+# gem "meta_search"
 gem "hpricot"
 gem "meta_where"  
 gem "json"
-#gem 'rd_searchlogic', :git => 'git://github.com/railsdog/searchlogic.git'
+gem 'rd_searchlogic', :git => 'git://github.com/railsdog/searchlogic.git'
 gem 'authlogic', :git => 'http://github.com/binarylogic/authlogic.git'
 gem 'awesome_print', :git => 'http://github.com/michaeldv/awesome_print.git' 
 gem 'default_value_for',:git => "http://github.com/FooBarWidget/default_value_for.git"

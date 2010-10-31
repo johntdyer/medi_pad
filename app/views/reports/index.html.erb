@@ -32,18 +32,33 @@
             <label class="label" for="ex02">Only Show Unbilled</label><br><br><br>
           </div>
         </div>
+        
+        <%= link_to "Hour", :controller => "reports", :action => "index", :time => "hour"%></li>  <br/>
+        <%= link_to "Day", :controller => "reports", :action => "index", :time => "day"%></li>    <br/>
+        <%= link_to "Week", :controller => "reports", :action => "index", :time => "week"%></li>  <br/>
+        <%= link_to "Month", :controller => "reports", :action => "index", :time => "month"%></li>  <br/>
+        <%= link_to "Year", :controller => "reports", :action => "index", :time => "year"%></li>  <br/>
 
-        <a class="button" href="/reports/search/last/hour"><span>Last  Hour</span></a><br/><br/>
-        <a class="button" href="/reports/search/last/day"><span>Last   Day</span></a><br/><br/>
-        <a class="button" href="/reports/search/last/week"><span>Last  Week</span></a><br/><br/>
-        <a class="button" href="/reports/search/last/month"><span>Last Month</span></a><br/><br/>
-        <a class="button" href="/reports/search/last/year"><span>Last Year</span></a> <br/><br/>
-        <a class="button" href="/reports"><span>All</span></a>
-
-        <div id="reports">
+        <div id="reports"> 
+                   
+          <style type="text/css" media="screen">
+            #search_reports{
+              font-size: 28px; 
+              width: 15em;
+            }
+            #search_submit_icon{
+              height: 40px;
+            }
+          </style>
           <table>
+
+          <% form_tag reports_path, :method => 'GET' do %>  
+            <%= text_field_tag :search_name, params[:search_name],:id=>"search_reports"%>
+            <%=image_submit_tag("search_submit_icon.gif",:id=>"search_submit_icon")%>
+          <% end %>
             <tr>
               <td>
+                
                 <table class='stripeMe'>
                   <caption>Patient Charges</caption>
                   <thead>

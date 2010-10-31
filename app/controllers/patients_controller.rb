@@ -1,9 +1,9 @@
 class PatientsController < ApplicationController
   helper :all
-	protect_from_forgery :only => [:update, :destroy]   
-	
+  protect_from_forgery :only => [:update, :destroy]   
+
 #  before_filter :require_doctor, :except=>[:create,:index]
-	
+
   # GET /patients
   # GET /patients.xml
   def index
@@ -11,30 +11,29 @@ class PatientsController < ApplicationController
        logger.debug("NO RECORDS")                            
        redirect_to(:controller => "admin", :action => "index")       
      else
-       params.each{|i| logger.debug { "@@@@ => #{i}" } }
-
-       @list = Patient.all(:select=>"DISTINCT facility")
-
-       logger.debug { "@@@ current_doctor => #{@current_doctor}" }
-       if params.has_key?(:search)
-         logger.debug { "SEARCH PRESENT" }
-         logger.debug { "" }
-         @search = Patient.search(:facility_contains=>params[:id],:discharged=>false)
+       @list = Patient.all(:select=>"DISTINCT facility") #distinct list of facilities
+       
+       #logger.debug { "@@@ current_doctor => #{@current_doctor}" }
+       if params.has_key?(:location_search)
+         @search = Patient.search(:facility_equals=>params[:id],:discharged_equals=>false)
+                
+        #@search= Patient.where(:discharged=>false).search(:facility_equals=>params[:id]) #@search = Patient.search(:facility_contains=>params[:id],:discharged=>false)
+       elsif params.has_key?(:search_name)
+         @search = Patient.search(:patient_name_contains=>params[:search_name],:discharged_equals=>false)
        else
-         @search = Patient.where(:facility=>@list[0].facility,:discharged=>false).search(params[:search])
+         @search= Patient.where(:facility=>@list[0].facility,:discharged=>false).search(params[:search])  #@search = Patient.where(:facility=>@list[0].facility,:discharged=>false).search(params[:search])
        end
       @patients = @search.all
 
-    respond_to do |format|
-      format.html # index.html.erb
-      format.xml  { render :xml => @patients }
-    end
-  end 
-end
+      respond_to do |format|
+        format.html # index.html.erb
+        format.xml  { render :xml => @patients }
+      end
+    end 
+  end
 
- 
- def search
-   @search = Patient.search(:facility_contains=>params[:id],:discharged_equals=>false)
+ def location
+   @search = Patient.search(:facility_equals=>params[:id],:discharged_equals=>false)
    p @search.class
    @patients=@search.all#(:discharged=>false)
    logger.debug { "\n\n\n@@@@ => #{@patients.class}\n\n\n" }

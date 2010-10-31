@@ -1,4 +1,11 @@
 GIT
+  remote: git://github.com/railsdog/searchlogic.git
+  revision: e70301aca39a5536b2182c8837e63602c2216b68
+  specs:
+    rd_searchlogic (3.0.0.rc4)
+      activerecord (>= 3.0.0)
+
+GIT
   remote: http://github.com/FooBarWidget/default_value_for.git
   revision: 2a8c57c6a1a4f9e3cff412e43ae737557e0a55a6
   specs:
@@ -59,11 +66,6 @@ GEM
       activesupport (>= 2.3.6)
       mime-types
       treetop (>= 1.4.5)
-    meta_search (0.9.3)
-      actionpack (~> 3.0.0)
-      activerecord (~> 3.0.0)
-      activesupport (~> 3.0.0)
-      arel (~> 1.0.1)
     meta_where (0.9.3)
       activerecord (~> 3.0.0)
       activesupport (~> 3.0.0)
@@ -104,7 +106,7 @@ DEPENDENCIES
   default_value_for!
   hpricot
   json
-  meta_search
   meta_where
   rails (= 3.0.0)
+  rd_searchlogic!
   sqlite3-ruby
