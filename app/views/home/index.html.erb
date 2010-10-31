@@ -48,12 +48,14 @@
       <h1>Medi-Pad</h1>
         <ul>
           <% if current_user %>
+            <%  cookies[:user] = current_user.username %>
+            <%  cookies[:last_name] = current_user.last_name %>
+            <%  cookies[:first_name] = current_user.first_name %>
             <li> <%= link_to "Patients", patients_path  %> </li>
             <li> <%= link_to "Admin", {:controller => "admin", :action => "index"}  %> </li>
             <li> <%= link_to "Reports", reports_path %> </li>
-            <li> link_to 'Edit Profile', edit_doctor_path(current_doctor)  %> </li>
+            <li> <%= link_to 'Edit Profile', '/users/edit'  %> </li>
             <li> <%= link_to "Logout", '/users/sign_out' %>  </li>
-            <li> <%= link_to "Login", '/users/sign_in' %> </li>
             
           <% else %>
             <li> <%= link_to "Login", '/users/sign_in' %> </li>
