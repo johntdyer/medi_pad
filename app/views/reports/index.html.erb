@@ -6,12 +6,9 @@
 
 
       <div id="user_id" class="user_id">
-          <% if current_doctor %>
+          <% if current_user %>
             <%= link_to "Home", :controller => "home", :action => "index"%> 
-            <%= link_to "Logout", logout_path %>
-          <% else %>
-            <%= link_to "Login", login_path%>
-            <%= link_to "Home", :controller => "home", :action => "index"%>
+            <%= link_to "Logout", '/users/sign_out' %>
          <%end%>
        </div>
         <div id="simple" class="group">
