@@ -1,4 +1,6 @@
 class ProceduresController < ApplicationController
+
+  before_filter :authenticate_user!
 	
   # GET /procedures
   # GET /procedures.xml
