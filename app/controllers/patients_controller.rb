@@ -2,7 +2,7 @@ class PatientsController < ApplicationController
   helper :all
   protect_from_forgery :only => [:update, :destroy]   
 
-#  before_filter :require_doctor, :except=>[:create,:index]
+  before_filter :authenticate_user!
 
   # GET /patients
   # GET /patients.xml
@@ -13,7 +13,6 @@ class PatientsController < ApplicationController
      else
        @list = Patient.all(:select=>"DISTINCT facility") #distinct list of facilities
        
-       #logger.debug { "@@@ current_doctor => #{@current_doctor}" }
        if params.has_key?(:location_search)
          @search = Patient.search(:facility_equals=>params[:id],:discharged_equals=>false)
                 
@@ -42,15 +41,12 @@ class PatientsController < ApplicationController
    render :action => "index"
   end
 
-
-
-
   # GET /patients/1
   # GET /patients/1.xml
   def show
     @patient = Patient.find(params[:id])
 
-    @favorites = YAML.load(current_doctor.favorites)
+    @favorites = YAML.load(current_user.favorites)
  
     respond_to do |format|
       format.html # show.html.erb
