@@ -48,11 +48,11 @@
 <h1>Edit</h1>
 
 <ul>
-	  <% if current_doctor %>
+	  <% if current_user %>
      <li> <%= link_to "Home", :controller => "home", :action => "index"%> </li>
-     <li> <%= link_to "Logout", logout_path %></li>
+     <li> <%= link_to "Logout", '/users/sign_out' %></li>
      <li><%= link_to "Procedures", procedures_path %></td></li>
-   	 <li><%= link_to 'Add doctor', new_doctor_path %></li>
+   	 <li><%= link_to 'Add doctor', new_user_registration_path %></li>
     <% else %>
       <li><%= link_to "Login", login_path%></li>
       <li><%= link_to "Home", :controller => "home", :action => "index"%></li>
@@ -111,5 +111,6 @@
       </tr>
    </table>
    <%end%>
-<%end%>
-   
+<%end%>                 
+
+<%= render :partial=>"user",  :locals=>{:users=>User.where(:validated=>false)}%>
