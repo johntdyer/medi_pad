@@ -1,9 +1,8 @@
 class ChargesController < ApplicationController
   
-before_filter :require_doctor
+  before_filter :authenticate_user!
+ 
   require 'json'
-  
-  
   
   # GET /charges
   # GET /charges.xml
@@ -109,7 +108,7 @@ before_filter :require_doctor
     @procedure_ids = params[:procedure_ids].to_s.split(',')
     @charge_notes = ActiveSupport::JSON.decode(params[:myNotes])
 
-    @doctor=cookies[:doctor]
+    @doctor=cookies[:user]
 
     logger.info { "Cookie: Doctor Name=> #{@doctor}" }
     logger.info { "procedure_ids : #{@procedure_ids.inspect}" }
