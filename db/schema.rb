@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101101004122) do
+ActiveRecord::Schema.define(:version => 20101102180242) do
 
   create_table "charges", :force => true do |t|
     t.string   "procedure_name"
@@ -130,6 +130,7 @@ ActiveRecord::Schema.define(:version => 20101101004122) do
     t.string   "confirmation_token"
     t.datetime "confirmed_at"
     t.boolean  "validated"
+    t.integer  "failed_attempts"
   end
 
   add_index "users", ["confirmation_token"], :name => "index_users_on_confirmation_token", :unique => true

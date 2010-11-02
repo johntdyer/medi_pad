@@ -1,0 +1,55 @@
+<style type="text/css" media="screen">
+  .validateUsers{
+    margin: 10px 0px 0px 40px;
+    width: 100px;
+    border-width:0px;
+  } 
+  
+  td{
+    border-width:0px;
+  }
+
+  #users_heading{
+    font-size: 28px;
+    color: #333333; 
+    margin: 0px 0px 0px 40px;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+</style>
+
+<script type="text/javascript" charset="utf-8"> 
+  $(document).ready(function(){
+    
+    $(".validate_user_button").click(function(){
+      var user_id=$(this).parents().find('.validate_user_button').attr('userId');
+       console.log("@@@=> "+   user_id);
+       $("tr#userTable_"+ user_id).hide();
+
+        $.ajax({
+          type: "POST",
+          url: "/admin/validate",
+          data: "userID="+user_id,
+          success: function(msg){
+            console.info( "Post 200OK \n\t{'Validated user':'"+user_id+"}");
+          }
+        });
+    });
+  })
+</script>
+<% if current_user.is_admin? %>
+    <% if !users.empty? %>
+     <div id="users_heading">Users requiring validation</div>
+    <%end%>
+  <table class="validateUsers">
+    <% users.each do | user | %>
+
+      <tr id="userTable_<%=user.id%>">
+        <td>  <%= user.first_name %></td>
+        <td>  <%= user.last_name %> </td>
+        <td>  <%= user.username %> </td>
+        <td>  <%= user.email %> </td>
+        <td class="patient_button"><input type="button" userId=<%=user.id%> class="validate_user_button" value="<%=user.validated?%>"/></td>
+      </tr/>
+    <%end%>
+ </table>
+<%end%>

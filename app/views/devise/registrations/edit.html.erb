@@ -1,4 +1,10 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
+<!-- <%= javascript_include_tag "jquery.js" %> -->
+<%= javascript_include_tag "jquery.trilemma.js" %>  
+
+<% @favorites = YAML.load(@user.favorites) if @user.favorites %>
+<% @procedure_list = Procedure.find(:all, :order => "procedure_name") %>
+
+<!-- <h2>Edit <%= resource_name.to_s.humanize %></h2>
 
 <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
   <%= devise_error_messages! %>
@@ -8,21 +14,104 @@
   
   <p><%= f.label :email %><br />
   <%= f.text_field :email %></p>
+  
+  <p><%= f.label :first_name %><br />
+  <%= f.text_field :first_name %></p>  
+  
+  <p><%= f.label :last_name %><br />
+  <%= f.text_field :last_name %></p>
+  
+  <p><%= f.label :password,:class=>"password_text_box" %> <i>(leave blank if you don't want to change it)</i><br />
+  <%= f.password_field :password, :class=>"password_text_box" %></p>
 
-  <p><%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-  <%= f.password_field :password %></p>
+  <p><%= f.label :password_confirmation, :class=>"password_confirmation" %><br />
+  <%= f.password_field :password_confirmation, :class=>"password_confirmation" %></p>  
 
-  <p><%= f.label :password_confirmation %><br />
-  <%= f.password_field :password_confirmation %></p>
-
-  <p><%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-  <%= f.password_field :current_password %></p>
+  <p><%= f.label :current_password, :class=>"current_password"%> <i>(we need your current password to confirm your changes)</i>
+  <%= f.password_field :current_password, :class=>"current_password"%></p>
 
   <p><%= f.submit "Update" %></p>
 <% end %>
+             -->
+<h3>Edit my Favorites</h3>
 
-<h3>Cancel my account</h3>
+<input type="button" name="Edit Favorites" value="Edit Favorites" id="show_favorites"><br/>
 
-<p>Unhappy? <%= link_to "Cancel my account", registration_path(resource_name), :confirm => "Are you sure?", :method => :delete %>.</p>
+  <script type="text/javascript">
 
-<%= link_to "Back", :back %>
+      // checks to see if we have 10 items selected, if we do we want to not
+      // allow user to select any more (10 favorites max).  This works in 
+      // combination w/ the trilemma plug in, which limits checkboxes to 10 as 
+      // well.  Problem is that it acts onChange, so if there was 10 we had no 
+      // way to prevent users from selecting an 11th
+     
+    $(document).ready(function(){
+      $('.favorites').trilemma({max:10});
+      $(".password_confirmation").hide();
+
+      $("#password_text_box").keyup(function(){ $(".password_confirmation").show(); })                        
+            
+        var numSelected = $("input[name~='procedure']:checked").length;
+        if(numSelected >= 10){
+          $("input[name~='procedure']:not(:checked)").each(function(){ 
+            console.log("@@@10 items selected");
+            $(this).attr('disabled','true');
+          })  
+        }
+
+      // Ajax call to update procedure_code favorites
+        $("input:checkbox").change(function(){
+          var procedure_id_var= jQuery(this).val();
+          
+          if(jQuery(this).attr("checked")){ var action = 'add' }
+            else{ var action = 'delete' }
+            console.log("@ LOG => {action=>" + action + ",:procedure_code=>"+ jQuery(this).val()+"}");
+             $.ajax({
+                       async:true, 
+                       url:'/users/edit_procedure',
+                       type:'POST',
+                       data: {
+                            'commit':action,
+                            'procedure_code':procedure_id_var, 
+                            'authenticity_token':'<%= form_authenticity_token %>',
+                            'id':'<%= @user.id %>'
+                       },
+            success: function(){console.log("Success!");},
+            error:function(request){ alert('Sorry, there was an error!!!')}
+          })
+            return false
+          })
+
+
+          // Unhide Favorites 
+          $(".favorites").hide();
+
+          $("#show_favorites").click(function(){
+            console.log("Show Favorites Clicked");
+              if($(".favorites").is(":visible")){ $(".favorites").hide(); }
+                else{ $(".favorites").show(); }
+          })
+      })
+  </script>
+
+ <fieldset class="favorites">
+    <table class="procedure_list">
+      <caption>Favorites</caption>
+        <% @procedure_list.in_groups_of(3,false) do |procedure| %>
+        <tr>
+          <% procedure.each do |p| %>
+          <div id="rounded">
+          <td>
+            <label class='checkbox'>
+              <%= check_box_tag "procedure_ids[]",p.procedure_code,@favorites.include?(p.procedure_code) %>
+              <%= look_for_procecdure_nickname(p) %>
+            </label>
+            </div>
+          </td>
+          <% end %>
+        </tr>
+        <% end %>
+        </table>
+      
+</fieldset>
+<%= link_to "Home", '/home' %>

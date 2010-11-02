@@ -1,7 +1,8 @@
 class AdminController < ApplicationController
   before_filter :authenticate_user!
 
-      def index   
+      def index
+        @users = User.all   
       end
       
       def upload
@@ -12,7 +13,7 @@ class AdminController < ApplicationController
             when "Import" 
               parse_with_hpricot( data )
               logger.info { "Successfully imported." }
-  #            flash[:notice] = "Successfully imported."
+              #flash[:notice] = "Successfully imported."
               redirect_to :action => 'index'
             else
               logger.info { "Import Error"}
@@ -68,14 +69,23 @@ class AdminController < ApplicationController
         flash[:notice] = success_messages
         flash[:error] = failed_messages
       end
+
+      
+      #validates user
+      def validate
+          @user = User.find(params[:userID])
+          logger.debug { "@@@ Validating #{@user.username}" }
+          @user.toggle(:validated)
+          @user.save
+          redirect_to :action => 'index'
+       end
  
  private
  
- def undischarge_patient(patient)
-   if patient.discharged 
-     logger.info("\n\n\n \t\t #{patient.patient_name} was discharged, re-admitting her \n\n\n")
-     patient.update_attributes(:discharged=>false,:patient_been_seen=>false) 
-     
+  def undischarge_patient(patient)
+    if patient.discharged 
+      logger.info("\n\n\n \t\t #{patient.patient_name} was discharged, re-admitting her \n\n\n")
+    patient.update_attributes(:discharged=>false,:patient_been_seen=>false) 
    end 
 end
 
