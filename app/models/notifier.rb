@@ -1,7 +1,7 @@
 # app/models/notifier.rb  
 class Notifier < ActionMailer::Base  
 
-  default_url_options[:host] = "localhost:3000"  
+#  default_url_options[:host] = "cfpg.heroku.com"  
   
   def password_reset_instructions(doctor)
     subject      "Password Reset Instructions"
