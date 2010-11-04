@@ -17,7 +17,7 @@ module PatientsHelper
      been_seen = false;
      time_now = Time.now
      if !patient.charges.empty?  
-       patient.charges.each { | charge | been_seen = true unless charge.created_at < Time.now - 1440.minutes }
+      # patient.charges.each { | charge | been_seen = true unless charge.created_at < Time.now - 1440.minutes }
      end
      if been_seen
         logger.debug { "Logged Unseen Patient" }
