@@ -16,7 +16,7 @@ gem 'rd_searchlogic' #, :git => 'git://github.com/railsdog/searchlogic.git'
 #gem 'authlogic', :git => 'http://github.com/binarylogic/authlogic.git'
 gem 'awesome_print' #, :git => 'http://github.com/michaeldv/awesome_print.git' 
 gem 'default_value_for' #,:git => "http://github.com/FooBarWidget/default_value_for.git"
-
+gem "RbYAML"
 gem 'devise', '1.1.3'  
   
 gem 'omniauth'

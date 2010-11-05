@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-  protect_from_forgery
+#  protect_from_forgery
   
   helper :all # include all helpers, all the time
   #helper_method :current_doctor_session, :current_doctor

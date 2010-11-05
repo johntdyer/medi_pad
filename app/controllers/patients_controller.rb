@@ -7,9 +7,9 @@ class PatientsController < ApplicationController
   # GET /patients
   # GET /patients.xml
   def index
-     if Patient.all.length==0                                 
-       logger.debug("NO RECORDS")                            
-       redirect_to(:controller => "admin", :action => "index")       
+     if Patient.all.length==0
+       logger.debug("NO RECORDS")
+       redirect_to(:controller => "admin", :action => "index")
      else
        @list = Patient.all(:select=>"DISTINCT facility") #distinct list of facilities
        
@@ -43,10 +43,11 @@ class PatientsController < ApplicationController
 
   # GET /patients/1
   # GET /patients/1.xml
-  def show
+  def show               
+    require 'rbyaml'
     @patient = Patient.find(params[:id])
 
-    @favorites = YAML.load(current_user.favorites)
+    @favorites = RbYAML.load(current_user.favorites)
  
     respond_to do |format|
       format.html # show.html.erb

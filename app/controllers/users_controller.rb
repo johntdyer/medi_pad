@@ -1,9 +1,10 @@
 class UsersController < ApplicationController
   helper :all
 
-  def edit_procedure
+  def edit_procedure  
+    require 'rbyaml'
     @doctor = current_user
-    favorites = YAML.load(@doctor.favorites)
+    favorites = RbYAML.load(@doctor.favorites)
     
     if params[:commit]=='delete'
         logger.info("@@@@ #{params[:commit]} #{params[:procedure_code]} => #{current_user.username}")

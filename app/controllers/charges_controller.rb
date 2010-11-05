@@ -112,7 +112,7 @@ class ChargesController < ApplicationController
 
     logger.info { "Cookie: Doctor Name=> #{@doctor}" }
     logger.info { "procedure_ids : #{@procedure_ids.inspect}" }
-    logger.info {"\n\n@@@ #{@charge_notes}"}
+    logger.info {"\n\n@@@ #{@charge_notes }"}unless @charge_notes.empty?
     
     @patient=Patient.find(params[:patient_id])
     @patient.update_attributes :patient_been_seen => true #Change patient_been_seen flag to true

@@ -1,7 +1,7 @@
 <!-- <%= javascript_include_tag "jquery.js" %> -->
 <%= javascript_include_tag "jquery.trilemma.js" %>  
 
-<% @favorites = YAML.load(@user.favorites) if @user.favorites %>
+<% @favorites = RbYAML.load(@user.favorites) if @user.favorites %>
 <% @procedure_list = Procedure.find(:all, :order => "procedure_name") %>
 
 <!-- <h2>Edit <%= resource_name.to_s.humanize %></h2>

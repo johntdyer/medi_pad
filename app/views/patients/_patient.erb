@@ -1,6 +1,6 @@
 
     <tr id="patient_row[<%=patient.id %>]">
-      <td><%=h patient.facility %></td>
+<!--      <td><%=h patient.facility %></td>-->
       <td>        
         <table id="location_table_row" border="0" cellspacing="0">
             <tr>
@@ -14,17 +14,18 @@
             <tr>
               <td><font color="blue">Bed: </td>
               <td><%=check_value(patient.bed) %></td>
+            </tr> 
+            <tr>
+              <td><font color="blue">Doc: </td>
+              <td><%= get_lastname(patient.attending_md) %></td>
+            </tr>                              
+            <tr>                               
+            <%=h patient.facility %>
+              
             </tr>
         </table>
       </td>
       <td><%=h patient.patient_name %></td>
-      <td><%= get_lastname(patient.attending_md) %></td>
+<!--      <td><%= get_lastname(patient.attending_md) %></td>-->
       <td><%= been_seen(patient) %></td>
-      <!--<td>
-        <table id="inner_table" border="0" cellspacing="0">
-            <td id="inner_table"><%= link_to image_tag("find.png", :border=>0), patient %></td>
-            <td id="inner_table"><%= link_to image_tag("delete.png", :border=>0),patient, :confirm => 'Are you sure?', :method => :delete %></td>
-        </table>
-      </td>
-      -->
     </tr>

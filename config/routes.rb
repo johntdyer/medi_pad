@@ -15,7 +15,7 @@ MediPad::Application.routes.draw do
     
     resources :charges do
       collection do
-        put :add
+        post :add
         post :delete
       end
     end

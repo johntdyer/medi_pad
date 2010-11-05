@@ -1,64 +1,13 @@
 <%= stylesheet_link_tag 'tabs' %>
-<!--
- javascript_include_tag "jquery-1.4.2.min.js" %>  
- stylesheet_link_tag "http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/themes/redmond/jquery-ui.css" %>  
- javascript_include_tag "http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.1/jquery-ui.min.js" %>
--->
+
 <li><%= link_to "Home", :controller => "home", :action => "index"%> | <%= link_to "Add Patient", new_patient_path %> </li>
 
-<!--
-<style type="text/css" media="screen">
-  div#user_id{
-    padding: 10px 0px 0px 0px;
-  }
-
-  #fade { /*--Transparent background layer--*/
-  	display: none; /*--hidden by default--*/
-  	background: #000;
-  	position: fixed; left: 0; top: 0;
-  	width: 100%; height: 100%;
-  	opacity: .80;
-  	z-index: 9999;
-  }
-  .popup_block{
-  	display: none; /*--hidden by default--*/
-  	background: #fff;
-  	padding: 20px;
-  	border: 20px solid #ddd;
-  	float: left;
-  	font-size: 1.2em;
-  	position: fixed;
-  	top: 50%; left: 50%;
-  	z-index: 99999;
-  	/*--CSS3 Box Shadows--*/
-  	-webkit-box-shadow: 0px 0px 20px #000;
-  	-moz-box-shadow: 0px 0px 20px #000;
-  	box-shadow: 0px 0px 20px #000;
-  	/*--CSS3 Rounded Corners--*/
-  	-webkit-border-radius: 10px;
-  	-moz-border-radius: 10px;
-  	border-radius: 10px;
-  }
-  img.btn_close {
-  	float: right;
-  	margin: -55px -55px 0 0;
-  }
-  /*--Making IE6 Understand Fixed Positioning--*/
-  *html #fade {
-  	position: absolute;
-  }
-  *html .popup_block {
-  	position: absolute;
-  }
-  
-</style>
--->
     <ul id="tabnav"> 
       <% get_list_of_facilities().each do |facility| %>
         <li><%= link_to "#{facility.capitalize}", :controller => "patients", :action => "index", :id => facility, :location_search => true %></li>
       <% end %>
         <li><%= link_to "All", :controller => "patients", :action => "index", :search=>"All", :location_search => true%></li>      <br>
-          <% form_tag patients_path, :method => 'GET' do %>  
+          <%= form_tag patients_path, :method => 'GET' do %>  
             <%= text_field_tag :search_name, params[:search_name] %>  
             <%= submit_tag "Search", :name => nil %>  
           <% end %> 
@@ -81,10 +30,10 @@
         <table class='stripeMe'>
           <thead>
             <tr class='odd'>
-              <th><%= sort_link @search,:facility, "Hospital" %></th>
+            <!--  <th><%= sort_link @search,:facility, "Hospital" %></th>-->
               <th><%= sort_link @search,:room,"Location" %></th>
               <th><%= sort_link @search,:patient_name,"Name" %></th>
-              <th><%= sort_link @search,:attending_md, "MD"%></th>
+<!--              <th><%= sort_link @search,:attending_md, "MD"%></th>-->
               <th><%= sort_link @search,:patient_been_seen, "Seen"%></th>
             </tr>
           </thead>

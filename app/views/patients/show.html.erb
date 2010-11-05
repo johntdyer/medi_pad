@@ -32,10 +32,10 @@
                console.log("SUBMIT NOTES => " + JSON.stringify(myNotes));
                   $.ajax({
                     type: "post", 
-                    url: '/charges/add',   
+                    url: '/charges/add',
                     data: "patient_id=<%=@patient.id%>&procedure_ids="+procedureArray+"&myNotes="+JSON.stringify(myNotes)
                   });
-                  window.location.reload();
+                  setTimeout('window.location.reload()', 250);
              });
           });
         </script>
