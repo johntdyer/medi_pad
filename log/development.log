@@ -20193,3 +20193,125 @@ Started GET "/users/sign_in" for 127.0.0.1 at Thu Nov 04 21:27:58 -0400 2010
 Rendered devise/shared/_links.erb (1.8ms)
 Rendered devise/sessions/new.html.erb within layouts/application (27.3ms)
 Completed 200 OK in 116ms (Views: 35.6ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at Thu Nov 04 21:42:43 -0400 2010
+  Processing by Devise::SessionsController#new as HTML
+Rendered devise/shared/_links.erb (1.4ms)
+Rendered devise/sessions/new.html.erb within layouts/application (7.8ms)
+Completed 200 OK in 35ms (Views: 16.4ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/" for 127.0.0.1 at Thu Nov 04 21:42:44 -0400 2010
+  Processing by HomeController#index as HTML
+Rendered home/index.html.erb within layouts/home (14.6ms)
+Completed 200 OK in 101ms (Views: 17.9ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/" for 127.0.0.1 at Thu Nov 04 21:42:45 -0400 2010
+  Processing by HomeController#index as HTML
+Rendered home/index.html.erb within layouts/home (15.6ms)
+Completed 200 OK in 19ms (Views: 18.8ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at Thu Nov 04 21:42:46 -0400 2010
+  Processing by Devise::SessionsController#new as HTML
+Rendered devise/shared/_links.erb (1.9ms)
+Rendered devise/sessions/new.html.erb within layouts/application (11.5ms)
+Completed 200 OK in 44ms (Views: 23.7ms | ActiveRecord: 0.2ms)
+
+
+Started POST "/users/sign_in" for 127.0.0.1 at Thu Nov 04 21:42:47 -0400 2010
+  Processing by Devise::SessionsController#create as HTML
+  Parameters: {"commit"=>"Sign in", "authenticity_token"=>"j/DDFp9y6xYVHFulpZb25S9HSgNBGpWvpuvjCaAL+/k=", "utf8"=>"\342\234\223", "user"=>{"remember_me"=>"0", "username"=>"dyer", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."username" = 'dyer') LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  UPDATE "users" SET "failed_attempts" = 6, "updated_at" = '2010-11-05 01:42:47.878607' WHERE ("users"."id" = 7)
+Completed   in 197ms
+  Processing by Devise::SessionsController#new as HTML
+  Parameters: {"commit"=>"Sign in", "authenticity_token"=>"j/DDFp9y6xYVHFulpZb25S9HSgNBGpWvpuvjCaAL+/k=", "utf8"=>"\342\234\223", "user"=>{"remember_me"=>"0", "username"=>"dyer", "password"=>"[FILTERED]"}}
+Rendered devise/shared/_links.erb (1.8ms)
+Rendered devise/sessions/new.html.erb within layouts/application (9.3ms)
+Completed 200 OK in 112ms (Views: 20.9ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/users/password/new" for 127.0.0.1 at Thu Nov 04 21:42:49 -0400 2010
+  Processing by Devise::PasswordsController#new as HTML
+Rendered devise/shared/_links.erb (1.7ms)
+Rendered devise/passwords/new.html.erb within layouts/application (7.5ms)
+Completed 200 OK in 43ms (Views: 16.9ms | ActiveRecord: 0.5ms)
+
+
+Started POST "/users/password" for 127.0.0.1 at Thu Nov 04 21:42:53 -0400 2010
+  Processing by Devise::PasswordsController#create as HTML
+  Parameters: {"commit"=>"Send me reset password instructions", "authenticity_token"=>"j/DDFp9y6xYVHFulpZb25S9HSgNBGpWvpuvjCaAL+/k=", "utf8"=>"\342\234\223", "user"=>{"email"=>"johndyer@me.com"}}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."email" = 'johndyer@me.com') LIMIT 1[0m
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."reset_password_token" = 'PSVQwv0kfjIYeU-r7dcE') LIMIT 1
+  [1m[36mSQL (0.5ms)[0m  [1mUPDATE "users" SET "reset_password_token" = 'PSVQwv0kfjIYeU-r7dcE', "updated_at" = '2010-11-05 01:42:53.269388' WHERE ("users"."id" = 7)[0m
+Rendered devise/mailer/reset_password_instructions.html.erb (0.8ms)
+
+Sent mail to johndyer@me.com (268ms)
+Date: Thu, 04 Nov 2010 21:42:53 -0400
+From: cfpgtestone@gmail.com
+To: johndyer@me.com
+Message-ID: <4cd3611d51ccf_551c81b84df0776d4@aleph.local.mail>
+Subject: Reset password instructions
+Mime-Version: 1.0
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<p>Hello johndyer@me.com!</p>
+
+<p>Someone has requested a link to change your password, and you can do this through the link below.</p>
+
+<p><a href="http://cfpg.heroku.com/users/password/edit?reset_password_token=PSVQwv0kfjIYeU-r7dcE">Change my password</a></p>
+
+<p>If you didn't request this, please ignore this email.</p>
+<p>Your password won't change until you access the link above and create a new one.</p>
+Redirected to http://localhost:3000/users/sign_in
+Completed 302 Found in 354ms
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at Thu Nov 04 21:42:53 -0400 2010
+  Processing by Devise::SessionsController#new as HTML
+Rendered devise/shared/_links.erb (1.8ms)
+Rendered devise/sessions/new.html.erb within layouts/application (9.7ms)
+Completed 200 OK in 43ms (Views: 20.9ms | ActiveRecord: 0.2ms)
+
+
+Started POST "/users/password" for 127.0.0.1 at Thu Nov 04 21:43:34 -0400 2010
+  Processing by Devise::PasswordsController#create as HTML
+  Parameters: {"commit"=>"Send me reset password instructions", "authenticity_token"=>"j/DDFp9y6xYVHFulpZb25S9HSgNBGpWvpuvjCaAL+/k=", "utf8"=>"\342\234\223", "user"=>{"email"=>"johndyer@me.com"}}
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."email" = 'johndyer@me.com') LIMIT 1
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."reset_password_token" = 'slUw66gtrvroBV2_6_bf') LIMIT 1[0m
+  [1m[35mSQL (0.6ms)[0m  UPDATE "users" SET "reset_password_token" = 'slUw66gtrvroBV2_6_bf', "updated_at" = '2010-11-05 01:43:34.177299' WHERE ("users"."id" = 7)
+Rendered devise/mailer/reset_password_instructions.html.erb (1.5ms)
+
+Sent mail to johndyer@me.com (189ms)
+Date: Thu, 04 Nov 2010 21:43:34 -0400
+From: cfpgtestone@gmail.com
+To: johndyer@me.com
+Message-ID: <4cd3614634d38_551c81d7bbb877732@aleph.local.mail>
+Subject: Reset password instructions
+Mime-Version: 1.0
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<p>Hello johndyer@me.com!</p>
+
+<p>Someone has requested a link to change your password, and you can do this through the link below.</p>
+
+<p><a href="http://cfpg.heroku.com/users/password/edit?reset_password_token=slUw66gtrvroBV2_6_bf">Change my password</a></p>
+
+<p>If you didn't request this, please ignore this email.</p>
+<p>Your password won't change until you access the link above and create a new one.</p>
+Redirected to http://localhost:3000/users/sign_in
+Completed 302 Found in 254ms
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at Thu Nov 04 21:43:34 -0400 2010
+  Processing by Devise::SessionsController#new as HTML
+Rendered devise/shared/_links.erb (2.8ms)
+Rendered devise/sessions/new.html.erb within layouts/application (14.5ms)
+Completed 200 OK in 173ms (Views: 30.6ms | ActiveRecord: 0.2ms)
