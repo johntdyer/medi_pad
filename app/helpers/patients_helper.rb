@@ -1,10 +1,15 @@
 module PatientsHelper
 
-  def check_value(i)
-    if	i.lstrip.empty?
-        i='<font size="3" color="red">n/a</font>'
+  def check_value(i)  
+     
+    if i
+      if  i.lstrip.empty? 
+        return "<font size=\"3\" color=\"red\">n/a</font>"
+
+      else
+        return i
       end
-    return i
+    end
   end
 
   def get_lastname(name)
@@ -19,10 +24,10 @@ module PatientsHelper
      if !patient.charges.empty?  
        patient.charges.each { | charge | been_seen = true unless charge.created_at < Time.now - 1440.minutes }
      end
-     if been_seen
-        logger.debug { "Logged Unseen Patient" }
-       return image_tag("check_mark.png", :border=>0)
-     end
+     return been_seen
+       # true        
+       #         # image_tag("check_mark.png", :border=>0)
+       #      end
    end
    
   #  

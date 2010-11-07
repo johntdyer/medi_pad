@@ -1,17 +1,109 @@
+<style type="text/css" media="screen">
+body{
+  font-family:Arial, Helvetica, sans-serif;
+  position:absolute;
+  
+}
+
+input { 
+  position:absolute;
+  
+  width: 290px;
+  background:#fff;
+  font-family:Arial, Helvetica, sans-serif;
+  font-size:25pt;
+  padding:5px;
+  border-top:1px solid #CCCCCC;
+  border-left:1px solid #CCCCCC;
+  border-right:1px solid #999999;
+  border-bottom:1px solid #999999;
+  -moz-border-radius: 8px;
+  -webkit-border-radius: 8px;
+}    
+
+
+#user_box{
+   top:90px;
+}
+
+#password_box{ 
+   top:110px;
+}
+
+#user_button{
+  position:absolute;
+  left:10px;
+  top:250px;
+}
+
+#devise_links{
+  position:absolute;
+  left:10px;
+  top:400px;  
+}  
+   
+.password_box{
+    position:absolute;
+   left:00px;
+   top:70px;
+}   
+
+.label{
+  font-size:15pt;  
+} 
+
+.remember_me{
+   position:absolute;
+  left:10px;
+  top:310px; 
+}
+
+h2{ 
+  position:absolute;
+  left:10px;
+  top: 20px;
+  font-size:35pt;
+}
+
+#user_label{
+  position:absolute;
+  top:60px;
+}
+
+#password_label{
+  position:absolute;
+  top:80px;
+}
+
+</style>
+
 <h2>Sign in</h2>
 
 <%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
-  <p><%= f.label :username %><br />
-  <%= f.text_field :username %></p>
+  <div class="user_box">
+    <p>
+      <%= f.label :username, :class=>"label", :id=>"user_label" %><br />
+      <%= f.text_field :username, :id=>"user_box" %>
+    </p>
+   </div>
+  <div class="password_box">
+    <p>
+      <%= f.label :password, :class=>"label",:id=>"password_label" %><br />
+      <%= f.password_field :password, :id=>"password_box"%>
+    </p>
+  </div>
 
-  <p><%= f.label :password %><br />
-  <%= f.password_field :password %></p>
 
   <% if devise_mapping.rememberable? -%>
-    <p><%= f.check_box :remember_me %> <%= f.label :remember_me %></p>
+    <div class="remember_me">
+      <p><%= f.check_box :remember_me %> <%= f.label :remember_me %></p>
+    </div>
   <% end -%>
+  
 
-  <p><%= f.submit "Sign in" %></p>
+  <p><%= f.submit "Sign in", :id=>"user_button"%></p>
 <% end %>
 
-<%= render :partial => "devise/shared/links" %>
+<div id="devise_links">
+  <%= render :partial => "devise/shared/links" %>
+</div>

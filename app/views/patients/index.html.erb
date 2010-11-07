@@ -1,16 +1,93 @@
 <%= stylesheet_link_tag 'tabs' %>
 
-<li><%= link_to "Home", :controller => "home", :action => "index"%> | <%= link_to "Add Patient", new_patient_path %> </li>
+<style type="text/css" media="screen">
+    #tabnav ul {
+    border-spacing: 3px 0px;
+    border-collapse: collapse;
+    list-style: none;
+    margin: 0px;
+    padding: 0px;
+    border: none;
+  }
+    #tabnav ul li {
+    margin: 0px;
+    padding: 0px;
+  }
+    ul li a {
+    font-size: 340%;
+    border-bottom: 1px dashed #C39C4E;
+    padding: 1px 0px 2px 4px;
+    text-decoration: none;
+    color: #666666;
+    width:100px;
+  }
 
-    <ul id="tabnav"> 
+    ul li a:hover, #vertmenu ul li a:focus {
+    color: #000000;
+    background-color: #eeeeee;
+  }
+
+  .box {
+    width: 120px;
+    background:#fff;
+    font-family:Arial, Helvetica, sans-serif;
+    font-size:25pt;
+    position:absolute;
+    left:400px;
+    top:9px;
+    padding:5px;
+    border-top:1px solid #CCCCCC;
+    border-left:1px solid #CCCCCC;
+    border-right:1px solid #999999;
+    border-bottom:1px solid #999999;
+    -moz-border-radius: 8px;
+    -webkit-border-radius: 8px;
+  }
+
+  </style>
+
+  <script type="text/javascript" charset="utf-8">
+  $(document).ready(function(){
+    
+    $('input:submit').hide(); //hide the submit button
+
+    $('#search_box').keyup(function(e) {
+      if(e.keyCode == 13) {
+        //alert('Enter key was pressed.');
+        //return false;
+      }
+    });
+  });
+
+  </script>
+
+  <ul id="tabnav">
+    <li>
+      <%= link_to "Home", :controller => "home", :action => "index"%>
+    </li>
+    <li>
+      <%= link_to "Add Patient", new_patient_path %> 
+    </li>
+    <%= form_tag patients_path, :method => 'GET' do %>  
+      <%= text_field_tag :search_name, params[:search_name],:class=>"box",:id=>"search_box" %>  
+    <% end %>
+  </ul>
+
+
+
+
+  <ul id="tabnav"> 
+
       <% get_list_of_facilities().each do |facility| %>
-        <li><%= link_to "#{facility.capitalize}", :controller => "patients", :action => "index", :id => facility, :location_search => true %></li>
+        <li>
+          <%= link_to "#{facility.capitalize}", :controller => "patients", :action => "index", :id => facility, :location_search => true %>
+        </li>
       <% end %>
-        <li><%= link_to "All", :controller => "patients", :action => "index", :search=>"All", :location_search => true%></li>      <br>
-          <%= form_tag patients_path, :method => 'GET' do %>  
-            <%= text_field_tag :search_name, params[:search_name] %>  
-            <%= submit_tag "Search", :name => nil %>  
-          <% end %> 
+        <li>
+          <%= link_to "All", :controller => "patients", :action => "index", :search=>"All", :location_search => true%>
+        </li>
+
+
 
     </ul>
       <script type="text/javascript" charset="utf-8">
@@ -21,23 +98,103 @@
               var patient_id = v.substring(v.search(/\W/g)+1,v.length-1);
               console.log("@@@ patient_id => " +  patient_id);
               return patient_id
-            }
+          }
             $(window.location).attr('href', '/patients/'+get_id($(this).attr("id")));
-          })
+          });
+          var cssObj = {
+                'background-color' : '#ddd',
+                'font-weight' : '400',
+                'color' : 'black'
+                
+              }
+          $("tr[beenSeen='true']").css(cssObj);
+          console.log("###");
         });
       </script>
+              
 
-        <table class='stripeMe'>
+<style type="text/css" media="screen">  
+
+
+ 
+  html, body, form, fieldset, h1, h2, h3, h4, h5, h6, p, pre, blockquote, ul, ol, dl, address {
+  margin: 0;
+  padding: 0;
+  }
+  body {
+  background: #fff repeat-x;
+  font: 76%/160% "Trebuchet MS",Verdana,Arial,Helvetica,sans-serif;
+  }
+
+  table {
+    width: 600px; 
+  border-top: 1px solid #e5eff8;
+  margin-right: 0px; 
+  margin-left: 20px; 
+  
+  border-right: 1px solid #e5eff8;
+  
+  border-collapse: collapse;
+  }
+  caption {
+  color: #9ba9b4;
+  background: #e5eff8;
+  font-size: 2.5em;
+  letter-spacing: .1em;
+  margin: 1em 0 0 0;
+  padding: 0;
+  caption-side: top;
+  text-align: center;
+  }
+  tr.odd td {
+  background: #f7fbff
+  }
+  tr.odd .column1 {
+  background: #f4f9fe;
+  }
+  tr.over td {
+  background: #bcd4ec;
+  font-weight:bold;
+  }
+  .column1 {
+  background: #f9fcfe;
+  }
+  td {
+  color: #678197;
+  border-bottom: 1px solid #e5eff8;
+  border-left: 1px solid #e5eff8;
+  text-align: left;   
+  font: bold 3em/.9em "Century Gothic","Trebuchet MS",Arial,Helvetica,sans-serif;
+  
+  }
+  th {
+  font-weight: normal;
+  color: #678197;
+  text-align: left;
+  border-bottom: 1px solid #e5eff8;
+  border-left: 1px solid #e5eff8;
+  padding: .3em 1em;
+  }
+  thead th {
+  background: #f4f9fe;
+  text-align: center;
+  font: bold 3em/.9em "Century Gothic","Trebuchet MS",Arial,Helvetica,sans-serif;
+  color: #66a3d3
+  }
+  #inner_table{
+  border-style:none; 
+  border-collapse:collapse;
+  }
+
+</style>
+        <table class='stripeMes'>
+  
+          
           <thead>
             <tr class='odd'>
-            <!--  <th><%= sort_link @search,:facility, "Hospital" %></th>-->
-              <th><%= sort_link @search,:room,"Location" %></th>
+              <th><%= sort_link @search,:room,"Location"%></th>
               <th><%= sort_link @search,:patient_name,"Name" %></th>
-<!--              <th><%= sort_link @search,:attending_md, "MD"%></th>-->
-              <th><%= sort_link @search,:patient_been_seen, "Seen"%></th>
             </tr>
           </thead>
-
           <%= render @patients  %>
         </table>
- 
