@@ -1,8 +1,9 @@
 class UsersController < ApplicationController
   helper :all
 
+require 'rbyaml'
+
   def edit_procedure  
-    require 'rbyaml'
     @doctor = current_user
     favorites = RbYAML.load(@doctor.favorites)
     

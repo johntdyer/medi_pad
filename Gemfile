@@ -18,7 +18,7 @@ gem 'awesome_print' #, :git => 'http://github.com/michaeldv/awesome_print.git'
 gem 'default_value_for' #,:git => "http://github.com/FooBarWidget/default_value_for.git"
 gem "RbYAML"
 gem 'devise', '1.1.3'  
-  
+gem 'devise_invitable'
 gem 'omniauth'
 
 

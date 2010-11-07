@@ -1,3 +1,23 @@
+<%= stylesheet_link_tag 'tabs' %>
+<style type="text/css" media="screen">
+    ul li a {
+    font-size: 340%;
+    border-bottom: 1px dashed #C39C4E;
+    padding: 1px 0px 2px 4px;
+    text-decoration: none;
+    color: #666666;
+    width:100px;
+  }
+</style>
+<ul id="tabnav">
+  <li>
+    <%= link_to 'Add', new_procedure_path %>
+ </li>
+ <li>
+  <%= link_to 'Home', '/home' %>
+  </li>
+</ul>  
+
 <table class='stripeMe' border=1 style="width: 400px; margin-left: 10px;">
 	<caption>Procedures</caption>
 	
@@ -29,5 +49,3 @@
 </table>
 
 <br />
-
-<%= link_to 'Add procedure', new_procedure_path %>

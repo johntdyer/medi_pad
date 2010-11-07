@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::Base
+require 'rbyaml'
 #  protect_from_forgery
   
   helper :all # include all helpers, all the time

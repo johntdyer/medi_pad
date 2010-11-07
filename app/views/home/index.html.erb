@@ -54,7 +54,9 @@
             <li> <%= link_to "Patients", patients_path  %> </li>
             <li> <%= link_to "Reports", reports_path %> </li>
             <li> <%= link_to 'Profile', '/users/edit'  %> </li>
+            <%if current_user.is_admin %>
             <li> <%= link_to "Admin", {:controller => "admin", :action => "index"}  %> </li>
+            <%end%>
             <li> <%= link_to "Logout", '/users/sign_out' %>  </li>
             
           <% else %>
@@ -62,4 +64,3 @@
           <%end%>
         </ul>
     </div>
-

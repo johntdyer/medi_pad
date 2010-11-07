@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101102180242) do
+ActiveRecord::Schema.define(:version => 20101107010522) do
 
   create_table "charges", :force => true do |t|
     t.string   "procedure_name"
@@ -108,8 +108,8 @@ ActiveRecord::Schema.define(:version => 20101102180242) do
 
   create_table "users", :force => true do |t|
     t.string   "email",                               :default => "", :null => false
-    t.string   "encrypted_password",   :limit => 128, :default => "", :null => false
-    t.string   "password_salt",                       :default => "", :null => false
+    t.string   "encrypted_password",   :limit => 128, :default => ""
+    t.string   "password_salt",                       :default => ""
     t.string   "reset_password_token"
     t.string   "remember_token"
     t.datetime "remember_created_at"
@@ -131,10 +131,13 @@ ActiveRecord::Schema.define(:version => 20101102180242) do
     t.datetime "confirmed_at"
     t.boolean  "validated"
     t.integer  "failed_attempts"
+    t.string   "invitation_token",     :limit => 20
+    t.datetime "invitation_sent_at"
   end
 
   add_index "users", ["confirmation_token"], :name => "index_users_on_confirmation_token", :unique => true
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
+  add_index "users", ["invitation_token"], :name => "index_users_on_invitation_token"
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
 
 end

@@ -85,7 +85,7 @@ class AdminController < ApplicationController
   def undischarge_patient(patient)
     if patient.discharged 
       logger.info("\n\n\n \t\t #{patient.patient_name} was discharged, re-admitting her \n\n\n")
-    patient.update_attributes(:discharged=>false,:patient_been_seen=>false) 
+      patient.update_attributes(:discharged=>false,:patient_been_seen=>false) 
    end 
 end
 

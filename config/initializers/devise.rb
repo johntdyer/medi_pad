@@ -3,7 +3,7 @@
 Devise.setup do |config|
   # ==> Mailer Configuration
   # Configure the e-mail address which will be shown in DeviseMailer.
-  config.mailer_sender = "cfpgtestone@gmail.com"
+  config.mailer_sender = " cfpg.pad@gmail.com"
 
   # Configure the class responsible to send e-mails.
   # config.mailer = "Devise::Mailer"
@@ -48,6 +48,11 @@ Devise.setup do |config|
   # Setup a pepper to generate the encrypted password.
   config.pepper = "f5ea0eee441c1fe2a989e74a75e0d6a97d79f76ad42d70255079ddfeff1d2bb0e8c6501bd7acef30a847a8caaef75f9716f6bf76b4a41233713f539f601233ec"
 
+  # ==> Configuration for :invitable
+  # Time interval where the invitation token is valid (default: 0).
+  # If invite_for is 0 or nil, the invitation will never expire.
+  config.invite_for = 2.weeks
+  
   # ==> Configuration for :confirmable
   # The time you want to give your user to confirm his account. During this time
   # he will be able to access your application without confirming. Default is nil.

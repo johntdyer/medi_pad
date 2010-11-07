@@ -52,6 +52,11 @@ MediPad::Application.routes.draw do
     match '/auth/:provider/callback', :to => 'sessions#create'
 
 
-    root :to=>"home#index"
+    root :to=>"home#index" 
+
+    devise_scope :user do
+      get "/logout" => "devise/sessions#destroy"
+      get "/login" => "devise/sessions#new"
+    end
 	 
 end

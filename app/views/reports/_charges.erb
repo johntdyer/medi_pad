@@ -1,23 +1,23 @@
-
  <tr class="patient_charge">
    <% if charges %> 
     <td class="patient_name" patientId="<%=charges.id%>"> <%= charges.patient_name %> </td>
     <td class="procedure_name"><%= charges.procedure_name %> </td>
   <!--  <td class="procedure_code">charges.procedure_code %> </td>    -->
-   
     <td class="procedure_notes">
-         <table>
-      <tr>
-        
-        <td>test</td>
-        </tr>
+           <table>
+             <tr>
+             <% if !charges.note.nil? %>
+              <td><%= charges.note.count %></td>
+              <td><%= charges.note.parameter %></td>
+             </tr>
+             <tr>
+               <td><%= charges.note.descriptive_data %></td>
+             <%end%>
+           </tr>
+          </table>
+     </td>
 
-    
-   <td>   
-                </table> 
-
-
-    <td class="doctor"><%= charges.doctor %> </td>    
+    <td class="doctor"><%= charges.doctor %> </td>
     <td class="fin"><%= charges.fin %> </td>  
     <td class="created_at"><%= charges.created_at.strftime("%m/%d/%Y  %I:%M%p")  %></td>
     <td class="recorded"><%= charge_recorded?(charges.recorded) %></td>

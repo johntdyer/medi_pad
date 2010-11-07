@@ -1,10 +1,25 @@
-<!-- <%= javascript_include_tag "jquery.js" %> -->
 <%= javascript_include_tag "jquery.trilemma.js" %>  
 
 <% @favorites = RbYAML.load(@user.favorites) if @user.favorites %>
 <% @procedure_list = Procedure.find(:all, :order => "procedure_name") %>
 
-<!-- <h2>Edit <%= resource_name.to_s.humanize %></h2>
+<style type="text/css" media="screen">
+  input { 
+    position:absolute;
+    width: 350px;
+    background:#fff;
+    font-family:Arial, Helvetica, sans-serif;
+    font-size:35pt;
+    padding:5px;
+    border-top:1px solid #CCCCCC;
+    border-left:1px solid #CCCCCC;
+    border-right:1px solid #999999;
+    border-bottom:1px solid #999999;
+    -moz-border-radius: 8px;
+    -webkit-border-radius: 8px;
+  }
+</style>
+<h2>Edit <%= resource_name.to_s.humanize %></h2>
 
 <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
   <%= devise_error_messages! %>
@@ -32,7 +47,7 @@
 
   <p><%= f.submit "Update" %></p>
 <% end %>
-             -->
+            
 <h3>Edit my Favorites</h3>
 
 <input type="button" name="Edit Favorites" value="Edit Favorites" id="show_favorites"><br/>
@@ -46,13 +61,13 @@
       // way to prevent users from selecting an 11th
      
     $(document).ready(function(){
-      $('.favorites').trilemma({max:10});
+      $('.favorites').trilemma({max:12});
       $(".password_confirmation").hide();
 
       $("#password_text_box").keyup(function(){ $(".password_confirmation").show(); })                        
             
         var numSelected = $("input[name~='procedure']:checked").length;
-        if(numSelected >= 10){
+        if(numSelected >= 12){
           $("input[name~='procedure']:not(:checked)").each(function(){ 
             console.log("@@@10 items selected");
             $(this).attr('disabled','true');
