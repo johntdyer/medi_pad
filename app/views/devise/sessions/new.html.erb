@@ -31,8 +31,8 @@ input {
 
 #user_button{
   position:absolute;
-  left:10px;
-  top:250px;
+  left:0px;
+  top:260px;
 }
 
 #devise_links{
@@ -44,7 +44,7 @@ input {
 .password_box{
     position:absolute;
    left:00px;
-   top:70px;
+   top:80px;
 }   
 
 .label{
@@ -53,8 +53,8 @@ input {
 
 .remember_me{
    position:absolute;
-  left:10px;
-  top:310px; 
+  left:00px;
+  top:320px; 
 }
 
 h2{ 
@@ -75,9 +75,6 @@ h2{
 }
 
 </style>
-
-<h2>Sign in</h2>
-
 <%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
   <div class="user_box">
     <p>
@@ -95,7 +92,7 @@ h2{
 
   <% if devise_mapping.rememberable? -%>
     <div class="remember_me">
-      <p><%= f.check_box :remember_me %> <%= f.label :remember_me %></p>
+      <p>Remember Me: <%= f.check_box :remember_me %></p>
     </div>
   <% end -%>
   

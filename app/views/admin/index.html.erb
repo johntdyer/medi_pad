@@ -1,3 +1,7 @@
+<link rel="stylesheet" type="text/css" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.1/themes/base/jquery-ui.css"> 
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script> 
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.1/jquery-ui.min.js"></script>      
+
 <%= stylesheet_link_tag 'table' %>
 
 <style type="text/css">
@@ -44,9 +48,41 @@
     color: #000000;
     background-color: #eeeeee;
   }
+   .text_field { 
+    position:relative;
+    width: 200px;
+    background:#fff;    
+    font-family:Arial, Helvetica, sans-serif;
+    font-size:15pt;
+    padding:5px;
+    border-top:1px solid #CCCCCC;
+    border-left:1px solid #CCCCCC;
+    border-right:1px solid #999999;
+    border-bottom:1px solid #999999;
+    -moz-border-radius: 8px;
+    -webkit-border-radius: 8px;
+  }
 </style>
 
+  <script type="text/javascript"> 
+  
+  $(document).ready(function() {
+  
+  $('#opener').click(function(){ 
+     openDialog(); 
+     return false;
 
+     function openDialog(){
+        $( "#inviteUserDialog" ).dialog({
+             modal: true,
+             minWidth: 600,
+             resizable: false
+           });
+         }
+    });
+  });
+  </script>
+  
 <div id="vertmenu">
 <h1>Edit</h1>
 
@@ -54,7 +90,7 @@
     <% if current_user %>
       <li> <%= link_to "Home", :controller => "home", :action => "index"%> </li>
       <li><%= link_to "Procedures", procedures_path %></td></li>
-      <li><%= link_to 'Add doctor', new_user_registration_path %></li>
+      <li><%= link_to 'Invite Doctor', new_user_registration_path, :id=>"opener" if current_user.is_admin? %></li>
       <li> <%= link_to "Logout", '/users/sign_out' %></li>      
       <li>
          <br>
@@ -62,18 +98,7 @@
               <%= file_field_tag "xml_file",:id=>"file_button" %>
               <%= submit_tag "Import", :id=>"submit_button"%>
           <% end -%>
-      </li> 
-      
-      
-      
-      <h2>Send invitation</h2>
-      <%= form_tag 'admin/invite', :method => 'post', :onsubmit => 'return validate(this)' do %>
-        <%= text_field_tag 'email' %>
-        <%= text_field_tag 'first_name' %>
-        <%= text_field_tag 'last_name' %>
-        <%= submit_tag "Invite"%>
-      <% end %>
-      
+      </li>
    <%end%>
   </ul>
 </div>
@@ -122,5 +147,17 @@
    </table>
    <%end%>
 <%end%>                 
-
+<br>
+<br>
 <%= render :partial=>"user",  :locals=>{:users=>User.where(:validated=>false)}%>
+
+ <% if current_user.is_admin? %>
+    <div id="inviteUserDialog" title="Invite User" style="display:none">    
+      <%= form_tag 'admin/invite', :method => 'post', :onsubmit => 'return validate(this)' do %>
+        User's Email: <%= text_field_tag 'email','', :class => "text_field" %> <br/>
+        First Name:  &nbsp; <%= text_field_tag 'first_name','', :class => "text_field" %> <br/>
+        Last Name:   &nbsp; <%= text_field_tag 'last_name','',:class => "text_field" %>  <br/>
+        <%= submit_tag "Invite"%>
+        <% end %>
+  </div>
+ <%end%>

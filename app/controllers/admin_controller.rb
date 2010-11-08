@@ -83,12 +83,10 @@ class AdminController < ApplicationController
 
 # Send an invite 
  def invite
-    @invite =User.invite(:email=>params[:email], :first_name=>params[:first_name], :last_name=>params[:last_name]).invite!    
+    User.new(:email=>params[:email], :first_name=>params[:first_name], :last_name=>params[:last_name]).invite!    
     respond_to do |format|
-      if @invite
        format.html { redirect_to('/home', :notice => 'Invtes was sent') }
-     end
-   end
+    end
  end
 
  private
