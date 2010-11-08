@@ -61,6 +61,24 @@ module PatientsHelper
         return  return_array
      end 
  end
+
+
+def location_name(i)
+  case i
+    when 'Winter park' 
+      "WPK"
+    when 'Altamonte'
+      "Alt"
+    when 'East orlando' 
+      "East"
+    when 'Orlando' 
+      "Orl"
+    when 'Medical plaz' 
+      "Plaza"
+    else
+      return i
+   end
+end
  
  #Get patient FIN from Patient ID
  def get_patient_fin(patient_id)

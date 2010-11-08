@@ -3,10 +3,25 @@
 <% @favorites = RbYAML.load(@user.favorites) if @user.favorites %>
 <% @procedure_list = Procedure.find(:all, :order => "procedure_name") %>
 
-<style type="text/css" media="screen">
+<style type="text/css" media="screen">       
+
+body{
+  font-family:Arial, Helvetica, sans-serif;
+  position:absolute;
+  
+}
+
+
+h2{ 
+  position:absolute;
+  left:10px;
+  top: 20px;
+  font-size:35pt;
+}
+
   input { 
     position:absolute;
-    width: 350px;
+    width: 450px;
     background:#fff;
     font-family:Arial, Helvetica, sans-serif;
     font-size:35pt;
@@ -17,54 +32,146 @@
     border-bottom:1px solid #999999;
     -moz-border-radius: 8px;
     -webkit-border-radius: 8px;
+  } 
+
+div{
+  position:absolute;
+  left:40px;
+}  
+  #username{
+    top:50px;
+  }
+
+  #email{
+   top:150px; 
+  }
+ 
+  #first_name{
+    top:250px; 
+  }
+
+  #last_name{
+    top:350px; 
+  }
+
+  #current_password{
+    top:450px;
+  }
+  
+  #new_password{
+    top:550px; 
+  }
+
+  #new_password_confirmaiton{
+    top:650px; 
+  }
+
+  #current_password_field{
+    background-color:#C0C0C0;
+  }
+  
+  #submit_button{
+    top:750px; 
+  }
+  #favorites_button{
+    top:850px;
+  }
+
+  .procedure_list{
+    top:300px; 
+  }            
+  
+  .favorites{
+    position:absolute;
+    top:1000px;     
+  } 
+  
+  input.favorites{
+    width:4em;
+    height:4em;
   }
 </style>
 <h2>Edit <%= resource_name.to_s.humanize %></h2>
 
 <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
   <%= devise_error_messages! %>
-
-  <p><%= f.label :username %><br />
-  <%= f.text_field :username %></p>
   
-  <p><%= f.label :email %><br />
-  <%= f.text_field :email %></p>
+  <div id="username">
+    <p>
+      <%= f.label :username %><br />
+      <%= f.text_field :username %>
+    </p>
+  </div>
   
-  <p><%= f.label :first_name %><br />
-  <%= f.text_field :first_name %></p>  
+  <div id="email">
+    <p>
+      <%= f.label :email %><br />
+      <%= f.text_field :email %>
+    </p>
+  </div>
   
-  <p><%= f.label :last_name %><br />
-  <%= f.text_field :last_name %></p>
+  <div id="first_name">  
+    <p>
+      <%= f.label :first_name %><br />
+      <%= f.text_field :first_name %>
+  </p>  
+  </div>
   
-  <p><%= f.label :password,:class=>"password_text_box" %> <i>(leave blank if you don't want to change it)</i><br />
-  <%= f.password_field :password, :class=>"password_text_box" %></p>
-
-  <p><%= f.label :password_confirmation, :class=>"password_confirmation" %><br />
-  <%= f.password_field :password_confirmation, :class=>"password_confirmation" %></p>  
-
-  <p><%= f.label :current_password, :class=>"current_password"%> <i>(we need your current password to confirm your changes)</i>
-  <%= f.password_field :current_password, :class=>"current_password"%></p>
-
-  <p><%= f.submit "Update" %></p>
+  <div id="last_name">
+    <p>
+      <%= f.label :last_name %><br />
+      <%= f.text_field :last_name %>
+    </p>
+   </div>
+   
+   <div id="new_password">
+    <p>
+      <%= f.label :password,:class=>"password_text_box" %> <i>(leave blank if you don't want to change it)</i><br />
+      <%= f.password_field :password, :class=>"password_text_box" %>
+    </p>
+  </div>
+  
+  <div id="new_password_confirmaiton">
+    <p>
+      <%= f.label :password_confirmation, :class=>"password_confirmation" %><br />
+      <%= f.password_field :password_confirmation, :class=>"password_confirmation" %>
+    </p>
+  </div>
+  
+  <div id="current_password">
+    <p>
+      <%= f.label :current_password, :class=>"current_password"%> <i>(we need your current password to confirm your changes)</i>
+      <%= f.password_field :current_password, :id=>"current_password_field"%>
+    </p>
+  </div> 
+  
+  <div id="submit_button">
+    <p>
+      <%= f.submit "Update" %>
+    </p>
+  </div>
 <% end %>
             
-<h3>Edit my Favorites</h3>
-
-<input type="button" name="Edit Favorites" value="Edit Favorites" id="show_favorites"><br/>
-
+ <div id="favorites_button">
+   <h3>Edit my Favorites</h3>
+   <input type="button" name="Edit Favorites" value="Edit Favorites" id="show_favorites"><br/>
+ </div>
   <script type="text/javascript">
 
-      // checks to see if we have 10 items selected, if we do we want to not
-      // allow user to select any more (10 favorites max).  This works in 
+      // checks to see if we have 12 items selected, if we do we want to not
+      // allow user to select any more (12 favorites max).  This works in 
       // combination w/ the trilemma plug in, which limits checkboxes to 10 as 
       // well.  Problem is that it acts onChange, so if there was 10 we had no 
       // way to prevent users from selecting an 11th
      
     $(document).ready(function(){
       $('.favorites').trilemma({max:12});
-      $(".password_confirmation").hide();
+      $("#new_password_confirmaiton").hide();
 
-      $("#password_text_box").keyup(function(){ $(".password_confirmation").show(); })                        
+      $("#current_password_field").keyup(function(){
+          console.log("@@@@"); 
+          $("#new_password_confirmaiton").show(); 
+      });
             
         var numSelected = $("input[name~='procedure']:checked").length;
         if(numSelected >= 12){
@@ -115,13 +222,12 @@
         <% @procedure_list.in_groups_of(3,false) do |procedure| %>
         <tr>
           <% procedure.each do |p| %>
-          <div id="rounded">
           <td>
             <label class='checkbox'>
               <%= check_box_tag "procedure_ids[]",p.procedure_code,@favorites.include?(p.procedure_code) %>
               <%= look_for_procecdure_nickname(p) %>
             </label>
-            </div>
+
           </td>
           <% end %>
         </tr>
@@ -129,4 +235,5 @@
         </table>
       
 </fieldset>
+
 <%= link_to "Home", '/home' %>

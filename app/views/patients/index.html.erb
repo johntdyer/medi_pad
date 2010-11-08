@@ -14,7 +14,7 @@
     padding: 0px;
   }
     ul li a {
-    font-size: 340%;
+    font-size: 4.5em;
     border-bottom: 1px dashed #C39C4E;
     padding: 1px 0px 2px 4px;
     text-decoration: none;
@@ -28,13 +28,13 @@
   }
 
   .box {
-    width: 120px;
+    width: 150px;
     background:#fff;
     font-family:Arial, Helvetica, sans-serif;
-    font-size:25pt;
+    font-size:35pt;
     position:absolute;
-    left:400px;
-    top:9px;
+    left:520px;
+    top:14px;
     padding:5px;
     border-top:1px solid #CCCCCC;
     border-left:1px solid #CCCCCC;
@@ -43,8 +43,11 @@
     -moz-border-radius: 8px;
     -webkit-border-radius: 8px;
   }
-
-  </style>
+  
+table {
+  width:7000px;
+}
+</style>
 
   <script type="text/javascript" charset="utf-8">
   $(document).ready(function(){
@@ -77,19 +80,15 @@
 
 
   <ul id="tabnav"> 
-
-      <% get_list_of_facilities().each do |facility| %>
-        <li>
-          <%= link_to "#{facility.capitalize}", :controller => "patients", :action => "index", :id => facility, :location_search => true %>
-        </li>
-      <% end %>
-        <li>
-          <%= link_to "All", :controller => "patients", :action => "index", :search=>"All", :location_search => true%>
-        </li>
-
-
-
-    </ul>
+    <% get_list_of_facilities().each do |facility| %>
+      <li>
+        <%= link_to "#{location_name(facility.capitalize)}", :controller => "patients", :action => "index", :id => facility, :location_search => true %>
+      </li>
+    <% end %>
+    <li>
+       <%= link_to "All", :controller => "patients", :action => "index", :search=>"All", :location_search => true%>
+    </li>
+  </ul>
       <script type="text/javascript" charset="utf-8">
         $(document).ready(function(){
           // Redirects to patient if they click on row
@@ -136,17 +135,17 @@
   
   border-collapse: collapse;
   }
-  caption {
-  color: #9ba9b4;
-  background: #e5eff8;
-  font-size: 2.5em;
-  letter-spacing: .1em;
-  margin: 1em 0 0 0;
-  padding: 0;
-  caption-side: top;
-  text-align: center;
-  }
-  tr.odd td {
+ /* caption {
+   color: #9ba9b4;
+   background: #e5eff8;
+   font-size: 3.5em;
+   letter-spacing: .1em;
+   margin: 1em 0 0 0;
+   padding: 0;
+   caption-side: top;
+   text-align: center;
+   }           */
+/*  tr.odd td {
   background: #f7fbff
   }
   tr.odd .column1 {
@@ -158,13 +157,13 @@
   }
   .column1 {
   background: #f9fcfe;
-  }
+  } */
   td {
   color: #678197;
   border-bottom: 1px solid #e5eff8;
   border-left: 1px solid #e5eff8;
   text-align: left;   
-  font: bold 3em/.9em "Century Gothic","Trebuchet MS",Arial,Helvetica,sans-serif;
+  font: bold 4em/.9em "Century Gothic","Trebuchet MS",Arial,Helvetica,sans-serif;
   
   }
   th {
@@ -184,16 +183,38 @@
   #inner_table{
   border-style:none; 
   border-collapse:collapse;
+  } 
+  
+  table.DataTable {
+  color : black;
+  background : #fff;
+  border : 1px solid #B4B4B4;
+  font : bold 17px Helvetica;
+  padding : 0;
+  color : #666;
+  border-collapse : collapse;
+  margin : 15px 10px 17px 10px;
+  vertical-align : middle;
+  text-align : center;
+  -webkit-border-radius : 8px;
+  width : 80%;
+  }
+  table.DataTable td {
+  padding : 8px 10px 8px 10px;
+  }
+  table.DataTable th {
+  color : black;
+  padding : 8px 10px 8px 10px;
   }
 
+
 </style>
-        <table class='stripeMes'>
+        <table class='DataTable'>
   
-          
           <thead>
-            <tr class='odd'>
-              <th><%= sort_link @search,:room,"Location"%></th>
-              <th><%= sort_link @search,:patient_name,"Name" %></th>
+            <tr class='DataTable'>
+              <th class='DataTable'><%= sort_link @search,:room,"Location"%></th>
+              <th class='DataTable'><%= sort_link @search,:patient_name,"Name" %></th>
             </tr>
           </thead>
           <%= render @patients  %>

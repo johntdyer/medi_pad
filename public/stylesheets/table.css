@@ -124,7 +124,15 @@ table.favorites_list{
     margin-left: 20px;
     padding:3px 7px 2px 7px;
     
-}  
+}   
+
+table.patientList{
+    width: 800px; 
+    margin-right: 0px; 
+    margin-left: 20px;
+    padding:3px 7px 2px 7px;
+    
+}
 
 td.patient_button{
 border-bottom: none;

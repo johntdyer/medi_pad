@@ -1,21 +1,23 @@
+<%= stylesheet_link_tag 'table' %>
+
 <style type="text/css">
   #vertmenu {
     font-family: Verdana, Arial, Helvetica, sans-serif;
-    font-size: 250%;
-    width: 280px;
-    padding: 20px;
-    margin: 20px;
+    font-size: 200%;
+    width: 680px;
+    padding: 0px;
+    margin: 0px;
   }
 
   #vertmenu h1 {
     display: block;
     background-color:#FF9900;
-    font-size: 110%;
-    padding: 3px 0 5px 3px;
+    font-size: 270%;
+    padding: 30px 0 5px 3px;
     border: 1px solid #000000;
     color: #333333;
     margin: 0px;
-    width:280px;
+    width:560px;
   }
 
   #vertmenu ul {
@@ -29,13 +31,13 @@
     padding: 0px;
   }
   #vertmenu ul li a {
-    font-size: 120%;
+    font-size: 350%;
     display: block;
     border-bottom: 1px dashed #C39C4E;
-    padding: 5px 0px 2px 4px;
+    padding: 20px 0px 2px 4px;
     text-decoration: none;
     color: #666666;
-    width:280px;
+    width:580px;
   }
 
   #vertmenu ul li a:hover, #vertmenu ul li a:focus {
@@ -44,31 +46,39 @@
   }
 </style>
 
+
 <div id="vertmenu">
 <h1>Edit</h1>
 
-<ul>
-	  <% if current_user %>
-     <li> <%= link_to "Home", :controller => "home", :action => "index"%> </li>
-     <li> <%= link_to "Logout", '/users/sign_out' %></li>
-     <li><%= link_to "Procedures", procedures_path %></td></li>
-   	 <li><%= link_to 'Add doctor', new_user_registration_path %></li>
-    <% else %>
-      <li><%= link_to "Login", login_path%></li>
-      <li><%= link_to "Home", :controller => "home", :action => "index"%></li>
+  <ul>
+    <% if current_user %>
+      <li> <%= link_to "Home", :controller => "home", :action => "index"%> </li>
+      <li><%= link_to "Procedures", procedures_path %></td></li>
+      <li><%= link_to 'Add doctor', new_user_registration_path %></li>
+      <li> <%= link_to "Logout", '/users/sign_out' %></li>      
+      <li>
+         <br>
+          <%= form_tag( {:action => 'upload'}, {:multipart => true} ) do -%>
+              <%= file_field_tag "xml_file",:id=>"file_button" %>
+              <%= submit_tag "Import", :id=>"submit_button"%>
+          <% end -%>
+      </li> 
       
-   <%end%> 
-      <%= form_tag( {:action => 'upload'}, {:multipart => true} ) do -%>
-        <li>
-          <%= file_field_tag "xml_file" %></li>
-         <li> <%= submit_tag "Import" %></li>
-        <% end -%>
-    </ul>
+      
+      
+      <h2>Send invitation</h2>
+      <%= form_tag 'admin/invite', :method => 'post', :onsubmit => 'return validate(this)' do %>
+        <%= text_field_tag 'email' %>
+        <%= text_field_tag 'first_name' %>
+        <%= text_field_tag 'last_name' %>
+        <%= submit_tag "Invite"%>
+      <% end %>
+      
+   <%end%>
+  </ul>
 </div>
-
-<%= stylesheet_link_tag 'table' %>
-
 <% if !flash.empty? %>
+  <br/><br/><br/>
    <table border="0" width="">
      <caption> Patient Import </caption>
      <thead>
