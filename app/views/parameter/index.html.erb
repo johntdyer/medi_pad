@@ -1,0 +1,30 @@
+<%= stylesheet_link_tag 'table' %>
+
+
+<table class='stripeMe'>
+  <caption>Parameters</caption>
+
+    <thead>
+      <tr class='odd'>
+        <th>ID</th>
+        <th>Desc</th>
+        <th>Value</th>
+        <th></th>        
+      </tr>
+    </thead>
+    
+    <tbody>
+
+    <% @parameters.each do |parameter| %>
+      <tr>
+        <td><%=h parameter.id %></td>
+        <td><%=h parameter.name %></td>
+        <td><%=h parameter.value %></td>
+        <td><%= link_to 'Edit', edit_parameter_path(parameter) %></td>
+      </tr>  
+    <% end %>
+  </tbody>
+ </table>
+
+<%= link_to 'Add Parameter', new_parameter_path %>
+

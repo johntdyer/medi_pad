@@ -1,0 +1,11 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  parameter_id: 1
+  name: MyString
+  value: MyString
+
+two:
+  parameter_id: 1
+  name: MyString
+  value: MyString

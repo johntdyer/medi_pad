@@ -23,6 +23,8 @@
 	
   <thead>
     <tr class='odd'>
+      <th>Procedure ID</th>
+      
       <th>Procedure name</th>
       <th>Procedure code</th>
       <th>Procedure nickname</th>
@@ -34,7 +36,9 @@
 <tbody>
 
 <% @procedures.each do |procedure| %>
-  <tr>
+  <tr>            
+    <td><%=h procedure.id %></td>
+    
     <td><%=h procedure.procedure_name %></td>
     <td><%=h procedure.procedure_code %></td>
     <td><%=h procedure.procedure_nickname %></td>

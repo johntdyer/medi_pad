@@ -20,7 +20,7 @@ gem "RbYAML"
 gem 'devise', '1.1.3'  
 gem 'devise_invitable'
 gem 'omniauth'
-
+gem 'nifty-generators'
 
 # Use unicorn as the web server
 # gem 'unicorn'

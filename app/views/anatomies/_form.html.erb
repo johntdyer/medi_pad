@@ -1,0 +1,25 @@
+<%= form_for(@anatomy) do |f| %>
+  <% if @anatomy.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@anatomy.errors.count, "error") %> prohibited this anatomy from being saved:</h2>
+
+      <ul>
+      <% @anatomy.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :description %><br />
+    <%= f.text_field :description %>
+  </div>
+  <div class="field">
+    <%= f.label :value %><br />
+    <%= f.text_field :value %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

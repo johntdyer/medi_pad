@@ -1,0 +1,28 @@
+<h1>Listing options</h1>
+
+<table>
+  <tr>
+    <th>Procedure</th>
+    <th>Description</th>
+    <th>Value</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @options.each do |option| %>
+  <tr>
+    <td><%= get_name(option.procedure_id) %></td>
+    <td><%= option.description %></td>
+    <td><%= option.value %></td>
+    <% if current_user.is_admin? %>
+      <td><%= link_to 'Edit', edit_option_path(option) %></td>
+      <td><%= link_to 'Destroy', option, :confirm => 'Are you sure?', :method => :delete %></td>
+    <%end%>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Option', new_option_path %>

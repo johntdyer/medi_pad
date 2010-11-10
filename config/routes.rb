@@ -1,6 +1,10 @@
 MediPad::Application.routes.draw do
 
  
+  resources :anatomies
+
+  resources :options
+
   devise_for :users
 
    # match "login", :to =>"doctor_sessions#new", :as => 'login'
@@ -23,7 +27,8 @@ MediPad::Application.routes.draw do
     resources :doctors
 
     resources :admin
-
+    resources :parameters
+    
     resources :home, :only=>[:index]
     resources :reports
     resources :patients

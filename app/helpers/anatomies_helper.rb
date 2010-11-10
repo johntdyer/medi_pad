@@ -1,0 +1,2 @@
+module AnatomiesHelper
+end
