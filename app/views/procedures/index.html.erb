@@ -28,7 +28,7 @@
       <th>Procedure name</th>
       <th>Procedure code</th>
       <th>Procedure nickname</th>
-      <th>Group type</th>
+      <th>Options</th>
       <th></th>
       <th></th>
   </tr>
@@ -41,13 +41,20 @@
     
     <td><%=h procedure.procedure_name %></td>
     <td><%=h procedure.procedure_code %></td>
-    <td><%=h procedure.procedure_nickname %></td>
-    <td><%=h procedure.group_type %></td>
+    <td><%=h procedure.procedure_nickname %></td> 
+    <td>
+      <table>
+        <% procedure.options.each do | option | %>
+          <tr>
+            <td>
+              <%= option.description %> 
+            </td>
+          </tr>
+        <% end %>
+      </table>
+      </td>
     <td><%= link_to image_tag("edit.png", :border=>0), edit_procedure_path(procedure) %></td>
     <td><%= link_to(image_tag("delete.png"), procedure, :confirm => "Are you sure?", :method => :delete) %>
-      
-    
-    
   </tr>
 <% end %>
 </table>
