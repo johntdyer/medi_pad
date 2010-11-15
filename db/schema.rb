@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101110170727) do
+ActiveRecord::Schema.define(:version => 20101115011613) do
 
   create_table "anatomies", :force => true do |t|
     t.string   "description"
@@ -63,6 +63,13 @@ ActiveRecord::Schema.define(:version => 20101110170727) do
     t.datetime "patient_data_updated_at"
   end
 
+  create_table "locations", :force => true do |t|
+    t.string   "description"
+    t.string   "value"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "notes", :force => true do |t|
     t.float    "count"
     t.string   "parameter"
@@ -78,6 +85,7 @@ ActiveRecord::Schema.define(:version => 20101110170727) do
     t.string   "value"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "types"
   end
 
   create_table "patients", :force => true do |t|
@@ -122,6 +130,15 @@ ActiveRecord::Schema.define(:version => 20101110170727) do
 
   add_index "sessions", ["session_id"], :name => "index_sessions_on_session_id"
   add_index "sessions", ["updated_at"], :name => "index_sessions_on_updated_at"
+
+  create_table "types", :force => true do |t|
+    t.string   "value"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "option_id"
+    t.string   "description"
+    t.string   "location"
+  end
 
   create_table "users", :force => true do |t|
     t.string   "email",                               :default => "", :null => false
