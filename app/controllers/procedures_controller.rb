@@ -37,7 +37,10 @@ class ProceduresController < ApplicationController
 
   # GET /procedures/1/edit
   def edit
-    @procedure = Procedure.find(params[:id])
+    @procedure = Procedure.find(params[:id]) 
+    @options = Option.new
+    @types = Type.new
+    
   end
 
   # POST /procedures
