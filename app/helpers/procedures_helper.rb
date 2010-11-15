@@ -7,5 +7,9 @@ module ProceduresHelper
         else
           return i.procedure_nickname
         end
+    end  
+    
+    def get_all_options
+      i.options.each
     end
 end
