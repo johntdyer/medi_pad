@@ -1,7 +1,7 @@
 MediPad::Application.routes.draw do
 
  
-  resources :anatomies
+  resources :types
 
   resources :options
 

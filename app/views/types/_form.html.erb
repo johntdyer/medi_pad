@@ -1,0 +1,67 @@
+<%= form_for(@type) do |f| %>
+  <% if @type.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@type.errors.count, "error") %> prohibited this type from being saved:</h2>
+
+      <ul>
+      <% @type.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+<script type="text/javascript" charset="utf-8">
+  $(document).ready(function(){
+    $('#pickLocation').hide();
+
+     $("#locationButton").click(function(){ 
+       $('#pickLocation').slideToggle("slow"); 
+     });
+  });
+
+</script>
+
+  <%= hidden_field_tag(:procedure_id,@procedure_id) %>
+  <%= f.hidden_field :option_id %>
+   
+  <div class="field">
+    Procedure: <%= Procedure.find(@procedure_id).procedure_name if @procedure_id  %><br />    
+    Option:  <%= Option.find(@procedure_id).value if @procedure_id %><br />     
+    
+  </div>
+
+  <div class="field">
+    <%= f.label :description %><br />
+    <%= f.text_field :description %>
+  </div>
+  
+  <div class="field">
+    <%= f.label :value %><br />
+    <%= f.text_field :value %>
+  </div>
+ 
+
+
+  <% if @type.location %>
+    <script type="text/javascript" charset="utf-8">
+      $(document).ready(function(){
+        $('#pickLocation').show();
+      });
+    </script>
+    <%else%>
+      <a href="#" id="locationButton">Add Location</a>
+    <% end %>
+
+
+    <div class="field" id="pickLocation">
+      <%= f.radio_button :location, 'Left', :checked => check_location(@type,'left') %> Left
+      <%= f.radio_button :location, 'Right', :checked => check_location(@type,'right') %> Right
+      <%= f.radio_button :location, 'Both', :checked => check_location(@type,'both') %> Both
+    </div>
+
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

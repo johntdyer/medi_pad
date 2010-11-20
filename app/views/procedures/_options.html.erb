@@ -1,0 +1,29 @@
+<table>
+ <% @procedure.options.each do | option | %>
+  <tr>
+    <td><%= option.description %></td>
+    <td>                           
+      <% if current_user.is_admin? %>
+        <%= link_to image_tag("edit.png", :border=>0), edit_option_path(option) %>  &nbsp;&nbsp;  
+        <a href="#" class="add_type_button" optionId="<%= option.id %>"><img src="/images/add.png"/></a>
+      <% end %>
+    </td>
+    
+  </tr>
+    <%if !option.types.empty?%>
+      <tr>
+        <td></td>
+        <td> <%= render :partial=>"types", :locals=>{:types=>option.types,:option_id=>option.id}%>  </td> 
+      </tr>
+    <%end%>
+  <% end %>
+
+  <tr>
+    <% if current_user.is_admin? %>
+     <td></td>
+     <td></td>
+     <td><a href="#" class="add_button">Add</a></td>
+    <%end%>
+  </tr>
+
+</table>  

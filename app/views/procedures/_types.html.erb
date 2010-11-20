@@ -1,0 +1,24 @@
+ <%if !types.empty? %>
+   <table>
+       <% types.each do | type | %>
+         <tr>
+           <td>
+             <%= type.value %>
+           </td>
+
+           <% if current_user.is_admin? %>
+
+             <td>
+               <%= link_to(image_tag("edit.png", :border=>0), edit_type_path(type,:procedure_id=>@procedure.id ) )%>
+             </td>
+             <td>
+               <%= link_to(image_tag("delete.png"), type_path(type,:procedure_id=>@procedure.id), :confirm => "Delete #{type.value}, are you sure?", :method => :delete )%>
+             </td>
+
+           <%end%>
+
+         </tr>
+       <%end%>
+   </table>
+ <%end%>
+

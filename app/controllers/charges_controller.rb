@@ -12,6 +12,8 @@ class ChargesController < ApplicationController
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @charges }
+      format.json  { render :json => @charges }
+      
     end
   end
 

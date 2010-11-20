@@ -63,11 +63,11 @@ class ProceduresController < ApplicationController
   # PUT /procedures/1.xml
   def update
     @procedure = Procedure.find(params[:id])
-
+    @options = Option.new
+    @types = Type.new
     respond_to do |format|
       if @procedure.update_attributes(params[:procedure])
-        format.html { redirect_to "/procedures"
-         }
+        format.html { redirect_to "/procedures" }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
@@ -85,17 +85,16 @@ class ProceduresController < ApplicationController
     respond_to do |format|
       format.html { redirect_to "/procedures" }
       format.xml  { head :ok }
-    end   
+    end
 
-    
   end
 
-	def self.find_incomplete
-	  find_all_by_complete(false, :order => 'created_at DESC')
-	end
+  def self.find_incomplete
+    find_all_by_complete(false, :order => 'created_at DESC')
+  end
 
-	def find_procedure_name(code)
-		@procedure=Procedure.find_by_procedure_code(code)
-	end
-	
+  def find_procedure_name(code)
+    @procedure=Procedure.find_by_procedure_code(code)
+  end
+
 end

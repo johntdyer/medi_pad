@@ -1,47 +1,152 @@
-<table class='stripeMe' border=1 style="width: 400px; margin-left: 10px;">
-  <caption>Editing procedure</caption>
+<%= javascript_include_tag "jquery-ui-min.js" %>
+<%= stylesheet_link_tag "jquery-ui-1.8.5.custom.css" %>
+
+<style type="text/css" media="screen">
+  .stripeMe{
+    border:1;
+    width: 700px; 
+    margin-left: 10px; 
+    font-size:25px;
+    
+  } 
+   body{
+     padding: 20px;
+   }
+  
+    
+</style>
+
+<script type="text/javascript" charset="utf-8">
+  $(document).ready(function(){
+
+    $('.add_button').click(function(){
+       openOptionDialog();
+       return false;
+    });
+     
+    // Sets the value on the hidden form parameter on the edit view.  
+    // This is required because adding a type requires it to associate it with 
+    // the correct options model
+
+      $('.add_type_button').click(function(){
+          var selectedOptionId = $(this).attr('optionId');
+          $('#addTypeWindowHidden').attr('value',selectedOptionId);
+          openTypeDialog();
+          return false;
+      });
+  });
+
+  
+  function openTypeDialog(){  // Open "add type" window
+     $( "#addTypeWindow" ).dialog({
+          modal: true,
+          minWidth: 600,
+          resizable: false
+     });
+  }
+  
+  function openOptionDialog(){ // Open open option window
+     $( "#addOptionWindow" ).dialog({
+          modal: true,
+          minWidth: 600,
+          resizable: false
+     });
+  }
+  
+</script>
+
+<table class='stripeMe'>
+  <caption>Editing: <%= @procedure.procedure_name %></caption>
   <thead>
     <tr class='odd'>
-    <th></th>
-    <th>Note Required?</th>
-  </tr>
-</thead>
-  <%= form_for(@procedure) do |f| %>
-  <%= f.error_messages %>
-  <tbody>
-   <%= hidden_field_tag :procedure_id,@procedure.procedure_id%>
-  <tr>
-    <td>Procedure Name</td>
-    <td><%= f.text_field :procedure_name %></td>
-  </tr>  
-  <tr>
-    <td>Procedure Code</td>
-    <td><%= f.text_field :procedure_code %></td>
-  </tr>
-  <tr>
-    <td>Procedure Nickname</td>
-    <td><%= f.text_field :procedure_nickname %></td>
-  </tr> 
-  <tr>
-    <td>Group Type</td>
-    <td><%= f.text_field :group_type %></td>
-  </tr>
-  <tr>
-    <td>Note Required?</td>
-    <td><%= f.check_box :note_required %></td>
-  </tr>
-  <tr>
-    <td></td>
-    <td><%= f.submit 'Update' %></td>
-  </tr>
+      <th></th>
+      <th>Note Required?</th>
+    </tr>
+  </thead>
 
-   </table>
-  </tbody>
-<% end %>
+  <tbody>
+  
+  <%= form_for(@procedure) do |f| %>
+    <%= f.error_messages %>
+      <%= hidden_field_tag :procedure_id,@procedure.procedure_id%>
+      <tr>
+        <td>Procedure Name</td>
+        <td><%= f.text_field :procedure_name %></td>
+      </tr>
+      <tr>
+        <td>Procedure Code</td>
+        <td><%= f.text_field :procedure_code %></td>
+      </tr>
+      <tr>
+        <td>Procedure Nickname</td>
+        <td><%= f.text_field :procedure_nickname %></td>
+      </tr>
+      <tr>
+        <td>Note Required?</td>
+        <td><%= f.check_box :note_required,:disabled => true, :readonly => true  %></td>
+      </tr>
+      <tr>
+        <td><h1>Options</h1></td>
+        <td> <%= render 'options' %></td> <!-- Render _options.html.erb -->
+      </tr>
+      <tr>
+        <td></td>
+        <td><%= f.submit 'Update' %></td>
+      </tr>
+  <% end %>
+
+ </tbody>
+</table>
 
 <%= link_to 'Show', @procedure %> |
 <%= link_to 'Back', procedures_path %>
 
-</table>
+<!-- 
+#
+#
+#
+# MODAL WINDOWS
+#
+#
+#
+-->
 
-</tbody>
+<div id="addOptionWindow" title="Add Option" style="display:none"> 
+    <%= form_for(@options) do |f| %>  
+      <input type="hidden" name="option[procedure_id]" value="<%=@procedure.id%>">
+      <div class="field">
+        <%= f.label :description %><br />
+        <%= f.text_field :description %>
+      </div>
+      <div class="field">
+        <%= f.label :value %><br />
+        <%= f.text_field :value %>
+      </div>
+      <div class="actions">
+        <%= f.submit %>
+      </div>
+    <% end %>
+        <!-- 
+          <a href="#" id="closeNotesWindow" class="notesAttribute negative" onclick='return false;'>Cancel</a>
+          <a href="#" id="submitNotesWindow" class="notesAttribute negative"style="color:green" onclick='return false;'>Submit</a>  
+        -->
+</div>
+
+<div id="addTypeWindow" title="Add Type" style="display:none">
+  <%= form_for(@types) do |f| %>
+    <input type="hidden" name="procedure_id" value="<%=@procedure.id%>">
+     
+    <input type="hidden" id="addTypeWindowHidden" name="type[option_id]" value="">
+    <div class="field">
+      <%= f.label :description %><br />
+      <%= f.text_field :description %>
+    </div>
+    <div class="field">
+      <%= f.label :value %><br />
+      <%= f.text_field :value %>
+    </div>
+    <div class="actions">
+      <%= f.submit %>
+    </div>
+  <% end %>
+</div>

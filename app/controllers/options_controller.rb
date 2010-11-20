@@ -1,4 +1,7 @@
 class OptionsController < ApplicationController
+
+  before_filter :authenticate_user!
+
   # GET /options
   # GET /options.xml
   def index
@@ -44,7 +47,9 @@ class OptionsController < ApplicationController
 
     respond_to do |format|
       if @option.save
-        format.html { redirect_to(@option, :notice => 'Option was successfully created.') }
+
+
+        format.html { redirect_to("/procedures/#{@option.procedure_id}/edit", :notice => 'Option was successfully created.') }
         format.xml  { render :xml => @option, :status => :created, :location => @option }
       else
         format.html { render :action => "new" }
@@ -72,11 +77,13 @@ class OptionsController < ApplicationController
   # DELETE /options/1
   # DELETE /options/1.xml
   def destroy
-    @option = Option.find(params[:id])
+    @option = Option.find(params[:id]) 
+    procedure_id = @option.procedure_id
+
     @option.destroy
 
     respond_to do |format|
-      format.html { redirect_to(options_url) }
+      format.html { redirect_to("/procedures/#{procedure_id}/edit") }
       format.xml  { head :ok }
     end
   end

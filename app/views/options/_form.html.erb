@@ -3,7 +3,9 @@
     <div id="error_explanation">
       <h2><%= pluralize(@option.errors.count, "error") %> prohibited this option from being saved:</h2>
 
-      <ul>
+      <ul>                                            
+              <%= @option.errors.inspect %>
+              
       <% @option.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>
       <% end %>
@@ -11,23 +13,22 @@
     </div>
   <% end %>
   <% @procedures = Procedure.all %>
-
-  <div class="field"> 
-    
-    
-    <%= f.label :procedure_id %><br />
-    <td><%= f.collection_select(:procedure_id, @procedures, :id, :procedure_name, { :include_blank => true },:style=>"width:200px;" ) %>    </td>
-
-  </div>
+  <%= f.hidden_field :procedure_id %>
+  
   <div class="field">
     <%= f.label :description %><br />
+    
     <%= f.text_field :description %>
   </div>
+  
   <div class="field">
     <%= f.label :value %><br />
     <%= f.text_field :value %>
   </div>
+
+
   <div class="actions">
     <%= f.submit %>
   </div>
+
 <% end %>
