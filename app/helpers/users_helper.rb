@@ -5,4 +5,10 @@ module UsersHelper
 		return @procedure.procedure_name
 	end
 
+
+  def get_favorites_array(current_user)
+
+    return RbYAML.load(current_user.favorites)
+
+  end
 end

@@ -1,5 +1,4 @@
-<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>                                 
-
+<%= javascript_include_tag "jquery-ui-min.js" %>
 <%= stylesheet_link_tag "jquery-ui-1.8.5.custom.css" %>
 <%= stylesheet_link_tag "new_charge.css" %>
 
@@ -54,8 +53,7 @@
   var optionalParams;
 
   $(document).ready(function(){
-      var lastProcedureAdded;   
-      
+   
     $("td[id*='procedure_code']").toggle(function(){
         var valueToAdd = $(this).attr("id").split('[')[1].split(']')[0]; 
         // If a note is required we need to get the note and add it to our array
@@ -64,7 +62,8 @@
           if(duplicateCheck(myNotes,valueToAdd)){
               console.log("@@ Charge already in notes array");
               alert("This is a duplicate charge, check favorites, you may have double selected this one");
-           }else{
+          }
+          else{
              console.log("@@ Note required for this procedure");
              $("#inputNoteDialog").dialog({
                modal: true,
@@ -72,102 +71,36 @@
                minWidth: 350,
                minHeight: 250,               
                resizable: false,
-                open: function(event, ui){
+                
+               open: function(event, ui){
                   $("#inputNoteDialog").attr('procedureId',valueToAdd);
                   //valueToAdd=0;
                   chargeNote = "";
                   calculatorTotal = 0;
                   optionalParams = "";
                   chargeNoteField = "";
-
-                },
-                beforeclose: function(event,ui){
-                  var procedureId = $("#inputNoteDialog").attr("procedureId");
-                  var chargeNoteField = $("#chargeNote").val();
-                  lastProcedureAdded = procedureId;
-
-                  chargeNotes = new Array(chargeNoteField,calculatorTotal,optionalParams);
-                  
-                  console.log("@@@ => {:calculatorTotal=>" + calculatorTotal+",:optionalParams=>"+optionalParams+",:chargeNoteField=>"+chargeNoteField+"}");
-                  console.log("@@@ [chargeNotes] Array =>" + chargeNotes);
-                  console.log("@@@@ => " + lastProcedureAdded);
-                  myNotes[myNotes.length] = new Array(procedureId,chargeNotes);
-               },
-               close: function(event,ui){   
-//                $("#inputNoteDialog").attr('procedureId',"");  // Clear Dialog
-                $("#chargeNote").val(""); 
-                chargeNoteField = "";
-                calculatorTotal = 0;
-                optionalParams = "";
-                                
-                console.log("@@@ Notes window closed");
-                $.each(myNotes, function(index, value) {
-                  console.log("@@@@ HASH =>" + index + ': ' + value[0] + " | " +value[1]);
-                });
-              }
+               }
           });
+           }
         }
-      }
-          procedureArray.push(valueToAdd);
-          console.log("Add => " + valueToAdd);
-          $(this).css({'background-color' : 'green', 'font-weight' : 'bolder', 'color':'white'});
-    },
-    function(){
-      var valueToDelete = $(this).attr("id").split('[')[1].split(']')[0]
-        procedureArray = $.grep(procedureArray, function(val) { return val != valueToDelete; });
-          console.log("@@@@ Deleting myNotes index["+valueToDelete+"]");
-          myNotes.splice([duplicateFind(myNotes,valueToDelete)]);
-          $(this).css({'background-color' : 'white', 'color':'#678197'});
-      }
-    )
-
-    // Dialog box cancle button closes window
-    $("#closeNotesWindow").click(function(){ 
-      $("#chargeNote").val(""); 
-      calculatorTotal = "";
-      optionalParams = "";
-      $("#inputNoteDialog").dialog('close'); 
-      console.log("@@@ User canceled box, removing array item/index =>  " + myNotes.pop());                  
-     $("td[id=procedure_code\\["+lastProcedureAdded+"\\]]").css({'background-color' : 'white', 'color':'#678197'});
-    });
-    
-    // Close window 'submit' button'
-    $("#submitNotesWindow").click(function(){
-      $("#inputNoteDialog").dialog('close');
-    });
-
-    // Set Calculator value
-    var calculatorTotal = "";
-    $(".notesAttribute[name=number]").click(function(){
-      var numericValue = parseFloat($(this).attr("value"));
-      if (numericValue == parseFloat(numericValue)){
-          calculatorTotal = Number(calculatorTotal) + Number(numericValue);
-           console.log("@@@@ Total: " + calculatorTotal);
-           $("input[id=numericNoteValue]").val(calculatorTotal);
-      }else{
-        if(numericValue != parseFloat(numericValue)){
-          console.log("Clear number var");
-          calculatorTotal = 0.0;
-          $("input[id=numericNoteValue]").val(calculatorTotal);
-        }
-      }
-
-    });
-      $(".notesAttribute[name=parameter]").click(function(){
-        optionalParams = $(this).attr("value");
-        console.log("@@@ SELECTED => " + optionalParams);
-      });
-
-    });
+    }
+  });
     </script>
 
         <table class="procedure_list">
-          <caption id="procedure_banner">All Procedures</caption>
-            <% @procedure_list.in_groups_of(5,false) do |procedure| %>
+          <caption id="procedure_banner">Procedures</caption>
+            <% @procedure_list.in_groups_of(3,false) do |procedure| %>
             <tr class="procedure_list_toggled_area">
               <% procedure.each do |p| %>
               <td id="procedure_code[<%=p.id%>]" noteRequired="<%= p.note_required %>">
-                  <%= p.procedure_name %>
+                  <%= p.procedure_name %> 
+                  <% p.options.each {|option| %> 
+                    <input type="hidden" option_descriptione="<%=option.description%>" option_value="<%=option.value%>" option_id="option_<%=option.id%>"> 
+                    
+                    <% option.types.each {|type| %>
+                      <input type="hidden" type_descriptione="<%=type.description%>" type_value="<%=type.value%>" type_id="type_<%=type.id%>"> 
+                  <% }%>
+                  <% }%>
               </td>
               <% end %>
             </tr>
@@ -207,29 +140,8 @@
               });
             </script>
 
-
           <textarea cols="0" rows="0" id="chargeNote" ></textarea>
           <div class="buttons">
-              <a href="#" id="form_0" class="notesAttribute positive" name="number" value="0" onclick='return false;'>0</a>
-              <a href="#" id="form_1" class="notesAttribute positive" name="number" value="1" onclick='return false;'>1</a>
-              <a href="#" id="form_2" class="notesAttribute positive" name="number" value="2" onclick='return false;'>2</a>
-              <a href="#" id="form_3" class="notesAttribute positive" name="number" value="3" onclick='return false;'>3</a>
-              <a href="#" id="form_4" class="notesAttribute positive" name="number" value="4" onclick='return false;'>4</a>
-              <a href="#" id="form_5" class="notesAttribute positive" name="number" value="5" onclick='return false;'>5</a>
-
-              <a href="#" id="form_half" class="notesAttribute positive" name="number" value="0.5"  onclick='return false;'>0.5</a>
-              <a href="#" id="form_clr" class="notesAttribute positive" name="number" value="clr"  onclick='return false;'>clr</a>
-
-              Total: <input type="text" readonly="true" id="numericNoteValue" size="1" style="background-color:#C0C0C0"><br><br>
-
-                <div class="fg-buttonset fg-buttonset-single"> 
-                  <button id="form_left" class="notesAttribute regular fg-button ui-state-default ui-priority-primary ui-corner-left" name="parameter" value="[left]">Left</button> 
-                  <button id="form_right" class="notesAttribute regular fg-button ui-state-default ui-priority-primary" name="parameter" value="[right]">Right</button> 
-                  <button id="form_biLat" class="notesAttribute regular fg-button ui-state-default ui-priority-primary" name="parameter" value="[bi-lateral]">Bi-Lat</button> 
-                  <button id="form_regular" class="notesAttribute regular fg-button ui-state-default ui-priority-primary ui-corner-right" name="parameter" value="[regular]">Regular</button> 
-              </div>
-              <br/>
-              
                 <a href="#" id="closeNotesWindow" class="notesAttribute negative" onclick='return false;'>Cancel</a>
                 <a href="#" id="submitNotesWindow" class="notesAttribute negative"style="color:green" onclick='return false;'>Submit</a> 
               

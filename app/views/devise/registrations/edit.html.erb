@@ -1,25 +1,28 @@
 <%= javascript_include_tag "jquery.trilemma.js" %>  
 
+<%= javascript_include_tag "jquery-ui-min.js" %>
+<%= stylesheet_link_tag "jquery-ui-1.8.5.custom.css" %>
+<%= stylesheet_link_tag "http://ajax.googleapis.com/ajax/libs/jqueryui/1/themes/ui-lightness/jquery-ui.css" %>                                                         
+<%= javascript_include_tag "jquery.multiselect.min.js" %>
+<%= stylesheet_link_tag "jquery.multiselect.css" %>
 <% @favorites = RbYAML.load(@user.favorites) if @user.favorites %>
 <% @procedure_list = Procedure.find(:all, :order => "procedure_name") %>
 
-<style type="text/css" media="screen">       
+<style type="text/css" media="screen">
 
-body{
+.edit_user_form body{
   font-family:Arial, Helvetica, sans-serif;
   position:absolute;
-  
 }
 
-
-h2{ 
+.edit_user_form h2{ 
   position:absolute;
   left:10px;
-  top: 20px;
+  top: 20px; 
   font-size:35pt;
 }
 
-  input { 
+.edit_user_form input{ 
     position:absolute;
     width: 450px;
     background:#fff;
@@ -32,9 +35,10 @@ h2{
     border-bottom:1px solid #999999;
     -moz-border-radius: 8px;
     -webkit-border-radius: 8px;
-  } 
+  }
+  
 
-div{
+.edit_user_form div{
   position:absolute;
   left:40px;
 }  
@@ -45,55 +49,89 @@ div{
   #email{
    top:150px; 
   }
- 
-  #first_name{
-    top:250px; 
-  }
 
-  #last_name{
-    top:350px; 
+#first_name input{
+  width: 200px; 
+  top:267px;
+  
+  
+}
+  #last_name input{
+    top:266px;
+    left:224px; 
+    width:225px;
+  } 
+  
+  #lastNameLable{
+    top:246px;
+    left:254px; 
+    width:240px;  
   }
+  
+  #firstNameLable{
+     top:246px;
+     left:10px; 
+     width:250px;
+  }
+  
 
   #current_password{
-    top:450px;
+    top:370px;
   }
   
   #new_password{
-    top:550px; 
+    top:430px; 
   }
 
   #new_password_confirmaiton{
-    top:650px; 
+    top:550px; 
   }
 
   #current_password_field{
     background-color:#C0C0C0;
+    top:10px; 
+  }
+     
+  .password_text_box{
+    top:50px;
   }
   
   #submit_button{
-    top:750px; 
+    top:670px;
+  
   }
   #favorites_button{
-    top:850px;
+    top:600px; 
+    
   }
 
   .procedure_list{
     top:300px; 
   }            
+     
   
+  #change_password_button{
+    top:500px; 
+    
+  }
   .favorites{
     position:absolute;
-    top:1000px;     
+    top:680px;
+    left: 140px; 
   } 
   
   input.favorites{
     width:4em;
     height:4em;
-  }
+  }    
+  
+div#error_explanation{
+  left:520px;
+}
 </style>
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
-
-<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
+  
+<div class="edit_user_form">
+  <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
   <%= devise_error_messages! %>
   
   <div id="username">
@@ -112,74 +150,79 @@ div{
   
   <div id="first_name">  
     <p>
-      <%= f.label :first_name %><br />
+      <div id="firstNameLable"> First Name:</div>
       <%= f.text_field :first_name %>
   </p>  
   </div>
   
   <div id="last_name">
     <p>
-      <%= f.label :last_name %><br />
+      <div id="lastNameLable"> Last Name:</div>
       <%= f.text_field :last_name %>
     </p>
    </div>
    
-   <div id="new_password">
-    <p>
-      <%= f.label :password,:class=>"password_text_box" %> <i>(leave blank if you don't want to change it)</i><br />
-      <%= f.password_field :password, :class=>"password_text_box" %>
-    </p>
-  </div>
+   <div id="current_password">
+     <p>
+       <!-- <i>(we need your current password to confirm your changes)</i> -->
+       <div style="display:none"> 
+
+       <%= f.password_field :current_password, :id=>"current_password_field"%>
+        <%= f.password_field :current_password, :id=>"current_password_field"%>
+        <%= f.password_field :current_password, :id=>"current_password_field"%>
+       
+       </div>
+     </p>
+   </div>
+
+     <div id="change_password_button">
+      <input type="button" name="Change Password" value="Change Password" id="change_password"><br/>
+    </div>
   
-  <div id="new_password_confirmaiton">
-    <p>
-      <%= f.label :password_confirmation, :class=>"password_confirmation" %><br />
-      <%= f.password_field :password_confirmation, :class=>"password_confirmation" %>
-    </p>
-  </div>
-  
-  <div id="current_password">
-    <p>
-      <%= f.label :current_password, :class=>"current_password"%> <i>(we need your current password to confirm your changes)</i>
-      <%= f.password_field :current_password, :id=>"current_password_field"%>
-    </p>
-  </div> 
-  
+
   <div id="submit_button">
     <p>
       <%= f.submit "Update" %>
     </p>
   </div>
 <% end %>
-            
- <div id="favorites_button">
-   <h3>Edit my Favorites</h3>
-   <input type="button" name="Edit Favorites" value="Edit Favorites" id="show_favorites"><br/>
- </div>
-  <script type="text/javascript">
+          
 
-      // checks to see if we have 12 items selected, if we do we want to not
-      // allow user to select any more (12 favorites max).  This works in 
-      // combination w/ the trilemma plug in, which limits checkboxes to 10 as 
-      // well.  Problem is that it acts onChange, so if there was 10 we had no 
-      // way to prevent users from selecting an 11th
+ <div id="favorites_button">
+   <input type="button" name="Edit Favorites" value="Edit Favorites" id="show_favorites"><br/>
+ </div>  
+ 
+ </div> 
+
+
+  <script type="text/javascript">
      
     $(document).ready(function(){
+
       $('.favorites').trilemma({max:12});
+      $("#new_password_text_box").hide();
       $("#new_password_confirmaiton").hide();
 
-      $("#current_password_field").keyup(function(){
-          console.log("@@@@"); 
-          $("#new_password_confirmaiton").show(); 
-      });
-            
-        var numSelected = $("input[name~='procedure']:checked").length;
-        if(numSelected >= 12){
-          $("input[name~='procedure']:not(:checked)").each(function(){ 
-            console.log("@@@10 items selected");
-            $(this).attr('disabled','true');
-          })  
-        }
+      $("#change_password").click(function(){ 
+       
+       console.log("@@@@=> " + $("#current_password_field").val()); 
+      
+      
+         $("#passwordWindow").dialog({
+           modal: true,
+           height: 200,
+           close: function(event,ui){
+             console.log("@@@ current_pass_box ==> " + $("#current_pass_box").val());
+             console.log("@@@ new_pass_box ==> " + $("#new_pass_box").val());   
+             console.log("@@@ new_pass_confirmation ==> " + $("#new_pass_confirmation").val());   
+           }
+         })
+
+
+       });
+
+
+         $("#closeNotesWindow").click(function(){ $("#passwordWindow").dialog('close');});
 
       // Ajax call to update procedure_code favorites
         $("input:checkbox").change(function(){
@@ -206,17 +249,41 @@ div{
 
 
           // Unhide Favorites 
+       
           $(".favorites").hide();
 
           $("#show_favorites").click(function(){
             console.log("Show Favorites Clicked");
               if($(".favorites").is(":visible")){ $(".favorites").hide(); }
-                else{ $(".favorites").show(); }
+                else{                           
+                  // Animate the submit button
+                  $("#submit_button").animate({
+                    top:'+=140px'},function(){
+                      $(".favorites").slideToggle(); 
+                      
+                    }
+                  );
+                }
           })
       })
   </script>
 
- <fieldset class="favorites">
+
+
+
+   <div class="favorites">   
+     <%=  collection_select :procedure, :favorites, Procedure.all, :procedure_code, :procedure_name,{:include_blank => 'None', :selected=>get_favorites_array(current_user)},{:multiple=>"multiple"}%> 
+   </div>
+
+
+           <script type="text/javascript" charset="utf-8">
+            $(document).ready(function(){
+               $("#procedure_favorites").multiselect(
+                 );
+            });
+           </script>
+
+<!-- <fieldset class="favorites">
     <table class="procedure_list">
       <caption>Favorites</caption>
         <% @procedure_list.in_groups_of(3,false) do |procedure| %>
@@ -235,5 +302,69 @@ div{
         </table>
       
 </fieldset>
+              -->  
+<%= link_to "Home", '/home' %>  
 
-<%= link_to "Home", '/home' %>
+
+
+<div id="passwordWindow" title="Change Password" procedureId="" style="display:none"> 
+  <style type="text/css" media="screen">
+  
+  div{
+    left:0px;
+  }  
+  
+  #passwordWindow input{
+    left:0px;
+    font-size:15pt;
+    width: 150px;
+  }
+  .new_password_div div{
+
+
+  }
+  
+   
+   #current_password_box{
+     top: 0px;
+     
+   }
+  #new_pass_box{
+    top: 40px;
+  }  
+  #new_pass_confirmation{
+    top: 80px;
+
+  }
+   .password_buttons_div{
+    top: 130px; 
+   }  
+
+  </style>              
+     
+<div class="new_password_div">
+        <input type="password" id="current_pass_box"/><br/>
+        <input type="password" id="new_pass_box"/><br/>
+        <input type="password" id="new_pass_confirmation"/></br>
+</div>
+  <div class="password_buttons_div">
+    <a href="#" id="closeNotesWindow" class="notesAttribute negative" onclick='return false;'>Cancel</a>
+    <a href="#" id="submitNotesWindow" class="notesAttribute negative"style="color:green" onclick='return false;'>Submit</a> 
+  </div>      
+ </div>
+</div>
+
+<div id="checkPassWindow" title="Check Password" procedureId="" style="display:none"> 
+       
+       
+<div class="confirm_password">
+        <input type="password" id="current_password"/><br/>
+</div>
+  <div class="password_buttons_div">
+    <a href="#" id="closeNotesWindow" class="notesAttribute negative" onclick='return false;'>Cancel</a>
+    <a href="#" id="submitNotesWindow" class="notesAttribute negative"style="color:green" onclick='return false;'>Submit</a> 
+  </div>      
+ </div>
+</div>
+
+

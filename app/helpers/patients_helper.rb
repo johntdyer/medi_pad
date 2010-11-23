@@ -1,17 +1,19 @@
 module PatientsHelper
 
   def check_value(i)  
+      html = '' 
      
     if i
       if  i.lstrip.empty? 
         return "<font size=\"3\" color=\"red\">n/a</font>"
-
       else
-        return i
-      end
+        html<<i
+      end    
+      return html
     end
   end
 
+  
   def get_lastname(name)
     return name.split(',', 2)[0]
   end
