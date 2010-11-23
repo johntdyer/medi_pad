@@ -127,14 +127,17 @@ div{
    <div id="new_password">
     <p>
       <%= f.label :password,:class=>"password_text_box" %> <i>(leave blank if you don't want to change it)</i><br />
-      <%= f.password_field :password, :class=>"password_text_box" %>
+      <%= f.password_field :password, :class=>"password_text_box" %>  
+      <%= f.password_field :password_confirmation, :class=>"password_confirmation" %>  
+      
     </p>
   </div>
   
   <div id="new_password_confirmaiton">
     <p>
       <%= f.label :password_confirmation, :class=>"password_confirmation" %><br />
-      <%= f.password_field :password_confirmation, :class=>"password_confirmation" %>
+      <%= f.password_field :password_confirmation, :class=>"password_confirmation" %>  
+      
     </p>
   </div>
   
