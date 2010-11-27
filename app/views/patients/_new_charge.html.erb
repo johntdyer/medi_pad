@@ -1,50 +1,34 @@
-<%= javascript_include_tag "jquery-ui-min.js" %>
+ <%= javascript_include_tag "jquery-ui-min.js" %>
 <%= stylesheet_link_tag "jquery-ui-1.8.5.custom.css" %>
 <%= stylesheet_link_tag "new_charge.css" %>
 
+
+<link rel="stylesheet" href="http://code.jquery.com/mobile/1.0a2/jquery.mobile-1.0a2.min.css" />
+<script src="http://code.jquery.com/jquery-1.4.4.min.js"></script>
+<script src="http://code.jquery.com/mobile/1.0a2/jquery.mobile-1.0a2.min.js"></script>
+
+
   <%= form_tag add_charges_path,:id=>'new_charge', :method => :put do %>
     <% @procedure_list = Procedure.find(:all, :order => "procedure_name") %>
-    <%= hidden_field_tag :patient_id,charge.patient_id%>
+    <%= hidden_field_tag :patient_id,charge.patient_id %>
+
     <%= javascript_include_tag "json2.js" %>
     <%= stylesheet_link_tag("patient_buttons.css")%>
 
-    <script type="text/javascript" charset="utf-8">
-
-    // Checks to see if value exists in multidemnsional array holding notes, returns true if it exists
-    function duplicateCheck(Things,item){  
-      var valueExists = false;
-        for (var i = Things.length - 1; i >= 0; i--){
-          console.log($.inArray(item,Things[i]));    
-            if($.inArray(item,Things[i])!='-1'){
-              console.log("Found Key");    // Charge has note, dont duplicate
-              valueExists = true;
-              return valueExists
-            }
-        };
-        return valueExists
-    }
-
-    function duplicateFind(Things,item){
-      var valueExists = false;
-      for (var i = Things.length - 1; i >= 0; i--){
-        if($.inArray(item,Things[i])!='-1'){ 
-          return i
+   <script type="text/javascript" charset="utf-8">
+   
+    // Returns true if the passed value is found in the
+    // array. Returns false if it is not.
+    Array.prototype.chkforDuplicates = function (value){
+      var i;
+      var ctr = 0;
+        for (i=0; i < this.length; i++) {
+          if (this[i] == value) {
+            return true;
+          }
         }
-      };
-      return valueExists
-    }
-
-  //Make sure all values are unique
-  function unique(a){
-    var r = new Array();
-      o:for(var i = 0, n = a.length; i < n; i++){
-        for(var x = 0, y = r.length; x < y; x++){
-          if(r[x]==a[i]) continue o;
-        }
-        r[r.length] = a[i];
-      }
-      return r;
-  }
+        return false;
+    };
 
   var myNotes= new Array();
   var procedureArray=[];
@@ -53,39 +37,62 @@
   var optionalParams;
 
   $(document).ready(function(){
-   
-    $("td[id*='procedure_code']").toggle(function(){
-        var valueToAdd = $(this).attr("id").split('[')[1].split(']')[0]; 
-        // If a note is required we need to get the note and add it to our array
-        if($(this).attr('noteRequired')=='true'){
+    var procedureObj = "";
 
-          if(duplicateCheck(myNotes,valueToAdd)){
-              console.log("@@ Charge already in notes array");
-              alert("This is a duplicate charge, check favorites, you may have double selected this one");
-          }
-          else{
-             console.log("@@ Note required for this procedure");
-             $("#inputNoteDialog").dialog({
-               modal: true,
-               position:'left',
-               minWidth: 350,
-               minHeight: 250,               
-               resizable: false,
-                
-               open: function(event, ui){
-                  $("#inputNoteDialog").attr('procedureId',valueToAdd);
-                  //valueToAdd=0;
-                  chargeNote = "";
-                  calculatorTotal = 0;
-                  optionalParams = "";
-                  chargeNoteField = "";
-               }
-          });
+    $("td[id*='procedure_code']").click(function(){
+        var valueToAdd = $(this).attr("id").split('[')[1].split(']')[0];
+
+        if(procedureArray.chkforDuplicates(valueToAdd)){
+            procedureArray = $.grep(procedureArray, function(val) { return val != valueToAdd; });
+            $(this).css({'background-color' : 'white', 'color':'#678197'});
+             
+            $("#example").dialog('close');
+
+        }else{
+           
+          $(this).css({'background-color' : 'green', 'font-weight' : 'bolder', 'color':'white'});
+          procedureArray.push(valueToAdd);   
+          var response = $.ajax({
+             url: "/procedures/"+valueToAdd+".json",
+             type: "GET",
+             cache: false,
+             processData: false, 
+             success: function(json){
+               procedureObj = json.procedure;  
+                    
+                 if(procedureObj.options.length==0){
+                   console.log("@@@ No Options");
+                 }else{
+                   $.each(procedureObj.options,function(key, value) {  
+                     $("#modalBody").append("<button value='" + value.option.value + "' class='positive'>" + value.option.value + "</button>");                     
+                     console.log(key+1 + ': ' + value.option.value); 
+                   });                                               
+                   $("#modalBody").append("<br/>");
+                 }
+             }
+
+            });
+            
+         $("#optionsDialog").dialog({
+           modal:true,
+           width:600,
+           close: function(){
+             $("#modalBody").html("");
            }
+         }); 
         }
+
+    })
+    
+   function result(){
+       console.log(procedureObj.procedure_name); 
     }
   });
     </script>
+             
+
+
+    
 
         <table class="procedure_list">
           <caption id="procedure_banner">Procedures</caption>
@@ -94,29 +101,28 @@
               <% procedure.each do |p| %>
               <td id="procedure_code[<%=p.id%>]" noteRequired="<%= p.note_required %>">
                   <%= p.procedure_name %> 
-                  <% p.options.each {|option| %> 
-                    <input type="hidden" option_descriptione="<%=option.description%>" option_value="<%=option.value%>" option_id="option_<%=option.id%>"> 
+                  <!--
+                  < p.options.each {|option| %> 
+                   
+                   <input type="hidden" option_descriptione="<=option.description%>" option_value="<=option.value%>" option_id="option_<=option.id%>"> 
                     
-                    <% option.types.each {|type| %>
-                      <input type="hidden" type_descriptione="<%=type.description%>" type_value="<%=type.value%>" type_id="type_<%=type.id%>"> 
-                  <% }%>
-                  <% }%>
+                    < option.types.each {|type| %>
+                      <input type="hidden" type_descriptione="<=type.description%>" type_value="<=type.value%>" type_id="type_<=type.id%>"> 
+
+                    < }%>
+                   
+                   < }%>
+                  -->
               </td>
               <% end %>
             </tr>
             <% end %>
-            <tr class="procedure_list_toggled_area">
-              <td>
-                
-                <!-- <%= submit_tag 'Add', :class => 'search_form'  %>-->
-              </td>
-            </tr>
           </table>   
           <input type="hidden" id="data_to_post" name="procedure_ids" value=""> 
           
         <% end %>
 
-        <div id="inputNoteDialog" title="Add Note" procedureId="" style="display:none"> 
+        <div id="optionsDialog" title="Add Note" procedureId="" style="display:none"> 
             <script type="text/javascript"> 
               // **** Some JqueryUI JS  ****
 
@@ -139,13 +145,15 @@
                 });
               });
             </script>
-
-          <textarea cols="0" rows="0" id="chargeNote" ></textarea>
-          <div class="buttons">
+                         
+            <div id="modalBody"></div>
+            
+            
+          <!-- <div class="buttons">
                 <a href="#" id="closeNotesWindow" class="notesAttribute negative" onclick='return false;'>Cancel</a>
                 <a href="#" id="submitNotesWindow" class="notesAttribute negative"style="color:green" onclick='return false;'>Submit</a> 
               
-          </div>
+          </div>    -->
         </div>
 
                      

@@ -64,14 +64,14 @@
           if(duplicateCheck(myNotes,valueToAdd)){
               console.log("@@ Charge already in notes array");
               alert("This is a duplicate charge, check favorites, you may have double selected this one");
-           }else{
+          }else{
              console.log("@@ Note required for this procedure");
-             $("#inputNoteDialog").dialog({
-               modal: true,
-               position:'left',
-               minWidth: 350,
-               minHeight: 250,               
-               resizable: false,
+              $("#inputNoteDialog").dialog({
+                modal: true,
+                position:'left',
+                minWidth: 350,
+                minHeight: 250,
+                resizable: false,
                 open: function(event, ui){
                   $("#inputNoteDialog").attr('procedureId',valueToAdd);
                   //valueToAdd=0;
@@ -79,7 +79,6 @@
                   calculatorTotal = 0;
                   optionalParams = "";
                   chargeNoteField = "";
-
                 },
                 beforeclose: function(event,ui){
                   var procedureId = $("#inputNoteDialog").attr("procedureId");
@@ -92,19 +91,19 @@
                   console.log("@@@ [chargeNotes] Array =>" + chargeNotes);
                   console.log("@@@@ => " + lastProcedureAdded);
                   myNotes[myNotes.length] = new Array(procedureId,chargeNotes);
-               },
-               close: function(event,ui){   
+                },
+                close: function(event,ui){   
 //                $("#inputNoteDialog").attr('procedureId',"");  // Clear Dialog
-                $("#chargeNote").val(""); 
-                chargeNoteField = "";
-                calculatorTotal = 0;
-                optionalParams = "";
+                  $("#chargeNote").val(""); 
+                  chargeNoteField = "";
+                  calculatorTotal = 0;
+                  optionalParams = "";
                                 
-                console.log("@@@ Notes window closed");
-                $.each(myNotes, function(index, value) {
-                  console.log("@@@@ HASH =>" + index + ': ' + value[0] + " | " +value[1]);
-                });
-              }
+                  console.log("@@@ Notes window closed");
+                  $.each(myNotes, function(index, value) {
+                    console.log("@@@@ HASH =>" + index + ': ' + value[0] + " | " +value[1]);
+                  });
+                }
           });
         }
       }
@@ -114,6 +113,8 @@
     },
     function(){
       var valueToDelete = $(this).attr("id").split('[')[1].split(']')[0]
+      
+      
         procedureArray = $.grep(procedureArray, function(val) { return val != valueToDelete; });
           console.log("@@@@ Deleting myNotes index["+valueToDelete+"]");
           myNotes.splice([duplicateFind(myNotes,valueToDelete)]);

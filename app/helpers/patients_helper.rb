@@ -1,5 +1,5 @@
 module PatientsHelper
-
+   
   def check_value(i)  
       html = '' 
      

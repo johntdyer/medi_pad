@@ -112,5 +112,14 @@ class PatientsController < ApplicationController
       format.html { redirect_to(patients_url) }
       format.xml  { head :ok }
     end
-  end
+  end 
+    
+  
+  def poll
+     render(:update) { |page| page.update_time }
+   end
+   
+  
+    
+
 end

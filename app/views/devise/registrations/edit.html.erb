@@ -97,26 +97,24 @@
   }
   
   #submit_button{
-    top:670px;
+    top:540px;
   
   }
   #favorites_button{
-    top:600px; 
-    
+    top:470px; 
   }
 
   .procedure_list{
     top:300px; 
-  }            
-     
+  }
   
   #change_password_button{
-    top:500px; 
+    top:380px; 
     
   }
   .favorites{
     position:absolute;
-    top:680px;
+    top:560px;
     left: 140px; 
   } 
   
@@ -167,10 +165,9 @@ div#error_explanation{
        <!-- <i>(we need your current password to confirm your changes)</i> -->
        <div style="display:none"> 
 
-       <%= f.password_field :current_password, :id=>"current_password_field"%>
-        <%= f.password_field :current_password, :id=>"current_password_field"%>
-        <%= f.password_field :current_password, :id=>"current_password_field"%>
-       
+         <%= f.password_field :current_password, :id=>"current_password_field"%>
+         <%= f.password_field :password, :class=>"password_text_box" %>  
+         <%= f.password_field :password_confirmation, :class=>"password_confirmation" %>       
        </div>
      </p>
    </div>
@@ -181,9 +178,14 @@ div#error_explanation{
   
 
   <div id="submit_button">
-    <p>
-      <%= f.submit "Update" %>
-    </p>
+    <p> 
+     <input type="button" name="Submit" value="Submit" id="fake_submit_button"><br/>
+      
+      <!-- Hide the real submit button for some jQuery goodness -->
+      <div style="display:none"> 
+        <%= f.submit "Update" %>
+      </div>
+    </p>                    
   </div>
 <% end %>
           
@@ -196,33 +198,79 @@ div#error_explanation{
 
 
   <script type="text/javascript">
+       
+     defaults={
+       draggable:false,
+       modal: true,
+       height: 240,
+       width:  400,
+       resizable:false
+     };
      
     $(document).ready(function(){
-
+      var windowClosedDisposition="";
       $('.favorites').trilemma({max:12});
-      $("#new_password_text_box").hide();
-      $("#new_password_confirmaiton").hide();
 
-      $("#change_password").click(function(){ 
-       
-       console.log("@@@@=> " + $("#current_password_field").val()); 
-      
-      
-         $("#passwordWindow").dialog({
+      $("#fake_submit_button").click(function(){
+        $("#checkPassWindow").dialog({
+          draggable:false,
            modal: true,
-           height: 200,
-           close: function(event,ui){
-             console.log("@@@ current_pass_box ==> " + $("#current_pass_box").val());
-             console.log("@@@ new_pass_box ==> " + $("#new_pass_box").val());   
-             console.log("@@@ new_pass_confirmation ==> " + $("#new_pass_confirmation").val());   
+           height: 120,
+           width:  250,
+           resizable:false,
+          close: function(event,ui){ 
+            if(windowClosedDisposition=="submitted"){ 
+              console.log("PASSWORD => " + $("#currentPassword").val());
+               $("#current_password_field").val($("#currentPassword").val());
+               console.log("PASSWORD => " + $("#current_password_field").val());
+               
+               $("form:first").submit();
+            }
+          }
+        })
+      });                    
+      
+      $("#change_password").click(function(){ 
+         $("#passwordWindow").dialog({
+
+           draggable:false,
+            modal: true,
+            height: 240,
+            width:  400,
+            resizable:false,
+            
+           close: function(event,ui){ 
+             if(windowClosedDisposition=="submitted"){
+                $("#current_password_field").val($("#current_pass_box").val());
+                $("#password_text_box").val($("#new_pass_box").val());
+                $("#password_confirmation").val($("#new_pass_confirmation").val());
+               $("form:first").submit();
+             }
            }
          })
-
-
        });
 
+         $("#closeChangePasswordWindow").click(function(){ 
+           windowClosedDisposition = "canceled"
+           $("#passwordWindow").dialog('close');
+         });
+         
+         $("#submitChangePasswordWindow").click(function(){
+           windowClosedDisposition = "submitted" 
+           $("#passwordWindow").dialog('close');
+         });   
+         
+         $("#closePasswordWindow").click(function(){ 
+           windowClosedDisposition = "canceled"
+           $("#checkPassWindow").dialog('close');
+         });
+       
+         $("#submitPasswordWindow").click(function(){
+           console.log("@@@");
+           windowClosedDisposition = "submitted" 
+           $("#checkPassWindow").dialog('close');
+         });
 
-         $("#closeNotesWindow").click(function(){ $("#passwordWindow").dialog('close');});
 
       // Ajax call to update procedure_code favorites
         $("input:checkbox").change(function(){
@@ -260,7 +308,6 @@ div#error_explanation{
                   $("#submit_button").animate({
                     top:'+=140px'},function(){
                       $(".favorites").slideToggle(); 
-                      
                     }
                   );
                 }
@@ -286,19 +333,19 @@ div#error_explanation{
 <!-- <fieldset class="favorites">
     <table class="procedure_list">
       <caption>Favorites</caption>
-        <% @procedure_list.in_groups_of(3,false) do |procedure| %>
+        < @procedure_list.in_groups_of(3,false) do |procedure| %>
         <tr>
-          <% procedure.each do |p| %>
+          < procedure.each do |p| %>
           <td>
             <label class='checkbox'>
-              <%= check_box_tag "procedure_ids[]",p.procedure_code,@favorites.include?(p.procedure_code) %>
-              <%= look_for_procecdure_nickname(p) %>
+              <= check_box_tag "procedure_ids[]",p.procedure_code,@favorites.include?(p.procedure_code) %>
+              <= look_for_procecdure_nickname(p) %>
             </label>
 
           </td>
-          <% end %>
+          < end %>
         </tr>
-        <% end %>
+        < end %>
         </table>
       
 </fieldset>
@@ -320,49 +367,43 @@ div#error_explanation{
     width: 150px;
   }
   .new_password_div div{
-
-
   }
-  
-   
    #current_password_box{
      top: 0px;
-     
    }
   #new_pass_box{
     top: 40px;
   }  
   #new_pass_confirmation{
     top: 80px;
-
   }
    .password_buttons_div{
     top: 130px; 
-   }  
+   }
 
-  </style>              
+  </style>
      
 <div class="new_password_div">
-        <input type="password" id="current_pass_box"/><br/>
-        <input type="password" id="new_pass_box"/><br/>
-        <input type="password" id="new_pass_confirmation"/></br>
+     Current Pass:&nbsp;&nbsp;<input type="password" id="current_pass_box"/><br/><br/>
+     New Pass:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="password" id="new_pass_box"/><br/><br/>
+     Confirmation:  <input type="password" id="new_pass_confirmation"/></br><br/>
 </div>
   <div class="password_buttons_div">
-    <a href="#" id="closeNotesWindow" class="notesAttribute negative" onclick='return false;'>Cancel</a>
-    <a href="#" id="submitNotesWindow" class="notesAttribute negative"style="color:green" onclick='return false;'>Submit</a> 
+    <a href="#" id="closeChangePasswordWindow" class="notesAttribute negative" onclick='return false;'>Cancel</a>
+    <a href="#" id="submitChangePasswordWindow" class="notesAttribute negative"style="color:green" onclick='return false;'>Submit</a> 
   </div>      
  </div>
 </div>
 
-<div id="checkPassWindow" title="Check Password" procedureId="" style="display:none"> 
+<div id="checkPassWindow" title="Confirm Password" procedureId="" style="display:none"> 
        
        
 <div class="confirm_password">
-        <input type="password" id="current_password"/><br/>
+        <input type="password" id="currentPassword"/><br/>
 </div>
   <div class="password_buttons_div">
-    <a href="#" id="closeNotesWindow" class="notesAttribute negative" onclick='return false;'>Cancel</a>
-    <a href="#" id="submitNotesWindow" class="notesAttribute negative"style="color:green" onclick='return false;'>Submit</a> 
+    <a href="#" id="closePasswordWindow" class="notesAttribute negative" onclick='return false;'>Cancel</a>
+    <a href="#" id="submitPasswordWindow" class="notesAttribute negative"style="color:green" onclick='return false;'>Submit</a> 
   </div>      
  </div>
 </div>

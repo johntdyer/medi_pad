@@ -99,4 +99,8 @@
       background-color:#6299c5;
       border:1px solid #6299c5;
       color:#fff;
+  }  
+  
+  .ui-widget input, .ui-widget select, .ui-widget textarea, .ui-widget button{
+      font-size: 3em;
   }
