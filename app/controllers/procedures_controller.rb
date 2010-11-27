@@ -1,6 +1,6 @@
 class ProceduresController < ApplicationController
 
-  before_filter :authenticate_user!
+  before_filter :authenticate_user!, :except => [:show ] #, :edit, :update] 
 	
   # GET /procedures
   # GET /procedures.xml
@@ -21,6 +21,8 @@ class ProceduresController < ApplicationController
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @procedure }
+      format.json  { render :json => @procedure }
+      
     end
   end
 

@@ -29,9 +29,12 @@ MediPad::Application.routes.draw do
     resources :admin
     resources :parameters
     
+    match 'patients/poll', :to => 'patients#poll'
+    
     resources :home, :only=>[:index]
     resources :reports
     resources :patients
+    
 
     #    match 'patients/search', :to => 'patients#search'
 

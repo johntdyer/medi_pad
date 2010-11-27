@@ -42,7 +42,9 @@
         <script type="text/javascript" charset="utf-8">
           $(document).ready(function(){
             // Hide stuff in view
-            $('.procedure_list_toggled_area').hide();
+         
+         //   $('.procedure_list_toggled_area').hide();
+         
             $('.patient_data_toggle_area').hide();
             
             $('#show_favorites').click(function(){
@@ -101,25 +103,25 @@
 
       <tr class='patient_data_toggle_area'>
         <th scope='col' abbr='Room'>Room</th>
-        <td><%= check_value(@patient.room)%></td>
+        <td><%=raw check_value(@patient.room)%></td>
       </tr>
       <tr class='patient_data_toggle_area'>
 
         <th scope='col' abbr='Bed'>Bed</th>
-        <td><%= check_value(@patient.bed)%></td>
+        <td><%=raw check_value(@patient.bed)%></td>
       </tr>
       <tr class='patient_data_toggle_area'>
 
         <th scope='col' abbr='Unit'>Unit</th>
-        <td><%= check_value(@patient.unit)%></td>
+        <td><!-- check_value(@patient.unit)--> <%=raw check_value(@patient.unit) %></td>
       </tr>
       <tr class='patient_data_toggle_area'>
         <th scope='col' abbr='Age'>Age</th>
-        <td><%= check_value(@patient.age.to_s)%></td
+        <td><%=raw check_value(@patient.age.to_s)%></td
       </tr>
       <tr class='patient_data_toggle_area'>
         <th scope='col' abbr='Sex'>Sex</th>
-        <td><%= check_value(@patient.sex)%></td>
+        <td><%=raw check_value(@patient.sex)%></td>
       </tr>
   </table>
 
