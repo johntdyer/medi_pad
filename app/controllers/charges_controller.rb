@@ -110,7 +110,7 @@ class ChargesController < ApplicationController
     @procedure_ids = params[:procedure_ids].to_s.split(',')
     @charge_notes = ActiveSupport::JSON.decode(params[:myNotes])
 
-    @doctor=cookies[:user]
+    @doctor=current_user.username #cookies[:user]
 
     logger.info { "Cookie: Doctor Name=> #{@doctor}" }
     logger.info { "procedure_ids : #{@procedure_ids.inspect}" }

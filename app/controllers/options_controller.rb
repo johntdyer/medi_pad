@@ -21,6 +21,8 @@ class OptionsController < ApplicationController
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @option }
+      format.json  { render :json => @option }
+
     end
   end
 

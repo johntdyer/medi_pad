@@ -135,12 +135,12 @@
     <%= render :partial=>"show_favorites",  :locals=>{:charge=>Charge.new(:patient_id=>@patient.id)}%>
   </div>
 
-  <br/><br/>
 
-  <div id="new_charges">
+  <div id="new_charges" style="padding: 30px">
     <%= render :partial=>"new_charge",  :locals=>{:charge=>Charge.new(:patient_id=>@patient.id)}%>
   </div>
-
+        
+<br>
   <table border=1 style="width: 400px; margin-left: 10px;">
     <tr id="submit_button">                
       <td style="background-color:grey; color: black; font-size: 15px; ">Submit</td>

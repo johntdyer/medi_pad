@@ -1,13 +1,11 @@
- <%= javascript_include_tag "jquery-ui-min.js" %>
+<%= javascript_include_tag "jquery-ui-min.js" %>
+<%= javascript_include_tag "jquery.selectlist.pack.js" %>
+
 <%= stylesheet_link_tag "jquery-ui-1.8.5.custom.css" %>
 <%= stylesheet_link_tag "new_charge.css" %>
+<%= stylesheet_link_tag "selectlist.css" %>
 
-
-<link rel="stylesheet" href="http://code.jquery.com/mobile/1.0a2/jquery.mobile-1.0a2.min.css" />
-<script src="http://code.jquery.com/jquery-1.4.4.min.js"></script>
-<script src="http://code.jquery.com/mobile/1.0a2/jquery.mobile-1.0a2.min.js"></script>
-
-
+ 
   <%= form_tag add_charges_path,:id=>'new_charge', :method => :put do %>
     <% @procedure_list = Procedure.find(:all, :order => "procedure_name") %>
     <%= hidden_field_tag :patient_id,charge.patient_id %>
@@ -16,144 +14,204 @@
     <%= stylesheet_link_tag("patient_buttons.css")%>
 
    <script type="text/javascript" charset="utf-8">
-   
-    // Returns true if the passed value is found in the
-    // array. Returns false if it is not.
-    Array.prototype.chkforDuplicates = function (value){
-      var i;
-      var ctr = 0;
-        for (i=0; i < this.length; i++) {
-          if (this[i] == value) {
-            return true;
-          }
-        }
-        return false;
-    };
 
-  var myNotes= new Array();
-  var procedureArray=[];
-  var chargeNote;
-  var calculatorTotal;
-  var optionalParams;
+     var procedureArray=[];
+     var myNotes=[];
+     var procedureObj = "";
 
-  $(document).ready(function(){
-    var procedureObj = "";
+       $(document).ready(function () { 
+         console.log("jQuery Ready\n");
+         $('select').selectList({ 
+              duplicates:true,
 
-    $("td[id*='procedure_code']").click(function(){
-        var valueToAdd = $(this).attr("id").split('[')[1].split(']')[0];
+              onAdd: function (select, value, text) {
+               procedureArray.push(value);
 
-        if(procedureArray.chkforDuplicates(valueToAdd)){
-            procedureArray = $.grep(procedureArray, function(val) { return val != valueToAdd; });
-            $(this).css({'background-color' : 'white', 'color':'#678197'});
-             
-            $("#example").dialog('close');
+                 var returnObj = getOptionsAJAX(value);
 
-        }else{
-           
-          $(this).css({'background-color' : 'green', 'font-weight' : 'bolder', 'color':'white'});
-          procedureArray.push(valueToAdd);   
-          var response = $.ajax({
-             url: "/procedures/"+valueToAdd+".json",
-             type: "GET",
-             cache: false,
-             processData: false, 
-             success: function(json){
-               procedureObj = json.procedure;  
-                    
-                 if(procedureObj.options.length==0){
-                   console.log("@@@ No Options");
-                 }else{
-                   $.each(procedureObj.options,function(key, value) {  
-                     $("#modalBody").append("<button value='" + value.option.value + "' class='positive'>" + value.option.value + "</button>");                     
-                     console.log(key+1 + ': ' + value.option.value); 
-                   });                                               
-                   $("#modalBody").append("<br/>");
-                 }
-             }
+                     if(returnObj.length>0){
+                       for (key in returnObj){
 
-            });
-            
+                         var typesVar=[];
+                            for (t in returnObj[key].types){
+                              typesVar.push(returnObj[key].types[t].id);
+                             }
+
+                             var button1 = $("<button>")
+                             .attr("value",returnObj[key].description)
+                             .attr("optionID",returnObj[key].id)
+                             .attr("id","option["+returnObj[key].id+"]")
+                             .addClass("positive")
+                             .attr("arrayOfTypes",typesVar)
+                             .text(returnObj[key].description)
+                             .click(function(){
+
+                               if($(this).attr("arrayOfTypes").split(",").length>1){
+                                 getTypesViaAJAX($(this).attr("arrayOfTypes").split(","));
+                                 showTypesDiv();
+                               }
+
+                             });
+
+                             $("#optionsDiv").append(button1);
+                             $("#optionsDiv").append("<br/>"); 
+
+                      //   $("#optionsDiv").append("<button value='" + returnObj[key].description + "' optionID='"+returnObj[key].id+"' id='option["+returnObj[key].id+"]' class='positive'>" +returnObj[key].description + "</button>");
+
+                            /*
+                               console.log("ID:\t\t" + returnObj[key].id);
+                               console.log("Desc:\t\t" + returnObj[key].description);
+                               console.log("Value:\t\t" + returnObj[key].value);  
+                               console.log(""); 
+                            */
+                            var arrayOfTypes = [];
+
+                       } 
+                       showOptionsDiv();
+
+                       console.log(returnObj);
+
+
+                     } else {
+                       // returnObj == 0
+                       console.log("@@ NO OPTIONS");
+                     }
+
+              },
+              onRemove: function (select, value, text) {  
+                 var idx = procedureArray.lastIndexOf(value); // Find the index
+                 if(idx!=-1) procedureArray.splice(idx, 1); 
+                 console.log("\tARRAY:" + procedureArray);
+              }
+         });
+       });
+
+       // Show the optiosn dialog div 
+       function showOptionsDiv(){
          $("#optionsDialog").dialog({
-           modal:true,
-           width:600,
-           close: function(){
-             $("#modalBody").html("");
-           }
-         }); 
-        }
+                             modal:true,
+                             width:500,
+                             position: [10,10],
+                             open: function(){
+                              console.log("Options Dialog Open"); 
+                             },
+                             close: function(){
+                               $("#optionsDiv").html("");
+                             }
+                          });
+       }
 
-    })
-    
-   function result(){
-       console.log(procedureObj.procedure_name); 
-    }
-  });
-    </script>
-             
+       // Show the types dialog div 
+       function showTypesDiv(){
+         $("#typesDialog").dialog({
+                             modal:true,
+                             width:500,
+                             position: [10,10],
+                             close: function(){
+                               $("#typesDiv").html("");
+                             }
+                          });
+       }
 
 
-    
+   function getTypesViaAJAX(array){ 
+     for(k in array){
+       console.log("@@ Array " + array[k]);
+       $.ajax({
+          url: "/types/"+array[k]+".json",
+          type: "GET",
+          cache: false,
+          async:false,
+          processData: false, 
+          success: function(json){
+             for(v in json){
+               console.log("\t "+ json[v].id);
 
-        <table class="procedure_list">
-          <caption id="procedure_banner">Procedures</caption>
-            <% @procedure_list.in_groups_of(3,false) do |procedure| %>
-            <tr class="procedure_list_toggled_area">
-              <% procedure.each do |p| %>
-              <td id="procedure_code[<%=p.id%>]" noteRequired="<%= p.note_required %>">
-                  <%= p.procedure_name %> 
-                  <!--
-                  < p.options.each {|option| %> 
-                   
-                   <input type="hidden" option_descriptione="<=option.description%>" option_value="<=option.value%>" option_id="option_<=option.id%>"> 
-                    
-                    < option.types.each {|type| %>
-                      <input type="hidden" type_descriptione="<=type.description%>" type_value="<=type.value%>" type_id="type_<=type.id%>"> 
+                var button = $("<button>")
+                 .attr("value",json[v].description)
+                 .attr("optionID",json[v].id)
+                 .attr("id","option["+json[v].id+"]")
+                 .addClass("positive")
+                 .text(json[v].description)
+                 .click(function(){
+                   console.log($(this));
+                 });
+                 $("#typesDiv").append(button); 
+                 $("#typesDiv").append("<br/>");
 
-                    < }%>
-                   
-                   < }%>
-                  -->
-              </td>
-              <% end %>
-            </tr>
-            <% end %>
-          </table>   
-          <input type="hidden" id="data_to_post" name="procedure_ids" value=""> 
-          
-        <% end %>
+             }
+          }
+        });
+     }
 
-        <div id="optionsDialog" title="Add Note" procedureId="" style="display:none"> 
-            <script type="text/javascript"> 
-              // **** Some JqueryUI JS  ****
+   }
+       function getOptionsAJAX(value){
+         var optionsArr=[] 
 
-              $(function(){
-                //all hover and click logic for buttons
-                $(".fg-button:not(.ui-state-disabled)")
-                .hover(
-                  function(){ $(this).addClass("ui-state-hover"); },
-                  function(){ $(this).removeClass("ui-state-hover"); }
-                )
-                .mousedown(function(){
-                  $(this).parents('.fg-buttonset-single:first').find(".fg-button.ui-state-active").removeClass("ui-state-active");
-                  if( $(this).is('.ui-state-active.fg-button-toggleable, .fg-buttonset-multi .ui-state-active') ){ $(this).removeClass("ui-state-active"); }
-                  else { $(this).addClass("ui-state-active"); }	
-                })
-                .mouseup(function(){
-                  if(! $(this).is('.fg-button-toggleable, .fg-buttonset-single .fg-button,  .fg-buttonset-multi .fg-button') ){
-                    $(this).removeClass("ui-state-active");
-                  }
+         $.ajax({
+            url: "/procedures/"+value+".json",
+            type: "GET",
+            cache: false,
+            async:false,
+            processData: false, 
+            success: function(json){
+              $.each(json.procedure.options,function(k,value) { 
+                var optionsObject={};
+                optionsObject.value=value.option.value;
+                optionsObject.description=value.option.description;
+                optionsObject.id=value.option.id;
+                optionsObject.types=[];
+
+                 $.each(value.option.types,function(key, value) {
+                   var typesObject={};
+                  typesObject.value=value.type.value;
+                  typesObject.location=lateralDirection(value.type.location);
+                  typesObject.description=value.type.description;
+                  typesObject.id=value.type.id;
+
+                  optionsObject.types.push(typesObject);
                 });
-              });
-            </script>
-                         
-            <div id="modalBody"></div>
-            
-            
-          <!-- <div class="buttons">
-                <a href="#" id="closeNotesWindow" class="notesAttribute negative" onclick='return false;'>Cancel</a>
-                <a href="#" id="submitNotesWindow" class="notesAttribute negative"style="color:green" onclick='return false;'>Submit</a> 
-              
-          </div>    -->
+
+                optionsArr.push(optionsObject);
+
+              })
+            },
+            complete: function(){  console.log("AJAX Request complete"); }
+          });
+            return optionsArr;
+
+       }
+
+       function lateralDirection(value){
+         laterality=[]
+         switch (value.toLowerCase()){
+           case "left":
+             laterality.push("L");
+             break;
+           case "right": 
+             laterality.push("R");
+             break;
+           case "both":
+              laterality.push("L")
+              laterality.push("R")
+              break;
+           default: "Error";
+         }
+
+         return laterality; 
+       }
+
+   </script>
+    
+   <%= collection_select :patient, :id, Procedure.all, :id, :procedure_name,{},{:multiple=>true,:title=>"Select Procedures",:options_for_charge=>""}%> 
+
+   <input type="hidden" id="data_to_post" name="procedure_ids" value=""> 
+   <% end %>
+
+        <div id="optionsDialog" title="Add Option" style="display:none"> 
+          <div id="optionsDiv"/>
         </div>
 
-                     
+        <div id="typesDialog" title="Add Type" style="display:none"> 
+          <div id="typesDiv"/>
+        </div>
