@@ -69,7 +69,7 @@
                   $.ajax({
                     type: "post", 
                     url: '/charges/add',
-                    data: "patient_id=<%=@patient.id%>&procedure_ids="+procedureArray+"&myNotes="+JSON.stringify(myNotes)
+                    data: "patient_id=<%=@patient.id%>&procedure_ids="+procedureArray+"&myNotes="+JSON.stringify(myNotes)//+"&selectionArray="+JSON.stringify(selectionObj)
                   });
                   setTimeout('window.location.reload()', 250);
              });
