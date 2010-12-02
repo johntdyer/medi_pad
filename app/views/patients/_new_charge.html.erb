@@ -1,109 +1,89 @@
 <%= javascript_include_tag "jquery-ui-min.js" %>
 <%= javascript_include_tag "jquery.selectlist.pack.js" %>
-
-<%= stylesheet_link_tag "jquery-ui-1.8.5.custom.css" %>
+<%= javascript_include_tag "json2.js" %>
 <%= stylesheet_link_tag "new_charge.css" %>
 <%= stylesheet_link_tag "selectlist.css" %>
+<%= stylesheet_link_tag "jquery-ui-1.8.5.custom.css" %>
+<%= stylesheet_link_tag("patient_buttons.css")%>
 
- 
   <%= form_tag add_charges_path,:id=>'new_charge', :method => :put do %>
     <% @procedure_list = Procedure.find(:all, :order => "procedure_name") %>
     <%= hidden_field_tag :patient_id,charge.patient_id %>
 
-    <%= javascript_include_tag "json2.js" %>
-    <%= stylesheet_link_tag("patient_buttons.css")%>
-
    <script type="text/javascript" charset="utf-8">
 
      var procedureArray=[];
-     var myNotes=[];
      var procedureObj = "";
-        
-
-
      var selectionObj;
 
-     var selectedCharge = "";
-     var selectedCharge2 = "";
+    $(document).ready(function () { 
+       console.log("jQuery Ready\n");
 
-       $(document).ready(function () { 
-         console.log("jQuery Ready\n");
-     
+       $('select').selectList({ 
 
-         $('select').selectList({ 
-              
               duplicates:true,
 
               onAdd: function (select, value, text) {
-                selectionObj = {};
-                
-                procedureArray.push(value);
+                    selectionObj = {};
+                    selectionObj.charge_id = value;
+                    selectionObj.charge_description = text;
 
                  var returnObj = getOptionsAJAX(value);
 
-                     if(returnObj.length>0){
+                     if(returnObj.length>0){   // We have options, need to show window
+
                        for (key in returnObj){
 
                          var typesVar=[];
-                            for (t in returnObj[key].types){
-                              typesVar.push(returnObj[key].types[t].id);
-                             }
+
+                            for (t in returnObj[key].types){  typesVar.push(returnObj[key].types[t].id); }
+                             
                              // Create a button for an option
-                             var optionButton = $("<button>")
-                             .attr("value",returnObj[key].value)
-                             .attr("optionID",returnObj[key].id)
-                             .attr("id","option["+returnObj[key].id+"]")
-                             .addClass("positive")
-                             .attr("arrayOfTypes",typesVar)
-                             .text(returnObj[key].description)
-                             .click(function(){
-                              $(this).css({'background-color' : 'green', 'font-weight' : 'bolder', 'color':'white'});
+                             var optionButton = $("<button>").attr("value",returnObj[key].value).attr("optionID",returnObj[key].id).attr("id","option["+returnObj[key].id+"]").addClass("positive").attr("arrayOfTypes",typesVar).text(returnObj[key].description)
+                             .click(function(){    
 
-                              // console.log("[DEBUG]==> " + JSON.stringify(returnObj[key]));
+                                        selectionObj.option_id = $(this).attr("optionID")
+                                        selectionObj.option_description = $(this).text();
 
-                                selectionObj.option_id = $(this).attr("optionID")
-                                selectionObj.option_description = $(this).text();
+                                        //  If there are more then one Types we need to enumerate them
+                                        //  and open a modal window, otherwise we need need to assign the 
+                                        //  current option to the selectedObj object :) 
 
-                                //  If there are more then one Types we need to enumerate them
-                                //  and open a modal window, otherwise we need need to assign the 
-                                //  current option to the selectedObj object :) 
-                               if($(this).attr("arrayOfTypes").split(",").length>1){
+                              if($(this).attr("arrayOfTypes").split(",").length>1){
                                  getTypesViaAJAX($(this).attr("arrayOfTypes").split(","));
                                  showTypesDiv();
                                }else{
                                  selectionObj.type_description = $(this).text();
+                                 // procedureArray.push(JSON.stringify(selectionObj));
                                  $("#optionsDialog").dialog("close");
                                }
-
-                               console.log("[DEBUG]==> " + JSON.stringify(selectionObj));
-
                              });
+
 
                              $("#optionsDiv").append(optionButton);
                              $("#optionsDiv").append("<br/>"); 
                        }
-                       showOptionsDiv();  // Show the option Modal window
+                       // Show the option Modal window
+                       showOptionsDiv();
 
-                     } else {
-                       // returnObj == 0
-                       console.log("[DEBUG]==> Selected charge has no options");
-                     }
-
+                     } else {   
+                       console.log("[DEBUG]==> Selected charge has no options"); 
+                       procedureArray.push(JSON.stringify(selectionObj));   
+                       console.error(procedureArray);
+                       }
+                      console.log("[DEBUG] onAdd FINAL OBJECT ==> " + JSON.stringify(selectionObj));
+                      console.error(procedureArray);
               },
               onRemove: function (select, value, text) {  
                  var idx = procedureArray.lastIndexOf(value); // Find the index
                  if(idx!=-1) procedureArray.splice(idx, 1); 
-                 console.log("[Debug]==> Removed [ "+value+" ] : New Array =>" + procedureArray);
+                 console.log("[Debug] onRemove ==> [ "+value+" ] : New Array =>" + procedureArray);
               }
-         });
        });
-       
 
-     function createOptionButton(opt){
-       
-     }
-     
-     // Show the optiosn dialog div 
+    });
+
+    // Show the optiosn dialog div 
     function showOptionsDiv(){
       $("#optionsDialog").dialog({
                         modal:true,
@@ -119,11 +99,13 @@
                         },
                         close: function(){
                           $("#optionsDiv").html("");
-                          console.log("Options Modal Closed | JSON ==> " + JSON.stringify(selectionObj));
+                          console.log("Options Modal Closed | JSON ==> " + JSON.stringify(selectionObj));    
+                          //procedureArray.push(JSON.stringify(selectionObj));  
+                          procedureArray.push(JSON.stringify(selectionObj));   
+                          console.error(procedureArray);
                         }
                       });
     }
-
     // Show the types dialog div 
     function showTypesDiv(){
       $("#typesDialog").dialog({
@@ -161,33 +143,36 @@
                       },
                       close: function(){
                         $("#locationDiv").html("");
+                        $("#optionsDialog").dialog("close");
                         console.log("Location Modal Closed | JSON ==> " + JSON.stringify(selectionObj));
                       }
                     });
     }
-   
+
     function createLocationModal(value){
-       console.log("[DEBUG]==> " + lateralDirection(value).length);
-       if(lateralDirection(value).length>1){
+       if(lateralDirection(value).length>1){                
+         //Render buttons
          for(k in lateralDirection(value)){
-           var left_or_right = $("<button>")
+          
+           var left_or_right_button = $("<button>")
             .addClass("positive")
             .attr("location",lateralDirection(value)[k])
             .text(lateralDirection(value)[k])
             .click(function(){
               selectionObj.location = $(this).attr('location');
               $("#locationDialog").dialog("close");
-              
             })
-            $("#locationDiv").append(left_or_right); 
+
+            $("#locationDiv").append(left_or_right_button); 
          }
          showLocationDiv();
        }else{
-         $("#locationDialog").dialog("close");
+         $("#typesDialog").dialog("close");
+         $("#optionsDialog").dialog("close");
+         
        }
 
-     }    
-     
+    }
 
     function getTypesViaAJAX(array){ 
           for(k in array){
@@ -209,8 +194,7 @@
                       .text(json[v].description)
                       .click(function(){
                         
-                        
-                        // Appent to Object
+                        // Append to Object
                         selectionObj.type_id = $(this).attr("typeID")
                         selectionObj.type_description = $(this).text();
                         
@@ -224,9 +208,8 @@
                }
              });
           }
-
     }
-    
+
     function getOptionsAJAX(value){
          var optionsArr=[] 
 
@@ -262,7 +245,7 @@
             complete: function(){  console.log("AJAX fetch complete"); }
          });
             return optionsArr;
-       }
+    }
 
     function lateralDirection(value){
          laterality=[]
@@ -281,10 +264,10 @@
          }
 
          return laterality; 
-       }
+    }
 
    </script>
-    
+
    <%= collection_select :patient, :id, Procedure.all, :id, :procedure_name,{},{:multiple=>true,:title=>"Select Procedures",:location=>"",:type=>"",:option=>""}%> 
 
    <input type="hidden" id="data_to_post" name="procedure_ids" value=""> 
@@ -292,15 +275,12 @@
 
    <div id="optionsDialog" title="Add Option" style="display:none"> 
      <div id="optionsDiv"></div>
-        <button id="closeNotesWindow" class="positive" style="color:red" onclick='return false;'>Cancel</button>
-        <button id="submitNotesWindow" class="positive"style="color:blue" onclick='return false;'>Submit</button>
    </div>
 
    <div id="typesDialog" title="Add Type" style="display:none"> 
      <div id="typesDiv"></div>
-   </div>      
-   
-   
+   </div>
+
    <div id="locationDialog" title="Location" style="display:none"> 
      <div id="locationDiv"></div>
    </div>

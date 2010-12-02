@@ -2,9 +2,9 @@
     <caption>Favorite Procedures</caption>      
      <% @favorites.in_groups_of(4,false) do |favs| %>
       <tr class="favorites_toggled_area">
-      <% logger.info("====> #{favs.class}") %>
+      <!-- < logger.info("====> #{favs.class}") %> -->
         <% favs.each do | p | %> 
-            <% logger.info("====> #{p}") %>
+            <!-- < logger.info("====> #{p}") %> -->
             <% procedure = lookup_procedure_code(p) %>                                   
             <td id="procedure_code[<%=procedure.id %>]" noteRequired="<%= procedure.note_required %>">
           </td>

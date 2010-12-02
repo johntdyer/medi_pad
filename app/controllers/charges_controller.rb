@@ -102,50 +102,35 @@ class ChargesController < ApplicationController
       format.html {     redirect_to "/reports"}
       format.xml  { head :ok }
     end
-    
 
   end
 
   def add
-    @procedure_ids = params[:procedure_ids].to_s.split(',')
-    @charge_notes = ActiveSupport::JSON.decode(params[:myNotes])
-
+    @procedure_array = ActiveSupport::JSON.decode(params[:procedure_ids])#.to_s.split(',')
     @doctor=current_user.username #cookies[:user]
+    @patient=Patient.find(params[:patient_id])  
+    #logger.info { "Cookie: Doctor Name=> #{@doctor}" }
 
-    logger.info { "Cookie: Doctor Name=> #{@doctor}" }
-    logger.info { "procedure_ids : #{@procedure_ids.inspect}" }
-    logger.info {"\n\n@@@ #{@charge_notes }"}unless @charge_notes.empty?
-    
-    @patient=Patient.find(params[:patient_id])
     @patient.update_attributes :patient_been_seen => true #Change patient_been_seen flag to true
 
-      @procedure_ids.each_with_index { | i,count | 
-        @procedure=Procedure.find(i)
-        logger.debug "#{@doctor} Has charged a #{@procedure.procedure_name} => [Code:#{@procedure.procedure_code}]" 
+    @procedure_array.each do |i|
 
-        @charge = Charge.new(
-              :doctor => @doctor, 
-              :fin=>@patient.fin,
-              :patient_name=>@patient.patient_name,
-              :procedure_name=>@procedure.procedure_name,
-              :procedure_code => @procedure.procedure_code, 
-              :patient_id => params[:patient_id]
-              #,:is_archived=>false
-              )
+      @procedure=Procedure.find(i["charge_id"])
 
-        @charge.save
-        
-        if  @charge_notes[count].nil?  
-          logger.debug {"\t Charge has no notes; Nothing to do here, carry on carry on"}
-        else
-          logger.debug {" Procedure.id => #{@charge_notes[count][0]} "}
-          logger.debug {" \t Note => #{@charge_notes[count][1][0]} "}
-          logger.debug {" \t Count=> #{@charge_notes[count][1][1]} "}
-          logger.debug {" \t Param=> #{@charge_notes[count][1][2]} "} 
-          Note.create(:descriptive_data=>@charge_notes[count][1][0],:count=>@charge_notes[count][1][1],:parameter=>@charge_notes[count][1][2],:charge=>@charge)
-        end
-        }
-
-        redirect_to "/patients"
+      @charge = Charge.new(
+            :doctor => @doctor,
+            :fin=>@patient.fin,
+            :patient_name=>@patient.patient_name,
+            :procedure_name=>@procedure.procedure_name,
+            :procedure_code => @procedure.procedure_code,
+            :patient_id => @patient.id,
+            :option=>i["option_description"],
+            :procedure_type=>i["type_description"],
+            :locality=>i["location"]
+            )
+      @charge.save
+    end
+     redirect_to "/patients/#{params[:patient_id]}"
   end
+
 end

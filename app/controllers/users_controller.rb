@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   helper :all
 
-require 'rbyaml'
+  require 'rbyaml'
 
   def edit_procedure  
     @doctor = current_user

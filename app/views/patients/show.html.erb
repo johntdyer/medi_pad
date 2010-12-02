@@ -65,11 +65,18 @@
                
              $('#submit_button').click(function(){
                console.log("SUBMIT PROCEDURES => " + procedureArray);
-               console.log("SUBMIT NOTES => " + JSON.stringify(myNotes));
+     
                   $.ajax({
                     type: "post", 
                     url: '/charges/add',
-                    data: "patient_id=<%=@patient.id%>&procedure_ids="+procedureArray+"&myNotes="+JSON.stringify(myNotes)//+"&selectionArray="+JSON.stringify(selectionObj)
+                    dataType: 'json',
+                    async:false,
+                       
+                    processDataBoolean:false,                         
+                    // Needed to get this posted back as an array, hense the brackets, its a hack, yea I know, deal with it :)
+                    data: "patient_id=<%=@patient.id%>&procedure_ids=["+(procedureArray)+"]"
+                    //+"&selectionArray="+JSON.stringify(selectionObj)
+                    //patient_id=<%=@patient.id%>&procedure_ids="+
                   });
                   setTimeout('window.location.reload()', 250);
              });

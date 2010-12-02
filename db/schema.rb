@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101129002110) do
+ActiveRecord::Schema.define(:version => 20101202030816) do
 
   create_table "anatomies", :force => true do |t|
     t.string   "description"
@@ -37,8 +37,8 @@ ActiveRecord::Schema.define(:version => 20101129002110) do
     t.string   "patient_name"
     t.string   "note"
     t.string   "option"
-    t.string   "type"
     t.string   "locality"
+    t.string   "procedure_type"
   end
 
   create_table "doctors", :force => true do |t|

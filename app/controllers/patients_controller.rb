@@ -34,9 +34,7 @@ class PatientsController < ApplicationController
  def location
    @search = Patient.search(:facility_equals=>params[:id],:discharged_equals=>false)
    @patients=@search.all#(:discharged=>false)
-   logger.debug { "\n\n\n@@@@ => #{@patients.class}\n\n\n" }
-   
-   
+   #logger.debug { "\n\n\n@@@@ => #{@patients.class}\n\n\n" }
    render :action => "index"
   end
 
@@ -45,9 +43,8 @@ class PatientsController < ApplicationController
   def show               
     require 'rbyaml'
     @patient = Patient.find(params[:id])
-    logger.info("\n\n\t===> patient: #{@patient}") 
     @favorites = RbYAML.load(current_user.favorites)
-    logger.info("\n\n\t===> favorites: #{@favorites.to_json}") 
+# logger.info("\n\t===> favorites: #{@favorites.to_json}\n") 
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @patient }

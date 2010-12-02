@@ -110,7 +110,7 @@ end
     unrecorded_charges =[]
       charges.each do | charge | 
         if !charge.recorded   
-          logger.debug("Live Charge #{charge.procedure_name}")
+          #logger.debug("Live Charge #{charge.procedure_name}")
           unrecorded_charges<<charge
         end
       end
