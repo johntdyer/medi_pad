@@ -1,12 +1,18 @@
 <%= stylesheet_link_tag 'tabs' %>
 <style type="text/css" media="screen">
     ul li a {
-    font-size: 340%;
+    font-size: 640%;
     border-bottom: 1px dashed #C39C4E;
     padding: 1px 0px 2px 4px;
     text-decoration: none;
     color: #666666;
     width:100px;
+  }
+  
+  body{
+    font-size: 200%;
+    font-family: Arial, Helvetica, sans-serif;
+    
   }
 </style>
 <ul id="tabnav">
@@ -23,10 +29,9 @@
 	
   <thead>
     <tr class='odd'>
-      <th>Procedure ID</th>
-      
+      <!-- <th>Procedure ID</th> -->      
       <th>Procedure name</th>
-      <th>Procedure code</th>
+      <!-- <th>Procedure code</th> -->
       <th>Procedure nickname</th>
       <th>Options</th>
       <th></th>
@@ -36,11 +41,9 @@
 <tbody>
 
 <% @procedures.each do |procedure| %>
-  <tr>            
-    <td><%=h procedure.id %></td>
-    
+  <tr>                
     <td><%=h procedure.procedure_name %></td>
-    <td><%=h procedure.procedure_code %></td>
+    <!-- <td><%=h procedure.procedure_code %></td> -->
     <td><%=h procedure.procedure_nickname %></td> 
     <td>
       <table>
