@@ -6,14 +6,12 @@
     <td class="procedure_notes">
            <table>
              <tr>
-             <% if charges %>
-              <td><%= charges.option %></td>
-              <td><%= charges.procedure_type %></td> 
-              <td><%= charges.locality %></td>
-              
+             <% if !charges.note.nil? %>
+              <td><%= charges.note.count %></td>
+              <td><%= charges.note.parameter %></td>
              </tr>
-             <!-- <tr>
-                            <td><%= charges.locality %></td> -->
+             <tr>
+               <td><%= charges.note.descriptive_data %></td>
              <%end%>
            </tr>
           </table>

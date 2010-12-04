@@ -19,22 +19,14 @@
     $(document).ready(function () { 
        console.log("jQuery Ready\n");
 
-       var itemCount=0;
-        var selectListArray = []
        $('select').selectList({ 
 
               duplicates:true,
-              template: '<li id="">%text%</li>',
 
               onAdd: function (select, value, text) {
-                
-                $(".selectlist-item").last().attr("id",itemCount); 
-                 selectListArray.push(itemCount)
-                itemCount = ($(".selectlist-list").children().size());
-                
                     selectionObj = {};
-                    selectionObj.procedure_id = value;
-                    selectionObj.procedure_description = text;
+                    selectionObj.charge_id = value;
+                    selectionObj.charge_description = text;
 
                  var returnObj = getOptionsAJAX(value);
 
@@ -47,17 +39,11 @@
                             for (t in returnObj[key].types){  typesVar.push(returnObj[key].types[t].id); }
                              
                              // Create a button for an option
-                             var optionButton = $("<button>")
-                                        .attr("value",returnObj[key].value)
-                                        .attr("optionID",returnObj[key].id)
-                                        .attr("id","option["+returnObj[key].id+"]")
-                                        .addClass("positive")
-                                        .attr("arrayOfTypes",typesVar)
-                                        .text(returnObj[key].description)
-                                        .click(function(){
+                             var optionButton = $("<button>").attr("value",returnObj[key].value).attr("optionID",returnObj[key].id).attr("id","option["+returnObj[key].id+"]").addClass("positive").attr("arrayOfTypes",typesVar).text(returnObj[key].description)
+                             .click(function(){    
 
-                                              selectionObj.option_id = $(this).attr("optionID")
-                                              selectionObj.option_description = $(this).text();
+                                        selectionObj.option_id = $(this).attr("optionID")
+                                        selectionObj.option_description = $(this).text();
 
                                         //  If there are more then one Types we need to enumerate them
                                         //  and open a modal window, otherwise we need need to assign the 
@@ -67,7 +53,7 @@
                                  getTypesViaAJAX($(this).attr("arrayOfTypes").split(","));
                                  showTypesDiv();
                                }else{
-                                 // selectionObj.type_description = $(this).text();
+                                 selectionObj.type_description = $(this).text();
                                  // procedureArray.push(JSON.stringify(selectionObj));
                                  $("#optionsDialog").dialog("close");
                                }
@@ -80,26 +66,18 @@
                        // Show the option Modal window
                        showOptionsDiv();
 
-                     } else {
-                       console.log("[DEBUG]==> Selected procedure has no options");
-                       procedureArray.push(JSON.stringify(selectionObj));
-//                       console.error(procedureArray);
+                     } else {   
+                       console.log("[DEBUG]==> Selected charge has no options"); 
+                       procedureArray.push(JSON.stringify(selectionObj));   
+                       console.error(procedureArray);
                        }
                       console.log("[DEBUG] onAdd FINAL OBJECT ==> " + JSON.stringify(selectionObj));
                       console.error(procedureArray);
               },
-                onRemove: function (select, value, text) {
-                  var newSelectionIndexArray = [];
-                  var tempHoldingArray = []
-                    $(".selectlist-list").children().each(function() {  
-                      newSelectionIndexArray.push($(this).attr("id"));
-                    });
-                    for(each in newSelectionIndexArray ){
-                      tempHoldingArray.push(procedureArray[newSelectionIndexArray[each]]);
-                    }
-                    // Copy the temp array to the existing array
-                    procedureArray = tempHoldingArray;
-                    console.log("[Debug] onRemove ==> [ "+value+" ] : New Array =>" + procedureArray);
+              onRemove: function (select, value, text) {  
+                 var idx = procedureArray.lastIndexOf(value); // Find the index
+                 if(idx!=-1) procedureArray.splice(idx, 1); 
+                 console.log("[Debug] onRemove ==> [ "+value+" ] : New Array =>" + procedureArray);
               }
        });
 
@@ -124,7 +102,7 @@
                           console.log("Options Modal Closed | JSON ==> " + JSON.stringify(selectionObj));    
                           //procedureArray.push(JSON.stringify(selectionObj));  
                           procedureArray.push(JSON.stringify(selectionObj));   
-//                          console.error(procedureArray);
+                          console.error(procedureArray);
                         }
                       });
     }
@@ -169,30 +147,10 @@
                         console.log("Location Modal Closed | JSON ==> " + JSON.stringify(selectionObj));
                       }
                     });
-    }  
-    
-    function showItemsToDeleteDiv(){  
-      console.log("Opening Div");
-      $("#deleteItemsDialog").dialog({
-                      modal:true,
-                      width:500,
-                      closeOnEscape: false,
-                      position: [10,10],
-                      title: 'Items To Delete',
-                      open: function(){
-                        console.log("Location Modal Open");
-                      }, 
-                      beforeClose: function(){
-                      // 
-                      },
-                      close: function(){
-                        $("#deleteItemsDiv").html("");
-                      }
-                    });
     }
 
     function createLocationModal(value){
-       if(lateralDirection(value).length>1){
+       if(lateralDirection(value).length>1){                
          //Render buttons
          for(k in lateralDirection(value)){
           
@@ -211,11 +169,11 @@
        }else{
          $("#typesDialog").dialog("close");
          $("#optionsDialog").dialog("close");
-
+         
        }
 
     }
-    
+
     function getTypesViaAJAX(array){ 
           for(k in array){
             $.ajax({
@@ -284,28 +242,27 @@
 
               })
             },
-            complete: function(){  console.log("fetch complete"); }
+            complete: function(){  console.log("AJAX fetch complete"); }
          });
             return optionsArr;
     }
 
     function lateralDirection(value){
-         laterality=[] 
-         if (value != null) {
-           switch (value.toLowerCase()){
-             case "left":
+         laterality=[]
+         switch (value.toLowerCase()){
+           case "left":
+             laterality.push("Left");
+             break;
+           case "right": 
+             laterality.push("Right");
+             break;
+           case "both":
               laterality.push("Left");
-              break;
-             case "right": 
               laterality.push("Right");
               break;
-             case "both":
-              laterality.push("Left");
-              laterality.push("Right");
-              break;
-            default: "Error";
-         } 
-       }
+           default: "Error";
+         }
+
          return laterality; 
     }
 
@@ -327,3 +284,4 @@
    <div id="locationDialog" title="Location" style="display:none"> 
      <div id="locationDiv"></div>
    </div>
+   

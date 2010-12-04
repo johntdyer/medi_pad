@@ -115,7 +115,7 @@ class ChargesController < ApplicationController
 
     @procedure_array.each do |i|
 
-      @procedure=Procedure.find(i["procedure_id"])
+      @procedure=Procedure.find(i["charge_id"])
 
       @charge = Charge.new(
             :doctor => @doctor,
