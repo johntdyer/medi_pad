@@ -35,6 +35,7 @@ MediPad::Application.routes.draw do
     resources :reports
     resources :patients
     
+    match 'home', :to => 'home#index', :as => "home/"
 
     #    match 'patients/search', :to => 'patients#search'
 
