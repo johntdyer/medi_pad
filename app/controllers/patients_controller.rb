@@ -15,36 +15,41 @@ class PatientsController < ApplicationController
        
        if params.has_key?(:location_search)
          @search = Patient.order('patients.room ASC').search(:facility_equals=>params[:id],:discharged_equals=>false)
-                
-        #@search= Patient.where(:discharged=>false).search(:facility_equals=>params[:id]) #@search = Patient.search(:facility_contains=>params[:id],:discharged=>false)
        elsif params.has_key?(:search_name)
          @search = Patient.order('patients.room ASC').search(:patient_name_contains=>params[:search_name],:discharged_equals=>false)
+       elsif params.has_key?(:id)
+         @search = Patient.order('patients.room ASC').search(:id_equals=>params[:id],:discharged_equals=>false)
        else
          @search= Patient.order('patients.room ASC').where(:facility=>@list[0].facility,:discharged=>false).search(params[:search])  #@search = Patient.where(:facility=>@list[0].facility,:discharged=>false).search(params[:search])
        end
+      
       @patients = @search.all
 
       respond_to do |format|
         format.html # index.html.erb
-        format.xml  { render :xml => @patients }
+        format.xml  { render :xml => @patients }   
+        format.json  { render :json => @patients }
+        
       end
     end 
   end
 
- def location
-   @search = Patient.search(:facility_equals=>params[:id],:discharged_equals=>false)
-   @patients=@search.all#(:discharged=>false)
-   #logger.debug { "\n\n\n@@@@ => #{@patients.class}\n\n\n" }
-   render :action => "index"
-  end
+ # def location
+ #   @search = Patient.search(:facility_equals=>params[:id],:discharged_equals=>false)
+ #   @patients=@search.all#(:discharged=>false)
+ #   #logger.debug { "\n\n\n@@@@ => #{@patients.class}\n\n\n" }
+ #   #render :action => "index"
+ # end    
 
   # GET /patients/1
   # GET /patients/1.xml
   def show               
     require 'rbyaml'
     @patient = Patient.find(params[:id])
-    @favorites = RbYAML.load(current_user.favorites)
-# logger.info("\n\t===> favorites: #{@favorites.to_json}\n") 
+    @favorites = RbYAML.load(current_user.favorites) 
+    @procedure_list = Procedure.find(:all, :order => "procedure_name")
+    
+    # logger.info("\n\t===> favorites: #{@favorites.to_json}\n") 
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @patient }
@@ -110,13 +115,9 @@ class PatientsController < ApplicationController
       format.xml  { head :ok }
     end
   end 
-    
-  
+
   def poll
      render(:update) { |page| page.update_time }
-   end
-   
-  
-    
+  end
 
 end
