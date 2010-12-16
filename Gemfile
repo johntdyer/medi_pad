@@ -21,7 +21,8 @@ gem 'devise', '1.1.3'
 gem 'devise_invitable'
 gem 'omniauth'
 gem 'nifty-generators'
-gem 'jquery-rails'
+gem 'jquery-rails' 
+
 # Use unicorn as the web server
 # gem 'unicorn'
 
