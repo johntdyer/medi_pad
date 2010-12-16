@@ -29,21 +29,29 @@
       });
       
       $(".record_charge_button").click(function(){
-        var record_edited=new Object();
+        var record_edited=new Object(); 
+        var response={}
+        var charge={}
         record_edited.charge_id = $(this).parents().find('.patient_name').attr('patientId');
         
         if($(this).parents().find('.recorded').first().text()=="true"){
           $(this).parents().find('.recorded').first().text("false");
-          record_edited.is_recorded = false
+          charge.recorded = false
         }
         else{
           $(this).parents().find('.recorded').first().text("true");
-          record_edited.is_recorded = true
-        }
+          charge.recorded = true
+        } 
+        
+ 
+        response.id=$(this).parents().find('.patient_name').attr('patientId');
+        response.charge=charge
+        
         $.ajax({
           type: "POST",
-          url: "/charges/update_charge_status",
-          data: "charge_status="+record_edited.is_recorded+"&charge_id="+record_edited.charge_id,
+          url: "/charges/update",
+          dataType:'json',
+          data: response,
           success: function(msg){
             console.info( "Post 200OK \n\t{'charge_status':'"+record_edited.is_recorded+"','charge_id':'"+record_edited.charge_id+"'}");
           }
