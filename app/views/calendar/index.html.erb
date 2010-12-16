@@ -18,7 +18,7 @@
   var oTable;
   var jsonReturn;
 
-$(document).ready(function() {
+  $(document).ready(function() {
 
     $.ajaxSetup({
         type: "POST",
@@ -33,13 +33,13 @@ $(document).ready(function() {
     });
 
     // Ajax loaders
-        $("#loading").ajaxStart(function(){
-           $(this).show();
-        });
-
-        $("#loading").ajaxStop(function(){
-          $(this).hide();
-        });
+    $("#loading").ajaxStart(function(){
+       $(this).show();
+    });
+    
+    $("#loading").ajaxStop(function(){
+      $(this).hide();
+    });
 
     function drawTable(date){
        
@@ -81,12 +81,12 @@ $(document).ready(function() {
                             }
                         });
 
-   }
+    }
 
     /* Draw the initial table, passing in null to get today date */
-   drawTable(null);
+    drawTable(null);
 
-   function getChargesViaAjax(data){
+    function getChargesViaAjax(data){
        var htmlOut;
        $.ajax({
             url: "/calendar/show",
@@ -105,7 +105,15 @@ $(document).ready(function() {
                           htmlOut += '<td>'+replaceNull(value.procedure_type)+'</td>';
                           htmlOut += '<td>'+replaceNull(value.locality)+'</td>';
                           htmlOut += '<td>'+value.charging_doctor+'</td>';
-                          htmlOut += '<td>'+value.been_recorded+'</td>';
+                           if(!value.been_recorded){
+                             htmlOut += '<td>'
+                              htmlOut += '<div id=\'div_'+value.id+'\'>'
+                                htmlOut += '<input class="recordCharge" id=\'charge_'+value.id+'\' type=\'button\' class=\'record_charge_button\' onClick=\'recordThisCharge('+value.id+');\' value=\'record\'/>';
+                              htmlOut +='</div>';
+                             htmlOut +='</td>';
+                           }else{
+                             htmlOut+='<td><font color="green">Yes</font></td>';
+                           }
                        htmlOut+='</tr>';
                     });
             }
@@ -113,11 +121,11 @@ $(document).ready(function() {
     return htmlOut;
    }
 
-  /* Add event listener for opening and closing details
+    /* Add event listener for opening and closing details
    * Note that the indicator for showing which row is open is not controlled by DataTables,
    * rather it is done here
    */
-  $('#example tbody td img').live('click', function () {
+    $('#example tbody td img').live('click', function () {
      var nTr = this.parentNode.parentNode;
       if ( this.src.match('details_close')){
       /* This row is already open - close it */
@@ -135,33 +143,61 @@ $(document).ready(function() {
     }
   });
 
-  $( "#datepicker" ).datepicker({
+    $( "#datepicker" ).datepicker({
        onClose: function(dateText, inst){
            drawTable(dateText);
            $('#tableDate').html(dateText);
        }
   });
 
-  /* Formating function for row details */
-  function fnFormatDetails ( oTable, nTr, myObj ){
+    /* Formating function for row details */
+    function fnFormatDetails ( oTable, nTr, myObj ){
     var aData = oTable.fnGetData( nTr );
     var sOut =  getChargesViaAjax(myObj); 
     return sOut;
   }
 
-  function replaceNull(value){
+    function replaceNull(value){
     if(value==null){ return ""; }
       else{ return value; }
   }
-}); 
 
+  });
+
+    function recordThisCharge(id){
+      console.log("===> " +id);  
+      response={}
+      charge={}
+      response.id=id
+      charge.recorded=true
+      response.charge=charge
+        $(function(){
+            $.ajax({  
+                dataType: "json",
+                url: "/charges/update",
+                data: response,
+                success: function(msg){
+                    $('#charge_'+id).parent().html('<font color="green">Yes</font>')
+                },
+                error: function(XMLHttpRequest, textStatus, errorThrown){
+                    $('#charge_'+id).parent().html('<font color="red">Error</font>');
+                }
+            });
+        });
+    }
+
+
+    <% if current_user.is_admin? %>
+      $('.record_charge_button').attr('disabled','true');
+    <% end -%>  
+    
  </script>
   </head>
   <body id="dt_example">
     <div id="container">
       <div class="datePicker">
         <p>Date: <input type="text" id="datepicker"></p>
-      </div><!-- End demo -->
+      </div>
       
       <div class="full_width big">
         <i>Patient</i> Charges
@@ -181,12 +217,11 @@ $(document).ready(function() {
             </tr>
           </thead>
           <tbody>
-               
+
               <!--
-              
               DataTables puts data here
-              
               -->
+
           </tbody>
             <tfoot>
                 <tr> 
@@ -194,16 +229,15 @@ $(document).ready(function() {
                     <th>Name</th>
                     <th>Admitted</th>
                     <th>Doctor</th>
-                    <th>Facility</th>  
+                    <th>Facility</th>
                     <th>ID</th>
-                    <th>Charges</th> 
+                    <th>Charges</th>
                 </tr>
           </tfoot>
         </table>
       </div>
       <div class="spacer"></div>
-      
-       
+
       <!-- Hidden div for ajax loader -->
       <div id="loading" style="display:none">
         <img src="../images/ajaxLoader.gif"/>
