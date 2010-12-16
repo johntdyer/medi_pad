@@ -1,7 +1,7 @@
 <tr id="patient_row[<%=patient.id %>]" beenSeen="<%=been_seen(patient)%>">
 
-        <%=h check_value(patient.room)%>
-        <%=h patient.patient_name %>&nbsp;<font style="font-size: 0.45em;">[<%=patient.age unless patient.sex.nil? %> <%= patient.sex unless patient.sex.nil? %>]</font>  
+<%=h check_value(patient.room)%>
+<%=h patient.patient_name %>&nbsp;<font style="font-size: 0.45em;">[<%=patient.age unless patient.sex.nil? %> <%= patient.sex unless patient.sex.nil? %>]</font>  
 
 
 

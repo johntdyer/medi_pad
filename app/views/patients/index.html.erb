@@ -2,51 +2,38 @@
   .ui-li-count{
     color:red;
     font-size: 15px;
-
   }
- </style>
+</style>
 
- <script type="text/javascript" charset="utf-8">  
-
-     $(document).ready(function(){
-             $('#radio-choice-1').change(function() {
-               console.log("radio-choice-1");
-             });	
-             $('#radio-choice-2').change(function() {
-                $('#return').show();
-             });
-      });
- </script>
-
-  <div data-role="header">
+ <div data-role="header">
     <h1>Patients</h1>
       <%= link_to 'Add', new_patient_path, "data-icon" => "plus", "class" => "ui-btn-right" %>
       <%= link_to 'Home', home_url, "data-icon" => "plus", "class" => "ui-btn-left" %>
-    </div>
+  </div>
 
-    <div data-role="content">
+  <div data-role="content">
 
-      <ul data-role="listview" data-filter="true">
+     <ul data-role="listview" data-filter="true" data-inset="true">
         <% @patients.each do |patient| %>
           <li>
-            <font color="red"> <%= check_value(patient.room)%></font>
-            <%= link_to patient.patient_name, patient %>
-            <span class="ui-li-count"><%=patient.charges.count%></span>
-
-            <%= link_to 'edit post', patient_path(patient), "data-icon" => "gear" %>
+              <font color="red"> <%= check_value(patient.room)%></font>
+              <%= link_to patient.patient_name, patient %>
+              <span class="ui-li-count"><%=patient.charges.count%></span>
+              <%= link_to 'edit post', patient_path(patient), "data-icon" => "gear" %>
           </li>
         <% end %>
      </ul>
 
-   </div>
+    </div>
 
-   <div data-role="footer">
-      <div data-role="controlgroup" data-type="horizontal">
+  <div data-role="footer">  
+     <div data-role="navbar">
+       <div data-role="controlgroup" data-type="horizontal">
          <% get_list_of_facilities().each do |facility| %>
             <a href="#patients?location_search=true&amp;id=<%=facility%>" data-role="button"><%=facility.capitalize%></a>
          <% end %>
           <%= link_to "All", :controller => "patients", :action => "index", :search=>"All", :location_search => true%>
        </div
-
+     </div>
    </div> <!-- /footer -->
    

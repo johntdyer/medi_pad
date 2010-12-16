@@ -1,6 +1,7 @@
 MediPad::Application.routes.draw do
 
  
+
   resources :types
 
   resources :options
@@ -30,6 +31,8 @@ MediPad::Application.routes.draw do
     resources :parameters
     
     match 'patients/poll', :to => 'patients#poll'
+#    match 'calendar/show', :to => 'calendar#show'
+    match 'calendar/show' => 'calendar#show', :as=>'show'
     
     resources :home, :only=>[:index]
     resources :reports
@@ -59,6 +62,8 @@ MediPad::Application.routes.draw do
     match '/:controller(/:action(/:id))'
     
     match '/auth/:provider/callback', :to => 'sessions#create'
+
+    match 'calendar', :to => 'calendar#index'
 
 
     root :to=>"home#index" 
