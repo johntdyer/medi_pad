@@ -3,20 +3,66 @@ class ChargesController < ApplicationController
   before_filter :authenticate_user!
  
   require 'json'
-  
-  # GET /charges
-  # GET /charges.xml
-  def index
-    @charges = Charge.all
 
-    respond_to do |format|
-      format.html # index.html.erb
-      format.xml  { render :xml => @charges }
-      format.json  { render :json => @charges }
-      
+
+  before_filter :authenticate_user!
+  
+    
+  def index
+
+    if params.has_key?(:time)
+       @search=Charge.where('updated_at >= ?', Time.now - date_convert(params[:time])).search(params[:search])
+    
+    elsif params.has_key?(:search_name)
+      @search = Charge.search(:patient_name_contains=>params[:search_name])
+    else
+      @search = Charge.search(:recorded_equals=>false)
+
+    end
+      @charges=@search.all 
+
+    if request.xml_http_request?
+      render :partial => "charges", :layout => false
     end
   end
 
+
+  def show_only_recorded
+    logger.info { "" }
+    logger.info { "@@@ Log: #{params.inspect}" }
+
+      show_only_recorded = params[:show_only_recorded]
+
+        if show_only_recorded=='true'
+            @search=Charge.search(params[:search])
+            #.where({:recorded=>false})
+        elsif show_only_recorded == 'false'
+            logger.info { "FALSE" }
+            @search=Charge.search(params[:search])
+            #.where({:recorded=>false})
+        else
+          logger.info { "show_only_recorded not boolean" }
+        end
+        @reports=@search.all
+        #redirect_to '/reports'
+  end
+
+
+
+  
+  # # GET /charges
+  # # GET /charges.xml
+  # def index
+  #   @charges = Charge.all
+  # 
+  #   respond_to do |format|
+  #     format.html # index.html.erb
+  #     format.xml  { render :xml => @charges }
+  #     format.json  { render :json => @charges }
+  #     
+  #   end
+  # end
+  #          
   # GET /charges/1
   # GET /charges/1.xml
   def show
@@ -67,10 +113,12 @@ class ChargesController < ApplicationController
   # PUT /charges/1.xml
   def update
     @charge = Charge.find(params[:id])
+   
 
     respond_to do |format|
       if @charge.update_attributes(params[:charge])
         format.html { redirect_to(@charge, :notice => 'Charge was successfully updated.') }
+        format.json { render :json => @charge }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
@@ -91,19 +139,19 @@ class ChargesController < ApplicationController
     end
   end
   
-  def update_charge_status
-    logger.debug { "\n\n\n\tCharge Status => #{params[:charge_status]}" }
-    logger.debug { "\tCharge ID => #{params[:charge_id]}\n\n\n" }
-
-    @charge = Charge.find(params[:charge_id])
-    @charge.toggle(:recorded)
-    @charge.save
-    respond_to do |format|
-      format.html {     redirect_to "/reports"}
-      format.xml  { head :ok }
-    end
-
-  end
+  # def update_charge_status
+  #     logger.debug { "\n\n\n\tCharge Status => #{params[:charge_status]}" }
+  #     logger.debug { "\tCharge ID => #{params[:charge_id]}\n\n\n" }
+  # 
+  #     @charge = Charge.find(params[:charge_id])
+  #     @charge.toggle(:recorded)
+  #     @charge.save
+  #     respond_to do |format|
+  #       format.html {     redirect_to "/reports"}
+  #       format.xml  { head :ok }
+  #     end
+  # 
+  #   end             
 
   def add
     @procedure_array = ActiveSupport::JSON.decode(params[:procedure_ids])#.to_s.split(',')
@@ -132,5 +180,26 @@ class ChargesController < ApplicationController
     end
      redirect_to "/patients/#{params[:patient_id]}"
   end
+
+  private
+
+    def date_convert(v)
+     case v.downcase
+       when 'hour'
+         return 60.minutes.to_i
+       when 'day'
+         return 24.hours.to_i
+       when 'week'
+         return 168.hours.to_i
+       when 'month'
+         return 31.days.to_i
+       when 'year'
+         return 365.days.to_i
+       else 
+         return false
+       end
+   end
+
+
 
 end
