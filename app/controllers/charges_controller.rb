@@ -1,7 +1,5 @@
 class ChargesController < ApplicationController
   
-  before_filter :authenticate_user!
- 
   require 'json'
 
 
