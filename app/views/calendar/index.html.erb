@@ -11,7 +11,8 @@
     position:relative;
     left:380px;
     top:-100px;
-  }
+  } 
+  
  </style>
  <script>
   var myObj = {};
@@ -108,7 +109,14 @@
                            if(!value.been_recorded){
                              htmlOut += '<td>'
                               htmlOut += '<div id=\'div_'+value.id+'\'>'
+                              <% if current_user.is_admin? %>
                                 htmlOut += '<input class="recordCharge" id=\'charge_'+value.id+'\' type=\'button\' class=\'record_charge_button\' onClick=\'recordThisCharge('+value.id+');\' value=\'record\'/>';
+                                <% else %>
+                                 htmlOut+='<font size="3em" color="yellow">No</font>';
+                                  
+                              <% end -%>  
+                              
+                              
                               htmlOut +='</div>';
                              htmlOut +='</td>';
                            }else{
@@ -187,10 +195,7 @@
     }
 
 
-    <% if current_user.is_admin? %>
-      $('.record_charge_button').attr('disabled','true');
-    <% end -%>  
-    
+
  </script>
   </head>
   <body id="dt_example">
