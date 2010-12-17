@@ -8,6 +8,9 @@
   <%end%>
  </div>
 
+<script type="text/javascript" charset="utf-8">
+  <%=raw(alert_user)%>
+</script>
  <div data-role="content">
    <ul data-role="listview">
            <% if current_user %>
@@ -15,7 +18,10 @@
              <%  cookies[:last_name] = current_user.last_name %>
              <%  cookies[:first_name] = current_user.first_name %>
              <li> <%= link_to "Patients", '/patients?location_search=true&id=ALTAMONTE'  %> </li>
-             <li> <%= link_to "Reports", reports_path %> </li>
+             <% if supported_browser %>
+              <li> <%= link_to "Calendar", charges_path %> </li>
+              <li> <%= link_to "Reports", charges_path %> </li>
+             <% end -%>
              <li> <%= link_to 'Profile', '/users/edit'  %> </li>
              <li> <%= link_to "Admin", {:controller => "admin", :action => "index"} if current_user.is_admin %> </li>
            <%end%>

@@ -9,7 +9,9 @@ class User < ActiveRecord::Base
   
   default_value_for :favorites, "--- []\\n\\n"
   default_value_for :validated, false
-  default_value_for :is_admin, false  
+  default_value_for :is_admin, false
+  default_value_for :is_billing, false
+  default_value_for :is_doctor, false
 
   validates_uniqueness_of :email, :message => "Email in use"
 

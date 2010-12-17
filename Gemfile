@@ -22,7 +22,8 @@ gem 'devise_invitable'
 gem 'omniauth'
 gem 'nifty-generators'
 gem 'jquery-rails' 
-
+gem 'rspec'
+gem 'rspec-rails'
 # Use unicorn as the web server
 # gem 'unicorn'
 
