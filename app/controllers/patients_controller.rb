@@ -59,6 +59,10 @@ class PatientsController < ApplicationController
   # GET /patients/new
   # GET /patients/new.xml
   def new
+    @facilities_list  = Patient.all(:select=>"DISTINCT facility");
+    @doctors_list = Patient.all(:select=>"DISTINCT attending_md");
+    
+    
     @patient = Patient.new
 
     respond_to do |format|

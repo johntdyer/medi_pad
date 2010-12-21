@@ -27,7 +27,7 @@ class CalendarController < ApplicationController
                      tmpVar = [
                               "<img src=\"../images/examples_support/details_open.png\">",
                               record[:patient_name],
-                              record[:date_last_added].strftime("%m/%d/%Y"),
+                              record[:created_at].strftime("%m/%d/%Y"),
                               record[:attending_md],
                               record[:facility].capitalize,
                               record[:id]
@@ -37,6 +37,7 @@ class CalendarController < ApplicationController
                             #   efficient way of going about this....?
                            
                             tmpVar.push(get_todays_charges(record[:id],time_stamp.to_s).count)
+                            tmpVar.push(get_todays_unbilled_charges(record[:id],time_stamp.to_s).count)
 
                  records.push(tmpVar)
                end
@@ -86,12 +87,22 @@ class CalendarController < ApplicationController
 
   private 
 
-    def get_todays_charges(patient_id,date)
-      Charge.where({
+    def get_todays_charges(patient_id,date,recorded=true)
+      opts = {
           :created_at.lt => Time.parse(date).midnight+1.day, 
           :created_at.gt => Time.parse(date).midnight,
           :patient_id.eq=>patient_id
-          })
+          } 
+      Charge.where(opts)
+    end  
+    
+    def get_todays_unbilled_charges(patient_id,date)
+      opts = {
+          :created_at.lt => Time.parse(date).midnight+1.day, 
+          :created_at.gt => Time.parse(date).midnight,
+          :patient_id.eq=>patient_id,
+          :recorded.eq=>false
+          } 
+      Charge.where(opts)
     end
-
 end

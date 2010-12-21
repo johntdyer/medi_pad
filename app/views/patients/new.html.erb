@@ -3,11 +3,10 @@
 <%= form_for(@patient) do |f| %>
   <%= f.error_messages %>
     
-    <% @facilities = Patient.all(:select=>"DISTINCT facility"); %>
 
     <div data-role="fieldcontain">
       <%= f.label :facility %>
-      <%= f.collection_select(:facility, @facilities, :facility, :facility, { :include_blank => true },:style=>"width:200px;" ) %>
+      <%= f.collection_select(:facility, @facilities_list, :facility, :facility, { :include_blank => true },:style=>"width:200px;" ) %>
     </div>
 
     <div data-role="fieldcontain">
@@ -24,14 +23,16 @@
         <%= f.text_field :fin %>
       </div>
       
-      <div data-role="fieldcontain">
-      <%= f.label :unit %>
-      <%= f.text_field :unit %>
-    </div>
+      <!-- <div data-role="fieldcontain">
+              <%= f.label :unit %>
+              <%= f.text_field :unit %>
+            </div> -->
  
     <div data-role="fieldcontain">
-      <%= f.label :age %>
-      <%= f.text_field :age %>
+      <%= f.label :age %>  
+      
+      <%range = 0..100%>
+      <%=select("post", "person_id",range, { :include_blank => true })%>
     </div>
     <div data-role="fieldcontain">
       <%= f.label :sex %>
@@ -46,7 +47,7 @@
     <div data-role="fieldcontain">
 
       <%= f.label :attending_md %>
-      <%= f.text_field :attending_md %>
+      <%= f.collection_select(:attending_md, @doctors_list, :attending_md, :attending_md, { :include_blank => true },:style=>"width:200px;" ) %>
     </div>
 
     <div data-role="fieldcontain">

@@ -19,8 +19,8 @@
              <%  cookies[:first_name] = current_user.first_name %>
              <li> <%= link_to "Patients", '/patients?location_search=true&id=ALTAMONTE'  %> </li>
              <% if supported_browser %>
-              <li> <%= link_to "Calendar", charges_path %> </li>
-              <li> <%= link_to "Reports", charges_path %> </li>
+              <li> <%= link_to "Calendar", calendar_path, {"rel"=>"external"} %> </li>
+              <li> <%= link_to "Reports", charges_path, {"rel"=>"external"}  %> </li>
              <% end -%>
              <li> <%= link_to 'Profile', '/users/edit'  %> </li>
              <li> <%= link_to "Admin", {:controller => "admin", :action => "index"} if current_user.is_admin %> </li>
