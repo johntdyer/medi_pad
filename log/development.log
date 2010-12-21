@@ -1,0 +1,420 @@
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at Tue Dec 21 07:04:29 -0500 2010
+  Processing by Devise::SessionsController#new as */*
+Completed   in 25ms
+
+NoMethodError (undefined method `is_billing=' for #<User:0x103ce67c0>):
+  activemodel (3.0.1) lib/active_model/attribute_methods.rb:364:in `method_missing'
+  activerecord (3.0.1) lib/active_record/attribute_methods.rb:46:in `method_missing'
+  vendor/plugins/default_value_for/init.rb:89:in `__send__'
+  vendor/plugins/default_value_for/init.rb:89:in `initialize'
+  activesupport (3.0.1) lib/active_support/ordered_hash.rb:126:in `each'
+  activesupport (3.0.1) lib/active_support/ordered_hash.rb:126:in `each'
+  vendor/plugins/default_value_for/init.rb:87:in `initialize'
+  activerecord (3.0.1) lib/active_record/base.rb:1413:in `initialize_without_defaults'
+  vendor/plugins/default_value_for/init.rb:75:in `initialize'
+  devise (1.1.3) lib/devise/controllers/internal_helpers.rb:63:in `new'
+  devise (1.1.3) lib/devise/controllers/internal_helpers.rb:63:in `build_resource'
+  devise (1.1.3) app/controllers/devise/sessions_controller.rb:7:in `new'
+  actionpack (3.0.1) lib/action_controller/metal/implicit_render.rb:4:in `send_action'
+  actionpack (3.0.1) lib/action_controller/metal/implicit_render.rb:4:in `send_action'
+  actionpack (3.0.1) lib/abstract_controller/base.rb:150:in `process_action'
+  actionpack (3.0.1) lib/action_controller/metal/rendering.rb:11:in `process_action'
+  actionpack (3.0.1) lib/abstract_controller/callbacks.rb:18:in `process_action'
+  activesupport (3.0.1) lib/active_support/callbacks.rb:440:in `_run__1010667671__process_action__943997142__callbacks'
+  activesupport (3.0.1) lib/active_support/callbacks.rb:409:in `send'
+  activesupport (3.0.1) lib/active_support/callbacks.rb:409:in `_run_process_action_callbacks'
+  activesupport (3.0.1) lib/active_support/callbacks.rb:93:in `send'
+  activesupport (3.0.1) lib/active_support/callbacks.rb:93:in `run_callbacks'
+  actionpack (3.0.1) lib/abstract_controller/callbacks.rb:17:in `process_action'
+  actionpack (3.0.1) lib/action_controller/metal/instrumentation.rb:30:in `process_action'
+  activesupport (3.0.1) lib/active_support/notifications.rb:52:in `instrument'
+  activesupport (3.0.1) lib/active_support/notifications/instrumenter.rb:21:in `instrument'
+  activesupport (3.0.1) lib/active_support/notifications.rb:52:in `instrument'
+  actionpack (3.0.1) lib/action_controller/metal/instrumentation.rb:29:in `process_action'
+  actionpack (3.0.1) lib/action_controller/metal/rescue.rb:17:in `process_action'
+  actionpack (3.0.1) lib/abstract_controller/base.rb:119:in `process'
+  actionpack (3.0.1) lib/abstract_controller/rendering.rb:40:in `process'
+  actionpack (3.0.1) lib/action_controller/metal.rb:133:in `dispatch'
+  actionpack (3.0.1) lib/action_controller/metal/rack_delegation.rb:14:in `dispatch'
+  actionpack (3.0.1) lib/action_controller/metal.rb:173:in `action'
+  actionpack (3.0.1) lib/action_dispatch/routing/route_set.rb:62:in `call'
+  actionpack (3.0.1) lib/action_dispatch/routing/route_set.rb:62:in `dispatch'
+  actionpack (3.0.1) lib/action_dispatch/routing/route_set.rb:27:in `call'
+  actionpack (3.0.1) lib/action_dispatch/routing/mapper.rb:34:in `call'
+  rack-mount (0.6.13) lib/rack/mount/route_set.rb:148:in `call'
+  rack-mount (0.6.13) lib/rack/mount/code_generation.rb:93:in `recognize'
+  rack-mount (0.6.13) lib/rack/mount/code_generation.rb:68:in `optimized_each'
+  rack-mount (0.6.13) lib/rack/mount/code_generation.rb:92:in `recognize'
+  rack-mount (0.6.13) lib/rack/mount/route_set.rb:139:in `call'
+  actionpack (3.0.1) lib/action_dispatch/routing/route_set.rb:492:in `call'
+  oa-core (0.1.6) lib/omniauth/strategy.rb:50:in `call_app!'
+  oa-core (0.1.6) lib/omniauth/strategy.rb:32:in `call!'
+  oa-core (0.1.6) lib/omniauth/strategy.rb:19:in `call'
+  oa-core (0.1.6) lib/omniauth/builder.rb:30:in `call'
+  warden (0.10.7) lib/warden/manager.rb:35:in `call'
+  warden (0.10.7) lib/warden/manager.rb:34:in `catch'
+  warden (0.10.7) lib/warden/manager.rb:34:in `call'
+  actionpack (3.0.1) lib/action_dispatch/middleware/best_standards_support.rb:17:in `call'
+  actionpack (3.0.1) lib/action_dispatch/middleware/head.rb:14:in `call'
+  rack (1.2.1) lib/rack/methodoverride.rb:24:in `call'
+  actionpack (3.0.1) lib/action_dispatch/middleware/params_parser.rb:21:in `call'
+  actionpack (3.0.1) lib/action_dispatch/middleware/flash.rb:182:in `call'
+  actionpack (3.0.1) lib/action_dispatch/middleware/session/abstract_store.rb:149:in `call'
+  actionpack (3.0.1) lib/action_dispatch/middleware/cookies.rb:287:in `call'
+  activerecord (3.0.1) lib/active_record/query_cache.rb:32:in `call'
+  activerecord (3.0.1) lib/active_record/connection_adapters/abstract/query_cache.rb:28:in `cache'
+  activerecord (3.0.1) lib/active_record/query_cache.rb:12:in `cache'
+  activerecord (3.0.1) lib/active_record/query_cache.rb:31:in `call'
+  activerecord (3.0.1) lib/active_record/connection_adapters/abstract/connection_pool.rb:355:in `call'
+  actionpack (3.0.1) lib/action_dispatch/middleware/callbacks.rb:46:in `call'
+  activesupport (3.0.1) lib/active_support/callbacks.rb:415:in `_run_call_callbacks'
+  actionpack (3.0.1) lib/action_dispatch/middleware/callbacks.rb:44:in `call'
+  rack (1.2.1) lib/rack/sendfile.rb:107:in `call'
+  actionpack (3.0.1) lib/action_dispatch/middleware/remote_ip.rb:48:in `call'
+  actionpack (3.0.1) lib/action_dispatch/middleware/show_exceptions.rb:46:in `call'
+  railties (3.0.1) lib/rails/rack/logger.rb:13:in `call'
+  rack (1.2.1) lib/rack/runtime.rb:17:in `call'
+  activesupport (3.0.1) lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  rack (1.2.1) lib/rack/lock.rb:11:in `call'
+  rack (1.2.1) lib/rack/lock.rb:11:in `synchronize'
+  rack (1.2.1) lib/rack/lock.rb:11:in `call'
+  actionpack (3.0.1) lib/action_dispatch/middleware/static.rb:30:in `call'
+  railties (3.0.1) lib/rails/application.rb:168:in `call'
+  railties (3.0.1) lib/rails/application.rb:77:in `send'
+  railties (3.0.1) lib/rails/application.rb:77:in `method_missing'
+  railties (3.0.1) lib/rails/rack/log_tailer.rb:14:in `call'
+  rack (1.2.1) lib/rack/content_length.rb:13:in `call'
+  rack (1.2.1) lib/rack/handler/webrick.rb:52:in `service'
+  /Users/dyer/.rvm/rubies/ree-1.8.7-2010.02/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /Users/dyer/.rvm/rubies/ree-1.8.7-2010.02/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /Users/dyer/.rvm/rubies/ree-1.8.7-2010.02/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /Users/dyer/.rvm/rubies/ree-1.8.7-2010.02/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /Users/dyer/.rvm/rubies/ree-1.8.7-2010.02/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /Users/dyer/.rvm/rubies/ree-1.8.7-2010.02/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /Users/dyer/.rvm/rubies/ree-1.8.7-2010.02/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /Users/dyer/.rvm/rubies/ree-1.8.7-2010.02/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /Users/dyer/.rvm/rubies/ree-1.8.7-2010.02/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /Users/dyer/.rvm/rubies/ree-1.8.7-2010.02/lib/ruby/1.8/webrick/server.rb:82:in `start'
+  rack (1.2.1) lib/rack/handler/webrick.rb:13:in `run'
+  rack (1.2.1) lib/rack/server.rb:213:in `start'
+  railties (3.0.1) lib/rails/commands/server.rb:65:in `start'
+  railties (3.0.1) lib/rails/commands.rb:30
+  railties (3.0.1) lib/rails/commands.rb:27:in `tap'
+  railties (3.0.1) lib/rails/commands.rb:27
+  script/rails:6:in `require'
+  script/rails:6
+
+Rendered /Users/dyer/.rvm/gems/ree-1.8.7-2010.02/gems/actionpack-3.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.erb (0.8ms)
+Rendered /Users/dyer/.rvm/gems/ree-1.8.7-2010.02/gems/actionpack-3.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (984.6ms)
+Rendered /Users/dyer/.rvm/gems/ree-1.8.7-2010.02/gems/actionpack-3.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (1067.7ms)
+DEPRECATION WARNING: Use toplevel init.rb; rails/init.rb is deprecated: /Users/dyer/Dropbox/Development/medi_pad/vendor/plugins/paperclip/rails/init.rb. (called from /Users/dyer/Dropbox/Development/medi_pad/config/environment.rb:5)
+DEPRECATION WARNING: ActionController::Base.cookie_verifier_secret= is deprecated. Please configure it on your application with config.secret_token=. (called from /Users/dyer/Dropbox/Development/medi_pad/config/initializers/cookie_verification_secret.rb:7)
+  [1m[36mSQL (0.7ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.3ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.7ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations"[0m
+Migrating to CreatePatients (20100805000725)
+Migrating to CreateCharges (20100805000806)
+Migrating to CreateProcedures (20100805000918)
+Migrating to CreateDoctors (20100805001234)
+Migrating to AddDoctorsPasswordResetFields (20100816001208)
+Migrating to CreateImports (20100828002004)
+Migrating to AddAttachmentsPatientDataToImport (20100828002456)
+Migrating to CreateSessions (20100829021759)
+Migrating to AddFavoritesToDoctors (20100829210910)
+Migrating to AddRecordedToCharges (20100829221742)
+Migrating to AddFinToCharges (20100829233912)
+Migrating to AddPatientNameToCharges (20100830000211)
+Migrating to AddArchivedToCharge (20100912195730)
+Migrating to AddNoteToCharges (20101004143655)
+Migrating to AddRequiresNoteToProcedures (20101004144222)
+Migrating to AddDischargedToPatients (20101005171326)
+Migrating to AddDateLastAddedToPatients (20101016170845)
+Migrating to CreateNotes (20101017164507)
+Migrating to AddChargeIdToNotes (20101017170951)
+Migrating to AddChargeToPatients (20101029005029)
+Migrating to RemoveArchivedFromCharges (20101029005524)
+Migrating to DeviseCreateUsers (20101031041708)
+Migrating to AddUsernameToUsers (20101031142808)
+Migrating to AddFavoritesToUsers (20101031143914)
+Migrating to AddFirstNameToUsers (20101031144929)
+Migrating to AddLastNameToUsers (20101031144940)
+Migrating to AddConfirmedSentAtToUsers (20101031231906)
+Migrating to AddLockedAtToUsers (20101031231935)
+Migrating to AddIsAdminToUsers (20101031233140)
+Migrating to AddConfirmationTokenToUsers (20101031234341)
+Migrating to AddConfirmedAtToUsers (20101101001333)
+Migrating to AddValidatedToUsers (20101101004122)
+Migrating to AddFailedAttemptsToUsers (20101102180242)
+Migrating to DeviseInvitableAddToUsers (20101107010522)
+Migrating to CreateOptions (20101110165218)
+Migrating to AddOptionsToProcedures (20101110165753)
+Migrating to AddOptionIdToAnatomies (20101110170727)
+Migrating to CreateTypes (20101113223528)
+Migrating to AddTypesToOption (20101113223603)
+Migrating to AddOptionIdToTypes (20101113223641)
+Migrating to AddDescriptionToTypes (20101113225644)
+Migrating to RemoveNameFromTypes (20101113225726)
+Migrating to AddLocationToType (20101115011613)
+Migrating to AddOptionToCharge (20101129002019)
+Migrating to AddTypeToCharge (20101129002046)
+Migrating to AddLocalityToCharge (20101129002110)
+Migrating to AddProcedureTypeToCharge (20101202030727)
+Migrating to RemoveTypeFromCharge (20101202030816)
+Migrating to CreateCalendars (20101208033224)
+  [1m[35mSQL (0.1ms)[0m  select sqlite_version(*)
+  [1m[36mSQL (0.7ms)[0m  [1mCREATE TABLE "calendars" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20101208033224')
+Migrating to AddIsDoctorToUser (20101217183830)
+  [1m[36mSQL (0.5ms)[0m  [1mALTER TABLE "users" ADD "is_doctor" boolean[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20101217183830')
+Migrating to AddIsBillingToUser (20101217183859)
+  [1m[36mSQL (0.4ms)[0m  [1mALTER TABLE "users" ADD "is_billing" boolean[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20101217183859')
+  [1m[36mSQL (0.3ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.5ms)[0m  SELECT "schema_migrations"."version" FROM "schema_migrations"
+  [1m[36mSQL (0.2ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("anatomies")
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("attributes")[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("calendars")
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("charges")[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("doctors")
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_info('index_doctors_on_perishable_token')[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("imports")
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("locations")[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("notes")
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("options")[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("patients")
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("procedures")[0m
+  [1m[35mSQL (0.1ms)[0m  PRAGMA index_list("sessions")
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_info('index_sessions_on_updated_at')[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_info('index_sessions_on_session_id')
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("types")[0m
+  [1m[35mSQL (0.1ms)[0m  PRAGMA index_list("users")
+  [1m[36mSQL (0.1ms)[0m  [1mPRAGMA index_info('index_users_on_invitation_token')[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_info('index_users_on_confirmation_token')
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_info('index_users_on_reset_password_token')[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_info('index_users_on_email')
+DEPRECATION WARNING: Use toplevel init.rb; rails/init.rb is deprecated: /Users/dyer/Dropbox/Development/medi_pad/vendor/plugins/paperclip/rails/init.rb. (called from /Users/dyer/Dropbox/Development/medi_pad/config/environment.rb:5)
+DEPRECATION WARNING: ActionController::Base.cookie_verifier_secret= is deprecated. Please configure it on your application with config.secret_token=. (called from /Users/dyer/Dropbox/Development/medi_pad/config/initializers/cookie_verification_secret.rb:7)
+
+
+Started GET "/" for 127.0.0.1 at Tue Dec 21 07:05:14 -0500 2010
+  Processing by HomeController#index as HTML
+Rendered home/index.html.erb within layouts/home (7.9ms)
+Completed 200 OK in 12ms (Views: 11.5ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at Tue Dec 21 07:05:15 -0500 2010
+  Processing by Devise::SessionsController#new as */*
+Rendered devise/sessions/new.html.erb within layouts/application (4.4ms)
+Completed 200 OK in 71ms (Views: 48.0ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/users/sign_in" for 127.0.0.1 at Tue Dec 21 07:05:20 -0500 2010
+  Processing by Devise::SessionsController#create as */*
+  Parameters: {"authenticity_token"=>"m1ISgdejb/Hrs4l+qspaTqpLcjaKYS+qOpOqKSQjoOU=", "utf8"=>"\342\234\223", "user"=>{"remember_me"=>"0", "username"=>"jdyer", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT "users".* FROM "users" WHERE (username = 'jdyer' OR email = 'jdyer') LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  UPDATE "users" SET "current_sign_in_at" = '2010-12-21 12:05:20.366518', "last_sign_in_at" = '2010-12-02 00:14:42.781856', "sign_in_count" = 36, "updated_at" = '2010-12-21 12:05:20.367172' WHERE ("users"."id" = 18)
+Redirected to http://localhost:3000/calendar
+Completed 302 Found in 120ms
+
+
+Started GET "/calendar" for 127.0.0.1 at Tue Dec 21 07:05:20 -0500 2010
+  Processing by CalendarController#index as */*
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 18) LIMIT 1[0m
+  [1m[35mPatient Load (0.7ms)[0m  SELECT "patients".* FROM "patients" WHERE ("patients"."created_at" < '2010-12-22 05:00:00.000000') AND ("patients"."created_at" > '2010-12-21 05:00:00.000000')
+Rendered calendar/index.html.erb within layouts/calendar (3.3ms)
+Completed 200 OK in 51ms (Views: 7.2ms | ActiveRecord: 2.5ms)
+
+
+Started POST "/users/sign_in" for 127.0.0.1 at Tue Dec 21 07:05:40 -0500 2010
+  Processing by Devise::SessionsController#create as */*
+  Parameters: {"authenticity_token"=>"m1ISgdejb/Hrs4l+qspaTqpLcjaKYS+qOpOqKSQjoOU=", "utf8"=>"\342\234\223", "user"=>{"remember_me"=>"0", "username"=>"jdyer", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 18) LIMIT 1[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 30ms
+
+
+Started GET "/" for 127.0.0.1 at Tue Dec 21 07:05:40 -0500 2010
+  Processing by HomeController#index as */*
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 18) LIMIT 1
+Rendered home/index.html.erb within layouts/home (34.3ms)
+Completed 200 OK in 46ms (Views: 45.3ms | ActiveRecord: 1.7ms)
+
+
+Started GET "/calendar" for 127.0.0.1 at Tue Dec 21 07:05:42 -0500 2010
+  Processing by CalendarController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 18) LIMIT 1[0m
+  [1m[35mPatient Load (0.6ms)[0m  SELECT "patients".* FROM "patients" WHERE ("patients"."created_at" < '2010-12-22 05:00:00.000000') AND ("patients"."created_at" > '2010-12-21 05:00:00.000000')
+Rendered calendar/index.html.erb within layouts/calendar (2.8ms)
+Completed 200 OK in 46ms (Views: 6.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/calendar.json" for 127.0.0.1 at Tue Dec 21 07:05:43 -0500 2010
+  Processing by CalendarController#index as JSON
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 18) LIMIT 1[0m
+  [1m[35mPatient Load (1.0ms)[0m  SELECT "patients".* FROM "patients" WHERE ("patients"."created_at" < '2010-12-22 05:00:00.000000') AND ("patients"."created_at" > '2010-12-21 05:00:00.000000')
+  [1m[36mSQL (0.7ms)[0m  [1mSELECT COUNT(*) AS count_id FROM (SELECT 1 FROM "patients" WHERE ("patients"."created_at" < '2010-12-22 05:00:00.000000') AND ("patients"."created_at" > '2010-12-21 05:00:00.000000')) AS subquery[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) AS count_id FROM (SELECT 1 FROM "patients" WHERE ("patients"."created_at" < '2010-12-22 05:00:00.000000') AND ("patients"."created_at" > '2010-12-21 05:00:00.000000')) AS subquery
+Completed 200 OK in 94ms (Views: 17.2ms | ActiveRecord: 2.9ms)
+
+
+Started GET "/" for 127.0.0.1 at Tue Dec 21 07:05:49 -0500 2010
+  Processing by HomeController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 18) LIMIT 1[0m
+Rendered home/index.html.erb within layouts/home (35.0ms)
+Completed 200 OK in 39ms (Views: 38.5ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/charges" for 127.0.0.1 at Tue Dec 21 07:05:51 -0500 2010
+  Processing by ChargesController#index as HTML
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 18) LIMIT 1
+  [1m[36mCharge Load (0.2ms)[0m  [1mSELECT "charges".* FROM "charges" WHERE ("charges"."recorded" = 'f')[0m
+Rendered charges/_charges.erb (0.0ms)
+Rendered charges/index.html.erb within layouts/charges (8.0ms)
+Completed 200 OK in 55ms (Views: 12.4ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/users/edit" for 127.0.0.1 at Tue Dec 21 07:05:56 -0500 2010
+  Processing by Devise::RegistrationsController#edit as */*
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 18) LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 18) LIMIT 1[0m
+  [1m[35mProcedure Load (0.7ms)[0m  SELECT "procedures".* FROM "procedures" ORDER BY procedure_name
+  [1m[36mProcedure Load (0.7ms)[0m  [1mSELECT "procedures".* FROM "procedures"[0m
+Rendered devise/registrations/edit.html.erb within layouts/application (34.5ms)
+Completed 200 OK in 220ms (Views: 80.5ms | ActiveRecord: 2.1ms)
+
+
+Started GET "/patients?location_search=true&id=ALTAMONTE" for 127.0.0.1 at Tue Dec 21 07:06:04 -0500 2010
+  Processing by PatientsController#index as */*
+  Parameters: {"id"=>"ALTAMONTE", "location_search"=>"true"}
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 18) LIMIT 1
+  [1m[36mPatient Load (38.5ms)[0m  [1mSELECT "patients".* FROM "patients"[0m
+  [1m[35mPatient Load (1.5ms)[0m  SELECT DISTINCT facility FROM "patients"
+  [1m[36mPatient Load (7.3ms)[0m  [1mSELECT "patients".* FROM "patients" WHERE ("patients"."facility" = 'ALTAMONTE') AND ("patients"."discharged" = 'f') ORDER BY patients.room ASC[0m
+  [1m[35mSQL (0.3ms)[0m  SELECT COUNT(*) AS count_id FROM (SELECT 1 FROM "charges" WHERE ("charges".patient_id = 3177)) AS subquery
+  [1m[36mSQL (0.2ms)[0m  [1mSELECT COUNT(*) AS count_id FROM (SELECT 1 FROM "charges" WHERE ("charges".patient_id = 3178)) AS subquery[0m
+  [1m[35mSQL (0.2ms)[0m  SELECT COUNT(*) AS count_id FROM (SELECT 1 FROM "charges" WHERE ("charges".patient_id = 3149)) AS subquery
+  [1m[36mSQL (0.3ms)[0m  [1mSELECT COUNT(*) AS count_id FROM (SELECT 1 FROM "charges" WHERE ("charges".patient_id = 3493)) AS subquery[0m
+  [1m[35mSQL (0.2ms)[0m  SELECT COUNT(*) AS count_id FROM (SELECT 1 FROM "charges" WHERE ("charges".patient_id = 3084)) AS subquery
+  [1m[36mSQL (0.2ms)[0m  [1mSELECT COUNT(*) AS count_id FROM (SELECT 1 FROM "charges" WHERE ("charges".patient_id = 3439)) AS subquery[0m
+  [1m[35mSQL (0.2ms)[0m  SELECT COUNT(*) AS count_id FROM (SELECT 1 FROM "charges" WHERE ("charges".patient_id = 3037)) AS subquery
+  [1m[36mSQL (0.1ms)[0m  [1mSELECT COUNT(*) AS count_id FROM (SELECT 1 FROM "charges" WHERE ("charges".patient_id = 3289)) AS subquery[0m
+  [1m[35mSQL (0.2ms)[0m  SELECT COUNT(*) AS count_id FROM (SELECT 1 FROM "charges" WHERE ("charges".patient_id = 3495)) AS subquery
+  [1m[36mSQL (0.1ms)[0m  [1mSELECT COUNT(*) AS count_id FROM (SELECT 1 FROM "charges" WHERE ("charges".patient_id = 3446)) AS subquery[0m
+  [1m[35mSQL (0.3ms)[0m  SELECT COUNT(*) AS count_id FROM (SELECT 1 FROM "charges" WHERE ("charges".patient_id = 3111)) AS subquery
+  [1m[36mSQL (0.3ms)[0m  [1mSELECT COUNT(*) AS count_id FROM (SELECT 1 FROM "charges" WHERE ("charges".patient_id = 3382)) AS subquery[0m
+  [1m[35mSQL (0.2ms)[0m  SELECT COUNT(*) AS count_id FROM (SELECT 1 FROM "charges" WHERE ("charges".patient_id = 3067)) AS subquery
+  [1m[36mSQL (0.2ms)[0m  [1mSELECT COUNT(*) AS count_id FROM (SELECT 1 FROM "charges" WHERE ("charges".patient_id = 3509)) AS subquery[0m
+  [1m[35mSQL (0.3ms)[0m  SELECT COUNT(*) AS count_id FROM (SELECT 1 FROM "charges" WHERE ("charges".patient_id = 3163)) AS subquery
+  [1m[36mSQL (0.2ms)[0m  [1mSELECT COUNT(*) AS count_id FROM (SELECT 1 FROM "charges" WHERE ("charges".patient_id = 3332)) AS subquery[0m
+  [1m[35mSQL (0.2ms)[0m  SELECT COUNT(*) AS count_id FROM (SELECT 1 FROM "charges" WHERE ("charges".patient_id = 3378)) AS subquery
+  [1m[36mSQL (0.2ms)[0m  [1mSELECT COUNT(*) AS count_id FROM (SELECT 1 FROM "charges" WHERE ("charges".patient_id = 3438)) AS subquery[0m
+  [1m[35mSQL (0.2ms)[0m  SELECT COUNT(*) AS count_id FROM (SELECT 1 FROM "charges" WHERE ("charges".patient_id = 3499)) AS subquery
+  [1m[36mSQL (0.2ms)[0m  [1mSELECT COUNT(*) AS count_id FROM (SELECT 1 FROM "charges" WHERE ("charges".patient_id = 3108)) AS subquery[0m
+  [1m[35mSQL (0.2ms)[0m  SELECT COUNT(*) AS count_id FROM (SELECT 1 FROM "charges" WHERE ("charges".patient_id = 3390)) AS subquery
+  [1m[36mSQL (0.2ms)[0m  [1mSELECT COUNT(*) AS count_id FROM (SELECT 1 FROM "charges" WHERE ("charges".patient_id = 3077)) AS subquery[0m
+  [1m[35mSQL (0.2ms)[0m  SELECT COUNT(*) AS count_id FROM (SELECT 1 FROM "charges" WHERE ("charges".patient_id = 3309)) AS subquery
+  [1m[36mSQL (0.2ms)[0m  [1mSELECT COUNT(*) AS count_id FROM (SELECT 1 FROM "charges" WHERE ("charges".patient_id = 3412)) AS subquery[0m
+  [1m[35mSQL (0.2ms)[0m  SELECT COUNT(*) AS count_id FROM (SELECT 1 FROM "charges" WHERE ("charges".patient_id = 3569)) AS subquery
+  [1m[36mSQL (0.2ms)[0m  [1mSELECT COUNT(*) AS count_id FROM (SELECT 1 FROM "charges" WHERE ("charges".patient_id = 3039)) AS subquery[0m
+  [1m[35mSQL (0.2ms)[0m  SELECT COUNT(*) AS count_id FROM (SELECT 1 FROM "charges" WHERE ("charges".patient_id = 3009)) AS subquery
+  [1m[36mSQL (0.2ms)[0m  [1mSELECT COUNT(*) AS count_id FROM (SELECT 1 FROM "charges" WHERE ("charges".patient_id = 3568)) AS subquery[0m
+  [1m[35mSQL (0.2ms)[0m  SELECT COUNT(*) AS count_id FROM (SELECT 1 FROM "charges" WHERE ("charges".patient_id = 3442)) AS subquery
+  [1m[36mSQL (0.2ms)[0m  [1mSELECT COUNT(*) AS count_id FROM (SELECT 1 FROM "charges" WHERE ("charges".patient_id = 3175)) AS subquery[0m
+  [1m[35mSQL (0.3ms)[0m  SELECT COUNT(*) AS count_id FROM (SELECT 1 FROM "charges" WHERE ("charges".patient_id = 3176)) AS subquery
+  [1m[36mSQL (0.2ms)[0m  [1mSELECT COUNT(*) AS count_id FROM (SELECT 1 FROM "charges" WHERE ("charges".patient_id = 3282)) AS subquery[0m
+  [1m[35mSQL (0.2ms)[0m  SELECT COUNT(*) AS count_id FROM (SELECT 1 FROM "charges" WHERE ("charges".patient_id = 3105)) AS subquery
+  [1m[36mSQL (0.2ms)[0m  [1mSELECT COUNT(*) AS count_id FROM (SELECT 1 FROM "charges" WHERE ("charges".patient_id = 3317)) AS subquery[0m
+  [1m[35mSQL (0.3ms)[0m  SELECT COUNT(*) AS count_id FROM (SELECT 1 FROM "charges" WHERE ("charges".patient_id = 3042)) AS subquery
+  [1m[36mSQL (0.2ms)[0m  [1mSELECT COUNT(*) AS count_id FROM (SELECT 1 FROM "charges" WHERE ("charges".patient_id = 3513)) AS subquery[0m
+  [1m[35mSQL (0.3ms)[0m  SELECT COUNT(*) AS count_id FROM (SELECT 1 FROM "charges" WHERE ("charges".patient_id = 3303)) AS subquery
+  [1m[36mSQL (0.3ms)[0m  [1mSELECT COUNT(*) AS count_id FROM (SELECT 1 FROM "charges" WHERE ("charges".patient_id = 3125)) AS subquery[0m
+  [1m[35mSQL (0.2ms)[0m  SELECT COUNT(*) AS count_id FROM (SELECT 1 FROM "charges" WHERE ("charges".patient_id = 3304)) AS subquery
+  [1m[36mSQL (0.2ms)[0m  [1mSELECT COUNT(*) AS count_id FROM (SELECT 1 FROM "charges" WHERE ("charges".patient_id = 3241)) AS subquery[0m
+  [1m[35mSQL (0.2ms)[0m  SELECT COUNT(*) AS count_id FROM (SELECT 1 FROM "charges" WHERE ("charges".patient_id = 3356)) AS subquery
+  [1m[36mSQL (0.2ms)[0m  [1mSELECT COUNT(*) AS count_id FROM (SELECT 1 FROM "charges" WHERE ("charges".patient_id = 3025)) AS subquery[0m
+  [1m[35mSQL (0.2ms)[0m  SELECT COUNT(*) AS count_id FROM (SELECT 1 FROM "charges" WHERE ("charges".patient_id = 3258)) AS subquery
+  [1m[36mSQL (0.2ms)[0m  [1mSELECT COUNT(*) AS count_id FROM (SELECT 1 FROM "charges" WHERE ("charges".patient_id = 3286)) AS subquery[0m
+  [1m[35mSQL (0.2ms)[0m  SELECT COUNT(*) AS count_id FROM (SELECT 1 FROM "charges" WHERE ("charges".patient_id = 3104)) AS subquery
+  [1m[36mSQL (0.2ms)[0m  [1mSELECT COUNT(*) AS count_id FROM (SELECT 1 FROM "charges" WHERE ("charges".patient_id = 3406)) AS subquery[0m
+  [1m[35mSQL (0.3ms)[0m  SELECT COUNT(*) AS count_id FROM (SELECT 1 FROM "charges" WHERE ("charges".patient_id = 3368)) AS subquery
+  [1m[36mSQL (0.3ms)[0m  [1mSELECT COUNT(*) AS count_id FROM (SELECT 1 FROM "charges" WHERE ("charges".patient_id = 3092)) AS subquery[0m
+  [1m[35mSQL (0.2ms)[0m  SELECT COUNT(*) AS count_id FROM (SELECT 1 FROM "charges" WHERE ("charges".patient_id = 3171)) AS subquery
+  [1m[36mSQL (0.3ms)[0m  [1mSELECT COUNT(*) AS count_id FROM (SELECT 1 FROM "charges" WHERE ("charges".patient_id = 3421)) AS subquery[0m
+  [1m[35mSQL (0.2ms)[0m  SELECT COUNT(*) AS count_id FROM (SELECT 1 FROM "charges" WHERE ("charges".patient_id = 3327)) AS subquery
+  [1m[36mSQL (0.2ms)[0m  [1mSELECT COUNT(*) AS count_id FROM (SELECT 1 FROM "charges" WHERE ("charges".patient_id = 3132)) AS subquery[0m
+  [1m[35mSQL (0.2ms)[0m  SELECT COUNT(*) AS count_id FROM (SELECT 1 FROM "charges" WHERE ("charges".patient_id = 3100)) AS subquery
+  [1m[36mSQL (0.3ms)[0m  [1mSELECT COUNT(*) AS count_id FROM (SELECT 1 FROM "charges" WHERE ("charges".patient_id = 3448)) AS subquery[0m
+  [1m[35mSQL (0.3ms)[0m  SELECT COUNT(*) AS count_id FROM (SELECT 1 FROM "charges" WHERE ("charges".patient_id = 3490)) AS subquery
+  [1m[36mSQL (0.3ms)[0m  [1mSELECT COUNT(*) AS count_id FROM (SELECT 1 FROM "charges" WHERE ("charges".patient_id = 3355)) AS subquery[0m
+  [1m[35mSQL (0.2ms)[0m  SELECT COUNT(*) AS count_id FROM (SELECT 1 FROM "charges" WHERE ("charges".patient_id = 3293)) AS subquery
+  [1m[36mSQL (0.3ms)[0m  [1mSELECT COUNT(*) AS count_id FROM (SELECT 1 FROM "charges" WHERE ("charges".patient_id = 3418)) AS subquery[0m
+  [1m[35mSQL (0.3ms)[0m  SELECT COUNT(*) AS count_id FROM (SELECT 1 FROM "charges" WHERE ("charges".patient_id = 3062)) AS subquery
+  [1m[36mSQL (0.2ms)[0m  [1mSELECT COUNT(*) AS count_id FROM (SELECT 1 FROM "charges" WHERE ("charges".patient_id = 3297)) AS subquery[0m
+  [1m[35mSQL (0.3ms)[0m  SELECT COUNT(*) AS count_id FROM (SELECT 1 FROM "charges" WHERE ("charges".patient_id = 3454)) AS subquery
+  [1m[36mSQL (0.2ms)[0m  [1mSELECT COUNT(*) AS count_id FROM (SELECT 1 FROM "charges" WHERE ("charges".patient_id = 3127)) AS subquery[0m
+  [1m[35mSQL (0.2ms)[0m  SELECT COUNT(*) AS count_id FROM (SELECT 1 FROM "charges" WHERE ("charges".patient_id = 3278)) AS subquery
+  [1m[36mSQL (0.2ms)[0m  [1mSELECT COUNT(*) AS count_id FROM (SELECT 1 FROM "charges" WHERE ("charges".patient_id = 3408)) AS subquery[0m
+  [1m[35mSQL (0.2ms)[0m  SELECT COUNT(*) AS count_id FROM (SELECT 1 FROM "charges" WHERE ("charges".patient_id = 3434)) AS subquery
+  [1m[36mSQL (0.2ms)[0m  [1mSELECT COUNT(*) AS count_id FROM (SELECT 1 FROM "charges" WHERE ("charges".patient_id = 3559)) AS subquery[0m
+  [1m[35mSQL (0.2ms)[0m  SELECT COUNT(*) AS count_id FROM (SELECT 1 FROM "charges" WHERE ("charges".patient_id = 3228)) AS subquery
+  [1m[36mSQL (0.3ms)[0m  [1mSELECT COUNT(*) AS count_id FROM (SELECT 1 FROM "charges" WHERE ("charges".patient_id = 3057)) AS subquery[0m
+  [1m[35mSQL (0.2ms)[0m  SELECT COUNT(*) AS count_id FROM (SELECT 1 FROM "charges" WHERE ("charges".patient_id = 3316)) AS subquery
+  [1m[36mSQL (0.2ms)[0m  [1mSELECT COUNT(*) AS count_id FROM (SELECT 1 FROM "charges" WHERE ("charges".patient_id = 3118)) AS subquery[0m
+  [1m[35mSQL (0.2ms)[0m  SELECT COUNT(*) AS count_id FROM (SELECT 1 FROM "charges" WHERE ("charges".patient_id = 3541)) AS subquery
+  [1m[36mSQL (0.3ms)[0m  [1mSELECT COUNT(*) AS count_id FROM (SELECT 1 FROM "charges" WHERE ("charges".patient_id = 3002)) AS subquery[0m
+  [1m[35mSQL (0.2ms)[0m  SELECT COUNT(*) AS count_id FROM (SELECT 1 FROM "charges" WHERE ("charges".patient_id = 3492)) AS subquery
+  [1m[36mSQL (0.2ms)[0m  [1mSELECT COUNT(*) AS count_id FROM (SELECT 1 FROM "charges" WHERE ("charges".patient_id = 3437)) AS subquery[0m
+  [1m[35mSQL (0.2ms)[0m  SELECT COUNT(*) AS count_id FROM (SELECT 1 FROM "charges" WHERE ("charges".patient_id = 3551)) AS subquery
+  [1m[36mSQL (0.2ms)[0m  [1mSELECT COUNT(*) AS count_id FROM (SELECT 1 FROM "charges" WHERE ("charges".patient_id = 3196)) AS subquery[0m
+  [1m[35mSQL (0.2ms)[0m  SELECT COUNT(*) AS count_id FROM (SELECT 1 FROM "charges" WHERE ("charges".patient_id = 3096)) AS subquery
+  [1m[36mSQL (0.2ms)[0m  [1mSELECT COUNT(*) AS count_id FROM (SELECT 1 FROM "charges" WHERE ("charges".patient_id = 3535)) AS subquery[0m
+  [1m[35mSQL (0.2ms)[0m  SELECT COUNT(*) AS count_id FROM (SELECT 1 FROM "charges" WHERE ("charges".patient_id = 3550)) AS subquery
+  [1m[36mSQL (0.3ms)[0m  [1mSELECT COUNT(*) AS count_id FROM (SELECT 1 FROM "charges" WHERE ("charges".patient_id = 3148)) AS subquery[0m
+  [1m[35mSQL (0.3ms)[0m  SELECT COUNT(*) AS count_id FROM (SELECT 1 FROM "charges" WHERE ("charges".patient_id = 3152)) AS subquery
+  [1m[36mSQL (0.3ms)[0m  [1mSELECT COUNT(*) AS count_id FROM (SELECT 1 FROM "charges" WHERE ("charges".patient_id = 3496)) AS subquery[0m
+  [1m[35mSQL (0.3ms)[0m  SELECT COUNT(*) AS count_id FROM (SELECT 1 FROM "charges" WHERE ("charges".patient_id = 3344)) AS subquery
+  [1m[36mSQL (0.3ms)[0m  [1mSELECT COUNT(*) AS count_id FROM (SELECT 1 FROM "charges" WHERE ("charges".patient_id = 3143)) AS subquery[0m
+  [1m[35mSQL (0.2ms)[0m  SELECT COUNT(*) AS count_id FROM (SELECT 1 FROM "charges" WHERE ("charges".patient_id = 3379)) AS subquery
+  [1m[36mSQL (0.2ms)[0m  [1mSELECT COUNT(*) AS count_id FROM (SELECT 1 FROM "charges" WHERE ("charges".patient_id = 3098)) AS subquery[0m
+  [1m[35mSQL (0.2ms)[0m  SELECT COUNT(*) AS count_id FROM (SELECT 1 FROM "charges" WHERE ("charges".patient_id = 3413)) AS subquery
+  [1m[36mSQL (0.3ms)[0m  [1mSELECT COUNT(*) AS count_id FROM (SELECT 1 FROM "charges" WHERE ("charges".patient_id = 3543)) AS subquery[0m
+  [1m[35mSQL (0.2ms)[0m  SELECT COUNT(*) AS count_id FROM (SELECT 1 FROM "charges" WHERE ("charges".patient_id = 3450)) AS subquery
+  [1m[36mSQL (0.2ms)[0m  [1mSELECT COUNT(*) AS count_id FROM (SELECT 1 FROM "charges" WHERE ("charges".patient_id = 3034)) AS subquery[0m
+  [1m[35mSQL (0.2ms)[0m  SELECT COUNT(*) AS count_id FROM (SELECT 1 FROM "charges" WHERE ("charges".patient_id = 3396)) AS subquery
+  [1m[36mSQL (0.3ms)[0m  [1mSELECT COUNT(*) AS count_id FROM (SELECT 1 FROM "charges" WHERE ("charges".patient_id = 3141)) AS subquery[0m
+  [1m[35mSQL (0.2ms)[0m  SELECT COUNT(*) AS count_id FROM (SELECT 1 FROM "charges" WHERE ("charges".patient_id = 3043)) AS subquery
+  [1m[36mSQL (0.2ms)[0m  [1mSELECT COUNT(*) AS count_id FROM (SELECT 1 FROM "charges" WHERE ("charges".patient_id = 3109)) AS subquery[0m
+  [1m[35mSQL (0.2ms)[0m  SELECT COUNT(*) AS count_id FROM (SELECT 1 FROM "charges" WHERE ("charges".patient_id = 3324)) AS subquery
+  [1m[36mSQL (0.1ms)[0m  [1mSELECT COUNT(*) AS count_id FROM (SELECT 1 FROM "charges" WHERE ("charges".patient_id = 3049)) AS subquery[0m
+  [1m[35mSQL (0.4ms)[0m  SELECT COUNT(*) AS count_id FROM (SELECT 1 FROM "charges" WHERE ("charges".patient_id = 3562)) AS subquery
+  [1m[36mSQL (0.2ms)[0m  [1mSELECT COUNT(*) AS count_id FROM (SELECT 1 FROM "charges" WHERE ("charges".patient_id = 3540)) AS subquery[0m
+  [1m[35mSQL (0.2ms)[0m  SELECT COUNT(*) AS count_id FROM (SELECT 1 FROM "charges" WHERE ("charges".patient_id = 3361)) AS subquery
+  [1m[36mSQL (0.3ms)[0m  [1mSELECT COUNT(*) AS count_id FROM (SELECT 1 FROM "charges" WHERE ("charges".patient_id = 3107)) AS subquery[0m
+  [1m[35mSQL (0.2ms)[0m  SELECT COUNT(*) AS count_id FROM (SELECT 1 FROM "charges" WHERE ("charges".patient_id = 3319)) AS subquery
+  [1m[36mSQL (0.2ms)[0m  [1mSELECT COUNT(*) AS count_id FROM (SELECT 1 FROM "charges" WHERE ("charges".patient_id = 3338)) AS subquery[0m
+  [1m[35mSQL (0.2ms)[0m  SELECT COUNT(*) AS count_id FROM (SELECT 1 FROM "charges" WHERE ("charges".patient_id = 3349)) AS subquery
+  [1m[36mSQL (0.2ms)[0m  [1mSELECT COUNT(*) AS count_id FROM (SELECT 1 FROM "charges" WHERE ("charges".patient_id = 3281)) AS subquery[0m
+  [1m[35mSQL (0.2ms)[0m  SELECT COUNT(*) AS count_id FROM (SELECT 1 FROM "charges" WHERE ("charges".patient_id = 3170)) AS subquery
+  [1m[36mSQL (0.2ms)[0m  [1mSELECT COUNT(*) AS count_id FROM (SELECT 1 FROM "charges" WHERE ("charges".patient_id = 3419)) AS subquery[0m
+  [1m[35mSQL (0.2ms)[0m  SELECT COUNT(*) AS count_id FROM (SELECT 1 FROM "charges" WHERE ("charges".patient_id = 3538)) AS subquery
+  [1m[36mSQL (0.2ms)[0m  [1mSELECT COUNT(*) AS count_id FROM (SELECT 1 FROM "charges" WHERE ("charges".patient_id = 3389)) AS subquery[0m
+  [1m[35mSQL (0.2ms)[0m  SELECT COUNT(*) AS count_id FROM (SELECT 1 FROM "charges" WHERE ("charges".patient_id = 3343)) AS subquery
+  [1m[36mSQL (0.2ms)[0m  [1mSELECT COUNT(*) AS count_id FROM (SELECT 1 FROM "charges" WHERE ("charges".patient_id = 3093)) AS subquery[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT DISTINCT facility FROM "patients"
+Rendered patients/index.html.erb within layouts/patients (875.3ms)
+Completed 200 OK in 1165ms (Views: 855.8ms | ActiveRecord: 72.3ms)
