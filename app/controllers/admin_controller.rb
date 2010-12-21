@@ -79,23 +79,23 @@ class AdminController < ApplicationController
           @user.save
           redirect_to :action => 'index'
        end
-          
 
-# Send an invite 
- def invite
-    User.new(:email=>params[:email], :first_name=>params[:first_name], :last_name=>params[:last_name]).invite!    
-    respond_to do |format|
-       format.html { redirect_to('/home', :notice => 'Invtes was sent') }
-    end
- end
+
+       # Send an invite 
+       def invite
+         User.new(:email=>params[:email], :first_name=>params[:first_name], :last_name=>params[:last_name]).invite!    
+         respond_to do |format|
+          format.html { redirect_to('/home', :notice => 'Invtes was sent') }
+         end
+      end
 
  private
  
-  def undischarge_patient(patient)
-    if patient.discharged 
-      logger.info("\n\n\n \t\t #{patient.patient_name} was discharged, re-admitting her \n\n\n")
-      patient.update_attributes(:discharged=>false,:patient_been_seen=>false) 
-   end 
-end
+    def undischarge_patient(patient)
+      if patient.discharged 
+        logger.info("\n\n\n \t\t #{patient.patient_name} was discharged, re-admitting her \n\n\n")
+        patient.update_attributes(:discharged=>false,:patient_been_seen=>false) 
+      end 
+    end
 
 end

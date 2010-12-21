@@ -1,43 +1,116 @@
-<table class='stripeMe' border=1 style="width: 400px; margin-left: 10px;">
-	<caption>Charges</caption>
-  <%= link_to "Home", "/home"  %> 
- 
-  <thead>
-    <tr class='odd'>
-    <th>Patient</th>
-    <th>Procedure name</th>
-    <th>Doctor</th>
-    <th>Addtnl Data</th>
-    <th>Date</th>
-  </tr>
-</thead>
-<tbody>
-<% @charges.each do |charge| %>
-  <tr>
-    <td><%=h charge.patient_name %></td>
-      <% get_info(charge.procedure_code).each do |i| %>
-    <td><%=	i.procedure_name %></td>
-      <%end %>    
-    <td><%=h charge.doctor %></td>
-    <% if charge.note %>
-    <td>
-      <%=h charge.note.count  %>
-      <%=h charge.note.parameter  %>
-      <%=h charge.note.descriptive_data %>
-    </td> 
-    <% else %>
-    <td/>
-    <% end %>
-    <td><%=h charge.created_at.strftime("%m/%d/%Y  %I:%M%p")  %></td>
+<%= stylesheet_link_tag "jquery.ibutton" %>  
+<%= stylesheet_link_tag "jquery-ui.css" %>  
+<%= javascript_include_tag "jquery-ui-min.js" %>
+<%= javascript_include_tag "jquery.ibutton", :cache => true %>
+<%= javascript_include_tag "reports_table.js" %>
 
-<!--
-    <td><%= link_to image_tag("find.png", :border=>0),charge %></td>
-    <td><%= link_to image_tag("edit.png", :border=>0),edit_charge_path(charge) %></td>
-    <td><%= link_to image_tag("delete.png", :border=>0),charge, :confirm => 'Are you sure?', :method => :delete %></td>
--->
+<%= stylesheet_link_tag 'tabs' %>
 
-  </tr>
-<% end %>
-</table>
+<style type="text/css" media="screen">
+  body{
+    font-family:Arial, Helvetica, sans-serif;
+    font-size:15pt;
+  }
+  #tabnav ul {
+    border-spacing: 3px 0px;
+    border-collapse: collapse;
+    list-style: none;
+    margin: 0px;
+    padding: 0px;
+    border: none;
+  }
+  #tabnav ul li {
+    margin: 0px;
+    padding: 0px;
+  }
+  ul li a {
+    font-size: 2em;
+    border-bottom: 1px dashed #C39C4E;
+    padding: 1px 0px 6px 5px;
+    text-decoration: none;
+    color: #666666;
+  }
+  .main_menu{
+    position: absolute;
+    left: 10px;
+    top: -2px;
+  }
+  
+  #search_reports{
+    font-size: 28px; 
+    width: 15em;
+  }
+  #search_submit_icon{
+    height: 40px;
+  }
+  .time_bar{
+    position:absolute;
+    top:90px;
+    left: 30px;
+  }
+  #simple{
+    position:absolute;
+    left: 450px;
+    top: 50px;
+  }
 
-</tbody>
+  div#reports {
+  border-width: 0px;
+  left: 20px;
+  position: absolute;
+  top: 30px;
+  }
+  
+</style>
+
+<ul id="tabnav" class="main_menu">
+  <li><%= link_to "Home", :controller => "home", :action => "index"%> </li>
+  <li><%= link_to "Logout", '/users/sign_out' %></li>
+</ul>
+
+        <div id="reports"> 
+          <table>
+            <%= form_tag reports_path, :method => 'GET' do %>  
+              <%= text_field_tag :search_name, params[:search_name],:id=>"search_reports"%>
+              <%= image_submit_tag("search_submit_icon.gif",:id=>"search_submit_icon")%>
+            <% end %>
+            <tr>
+              <td>
+                
+                <table class='stripeMe'>
+                  <caption>Patient Charges</caption> 
+                     <ul id="tabnav" class="time_bar">
+                       <li><%= link_to "Hour", :controller => "charges", :action => "index", :time => "hour"%></li>
+                       <li><%= link_to "Day", :controller => "charges", :action => "index", :time => "day"%></li>
+                       <li><%= link_to "Week", :controller => "charges", :action => "index", :time => "week"%></li>
+                       <li><%= link_to "Month", :controller => "charges", :action => "index", :time => "month"%></li>
+                       <li><%= link_to "Year", :controller => "charges", :action => "index", :time => "year"%></li>
+                    </ul>  
+                    
+                    <div id="simple" class="group">
+                      <div class="row">
+                        <input type="checkbox" id="ex02" checked="checked" />
+                        Show Only Un-billed
+                      </div>
+                    </div>
+
+                  <thead>
+                    <tr class='odd'>
+                      <th><%= sort_link @search,:paitent_name,"Patient Name" %></th>
+                      <th><%= sort_link @search,:procedure_name,"Procedure Type" %></th>
+                      <th><%= sort_link @search,:procedure_code,"Parameters" %></th>
+                      <th><%= sort_link @search,:doctor,"Doctor" %></th>
+                      <th><%= sort_link @search,:fin,"FIN" %></th>
+                      <th><%= sort_link @search,:created_at,"Date Charged"%></th>
+                      <th><%= sort_link @search,:recorded,"Billed?"%></th>
+                      <th></th>
+                    </tr>
+                  </thead>
+
+                    <%= render :partial => "charges", :collection => @charges %>
+
+                  </table>
+                </td>
+              </tr>
+            </table>
+          </div>

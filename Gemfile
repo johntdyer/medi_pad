@@ -1,6 +1,6 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.0.0'
+gem 'rails', '3.0.1'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
@@ -21,7 +21,9 @@ gem 'devise', '1.1.3'
 gem 'devise_invitable'
 gem 'omniauth'
 gem 'nifty-generators'
-
+gem 'jquery-rails' 
+gem 'rspec'
+gem 'rspec-rails'
 # Use unicorn as the web server
 # gem 'unicorn'
 

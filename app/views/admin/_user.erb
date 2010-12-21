@@ -1,58 +1,95 @@
 <style type="text/css" media="screen">
-  .validateUsers{
-    margin: 10px 0px 0px 40px;
-    width: 100px;
-    border-width:0px;
-  } 
-  
-  td{
-    border-width:0px;
-  }
+ #dt_example #container{
+   margin:30px;
+ }
+ 
+ a{
+   color:green;
+ }
 
-  #users_heading{
-    font-size: 28px;
-    color: #333333; 
-    margin: 0px 0px 0px 40px;
-    font-family: Arial, Helvetica, sans-serif;
-  }
 </style>
 
-<script type="text/javascript" charset="utf-8"> 
-  $(document).ready(function(){
-    
-    $(".validate_user_button").click(function(){
-      var user_id=$(this).parents().find('.validate_user_button').attr('userId');
-       console.log("@@@=> "+   user_id);
-       $("tr#userTable_"+ user_id).hide();
+<% if current_user.is_admin %>
+  <script type="text/javascript" charset="utf-8"> 
+    $(document).ready(function(){
+      $('[class$="_button"]').click(function(){ 
+        userObj ={}
+        user={}
+          userObj.id = $(this).parent().parent().attr("id").split("_")[1];
+          user.current_value = $(this).attr("class").split("_")[1];
+          user.access_type = "is_"+$(this).attr("class").split("_")[0];
+          
+          userObj.user = user 
 
         $.ajax({
-          type: "POST",
-          url: "/admin/validate",
-          data: "userID="+user_id,
-          success: function(msg){
-            console.info( "Post 200OK \n\t{'Validated user':'"+user_id+"}");
-          }
-        });
-    });
-  })
-</script>
-<% if current_user.is_admin? %>
-    <% if !users.empty? %>
-     <div id="users_heading">Users requiring validation</div>
-    <%end%>
-  <table class="validateUsers">
-    <% users.each do | user | %>
+                  url: "../users/update",
+                  type: "POST",
+                  dataType: "json",
+                  data:  userObj,
+                  complete: function(json) {
+                  },
 
-      <tr id="userTable_<%=user.id%>">
-        <td>  <%= user.first_name %></td>
-        <td>  <%= user.last_name %> </td>
-        <td>  <%= user.username %> </td>
-        <td>  <%= user.email %> </td>
-        <td class="patient_button"><input type="button" userId=<%=user.id%> class="validate_user_button" value="Click to Validate?"/></td>
-      </tr/>
-    <%end%>
- </table> 
- 
- 
- 
-<%end%>
+                  success: function(json) {
+                    var id = user.access_type.split("_")[1]+"_"+userObj.id
+                      
+                    current_color = $.trim($('#'+id+'').css('color'));
+                    if(current_color=='rgb(255, 0, 0)'){
+                      console.log("Set to true");
+                      $('#'+id+'')
+                        .css("color","green")
+                        .text('Enabled')
+                        .attr('class',user.access_type.split("_")[1]+"_true_button");                      
+                      }else{
+                        console.log("Set to false");
+                        $('#'+id+'')
+                            .css("color","red")
+                            .text('Disabled')
+                            .attr('class',user.access_type.split("_")[1]+"_false_button");
+                      }
+                  },
+                  error: function() {
+                    //called when there is an error
+                  }
+                });
+      });
+    });
+  </script>
+<% end %>
+
+  </head>
+  <body id="dt_example">
+    <div id="container">
+      <div class="full_width big">
+        <i>Users</i>
+      </div>
+      <div id="dynamic">
+        <table cellpadding="0" cellspacing="0" border="0" class="display" id="example">
+          <thead>
+            <tr>
+                <th width="20%">Name:</th>
+                <th width="20%">Username:</th>
+                <th width="20%">Admin:</th>
+                <th width="12%">Billing:</th>
+                <th width="12%">Doctor:</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% if !users.blank? %>
+               <% for u in users %>
+                <tr id="user_<%=u.id%>">
+                  <td><%=u.first_name%> <%=u.last_name%></td>
+                  <td><%=u.username%></td> 
+
+                  <%=raw enabled_or_disabled(u)%>
+
+                </tr>
+               <% end %>
+             <% else %>
+               
+             <% end %>
+          </tbody>
+        </table>
+      </div>
+      <div class="spacer"></div>
+      
+      

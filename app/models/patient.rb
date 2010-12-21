@@ -2,6 +2,9 @@ class Patient < ActiveRecord::Base
  
   default_value_for :patient_been_seen, false
   default_value_for :discharged, false
+  
+  # When we creat a patient we want to set the date to he was last added to NOW
+  default_value_for :date_last_added, DateTime.now
 
 
    

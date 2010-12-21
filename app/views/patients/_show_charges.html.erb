@@ -1,27 +1,13 @@
+<ul data-role="listview">
+  
+<div data-role="listview" data-theme="g">
+    <% get_unrecorded_charges(charges).each do |charge| %>
+          <li>
+            <%= get_info(charge.procedure_code).inspect %><!-- .procedure_name %> -->
+            <%= charge.doctor %>
 
-<table class='charges_list'>
-  <% unless charges.empty? %>
-    <caption id="charges_banner">Charges</caption>
-    <thead>
-      <tr class='show_charges_toggled_area'>
-        <th scope='col' abbr='Procedure'>Charge</th>
-        <th scope='col' abbr='Doctor'>Doctor</th>
-        <th></th>
-      </tr>
-    </thead>
-
-    <%= get_unrecorded_charges(charges).in_groups_of(1,false) do |c| %>
-    <tr class="show_charges_toggled_area">
-        <% c.each do |charge| %>
-            <% get_info(charge.procedure_code).each do |i| %>
-              <td id="charge_code[<%=charge %>]" class="charge"><%=	i.procedure_name %></td>
-            <% end %>            
-              <td id="charge_code[<%=charge.id %>]" class="charge"><%=charge.doctor %></td>       
-              <td><%= link_to(image_tag("delete.png"), charge, :confirm => "Are you sure?", :method => :delete) %>
-         </td>
-        <% end %>
-      </tr>
-      <% end %>
-    <%end%>
-</table>
-
+            <%= link_to 'Home', charge, "data-icon" => "delete", "class" => "ui-btn-left", :method => :delete %>
+            
+          </li>
+<%end%>
+</ul>

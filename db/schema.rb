@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101202030816) do
+ActiveRecord::Schema.define(:version => 20101217183859) do
 
   create_table "anatomies", :force => true do |t|
     t.string   "description"
@@ -21,6 +21,11 @@ ActiveRecord::Schema.define(:version => 20101202030816) do
   end
 
   create_table "attributes", :force => true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "calendars", :force => true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -61,6 +66,14 @@ ActiveRecord::Schema.define(:version => 20101202030816) do
   end
 
   add_index "doctors", ["perishable_token"], :name => "index_doctors_on_perishable_token"
+
+  create_table "events", :force => true do |t|
+    t.string   "name"
+    t.datetime "start_at"
+    t.datetime "end_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "imports", :force => true do |t|
     t.datetime "created_at"
@@ -175,6 +188,8 @@ ActiveRecord::Schema.define(:version => 20101202030816) do
     t.integer  "failed_attempts"
     t.string   "invitation_token",     :limit => 20
     t.datetime "invitation_sent_at"
+    t.boolean  "is_doctor"
+    t.boolean  "is_billing"
   end
 
   add_index "users", ["confirmation_token"], :name => "index_users_on_confirmation_token", :unique => true

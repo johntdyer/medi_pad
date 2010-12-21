@@ -1,0 +1,254 @@
+ <style type="text/css" media="screen">
+  .datePicker{
+    position:relative;
+    float:right; 
+    left:-210px;
+    z-index:3;
+    top: 83px;
+  }
+  
+  #loading{
+    position:relative;
+    left:380px;
+    top:-100px;
+  } 
+  
+ </style>
+ <script>
+  var myObj = {};
+  var oTable;
+  var jsonReturn;
+
+  $(document).ready(function() {
+
+    $.ajaxSetup({
+        type: "POST",
+        dataType: "json",
+        //async:false,
+
+        complete: function() {},
+        success: function() {},
+        error: function() {
+            console.log("OH SHIT, SOMETHING BAD HAPPENED!!!!");
+        },
+    });
+
+    // Ajax loaders
+    $("#loading").ajaxStart(function(){
+       $(this).show();
+    });
+    
+    $("#loading").ajaxStop(function(){
+      $(this).hide();
+    });
+
+    function drawTable(date){
+       
+
+       oTable = $('#example').dataTable( {
+                            "bProcessing": true,
+                            "bRetrieve":false,
+                            
+                            //"bServerSide": true, 
+                            "sPaginationType": "full_numbers",
+                            "bDestroy":true,
+                            "aoColumns": [
+                                   { "sClass": "center", "bSortable": false },
+                                   null,
+                                   null,
+                                   null,
+                                   null,                                   
+                                   { "sClass": "center" },
+                                   { "sClass": "center" },
+                                   { "sClass": "center" }
+                                   ],
+                                   "aoColumnDefs": [ 
+                                   { "bVisible": false, "bSearchable": false,"aTargets": [ 5 ] }
+                                   
+                                   //{ "bSearchable": false, "bVisible": false, "aTargets": [ 2 ] },
+                                   //{ "bVisible": false, "aTargets": [ 3 ] }
+                                   ],
+                            "sAjaxSource": "/calendar.json",
+                            "fnInitComplete": function(){
+                               //Complete
+                             },
+                            "fnServerData": function ( sSource, aoData, fnCallback ) {
+                              /* Add some extra data to the sender */
+                              if(date!=null)
+                                  aoData.push( { "name": "date", "value": date  } );
+                                $.getJSON( sSource, aoData, function (json) { 
+                                    jsonReturn = json
+                                    fnCallback(json);
+                                });
+                            }
+                        });
+
+    }
+
+    /* Draw the initial table, passing in null to get today date */
+    drawTable(null);
+
+    function getChargesViaAjax(data){
+       var htmlOut;
+       $.ajax({
+            url: "/calendar/show",
+            data: data,
+            async:false,
+            complete: function(data,textStatus,xhr) { 
+                selectedDate = $('#tableDate').html();
+                //called when complete
+                myObj = JSON.parse(data["responseText"]); 
+                  htmlOut = '<table cellpadding="5" cellspacing="0" border="0" style="padding-left:50px;">';
+                  htmlOut+='<caption>FIN: '+myObj.patient_fin+' Date: '+selectedDate+'</caption>'; 
+                  htmlOut+='<th>Name</th><th>Type</th><th>Location</th><th>Doctor</th><th>Recorded</th>';
+                    $.each(myObj.aaData,function(index,value) {
+                        htmlOut+="<tr>";
+                          htmlOut += '<td>'+value.procedure_name+'</td>';
+                          htmlOut += '<td>'+replaceNull(value.procedure_type)+'</td>';
+                          htmlOut += '<td>'+replaceNull(value.locality)+'</td>';
+                          htmlOut += '<td>'+value.charging_doctor+'</td>';
+                           if(!value.been_recorded){
+                             htmlOut += '<td>'
+                              htmlOut += '<div id=\'div_'+value.id+'\'>'
+                              <% if current_user.is_admin? %>
+                                htmlOut += '<input class="recordCharge" id=\'charge_'+value.id+'\' type=\'button\' class=\'record_charge_button\' onClick=\'recordThisCharge('+value.id+');\' value=\'record\'/>';
+                                <% else %>
+                                 htmlOut+='<font size="3em" color="yellow">No</font>';
+                                  
+                              <% end -%>  
+                              
+                              
+                              htmlOut +='</div>';
+                             htmlOut +='</td>';
+                           }else{
+                             htmlOut+='<td><font color="green">Yes</font></td>';
+                           }
+                       htmlOut+='</tr>';
+                    });
+            }
+       });
+    return htmlOut;
+   }
+
+    /* Add event listener for opening and closing details
+   * Note that the indicator for showing which row is open is not controlled by DataTables,
+   * rather it is done here
+   */
+    $('#example tbody td img').live('click', function () {
+     var nTr = this.parentNode.parentNode;
+      if ( this.src.match('details_close')){
+      /* This row is already open - close it */
+        this.src = "../images/examples_support/details_open.png";
+        oTable.fnClose( nTr );
+      } else {
+      /* Open this row */
+        myObj = {}
+        myObj.patientID = oTable.fnGetData( nTr )[5];
+        myObj.selectedDate = jsonReturn['date'];
+        //getChargeViaAjax(myObj);
+        
+        this.src = "../images/examples_support/details_close.png";
+        oTable.fnOpen( nTr, fnFormatDetails(oTable, nTr,myObj), 'details' );
+    }
+  });
+
+    $( "#datepicker" ).datepicker({
+       onClose: function(dateText, inst){
+           drawTable(dateText);
+           $('#tableDate').html(dateText);
+       }
+  });
+
+    /* Formating function for row details */
+    function fnFormatDetails ( oTable, nTr, myObj ){
+    var aData = oTable.fnGetData( nTr );
+    var sOut =  getChargesViaAjax(myObj); 
+    return sOut;
+  }
+
+    function replaceNull(value){
+    if(value==null){ return ""; }
+      else{ return value; }
+  }
+
+  });
+
+    function recordThisCharge(id){
+      console.log("===> " +id);  
+      response={}
+      charge={}
+      response.id=id
+      charge.recorded=true
+      response.charge=charge
+        $(function(){
+            $.ajax({  
+                dataType: "json",
+                url: "/charges/update",
+                data: response,
+                success: function(msg){
+                    $('#charge_'+id).parent().html('<font color="green">Yes</font>')
+                },
+                error: function(XMLHttpRequest, textStatus, errorThrown){
+                    $('#charge_'+id).parent().html('<font color="red">Error</font>');
+                }
+            });
+        });
+    }
+
+
+
+ </script>
+  </head>
+  <body id="dt_example">
+    <div id="container">
+      <div class="datePicker">
+        <p>Date: <input type="text" id="datepicker"></p>
+      </div>
+      
+      <div class="full_width big">
+        <i>Patient</i> Charges
+      </div>
+      <h1 id="tableDate">Today</h1>
+      <div id="dynamic">
+        <table cellpadding="0" cellspacing="0" border="0" class="display" id="example">
+          <thead>
+            <tr>
+                <th width="4%"></th> 
+                <th width="20%">Name:</th>
+                <th width="20%">Admitted:</th>
+                <th width="20%">Doctor:</th>
+                <th width="12%">Facility:</th>
+                <th width="10%">ID</th>
+                <th width="12%">Charges:</th>
+                <th width="12%">Unbilled:</th>
+                
+            </tr>
+          </thead>
+          <tbody>
+
+              <!--
+              DataTables puts data here
+              -->
+
+          </tbody>
+            <tfoot>
+                <tr> 
+                    <th></th>
+                    <th>Name</th>
+                    <th>Admitted</th>
+                    <th>Doctor</th>
+                    <th>Facility</th>
+                    <th>ID</th>
+                    <th>Charges</th>
+                    <th>Unbilled</th>
+                    
+                </tr>
+          </tfoot>
+        </table>
+      </div>
+      <div class="spacer"></div>
+
+      <!-- Hidden div for ajax loader -->
+      <div id="loading" style="display:none">
+        <img src="../images/ajaxLoader.gif"/>
+      </div>

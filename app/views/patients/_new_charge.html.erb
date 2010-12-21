@@ -1,11 +1,6 @@
-<%= javascript_include_tag "jquery-ui-min.js" %>
-<%= javascript_include_tag "jquery.selectlist.pack.js" %>
-<%= javascript_include_tag "json2.js" %>
-<%= stylesheet_link_tag "new_charge.css" %>
-<%= stylesheet_link_tag "selectlist.css" %>
-<%= stylesheet_link_tag "jquery-ui-1.8.5.custom.css" %>
-<%= stylesheet_link_tag("patient_buttons.css")%>
+<%= hidden_field_tag :patient_id,charge.patient_id %>
 
+<<<<<<< HEAD
   <%= form_tag add_charges_path,:id=>'new_charge', :method => :put do %>
     <% @procedure_list = Procedure.find(:all, :order => "procedure_name") %>
     <%= hidden_field_tag :patient_id,charge.patient_id %>
@@ -285,3 +280,49 @@
      <div id="locationDiv"></div>
    </div>
    
+=======
+<script type="text/javascript" charset="utf-8">
+  $(function() {
+    
+        $("._procedure").click( function(){  
+          console.log($(this));  
+         // event.stopPropagation();
+        });
+  
+  });
+</script>
+<ul data-role="listview" data-inset="true">
+
+ 
+  <% @procedure_list.each do |procedure| %>  
+    <li class="_procedure" id="<%= procedure.procedure_name %>[][][]"><%= procedure.procedure_name %>
+      <% unless procedure.options.nil? %> 
+        
+        <ul>
+          <% procedure.options.each do |option| %> 
+          <li class="_option" id="<%= procedure.procedure_name %>[<%=option.value%>][][]"><%=option.value %>
+             
+             <ul>
+              <% option.types.each do |type| %> 
+                <li class"_type" id="<%= procedure.procedure_name %>[<%=option.value%>][<%=type.value%>][]"><%=type.value%>
+                  <% unless type.location.nil? %> 
+                    <% unless type.location.downcase == "both" %>
+                      <ul>
+                        <li class="_locality" id="<%= procedure.procedure_name %>[<%=option.value%>][<%=type.value%>][left]">Left</li>
+                        <li class="_locality" id="<%= procedure.procedure_name %>[<%=option.value%>][<%=type.value%>][right]">Right</li>
+                      </ul>
+                    <% end %>
+                  <% end %>
+                  
+                </li>
+              <% end %>
+             </ul>
+           </li>    
+         <% end %>
+         
+       </ul>
+      <% end %>   
+     <% end %>
+  </li>
+</ul>
+>>>>>>> jquery_mobile_new

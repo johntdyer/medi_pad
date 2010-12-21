@@ -9,9 +9,18 @@
 
   <%= yield(:head) %>
     <%= javascript_include_tag :jquery %>
-  
+
+     <%= javascript_include_tag "jquery-ui-1.8.7.custom.min.js", :cache => true %>
+     <%= stylesheet_link_tag "jquery-ui-1.8.7.custom.css", :cache => true %>
+     <%= javascript_include_tag "jquery.dataTables.js", :cache => true %>
+
+
+     <%= stylesheet_link_tag "dataTables/demo_page.css", :cache => true %>
+     <%= stylesheet_link_tag "dataTables/demo_table.css", :cache => true %>
+       
 </head>
 <body>
+   <p style="color: green"><%= flash[:notice] %></p>
 
 
 <%= yield %>

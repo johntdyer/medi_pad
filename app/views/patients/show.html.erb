@@ -1,156 +1,120 @@
-<%= stylesheet_link_tag 'tabs' %>
+<div data-role="page" data-theme="b">
 
-<style type="text/css" media="screen">
-  body{
-    font-family:Arial, Helvetica, sans-serif;
-    font-size:15pt;
-  }
-  #tabnav ul {
-    border-spacing: 3px 0px;
-    border-collapse: collapse;
-    list-style: none;
-    margin: 0px;
-    padding: 0px;
-    border: none;
-  }
-  #tabnav ul li {
-    margin: 0px;
-    padding: 0px;
-  }
-  ul li a {
-    font-size: 2em;
-    border-bottom: 1px dashed #C39C4E;
-    padding: 1px 0px 6px 5px;
-    text-decoration: none;
-    color: #666666;
-  }
-</style>
-
-
-<ul id="tabnav">
-  <li>
-    <%= link_to "Patients", patients_path %>
-  </li>
-  <li>
-    <%= link_to 'Edit', edit_patient_path(@patient) %>
-  </li>
-  <li>
-    <%= link_to "Home", :controller => "home", :action => "index"%>
-  </li>
-</ul>
-
-        <script type="text/javascript" charset="utf-8">
-          $(document).ready(function(){
-            // Hide stuff in view
-         
-         //   $('.procedure_list_toggled_area').hide();
-         
-            $('.patient_data_toggle_area').hide();
-            
-            $('#show_favorites').click(function(){
-              $('.favorites_toggled_area').toggle();
-            });
-            
-            $('#charges_banner').click(function(){
-              $('.show_charges_toggled_area').toggle();
-            });
-            
-            $('#procedure_banner').click(function(){
-              $('.procedure_list_toggled_area').toggle();
-            });
-            
-            $('#patient_banner').click(function(){
-              $('.patient_data_toggle_area').toggle();
-            });
-               
-             $('#submit_button').click(function(){
-               console.log("SUBMIT PROCEDURES => " + procedureArray);
-     
-                  $.ajax({
-                    type: "post", 
-                    url: '/charges/add',
-                    dataType: 'json',
-                    async:false,
-                       
-                    processDataBoolean:false,                         
-                    // Needed to get this posted back as an array, hense the brackets, its a hack, yea I know, deal with it :)
-                    data: "patient_id=<%=@patient.id%>&procedure_ids=["+(procedureArray)+"]"
-                    //+"&selectionArray="+JSON.stringify(selectionObj)
-                    //patient_id=<%=@patient.id%>&procedure_ids="+
-                  });
-                  setTimeout('window.location.reload()', 250);
-             });
-          });
-        </script>
- <table class='patient_data'>
-    <caption>Patient Data</caption>
-    <tr>
-      <th scope='col' abbr='Name'>Name</th>
-      <td><%= @patient.patient_name %></td>
-    </tr>	
-    <tr>
-      <th scope='col' abbr='Facility'>Facility</th>
-      <td><%= @patient.facility %></td>
-    </tr>
-    <tr>
-      <th scope='col' abbr='Attending'>Attending</th>
-      <td><%= @patient.attending_md %></td>
-    </tr>
-    <% if @patient.consult_md!=nil%>
-    <tr>
-      <th scope='col' abbr='Consulting'>Consulting MD</th>
-      <td><%= @patient.consult_md %> </td>
-    </tr>
-    <%end%>
- </table>
+ <div data-role="header">
+    <h1><%= @patient.patient_name.titleize %></h1>
   
-  <table class='patient_data'>
-    <caption id="patient_banner">Location</caption>
-    <tr class='patient_data_toggle_area'>
+      <%= link_to 'Patients', patients_path, "data-icon" => "plus", "class" => "ui-btn-left" %>
+      <%= link_to 'Edit', edit_patient_path(@patient), "data-icon" => "plus", "class" => "ui-btn-right" %>
+      <%= link_to "Home", :controller => "home", :action => "index","class" => "ui-btn-middle"%>    
 
-      <tr class='patient_data_toggle_area'>
-        <th scope='col' abbr='Room'>Room</th>
-        <td><%=raw check_value(@patient.room)%></td>
-      </tr>
-      <tr class='patient_data_toggle_area'>
+   </div>
+  
+<!--
+   <script type="text/javascript" charset="utf-8">
+    $(function() {
+      $("#cancelButton").click( function(){
+        console.log('@@@ button clicked');
+      });
+      $("#submitButton").click( function(){
+        // console.log("SUBMIT PROCEDURES => " + procedureArray);
+        //
+        //                  $.ajax({
+        //                    type: "post", 
+        //                    url: '/charges/add',
+        //                    dataType: 'json',
+        //                    async:false,
+        //
+        //                    processDataBoolean:false,
+        //                    // Needed to get this posted back as an array, hense the brackets, its a hack, yea I know, deal with it :)
+        //                    data: "patient_id=< =@patient.id%>&procedure_ids=["+(procedureArray)+"]"
+        //                    //+"&selectionArray="+JSON.stringify(selectionObj)
+        //                    //patient_id=< =@patient.id%>&procedure_ids="+
+        //                  });
+        //                  setTimeout('window.location.reload()', 250);
+      });
+    });
+  
+   </script>
+-->
+ <div data-role="content"> 
 
-        <th scope='col' abbr='Bed'>Bed</th>
-        <td><%=raw check_value(@patient.bed)%></td>
-      </tr>
-      <tr class='patient_data_toggle_area'>
+    <div data-role="collapsible">      
+      <h3>Patient Data <%= @patient.id %></h3>
+        <table>
+          <tr>
+            <td>Name:</td>
+            <td><%= @patient.patient_name.titleize %></td>
+          </tr>
+          <tr>
+            <td>Facility:</td>
+            <td><%= @patient.facility.titleize %></td>
+          </tr>
+          <tr>
+            <td>Doctor:</td>
+            <td> <%= @patient.attending_md.titleize %></td>
+          </tr>
+        </table>
+    </div>
 
-        <th scope='col' abbr='Unit'>Unit</th>
-        <td><!-- check_value(@patient.unit)--> <%=raw check_value(@patient.unit) %></td>
-      </tr>
-      <tr class='patient_data_toggle_area'>
-        <th scope='col' abbr='Age'>Age</th>
-        <td><%=raw check_value(@patient.age.to_s)%></td
-      </tr>
-      <tr class='patient_data_toggle_area'>
-        <th scope='col' abbr='Sex'>Sex</th>
-        <td><%=raw check_value(@patient.sex)%></td>
-      </tr>
-  </table>
+    <div data-role="collapsible" data-collapsed="true">
+              <h3>Location Data</h3>
+              <table>
+                  <tr>
+                    <td>Room: </td>
+                    <td><%=raw check_value(@patient.room)%></td>
+                  </tr>
+                  <tr>
+                    <td>Bed: </td>
+                    <td><%=raw check_value(@patient.bed)%></td>
+                  </tr>
+                  <tr>
+                    <td>Unit: </td>
+                    <td><%=raw check_value(@patient.unit)%></td>
+                  </tr>
+                  <tr>
+                    <td>Age: </td>
+                    <td><%=raw check_value(@patient.age.to_s)%></td>
+                  </tr>
+                  <tr>
+                    <td>Sex: </td>
+                    <td><%=raw check_value(@patient.sex)%></td>
+                  </tr>
+                  </table>
+          </div>
+            
+      <% unless @patient.charges.empty? %>
+    <div data-role="collapsible" >
+      <h3>Charges</h3>
+      <%= render :partial=>"show_charges", :locals=>{:charges=>@patient.charges,:orders=>@order} %>
+    </div> 
+      <% end %>
+    
+    <div data-role="collapsible">
+             <h3>Add Charge</h3>
+             <%= render :partial=>"new_charge", :locals=>{:charge=>Charge.new(:patient_id=>@patient.id)}%>
+    </div>
 
-  <div id="show_charges">
-    <%= render :partial=>"show_charges",	:locals=>{:charges=>@patient.charges,:orders=>@order}	%>
+    <div class="ui-body ui-body-b">
+      <fieldset class="ui-grid-a">
+        <div class="ui-block-a">   
+          <div id="cancelButton" data-role="button">Cancel</div>
+        </div>
+        <div class="ui-block-b">                            
+          <div id="submitButton" data-role="button">Submit</div>
+        </div>
+      </fieldset>
+    </div>
+
+   
+
   </div>
-
-  <br/><br/>
-
-  <div id="show_favorites">
-    <%= render :partial=>"show_favorites",  :locals=>{:charge=>Charge.new(:patient_id=>@patient.id)}%>
-  </div>
-
-
-  <div id="new_charges" style="padding: 30px">
-    <%= render :partial=>"new_charge",  :locals=>{:charge=>Charge.new(:patient_id=>@patient.id)}%>
-  </div>
-        
-<br>
-  <table border=1 style="width: 400px; margin-left: 10px;">
-    <tr id="submit_button">                
-      <td style="background-color:grey; color: black; font-size: 15px; ">Submit</td>
-    </tr>
-  </table>
-  <input id="hidden_submit" type="submit" style="visibility:hidden">
+ <div data-role="footer">
+    <h4>CFPG</h4>
+  </div><!-- /footer --> 
+  
+  
+  
+  
+</div>   
+  
+ 

@@ -1,0 +1,46 @@
+<%= stylesheet_link_tag "table.css" %>
+<% if !flash.empty? %>
+  <br/><br/><br/>
+   <table border="0" width="">
+     <caption> Patient Import </caption>
+     <thead>
+       <tr>
+         <th>Successes</th>
+       </tr>
+     </thead>
+     <% if flash[:notice].empty? %>
+      <tr>
+        <td>
+          <font color="red">none</font>
+        </td>
+      </tr>
+     <%else%>
+      <% flash[:notice].each do |msg| %>  
+            <tr>
+              <td><%= msg %></td>
+            </tr>
+      <% end %>
+   </table>
+   <%end%>
+   <% if flash[:error].empty? %>
+     <tr>
+       <td>
+         <font color="red">none</font>
+       </td>
+     </tr>
+    <%else%>
+   <table border="0" width="">
+     <thead>
+       <tr>
+         <th>Failures</th>
+       </tr>
+     </thead>
+     <% flash[:error].each do |msg| %>  
+      <tr>
+        <td><%= msg %></td>
+      </tr>
+      <% end %>
+      </tr>
+   </table>
+   <%end%>
+<%end%>
