@@ -29,7 +29,7 @@
         complete: function() {},
         success: function() {},
         error: function() {
-            console.log("OH SHIT, SOMETHING BAD HAPPENED!!!!");
+            console.log("OH CRAP, SOMETHING BAD HAPPENED!!!!");
         },
     });
 
@@ -48,8 +48,6 @@
        oTable = $('#example').dataTable( {
                             "bProcessing": true,
                             "bRetrieve":false,
-                            
-                            //"bServerSide": true, 
                             "sPaginationType": "full_numbers",
                             "bDestroy":true,
                             "aoColumns": [
@@ -57,11 +55,11 @@
                                    null,
                                    null,
                                    null,
-                                   null,                                   
+                                   null,
                                    { "sClass": "center" },
                                    { "sClass": "center" },
                                    { "sClass": "center" }
-                                   ],
+                                  ],
                                    "aoColumnDefs": [ 
                                    { "bVisible": false, "bSearchable": false,"aTargets": [ 5 ] }
                                    

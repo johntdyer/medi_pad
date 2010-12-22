@@ -9,10 +9,10 @@ class PatientsController < ApplicationController
   def index
      if Patient.all.length==0
        logger.debug("NO RECORDS")
-       redirect_to(:controller => "admin", :action => "index")
+       #redirect_to(:controller => "admin", :action => "index")
+       @search = []
      else
        @list = Patient.all(:select=>"DISTINCT facility") #distinct list of facilities
-       
        if params.has_key?(:location_search)
          @search = Patient.order('patients.room ASC').search(:facility_equals=>params[:id],:discharged_equals=>false)
        elsif params.has_key?(:search_name)
