@@ -87,7 +87,7 @@ class CalendarController < ApplicationController
 
   private 
 
-    def get_todays_charges(patient_id,date,recorded=true)
+    def get_todays_charges(patient_id,date)
       opts = {
           :created_at.lt => Time.parse(date).midnight+1.day, 
           :created_at.gt => Time.parse(date).midnight,
