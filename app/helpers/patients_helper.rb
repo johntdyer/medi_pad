@@ -12,7 +12,13 @@ module PatientsHelper
       return html
     end
   end
-
+  
+    def capitalize_each(v)
+      return_array=[]
+      v.split(" ").each{|e|return_array << e.capitalize + ' '}
+      return_array.to_s.strip
+    
+  end
   
   def get_lastname(name)
     return name.split(',', 2)[0]
@@ -60,9 +66,25 @@ module PatientsHelper
       else
          return_array = []
          i.facility.split.each {|w| return_array << w.capitalize + ' '}
-        return  return_array
+        return return_array
      end 
  end
+
+def get_day(params = {})
+  params = {
+    :time=>Time.now,
+    :value=>0,
+    :format=>"day"
+    }.merge(params)
+      
+      time = params[:time]+params[:value].days
+      case params[:format]
+        when "day"
+          return time.strftime("%a")
+        when "full"
+          return time.strftime("%A, %b %d")
+        end
+end  
 
 
 def location_name(i)

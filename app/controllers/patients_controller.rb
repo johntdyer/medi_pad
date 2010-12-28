@@ -1,37 +1,53 @@
 class PatientsController < ApplicationController
   helper :all
-  protect_from_forgery :only => [:update, :destroy]   
+  protect_from_forgery :only => [:update, :destroy]
 
   before_filter :authenticate_user!
 
   # GET /patients
   # GET /patients.xml
   def index
+     #distinct list of facilities 
+     @list =   Patient.all(:select=>"DISTINCT facility")
+
      if Patient.all.length==0
        logger.debug("NO RECORDS")
        #redirect_to(:controller => "admin", :action => "index")
        @search = []
-     else
-       @list = Patient.all(:select=>"DISTINCT facility") #distinct list of facilities
-       if params.has_key?(:location_search)
-         @search = Patient.order('patients.room ASC').search(:facility_equals=>params[:id],:discharged_equals=>false)
-       elsif params.has_key?(:search_name)
-         @search = Patient.order('patients.room ASC').search(:patient_name_contains=>params[:search_name],:discharged_equals=>false)
-       elsif params.has_key?(:id)
-         @search = Patient.order('patients.room ASC').search(:id_equals=>params[:id],:discharged_equals=>false)
+     else 
+
+       if params.has_key?(:location)
+         @search = Patient.order('patients.room ASC').search(:facility_equals=>params[:location],:discharged_equals=>false).where({:date_last_added.eq=>Time.now.midnight}) 
        else
-         @search= Patient.order('patients.room ASC').where(:facility=>@list[0].facility,:discharged=>false).search(params[:search])  #@search = Patient.where(:facility=>@list[0].facility,:discharged=>false).search(params[:search])
+         
+         if params[:date] 
+            @selected_time =  Time.at(params[:date].to_i).midnight 
+         else
+            @selected_time = Time.now.midnight
+         end 
+         session[:selected_time] = @selected_time
+
+
+         @search= Patient.order('patients.room ASC').where({
+                      :facility.eq=>@list.first.facility.upcase,
+                      :discharged.eq=>false,
+                      :date_last_added.gte=>@selected_time,
+                      :date_last_added.lte=>@selected_time+1.days
+                      })
+                      
+                      #@search = Patient.where(:facility=>@list[0].facility,:discharged=>false).search(params[:search])
+                      #@search= Patient.order('patients.room ASC').where(:facility=>'ALTAMONTE',:discharged=>false,:date_last_added.eq=>Time.now.midnight).search(params[:search])#.where({:date_last_added.eq=>Time.now.midnight})  #@search = Patient.where(:facility=>@list[0].facility,:discharged=>false).search(params[:search])
        end
-      
+
       @patients = @search.all
 
       respond_to do |format|
         format.html # index.html.erb
-        format.xml  { render :xml => @patients }   
+        format.xml  { render :xml => @patients }
         format.json  { render :json => @patients }
-        
+
       end
-    end 
+     end 
   end
 
  # def location
@@ -61,8 +77,8 @@ class PatientsController < ApplicationController
   def new
     @facilities_list  = Patient.all(:select=>"DISTINCT facility");
     @doctors_list = Patient.all(:select=>"DISTINCT attending_md");
-    
-    
+
+
     @patient = Patient.new
 
     respond_to do |format|

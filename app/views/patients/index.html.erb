@@ -1,15 +1,99 @@
-<style type="text/css" media="screen">
-  .ui-li-count{
-    color:red;
-    font-size: 15px;
-  }
-</style>
+<%= javascript_include_tag "date.js", :cache => true %>
+<%= javascript_include_tag "strftime.js", :cache => true %>
+  <style type="text/css" media="screen">
+    .ui-li-count{
+      color:red;
+      font-size: 15px;
+    }
+    .nav-glyphish-example .ui-btn .ui-btn-inner { 
+      padding-top: 40px !important; 
+    }
+    .nav-glyphish-example .ui-btn .ui-icon { 
+        width: 30px!important; 
+        height: 30px!important; 
+        margin-left: -15px !important; 
+        box-shadow: none!important; 
+        -moz-box-shadow: none!important; 
+        -webkit-box-shadow: none!important; 
+        -webkit-border-radius: none !important; 
+        border-radius: none !important; 
+    }
+    #calendar .ui-icon { 
+      background:  url(../images/glyphish-icons/83-calendar.png) 50% 50% no-repeat; 
+      background-size: 24px 22px; 
+    }
+    #home .ui-icon { 
+      background:  url(../images/glyphish-icons/53-house.png) 50% 150% no-repeat; 
+      background-size: 24px 26px;  
+    }
+    #new-user .ui-icon { 
+      background:  url(../images/glyphish-icons/111-user.png) 50% 50% no-repeat;  
+      background-size: 32px 26px; 
+    }
+  </style>
 
- <div data-role="header">
-    <h1>Patients</h1>
-      <%= link_to 'Add', new_patient_path, "data-icon" => "plus", "class" => "ui-btn-right" %>
-      <%= link_to 'Home', home_url, "data-icon" => "plus", "class" => "ui-btn-left" %>
-  </div>
+      <script type="text/javascript" charset="utf-8">
+
+        function end_of_date_range(current_date){
+          var date = new Date()  
+          var now = Date.parse((date.getMonth()+1)+"."+(date.getDate())+"."+date.getFullYear());
+
+          // console.log("Cur\t\t"+current_date.getTime());
+          // console.log("Now\t\t"+now);
+
+          /*
+          This is an issue, since we are rolling time back to midnight in the 
+          controller, and date.js is compairing that datetime to 'now', 
+          need to addres sthis
+          */
+
+          if(current_date.equals(now)){
+            $(function(){
+              $("#right_button .ui-btn-text").text("NONE"); 
+              $("[id^=right_button]").attr("href","/patients?date="+current_date.getTime());
+            });
+          }else{
+            $(function(){
+              tomorrow=current_date.add(1).day()
+              $("[id^=right_button] .ui-btn-text").text(tomorrow.strftime('%a, %b %d'));
+              $("[id^=right_button]").attr("href","/patients?date="+tomorrow.getTime());
+              
+            });
+          }
+        }
+
+        $('[data-role=page]').live('pageshow', function (event, ui) {
+
+                 console.log("\nPage Load!!!!")
+        }); 
+
+      </script>
+
+    <div data-role="header">
+        <% if current_user %>
+
+              <a href="/patients?date=<%=(@selected_time-1.day).to_i%>" data-role="button" rel="external" id="left_button" class="ui-btn-left" data-inline="true" data-icon="minus"><%=(@selected_time-1.day).strftime('%a, %b %d')%></a>
+
+                <div style="text-align: center ;">
+                  <h3><%=@selected_time.strftime('%a, %b %d')%></h3>
+                </div>
+
+                <a href="/patients?date=<%=(@selected_time+1.day).to_i%>" data-role="button" rel="external" id="right_button" class="ui-btn-right" data-inline="true" data-icon="minus"><%=(@selected_time+1.day).strftime('%a, %b %d')%></a>
+
+        <% else %>
+          <h1>Authentication Required</h1>
+          <%= link_to "Login", '/users/sign_in', "data-rel"=>"dialog","class"=>"ui-btn-right" %>
+        <% end %>
+
+      <div data-role="navbar" class="nav-glyphish-example" data-grid="b">  
+        <ul>
+          <li> <%= link_to 'Add', new_patient_path, "data-icon" => "custom","id"=>"new-user","data-theme"=>"b" %> </li>
+          <li> <%= link_to 'Home', home_url, "data-icon" => "custom","id"=>"home","data-theme"=>"b" %>    </li>
+          <li> <%= link_to 'Date', "#", "data-icon" => "custom","id"=>"calendar","data-theme"=>"b" %></li> 
+        </ul>
+      </div><!-- /navbar -->
+
+    </div><!-- /header -->
 
   <div data-role="content">
 
@@ -30,10 +114,12 @@
      <div data-role="navbar">
        <div data-role="controlgroup" data-type="horizontal">
          <% get_list_of_facilities().each do |facility| %>
-            <a href="#patients?location_search=true&amp;id=<%=facility%>" data-role="button"><%=facility.capitalize%></a>
-         <% end %>
-          <%= link_to "All", :controller => "patients", :action => "index", :search=>"All", :location_search => true%>
+            <a href="/patients?location=<%= CGI::escape(facility.downcase)%>" data-role="button" data-theme="b" rel="external"><%=facility.capitalize%></a>
+         <% end %>   
+            <a href="/patients?location=all" data-role="button" data-theme="b" rel="external">All</a>
+               <!-- <%= link_to "Logout", '/users/sign_out', "data-rel"=>"dialog", "class"=>"ui-btn-right" %>  -->
        </div
      </div>
-   </div> <!-- /footer -->
+   </div> <!-- /footer -->  
    
+   <%= debug(session[:selected_time])%> 

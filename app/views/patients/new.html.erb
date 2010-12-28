@@ -1,8 +1,17 @@
-<caption>Add Patient</caption>
+<div data-role="header">
+  <h1>Add Patient</h1> 
+ 
+    <%= link_to 'Back', patients_path %>
+
+    
+</div><!-- /navbar -->   
+  
+
+<div data-role="content">
+
 
 <%= form_for(@patient) do |f| %>
   <%= f.error_messages %>
-    
 
     <div data-role="fieldcontain">
       <%= f.label :facility %>
@@ -16,32 +25,27 @@
     <div data-role="fieldcontain">
        <%= f.label :patient_name %>
        <%= f.text_field :patient_name %>
-     </div>
+    </div>
      
-     <div data-role="fieldcontain">
+    <div data-role="fieldcontain">
         <%= f.label :fin %>
         <%= f.text_field :fin %>
-      </div>
+    </div>
       
-      <!-- <div data-role="fieldcontain">
-              <%= f.label :unit %>
-              <%= f.text_field :unit %>
-            </div> -->
- 
     <div data-role="fieldcontain">
       <%= f.label :age %>  
       
-      <%range = 0..100%>
-      <%=select("post", "person_id",range, { :include_blank => true })%>
+        <%range = 0..100%>
+        <%=select("post", "person_id",range, { :include_blank => true })%>
     </div>
+    
     <div data-role="fieldcontain">
       <%= f.label :sex %>
         <select name="Sex">
           <option value="M">Male</option>
           <option value="F">Female</option>
-          <option value="3">Switch</option>
         </select>
-       </div>
+    </div>
 
 
     <div data-role="fieldcontain">
@@ -54,9 +58,13 @@
       <%= f.label :admitted %>
       <%= f.date_select :admitted %>
     </div>
+
     <div data-role="fieldcontain">
       <%= f.submit 'Create' %>
-      <%= link_to 'Show', @patient %>
-      <%= link_to 'Back', patients_path %>
     </div>
 <% end %>
+</div>
+
+<div data-role="footer">
+  <h4>Copyright &copy; 2010</h4>
+</div> <!-- /footer -->
