@@ -7,39 +7,47 @@ class PatientsController < ApplicationController
   # GET /patients
   # GET /patients.xml
   def index
-     #distinct list of facilities 
+     #Get a list of distinct facilities 
      @list =   Patient.all(:select=>"DISTINCT facility")
 
      if Patient.all.length==0
        logger.debug("NO RECORDS")
        #redirect_to(:controller => "admin", :action => "index")
        @search = []
-     else 
+     else
+
+       # If we have a date (passed from the view) we'll use that, otherwise
+       # we will set the date to today @ midnight.
+       if params[:date] 
+         @selected_time = Time.at(params[:date].to_i).midnight 
+       else
+         @selected_time = Time.now.midnight
+       end 
+       
+       # Set session cookie so we can track state
+       session[:selected_time] = @selected_time
+
+       # Defaults for the AR dip, set as a hash, since we'll merge a location 
+       # key into the hash (below).  This is required some 'all' means we omit 
+       # location entirly. 
+
+       meta_search_hash = {
+         :discharged.eq=>false,
+         :date_last_added.gte=>session[:selected_time],
+         :date_last_added.lte=>session[:selected_time]+1.days
+       }
+
+       location = params.has_key?(:location) ? params[:location].upcase : @list.first.facility.upcase 
 
        if params.has_key?(:location)
-         @search = Patient.order('patients.room ASC').search(:facility_equals=>params[:location],:discharged_equals=>false).where({:date_last_added.eq=>Time.now.midnight}) 
-       else
-         
-         if params[:date] 
-            @selected_time =  Time.at(params[:date].to_i).midnight 
-         else
-            @selected_time = Time.now.midnight
-         end 
-         session[:selected_time] = @selected_time
-
-
-         @search= Patient.order('patients.room ASC').where({
-                      :facility.eq=>@list.first.facility.upcase,
-                      :discharged.eq=>false,
-                      :date_last_added.gte=>@selected_time,
-                      :date_last_added.lte=>@selected_time+1.days
-                      })
-                      
-                      #@search = Patient.where(:facility=>@list[0].facility,:discharged=>false).search(params[:search])
-                      #@search= Patient.order('patients.room ASC').where(:facility=>'ALTAMONTE',:discharged=>false,:date_last_added.eq=>Time.now.midnight).search(params[:search])#.where({:date_last_added.eq=>Time.now.midnight})  #@search = Patient.where(:facility=>@list[0].facility,:discharged=>false).search(params[:search])
+         meta_search_hash = meta_search_hash.merge({
+                                                    :facility.eq=>location
+                                                    }) unless params[:location].downcase=='all'
        end
 
-      @patients = @search.all
+       @search= Patient.where(meta_search_hash).order('patients.room ASC')
+
+       @patients = @search.all
 
       respond_to do |format|
         format.html # index.html.erb

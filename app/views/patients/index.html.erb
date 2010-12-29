@@ -96,7 +96,6 @@
     </div><!-- /header -->
 
   <div data-role="content">
-
      <ul data-role="listview" data-filter="true" data-inset="true">
         <% @patients.each do |patient| %>
           <li>
@@ -114,12 +113,10 @@
      <div data-role="navbar">
        <div data-role="controlgroup" data-type="horizontal">
          <% get_list_of_facilities().each do |facility| %>
-            <a href="/patients?location=<%= CGI::escape(facility.downcase)%>" data-role="button" data-theme="b" rel="external"><%=facility.capitalize%></a>
+            <a href="/patients?location=<%= CGI::escape(facility.downcase)%>&amp;date=<%=(@selected_time).to_i%>" data-role="button" data-theme="b" rel="external"><%=facility.capitalize%></a>
          <% end %>   
-            <a href="/patients?location=all" data-role="button" data-theme="b" rel="external">All</a>
+            <a href="/patients?location=all&amp;date=<%=(@selected_time).to_i%>" data-role="button" data-theme="b" rel="external">All</a>
                <!-- <%= link_to "Logout", '/users/sign_out', "data-rel"=>"dialog", "class"=>"ui-btn-right" %>  -->
        </div
      </div>
-   </div> <!-- /footer -->  
-   
-   <%= debug(session[:selected_time])%> 
+   </div> <!-- /footer -->
