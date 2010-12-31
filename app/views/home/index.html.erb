@@ -23,7 +23,7 @@
               <li> <%= link_to "Reports", charges_path, {"rel"=>"external"}  %> </li>
              <% end -%>
              <li> <%= link_to 'Profile', '/users/edit'  %> </li>
-             <li> <%= link_to "Admin", {:controller => "admin", :action => "index"} if current_user.is_admin %> </li>
+             <li> <%= link_to "Admin", {:controller => "admin", :action => "index"}, {"rel"=>"external"} if current_user.is_admin %> </li>
            <%end%>
   </ul>
 </div>
