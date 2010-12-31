@@ -1,0 +1,35 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="http://code.jquery.com/mobile/1.0a2/jquery.mobile-1.0a2.min.css" />
+<script src="http://code.jquery.com/jquery-1.4.4.min.js"></script>
+<script src="http://code.jquery.com/mobile/1.0a2/jquery.mobile-1.0a2.min.js"></script>
+<script type="text/javascript">
+    $('.delete-dialog-yes').click(function() {
+        alert("delete-dialog-yes");
+    });
+    $('.delete-dialog-no').click(function() {
+        alert("delete-dialog-no");
+    });
+</script>
+    
+<title>Dialog</title>
+</head>
+<body>
+<div data-role="page" id="delete_dialog" data-theme="b">
+
+    <div data-role="header" data-theme="b"><h1>Delete</h1></div>
+    
+    <div data-role="content" data-theme="b">
+        <h1>Delete Item?</h1>
+        <p>Are you sure you want to delete this item?</p>
+        
+        <a href="#" class="delete-dialog-yes" data-role="button" data-theme="b">Yes</a>
+        <a href="#" class="delete-dialog-no" data-role="button" data-theme="b">No</a>
+    </div>
+    
+    <!--<div data-role="footer" data-theme="b">Dialog Footer</div>-->
+</div>
+</body>
+</html>

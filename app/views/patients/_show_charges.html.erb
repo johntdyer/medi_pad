@@ -1,13 +1,74 @@
-<ul data-role="listview">
-  
-<div data-role="listview" data-theme="g">
-    <% get_unrecorded_charges(charges).each do |charge| %>
-          <li>
-            <%= get_info(charge.procedure_code).inspect %><!-- .procedure_name %> -->
-            <%= charge.doctor %>
+<script type="text/javascript" charset="utf-8">
+  //small jquery plugin for open the target dialog window
+  (function($){
+     $.fn.mydialog = function(){
+          var $this = $(this);     
+          var options =  ['Remove','No'],
+              currentPage = $.mobile.activePage,
+              menuPage = $( '<div data-role=\'dialog\' data-theme=\'a\'>' +
+                          '<div data-role=\'header\' data-theme=\'a\'>' +
+                              '<div class=\'ui-title\'>Remove Item?</div>'+
+                          '</div>'+
+                          '<div data-role=\'content\' data-theme=\'c\'><ul data-role=\'listview\' data-inset=\'true\'></ul></div>'+
+                      '</div>' )
+                      .appendTo( $.pageContainer ),
+              menu = menuPage.find('ul');    
 
-            <%= link_to 'Home', charge, "data-icon" => "delete", "class" => "ui-btn-left", :method => :delete %>
-            
+          //menu items    
+          $.each(options, function(i){
+              $('<li class='+options[i].toLowerCase()+'><a href=\'#\'>' + options[ i ].charAt(0).toUpperCase() + options[ i ].substr(1) + '</a></li>')
+                  .bind('click', function(event){                    
+                      //your click event functions
+                      alert("clicked me");
+
+                      //go back to previous page when click dialog buttons
+                      $.mobile.changePage([menuPage, currentPage], 'pop', true);                        
+                      event.preventDefault();
+                      return false;
+                  })
+                  .appendTo(menu);
+          });    
+
+          //create page, listview
+          menuPage.page();
+
+          //change page now    
+          $.mobile.changePage([currentPage, menuPage], 'pop', false);
+      };    
+  })(jQuery);
+
+  $('a').live('click', function(){    
+          $(this).mydialog();
+          return false;
+  });
+  
+</script>
+
+<h3>Charges</h3>
+<style type="text/css" media="screen">
+  span.ui-btn-inner ui-btn-corner-all{
+    background-color:red;
+  }
+</style>
+  <ul data-role="listview" data-inset="true" data-theme="d"> 
+    <div data-role="collapsible-set"> 
+		
+        <!-- < get_unrecorded_charges({:charges=>charges}).each do |charge| %>       -->
+          <% charges.each do |a_charge| %>
+          <li>
+            <div data-role="collapsible" data-collapsed="true"> 
+              <h3><%= a_charge.procedure_name %></h3>
+                <h3>Doctor: <%= a_charge.doctor.titleize if a_charge.doctor %></h3>
+                <h3>Added: <%= a_charge.created_at.strftime("%b %e, %l:%M %p") %></h3>
+                <!--<= link_to 'Home', charge, "data-icon" => "delete", :method => :delete,:confirm => "Delete?" %>-->
+
+                <div data-inline="true">                             
+                  <%= link_to 'Delete', "#","id"=>"delete_#{a_charge.id}","data-icon"=>"delete","data-role" => "button" %><!-- , :method => :delete, :confirm => "Delete?" %> -->
+                  <!-- <a href="#" id="delete_<a_charge.id%>" data-icon="delete" data-role="button">DELETE</a> -->
+                </div>
+            </div>
           </li>
-<%end%>
+      <%end%>  
+      </div>
 </ul>
+        

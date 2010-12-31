@@ -9,7 +9,7 @@ class PatientsController < ApplicationController
   def index
      #Get a list of distinct facilities 
      @list =   Patient.all(:select=>"DISTINCT facility")
-
+     logger.debug { "\n\n#{@list.inspect}\n\n" }
      if Patient.all.length==0
        logger.debug("NO RECORDS")
        #redirect_to(:controller => "admin", :action => "index")
@@ -32,7 +32,7 @@ class PatientsController < ApplicationController
        # location entirly. 
 
        meta_search_hash = {
-         :discharged.eq=>false,
+         #:discharged.eq=>false,
          :date_last_added.gte=>session[:selected_time],
          :date_last_added.lte=>session[:selected_time]+1.days
        }
@@ -47,7 +47,7 @@ class PatientsController < ApplicationController
 
        @search= Patient.where(meta_search_hash).order('patients.room ASC')
 
-       @patients = @search.all
+       @patients = @search#.all
 
       respond_to do |format|
         format.html # index.html.erb

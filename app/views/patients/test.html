@@ -1,0 +1,30 @@
+<!DOCTYPE html> 
+<html> 
+<head> 
+<title>Dialog Test</title> 
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="http://code.jquery.com/mobile/1.0a2/jquery.mobile-1.0a2.min.css" />
+<script src="http://code.jquery.com/jquery-1.4.4.min.js"></script>
+<script src="http://code.jquery.com/mobile/1.0a2/jquery.mobile-1.0a2.min.js"></script>
+<script type="text/javascript">
+    $('.delete-dialog-yes').click(function() {
+        alert("delete-dialog-yes");
+    });
+    $('.delete-dialog-no').click(function() {
+        alert("delete-dialog-no");
+    });
+</script>
+</head> 
+<body> 
+<div data-role="page" id="my-page">
+
+    <div data-role="header"><h1>My Page</h1></div>
+
+    <div data-role="content">    
+        <a href="docs/delete-dialog.html" data-role="button" data-rel="dialog" data-transition="pop">Show Dialog</a>
+    </div>
+
+    <div data-role="footer"><h4>Page Footer</h4></div>
+</div>
+</body>
+</html>

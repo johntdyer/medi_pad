@@ -1,13 +1,18 @@
-<div data-role="page" data-theme="b">
+<div data-role="page" data-theme="a">
 
- <div data-role="header">
+  <div data-role="header">
     <h1><%= @patient.patient_name.titleize %></h1>
+  </div>
   
-      <%= link_to 'Patients', patients_path, "data-icon" => "plus", "class" => "ui-btn-left" %>
-      <%= link_to 'Edit', edit_patient_path(@patient), "data-icon" => "plus", "class" => "ui-btn-right" %>
-      <%= link_to "Home", :controller => "home", :action => "index","class" => "ui-btn-middle"%>    
-   </div>
-  
+  <!-- /navbar -->
+   <div data-role="navbar" class="nav-glyphish-example" data-grid="b">  
+      <ul>
+        <li><%= link_to 'All Patients', "/patients?location=#{@patient.facility.downcase}&date=#{(session[:selected_time]).to_i}", "data-icon" => "plus", "class" => "ui-btn-left" %></li>
+        <li><%= link_to 'Edit', edit_patient_path(@patient), "data-icon" => "plus", "class" => "ui-btn-right" %></li>
+        <li><%= link_to "Home", :controller => "home", :action => "index","class" => "ui-btn-middle"%>    </li>
+      </ul>
+    </div><!-- /navbar -->
+
 <!--
    <script type="text/javascript" charset="utf-8">
     $(function() {
@@ -89,7 +94,6 @@
             
       <% unless @patient.charges.empty? %>
     <div data-role="collapsible" >
-      <h3>Charges</h3>
       <%= render :partial=>"show_charges", :locals=>{:charges=>@patient.charges,:orders=>@order} %>
     </div> 
       <% end %>
@@ -99,13 +103,13 @@
              <%= render :partial=>"new_charge", :locals=>{:charge=>Charge.new(:patient_id=>@patient.id)}%>
     </div>
 
-    <div class="ui-body ui-body-b">
+    <div class="ui-body ui-body-a">
       <fieldset class="ui-grid-a">
         <div class="ui-block-a">   
-          <div id="cancelButton" data-role="button">Cancel</div>
+          <div id="cancelButton" data-theme="a" data-role="button">Cancel</div>
         </div>
         <div class="ui-block-b">                            
-          <div id="submitButton" data-role="button">Submit</div>
+          <div id="submitButton" data-theme="a" data-role="button">Submit</div>
         </div>
       </fieldset>
     </div>
@@ -116,4 +120,3 @@
   </div><!-- /footer --> 
 
 </div>
- 

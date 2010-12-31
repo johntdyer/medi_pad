@@ -1,8 +1,9 @@
+
+          
 <%= javascript_include_tag "date.js", :cache => true %>
 <%= javascript_include_tag "strftime.js", :cache => true %>
   <style type="text/css" media="screen">
     .ui-li-count{
-      color:red;
       font-size: 15px;
     }
     .nav-glyphish-example .ui-btn .ui-btn-inner { 
@@ -32,8 +33,8 @@
     }
   </style>
 
-      <script type="text/javascript" charset="utf-8">
-
+<!--       <script type="text/javascript" charset="utf-8">
+               
         function end_of_date_range(current_date){
           var date = new Date()  
           var now = Date.parse((date.getMonth()+1)+"."+(date.getDate())+"."+date.getFullYear());
@@ -61,24 +62,42 @@
             });
           }
         }
+         
+        $('[data-role=page]').live('pagebeforecreate', function (event, ui) { 
+          $.mobile.pageLoading(  );  
+          console.log("pagebeforecreate");
+          var t = new Date;
+          console.log(t.toString());
+          
 
-        $('[data-role=page]').live('pageshow', function (event, ui) {
+        });     
+        
+        $('[data-role=page]').live('pagecreate', function (event, ui) { 
+          console.log("pagecreate");
+          
+          $.mobile.pageLoading(  ); 
+        });
+        
+        
+
+        $('[data-role=page]').live('pageshow', function (event, ui) { 
+                  //     $.mobile.pageLoading(  );  
 
                  console.log("\nPage Load!!!!")
         }); 
 
-      </script>
+      </script>  -->
 
     <div data-role="header">
         <% if current_user %>
 
-              <a href="/patients?date=<%=(@selected_time-1.day).to_i%>" data-role="button" rel="external" id="left_button" class="ui-btn-left" data-inline="true" data-icon="minus"><%=(@selected_time-1.day).strftime('%a, %b %d')%></a>
+              <a href="/patients?<%=get_selected_location%>date=<%=(@selected_time-1.day).to_i%>" data-role="button" rel="external" id="left_button" class="ui-btn-left" data-inline="true" data-icon="minus"><%=(@selected_time-1.day).strftime('%a, %b %d')%></a>
 
                 <div style="text-align: center ;">
                   <h3><%=@selected_time.strftime('%a, %b %d')%></h3>
                 </div>
 
-                <a href="/patients?date=<%=(@selected_time+1.day).to_i%>" data-role="button" rel="external" id="right_button" class="ui-btn-right" data-inline="true" data-icon="minus"><%=(@selected_time+1.day).strftime('%a, %b %d')%></a>
+                <a href="/patients?<%=get_selected_location%>date=<%=(@selected_time+1.day).to_i%>" data-role="button" rel="external" id="right_button" class="ui-btn-right" data-inline="true" data-icon="minus"><%=(@selected_time+1.day).strftime('%a, %b %d')%></a>
 
         <% else %>
           <h1>Authentication Required</h1>
@@ -89,7 +108,8 @@
         <ul>
           <li> <%= link_to 'Add', new_patient_path, "data-icon" => "custom","id"=>"new-user","data-theme"=>"b" %> </li>
           <li> <%= link_to 'Home', home_url, "data-icon" => "custom","id"=>"home","data-theme"=>"b" %>    </li>
-          <li> <%= link_to 'Date', "#", "data-icon" => "custom","id"=>"calendar","data-theme"=>"b" %></li> 
+          <li> <%= link_to 'Today', "/patients?#{get_selected_location}date=#{(@selected_time).to_i}", "data-icon" => "custom","id"=>"calendar","rel"=>"external","data-theme"=>"b" %></li> 
+
         </ul>
       </div><!-- /navbar -->
 
@@ -101,7 +121,9 @@
           <li>
               <font color="red"> <%= check_value(patient.room)%></font>
               <%= link_to patient.patient_name, patient %>
-              <span class="ui-li-count"><%=patient.charges.count%></span>
+              <!-- <span class="ui-li-count"><=patient.charges.length%></span> -->
+              <span class="ui-li-count"><%=raw count_todays_charges({:patient=>patient,:time_stamp=>@selected_time}) %></span>
+              
               <%= link_to 'edit post', patient_path(patient), "data-icon" => "gear" %>
           </li>
         <% end %>
