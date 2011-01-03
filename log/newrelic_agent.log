@@ -1,0 +1,31 @@
+# Logfile created on Sat Jan 01 15:06:03 -0500 2011 by logger.rb
+[01/01/11 15:06:03 -0500 Aleph.local (3290)] INFO : Dispatcher: webrick
+[01/01/11 15:06:03 -0500 Aleph.local (3290)] INFO : Application: My Application
+[01/01/11 15:06:03 -0500 Aleph.local (3290)] WARN : Agent configured not to send data in this environment - edit newrelic.yml to change this
+[01/01/11 15:06:03 -0500 Aleph.local (3290)] INFO : New Relic RPM Agent 2.13.4 Initialized: pid = 3290
+[01/01/11 15:06:03 -0500 Aleph.local (3290)] INFO : Agent Log found in /Users/dyer/Dropbox/Development/medi_pad/log/newrelic_agent.log
+[01/01/11 19:07:50 -0500 Aleph.local (9071)] INFO : Dispatcher: webrick
+[01/01/11 19:07:50 -0500 Aleph.local (9071)] INFO : Application: My Application
+[01/01/11 19:07:50 -0500 Aleph.local (9071)] WARN : Agent configured not to send data in this environment - edit newrelic.yml to change this
+[01/01/11 19:07:50 -0500 Aleph.local (9071)] INFO : New Relic RPM Agent 2.13.4 Initialized: pid = 9071
+[01/01/11 19:07:50 -0500 Aleph.local (9071)] INFO : Agent Log found in /Users/dyer/Dropbox/Development/medi_pad/log/newrelic_agent.log
+[01/02/11 20:50:58 -0500 Aleph.local (51705)] INFO : Dispatcher: webrick
+[01/02/11 20:50:58 -0500 Aleph.local (51705)] INFO : Application: My Application
+[01/02/11 20:50:58 -0500 Aleph.local (51705)] WARN : Agent configured not to send data in this environment - edit newrelic.yml to change this
+[01/02/11 20:50:58 -0500 Aleph.local (51705)] INFO : New Relic RPM Agent 2.13.4 Initialized: pid = 51705
+[01/02/11 20:50:58 -0500 Aleph.local (51705)] INFO : Agent Log found in /Users/dyer/Dropbox/Development/medi_pad/log/newrelic_agent.log
+[01/02/11 20:53:35 -0500 Aleph.local (51791)] INFO : Dispatcher: webrick
+[01/02/11 20:53:35 -0500 Aleph.local (51791)] INFO : Application: My Application
+[01/02/11 20:53:35 -0500 Aleph.local (51791)] WARN : Agent configured not to send data in this environment - edit newrelic.yml to change this
+[01/02/11 20:53:35 -0500 Aleph.local (51791)] INFO : New Relic RPM Agent 2.13.4 Initialized: pid = 51791
+[01/02/11 20:53:35 -0500 Aleph.local (51791)] INFO : Agent Log found in /Users/dyer/Dropbox/Development/medi_pad/log/newrelic_agent.log
+[01/02/11 20:58:53 -0500 Aleph.local (51895)] INFO : Dispatcher: webrick
+[01/02/11 20:58:53 -0500 Aleph.local (51895)] INFO : Application: My Application
+[01/02/11 20:58:53 -0500 Aleph.local (51895)] WARN : Agent configured not to send data in this environment - edit newrelic.yml to change this
+[01/02/11 20:58:53 -0500 Aleph.local (51895)] INFO : New Relic RPM Agent 2.13.4 Initialized: pid = 51895
+[01/02/11 20:58:53 -0500 Aleph.local (51895)] INFO : Agent Log found in /Users/dyer/Dropbox/Development/medi_pad/log/newrelic_agent.log
+[01/02/11 21:41:21 -0500 Aleph.local (53269)] INFO : Dispatcher: webrick
+[01/02/11 21:41:21 -0500 Aleph.local (53269)] INFO : Application: My Application
+[01/02/11 21:41:21 -0500 Aleph.local (53269)] WARN : Agent configured not to send data in this environment - edit newrelic.yml to change this
+[01/02/11 21:41:21 -0500 Aleph.local (53269)] INFO : New Relic RPM Agent 2.13.4 Initialized: pid = 53269
+[01/02/11 21:41:21 -0500 Aleph.local (53269)] INFO : Agent Log found in /Users/dyer/Dropbox/Development/medi_pad/log/newrelic_agent.log

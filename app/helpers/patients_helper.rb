@@ -13,12 +13,11 @@ module PatientsHelper
     end
   end
   
-    def capitalize_each(v)
-      return_array=[]
-      v.split(" ").each{|e|return_array << e.capitalize + ' '}
-      return_array.to_s.strip
-    
-  end
+  # def capitalize_each(v)
+  #     return_array=[]
+  #     v.split(" ").each{|e|return_array << e.capitalize + ' '}
+  #     return_array.to_s.strip
+  # end           
   
   def get_lastname(name)
     return name.split(',', 2)[0]
@@ -58,7 +57,6 @@ module PatientsHelper
       return @facilities
   end
 
- 
  #Returns the current search object, also capilalizes first letter of each letter in word
  def fix_location_name(i)
    if i.facility.nil?
@@ -115,13 +113,12 @@ module PatientsHelper
     return @id
   end
 
-
   #This method helps us keep the current location in the querystring for navigation
   def get_selected_location
     # Does the URL have a location parameter?
-    if request.request_uri.include?("location")
+    if request.fullpath.include?("location")
       begin
-        location_url = request.request_uri.split("?")[1].split("&")[0]
+        location_url = request.fullpath.split("?")[1].split("&")[0]
       rescue Exception=>e 
         # Guard if there is no location in the URL
         return ""
@@ -132,27 +129,16 @@ module PatientsHelper
 
   # Checks each patients charges, only displaying a count of todays charges
   def count_todays_charges(opts={})
-    opts = {
-      :time_stamp=>Time.now.midnight,
-      }.merge(opts)
-
-          # charges = Charge.where({
-          #        :created_at.gte=>opts[:time_stamp].midnight,
-          #        :created_at.lte=>opts[:time_stamp].midnight+1.day,
-          #        :patient_id.eq=>opts[:patient].id
-          #       })
+    opts = { :time_stamp=>Time.now.midnight }.merge(opts)
 
     charge_count = 0
 
-    opts[:patient].charges.each{|charge|
-      if charge.created_at>=opts[:time_stamp].midnight
-        charge_count = charge_count+1
-        logger.debug { "\t#{charge.inspect}\n\n" }
-      end
-    }
-    
+    opts[:patient].charges.each do |charge|
+       charge_count = charge_count + 1 if charge.created_at >= opts[:time_stamp].midnight && charge.created_at <= opts[:time_stamp].midnight + 1.day
+    end
+
     if charge_count == 0
-      return "<font color=\"red\">0</font>"
+      return "<font color=\"red\">0</font>" 
     else
       return "<font color=\"green\">#{charge_count}</font>"
     end
@@ -172,7 +158,7 @@ module PatientsHelper
      
   def get_unrecorded_charges(opts={})
     unrecorded_charges =[]
-    
+
     opts = {
       :time_stamp=>session[:selected_time]
       }.merge(opts)

@@ -20,9 +20,13 @@ gem 'jquery-rails'
 gem 'rspec'
 gem 'rspec-rails'
 gem 'titleize'
+gem 'newrelic_rpm'
+
 
 
 group :development do
  # gem "rails_metrics", :git=>'https://github.com/milann/rails_metrics.git'
+
+ 
 end
 

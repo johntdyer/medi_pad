@@ -17,13 +17,11 @@
              <%  cookies[:user] = current_user.username %>
              <%  cookies[:last_name] = current_user.last_name %>
              <%  cookies[:first_name] = current_user.first_name %>
-             <li> <%= link_to "Patients", '/patients?location_search=true&id=ALTAMONTE'  %> </li>
-             <% if supported_browser %>
-              <li> <%= link_to "Calendar", calendar_path, {"rel"=>"external"} %> </li>
-              <li> <%= link_to "Reports", charges_path, {"rel"=>"external"}  %> </li>
-             <% end -%>
-             <li> <%= link_to 'Profile', '/users/edit'  %> </li>
-             <li> <%= link_to "Admin", {:controller => "admin", :action => "index"}, {"rel"=>"external"} if current_user.is_admin %> </li>
+              <li> <%= link_to "Patients", '/patients'  %> </li>
+              <li> <%= link_to_if supported_browser, "Calendar", calendar_path, {"rel"=>"external"} %> </li>
+              <li> <%= link_to_if supported_browser, "Reports", charges_path, {"rel"=>"external"}  %> </li>
+              <li> <%= link_to 'Profile', '/users/edit'  %> </li>
+              <li> <%= link_to_if current_user.is_admin ,"Admin", {:controller => "admin", :action => "index"}, {"rel"=>"external"} %> </li>
            <%end%>
   </ul>
 </div>

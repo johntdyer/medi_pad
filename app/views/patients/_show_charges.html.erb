@@ -1,4 +1,13 @@
+<style type="text/css" media="screen">
+  #charge_count{
+    color:green; 
+    font-size: 20px; 
+    font-weight: bold;
+  }
+</style>
+
 <script type="text/javascript" charset="utf-8">
+var selected_charge_id;
   //small jquery plugin for open the target dialog window
   (function($){
      $.fn.mydialog = function(){
@@ -12,17 +21,32 @@
                           '<div data-role=\'content\' data-theme=\'c\'><ul data-role=\'listview\' data-inset=\'true\'></ul></div>'+
                       '</div>' )
                       .appendTo( $.pageContainer ),
-              menu = menuPage.find('ul');    
+              menu = menuPage.find('ul');
 
-          //menu items    
+          //menu items
           $.each(options, function(i){
               $('<li class='+options[i].toLowerCase()+'><a href=\'#\'>' + options[ i ].charAt(0).toUpperCase() + options[ i ].substr(1) + '</a></li>')
                   .bind('click', function(event){                    
                       //your click event functions
-                      alert("clicked me");
-
+                      //alert("clicked me");
+                      
+                        console.log(selected_charge_id);
+                        $.ajax({
+                          url: "/charges/" + selected_charge_id,
+                          type: "DELETE",
+                          complete: function() {
+                            //called when complete
+                          },
+                          success: function() {
+                            //called when successful 
+                            $("#charge_"+selected_charge_id).hide();
+                          },
+                          error: function() {
+                            //called when there is an error
+                          },
+                        });
                       //go back to previous page when click dialog buttons
-                      $.mobile.changePage([menuPage, currentPage], 'pop', true);                        
+                      $.mobile.changePage([menuPage, currentPage], 'pop', true);
                       event.preventDefault();
                       return false;
                   })
@@ -37,38 +61,35 @@
       };    
   })(jQuery);
 
-  $('a').live('click', function(){    
-          $(this).mydialog();
-          return false;
+  $('a[id^=delete_]').live('click', function(){    
+    selected_charge_id = $(this).attr("id").split("_")[1];
+    
+    $(this).mydialog();
+    return false;
   });
   
 </script>
 
-<h3>Charges</h3>
-<style type="text/css" media="screen">
-  span.ui-btn-inner ui-btn-corner-all{
-    background-color:red;
-  }
-</style>
-  <ul data-role="listview" data-inset="true" data-theme="d"> 
-    <div data-role="collapsible-set"> 
-		
-        <!-- < get_unrecorded_charges({:charges=>charges}).each do |charge| %>       -->
-          <% charges.each do |a_charge| %>
-          <li>
-            <div data-role="collapsible" data-collapsed="true"> 
-              <h3><%= a_charge.procedure_name %></h3>
-                <h3>Doctor: <%= a_charge.doctor.titleize if a_charge.doctor %></h3>
-                <h3>Added: <%= a_charge.created_at.strftime("%b %e, %l:%M %p") %></h3>
-                <!--<= link_to 'Home', charge, "data-icon" => "delete", :method => :delete,:confirm => "Delete?" %>-->
+  <h3>Charges<span class="ui-li-count" id="charge_count"><%= @todays_charges.count %></span></h3>
+    <ul data-role="listview" data-inset="true" data-theme="d">
+      <div data-role="collapsible-set" data-collapsed="true">
 
-                <div data-inline="true">                             
-                  <%= link_to 'Delete', "#","id"=>"delete_#{a_charge.id}","data-icon"=>"delete","data-role" => "button" %><!-- , :method => :delete, :confirm => "Delete?" %> -->
-                  <!-- <a href="#" id="delete_<a_charge.id%>" data-icon="delete" data-role="button">DELETE</a> -->
+        <% @todays_charges.each do |a_charge| %>
+          <div id="charge_<%=a_charge.id%>">
+            <li>
+                <div data-role="collapsible"> 
+                 
+                 <h3> <%= a_charge.procedure_name %> </h3>
+                        <h3>Doctor: <%= a_charge.doctor.titleize if a_charge.doctor %></h3>
+                        <h3>Added: <%= a_charge.created_at.strftime("%b %e, %l:%M %p") %></h3>
+
+                        <div data-inline="true">
+                            <%= link_to 'Delete', "#","id"=>"delete_#{a_charge.id}","data-icon"=>"delete","data-role" => "button" %>
+                        </div>
+
                 </div>
-            </div>
-          </li>
-      <%end%>  
+            </li>
+          </div>
+        <%end%>
       </div>
-</ul>
-        
+    </ul>

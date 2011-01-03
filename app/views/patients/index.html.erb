@@ -1,4 +1,4 @@
-
+<%=debug(@patients.count)%>
           
 <%= javascript_include_tag "date.js", :cache => true %>
 <%= javascript_include_tag "strftime.js", :cache => true %>
@@ -104,16 +104,16 @@
           <%= link_to "Login", '/users/sign_in', "data-rel"=>"dialog","class"=>"ui-btn-right" %>
         <% end %>
 
-      <div data-role="navbar" class="nav-glyphish-example" data-grid="b">  
-        <ul>
-          <li> <%= link_to 'Add', new_patient_path, "data-icon" => "custom","id"=>"new-user","data-theme"=>"b" %> </li>
-          <li> <%= link_to 'Home', home_url, "data-icon" => "custom","id"=>"home","data-theme"=>"b" %>    </li>
-          <li> <%= link_to 'Today', "/patients?#{get_selected_location}date=#{(@selected_time).to_i}", "data-icon" => "custom","id"=>"calendar","rel"=>"external","data-theme"=>"b" %></li> 
+    <div data-role="navbar" class="nav-glyphish-example" data-grid="b">  
+      <ul>
+        <li> <%= link_to 'Add', new_patient_path, "data-icon" => "custom","id"=>"new-user","data-theme"=>"b" %> </li>
+        <li> <%= link_to 'Home', home_url, "data-icon" => "custom","id"=>"home","data-theme"=>"b" %>    </li>
+        <li> <%= link_to 'Today', "/patients?#{get_selected_location}date=#{(@selected_time).to_i}", "data-icon" => "custom","id"=>"calendar","rel"=>"external","data-theme"=>"b" %></li> 
 
-        </ul>
-      </div><!-- /navbar -->
+      </ul>
+    </div><!-- /navbar -->  
 
-    </div><!-- /header -->
+  </div><!-- /header -->
 
   <div data-role="content">
      <ul data-role="listview" data-filter="true" data-inset="true">
@@ -121,24 +121,20 @@
           <li>
               <font color="red"> <%= check_value(patient.room)%></font>
               <%= link_to patient.patient_name, patient %>
-              <!-- <span class="ui-li-count"><=patient.charges.length%></span> -->
               <span class="ui-li-count"><%=raw count_todays_charges({:patient=>patient,:time_stamp=>@selected_time}) %></span>
-              
               <%= link_to 'edit post', patient_path(patient), "data-icon" => "gear" %>
           </li>
         <% end %>
      </ul>
+  </div>
 
+  <div data-role="footer">
+    <div data-role="navbar">
+      <div data-role="controlgroup" data-type="horizontal">
+        <% get_list_of_facilities().each do |facility| %>
+          <a href="/patients?location=<%= CGI::escape(facility.downcase)%>&amp;date=<%=(@selected_time).to_i%>" data-role="button" data-theme="b" rel="external"><%=facility.capitalize%></a>
+        <% end %>   
+          <a href="/patients?location=all&amp;date=<%=(@selected_time).to_i%>" data-role="button" data-theme="b" rel="external">All</a>
+      </div
     </div>
-
-  <div data-role="footer">  
-     <div data-role="navbar">
-       <div data-role="controlgroup" data-type="horizontal">
-         <% get_list_of_facilities().each do |facility| %>
-            <a href="/patients?location=<%= CGI::escape(facility.downcase)%>&amp;date=<%=(@selected_time).to_i%>" data-role="button" data-theme="b" rel="external"><%=facility.capitalize%></a>
-         <% end %>   
-            <a href="/patients?location=all&amp;date=<%=(@selected_time).to_i%>" data-role="button" data-theme="b" rel="external">All</a>
-               <!-- <%= link_to "Logout", '/users/sign_out', "data-rel"=>"dialog", "class"=>"ui-btn-right" %>  -->
-       </div
-     </div>
-   </div> <!-- /footer -->
+  </div> <!-- /footer -->

@@ -8,54 +8,52 @@ class PatientsController < ApplicationController
   # GET /patients.xml
   def index
      #Get a list of distinct facilities 
-     @list =   Patient.all(:select=>"DISTINCT facility")
-     logger.debug { "\n\n#{@list.inspect}\n\n" }
-     if Patient.all.length==0
+     @list = Patient.all(:select=>"DISTINCT facility")
+
+   if !Patient.last #Patient.all.length==0
        logger.debug("NO RECORDS")
-       #redirect_to(:controller => "admin", :action => "index")
        @search = []
      else
 
        # If we have a date (passed from the view) we'll use that, otherwise
        # we will set the date to today @ midnight.
-       if params[:date] 
-         @selected_time = Time.at(params[:date].to_i).midnight 
-       else
-         @selected_time = Time.now.midnight
-       end 
-       
-       # Set session cookie so we can track state
-       session[:selected_time] = @selected_time
+     if params[:date] 
+       @selected_time = Time.at(params[:date].to_i).midnight 
+     else
+       @selected_time = Time.now.midnight
+     end 
 
-       # Defaults for the AR dip, set as a hash, since we'll merge a location 
-       # key into the hash (below).  This is required some 'all' means we omit 
-       # location entirly. 
+     # Set session cookie so we can track state
+     session[:selected_time] = @selected_time
 
-       meta_search_hash = {
-         #:discharged.eq=>false,
-         :date_last_added.gte=>session[:selected_time],
-         :date_last_added.lte=>session[:selected_time]+1.days
-       }
+     # Defaults for the AR dip, set as a hash, since we'll merge a location 
+     # key into the hash (below).  This is required some 'all' means we omit 
+     # location entirly. 
 
-       location = params.has_key?(:location) ? params[:location].upcase : @list.first.facility.upcase 
+     meta_search_hash = {
+       #:discharged.eq=>false,
+       :date_last_added.gte=>session[:selected_time],
+       :date_last_added.lte=>session[:selected_time]+1.days
+     }
 
-       if params.has_key?(:location)
-         meta_search_hash = meta_search_hash.merge({
+     location = params.has_key?(:location) ? params[:location].upcase : @list.first.facility.upcase 
+
+     if params.has_key?(:location)
+       meta_search_hash = meta_search_hash.merge({
                                                     :facility.eq=>location
                                                     }) unless params[:location].downcase=='all'
-       end
+     end
 
-       @search= Patient.where(meta_search_hash).order('patients.room ASC')
+     @search= Patient.where(meta_search_hash).order('patients.room ASC')#.where()
 
-       @patients = @search#.all
+     @patients = @search#.all
 
-      respond_to do |format|
-        format.html # index.html.erb
-        format.xml  { render :xml => @patients }
-        format.json  { render :json => @patients }
-
-      end
-     end 
+     respond_to do |format|
+       format.html # index.html.erb
+       format.xml  { render :xml => @patients }
+       format.json  { render :json => @patients }
+     end
+   end 
   end
 
  # def location
@@ -67,7 +65,12 @@ class PatientsController < ApplicationController
 
   # GET /patients/1
   # GET /patients/1.xml
-  def show               
+  def show 
+          @todays_charges =  Charge.where({
+            :created_at.gte=>session[:selected_time].midnight,
+            :created_at.lte=>session[:selected_time].midnight+1.day
+          })
+          
     require 'rbyaml'
     @patient = Patient.find(params[:id])
     @favorites = RbYAML.load(current_user.favorites) 

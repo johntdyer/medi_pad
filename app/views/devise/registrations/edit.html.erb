@@ -1,4 +1,4 @@
-<%= javascript_include_tag "jquery.trilemma.js" %>  
+<!-- <%= javascript_include_tag "jquery.trilemma.js" %>  
 
 <%= javascript_include_tag "jquery-ui-min.js" %>
 <%= stylesheet_link_tag "jquery-ui-1.8.5.custom.css" %>
@@ -7,216 +7,67 @@
 <%= stylesheet_link_tag "jquery.multiselect.css" %>
 <% @favorites = RbYAML.load(@user.favorites) if @user.favorites %>
 <% @procedure_list = Procedure.find(:all, :order => "procedure_name") %>
+-->
 
-<style type="text/css" media="screen">
 
-.edit_user_form body{
-  font-family:Arial, Helvetica, sans-serif;
-  position:absolute;
-}
 
-.edit_user_form h2{ 
-  position:absolute;
-  left:10px;
-  top: 20px; 
-  font-size:35pt;
-}
 
-.edit_user_form input{ 
-    position:absolute;
-    width: 450px;
-    background:#fff;
-    font-family:Arial, Helvetica, sans-serif;
-    font-size:35pt;
-    padding:5px;
-    border-top:1px solid #CCCCCC;
-    border-left:1px solid #CCCCCC;
-    border-right:1px solid #999999;
-    border-bottom:1px solid #999999;
-    -moz-border-radius: 8px;
-    -webkit-border-radius: 8px;
-  }
-  
+<div data-role="content">
 
-.edit_user_form div{
-  position:absolute;
-  left:40px;
-}  
-  #username{
-    top:50px;
-  }
-
-  #email{
-   top:150px; 
-  }
-
-#first_name input{
-  width: 200px; 
-  top:267px;
-  
-  
-}
-  #last_name input{
-    top:266px;
-    left:224px; 
-    width:225px;
-  } 
-  
-  #lastNameLable{
-    top:246px;
-    left:254px; 
-    width:240px;  
-  }
-  
-  #firstNameLable{
-     top:246px;
-     left:10px; 
-     width:250px;
-  }
-  
-
-  #current_password{
-    top:370px;
-  }
-  
-  #new_password{
-    top:430px; 
-  }
-
-  #new_password_confirmaiton{
-    top:550px; 
-  }
-
-  #current_password_field{
-    background-color:#C0C0C0;
-    top:10px; 
-  }
-     
-  .password_text_box{
-    top:50px;
-  }
-  
-  #submit_button{
-    top:540px;
-  
-  }
-  #favorites_button{
-    top:470px; 
-  }
-
-  .procedure_list{
-    top:300px; 
-  }
-  
-  #change_password_button{
-    top:380px; 
-    
-  }
-  .favorites{
-    position:absolute;
-    top:560px;
-    left: 140px; 
-  } 
-  
-  input.favorites{
-    width:4em;
-    height:4em;
-  }    
-  
-div#error_explanation{
-  left:520px;
-}
-</style>
-  
-<div class="edit_user_form">
   <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
   <%= devise_error_messages! %>
-  
-  <div id="username">
-    <p>
-      <%= f.label :username %><br />
-      <%= f.text_field :username %>
-    </p>
-  </div>
-  
-  <div id="email">
-    <p>
+
+  <%= f.error_messages %>
+
+    <div data-role="fieldcontain">
+       <%= f.label :username %><br />
+       <%= f.text_field :username %>
+    </div>
+
+    <div data-role="fieldcontain">
       <%= f.label :email %><br />
       <%= f.text_field :email %>
-    </p>
-  </div>
-  
-  <div id="first_name">  
-    <p>
+    </div>
+
+    <div data-role="fieldcontain">
       <div id="firstNameLable"> First Name:</div>
       <%= f.text_field :first_name %>
-  </p>  
-  </div>
-  
-  <div id="last_name">
-    <p>
+    </div>
+     
+    <div data-role="fieldcontain">
       <div id="lastNameLable"> Last Name:</div>
       <%= f.text_field :last_name %>
-    </p>
-   </div>
-   
-<<<<<<< HEAD
-   <div id="new_password">
-    <p>
+    </div>
+      
+    <div data-role="fieldcontain">
       <%= f.label :password,:class=>"password_text_box" %> <i>(leave blank if you don't want to change it)</i><br />
       <%= f.password_field :password, :class=>"password_text_box" %>  
-      <%= f.password_field :password_confirmation, :class=>"password_confirmation" %>  
-      
-    </p>
-  </div>
-  
-  <div id="new_password_confirmaiton">
-    <p>
-      <%= f.label :password_confirmation, :class=>"password_confirmation" %><br />
-      <%= f.password_field :password_confirmation, :class=>"password_confirmation" %>  
-      
-    </p>
-  </div>
-  
-  <div id="current_password">
-    <p>
+      <%= f.password_field :password_confirmation, :class=>"password_confirmation" %>
+    </div>
+   
+
+
+    <div data-role="fieldcontain">
       <%= f.label :current_password, :class=>"current_password"%> <i>(we need your current password to confirm your changes)</i>
       <%= f.password_field :current_password, :id=>"current_password_field"%>
-    </p>
-  </div> 
-=======
-   <div id="current_password">
-     <p>
-       <!-- <i>(we need your current password to confirm your changes)</i> -->
-       <div style="display:none"> 
-
-         <%= f.password_field :current_password, :id=>"current_password_field"%>
-         <%= f.password_field :password, :class=>"password_text_box" %>  
-         <%= f.password_field :password_confirmation, :class=>"password_confirmation" %>       
-       </div>
-     </p>
-   </div>
-
-     <div id="change_password_button">
-      <input type="button" name="Change Password" value="Change Password" id="change_password"><br/>
     </div>
->>>>>>> fix_patients_view
-  
 
-  <div id="submit_button">
-    <p> 
-     <input type="button" name="Submit" value="Submit" id="fake_submit_button"><br/>
-      
-      <!-- Hide the real submit button for some jQuery goodness -->
-      <div style="display:none"> 
-        <%= f.submit "Update" %>
-      </div>
-    </p>                    
-  </div>
+    <div data-role="fieldcontain">
+    </div>
+
+    <div data-role="fieldcontain">
+      <%= f.submit 'Update' %>
+    </div>
 <% end %>
-          
+</div>
 
- <div id="favorites_button">
+<div data-role="footer">
+  <h4>Copyright &copy; 2010</h4>
+</div> <!-- /footer -->
+
+    
+
+<!--  <div id="favorites_button">
    <input type="button" name="Edit Favorites" value="Edit Favorites" id="show_favorites"><br/>
  </div>  
  
@@ -356,26 +207,9 @@ div#error_explanation{
             });
            </script>
 
-<!-- <fieldset class="favorites">
-    <table class="procedure_list">
-      <caption>Favorites</caption>
-        < @procedure_list.in_groups_of(3,false) do |procedure| %>
-        <tr>
-          < procedure.each do |p| %>
-          <td>
-            <label class='checkbox'>
-              <= check_box_tag "procedure_ids[]",p.procedure_code,@favorites.include?(p.procedure_code) %>
-              <= look_for_procecdure_nickname(p) %>
-            </label>
 
-          </td>
-          < end %>
-        </tr>
-        < end %>
-        </table>
       
 </fieldset>
-              -->  
 <%= link_to "Home", '/home' %>  
 
 
@@ -434,4 +268,4 @@ div#error_explanation{
  </div>
 </div>
 
-
+ -->

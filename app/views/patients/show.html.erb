@@ -2,9 +2,9 @@
 
   <div data-role="header">
     <h1><%= @patient.patient_name.titleize %></h1>
+<h2><%= session[:selected_time].strftime("%A, %b %d")  %></h2>
   </div>
   
-  <!-- /navbar -->
    <div data-role="navbar" class="nav-glyphish-example" data-grid="b">  
       <ul>
         <li><%= link_to 'All Patients', "/patients?location=#{@patient.facility.downcase}&date=#{(session[:selected_time]).to_i}", "data-icon" => "plus", "class" => "ui-btn-left" %></li>
@@ -41,14 +41,15 @@
    </script>
 -->
 
-<script type="text/javascript" charset="utf-8">
-  $(document).ready(function(){
+  <script type="text/javascript" charset="utf-8">
+    $(document).ready(function(){
      console.log("@@@@");
-  });
-</script>
- <div data-role="content"> 
+    });
+  </script>
 
-    <div data-role="collapsible">      
+  <div data-role="content"> 
+
+    <div data-role="collapsible" data-collapsed="true">      
       <h3>Patient Data <%= @patient.id %></h3>
         <table>
           <tr>
@@ -64,57 +65,58 @@
             <td> <%= @patient.attending_md.titleize unless @patient.attending_md.nil?%></td>
           </tr>
         </table>
-    </div>
+  </div>
 
+  <div data-role="collapsible" data-collapsed="true">
+    <h3>Location Data</h3>
+      <table>
+        <tr>
+          <td>Room: </td>
+          <td><%=raw check_value(@patient.room)%></td>
+        </tr>
+        <tr>
+          <td>Bed: </td>
+          <td><%=raw check_value(@patient.bed)%></td>
+        </tr>
+        <tr>
+          <td>Unit: </td>
+          <td><%=raw check_value(@patient.unit)%></td>
+        </tr>
+        <tr>
+          <td>Age: </td>
+          <td><%=raw check_value(@patient.age.to_s)%></td>
+        </tr>
+        <tr>
+          <td>Sex: </td>
+          <td><%=raw check_value(@patient.sex)%></td>
+        </tr>
+      </table>
+  </div>
+
+  <% unless @todays_charges.empty? %>
     <div data-role="collapsible" data-collapsed="true">
-              <h3>Location Data</h3>
-              <table>
-                  <tr>
-                    <td>Room: </td>
-                    <td><%=raw check_value(@patient.room)%></td>
-                  </tr>
-                  <tr>
-                    <td>Bed: </td>
-                    <td><%=raw check_value(@patient.bed)%></td>
-                  </tr>
-                  <tr>
-                    <td>Unit: </td>
-                    <td><%=raw check_value(@patient.unit)%></td>
-                  </tr>
-                  <tr>
-                    <td>Age: </td>
-                    <td><%=raw check_value(@patient.age.to_s)%></td>
-                  </tr>
-                  <tr>
-                    <td>Sex: </td>
-                    <td><%=raw check_value(@patient.sex)%></td>
-                  </tr>
-                  </table>
-          </div>
-            
-      <% unless @patient.charges.empty? %>
-    <div data-role="collapsible" >
       <%= render :partial=>"show_charges", :locals=>{:charges=>@patient.charges,:orders=>@order} %>
     </div> 
-      <% end %>
-    
-    <div data-role="collapsible">
-             <h3>Add Charge</h3>
-             <%= render :partial=>"new_charge", :locals=>{:charge=>Charge.new(:patient_id=>@patient.id)}%>
-    </div>
+  <% end %>
 
-    <div class="ui-body ui-body-a">
-      <fieldset class="ui-grid-a">
-        <div class="ui-block-a">   
-          <div id="cancelButton" data-theme="a" data-role="button">Cancel</div>
-        </div>
-        <div class="ui-block-b">                            
-          <div id="submitButton" data-theme="a" data-role="button">Submit</div>
-        </div>
-      </fieldset>
-    </div>
+  <div data-role="collapsible">
+    <h3>Add Charge</h3>
+    <%= render :partial=>"new_charge", :locals=>{:charge=>Charge.new(:patient_id=>@patient.id)}%>
+  </div>
+
+  <div class="ui-body ui-body-a">
+    <fieldset class="ui-grid-a">
+      <div class="ui-block-a">   
+        <div id="cancelButton" data-theme="a" data-role="button">Cancel</div>
+      </div>
+      <div class="ui-block-b">                            
+        <div id="submitButton" data-theme="a" data-role="button">Submit</div>
+      </div>
+    </fieldset>
+  </div>
 
   </div>
+
   <div data-role="footer">
     <h4>CFPG</h4>
   </div><!-- /footer --> 
