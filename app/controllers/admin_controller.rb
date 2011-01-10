@@ -73,6 +73,8 @@ class AdminController < ApplicationController
 
             undischarge_patient(patient)
             patient.save
+            #Added an update attributes for when an existing patient is added, this way admitted is up to date
+            patient.update_attributes(:admitted=>>(item/"/D_ADMS_PATN").inner_text))
             logger.info "@@@ Log: Patient #{(item/"/N_PATN").inner_text} already Exists"
             failed_messages << "#{(item/"/N_PATN").inner_text} already Exists"
           end
