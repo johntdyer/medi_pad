@@ -26,27 +26,39 @@ class PatientsController < ApplicationController
      # Set session cookie so we can track state
      session[:selected_time] = @selected_time
 
-     # Defaults for the AR dip, set as a hash, since we'll merge a location 
-     # key into the hash (below).  This is required some 'all' means we omit 
-     # location entirly. 
+      patient_search=Admission.scoped(
+            :conditions => ['checkin >= ? AND checkin < ?', session[:selected_time].to_date, session[:selected_time].to_date+1.day], 
+            :include => :patient
+          ).map(&:patient).uniq
 
-     meta_search_hash = {
-       #:discharged.eq=>false,
-       :date_last_added.gte=>session[:selected_time],
-       :date_last_added.lte=>session[:selected_time]+1.days
-     }
+            #   meta_search_hash = {
+            #    :created_at.lte=>DateTime.now,
+            #    :created_at.gte=>session[:selected_time],
+            #    :date_last_added.gte=>session[:selected_time].midnight,
+            #    :date_last_added.lte=>session[:selected_time]+1.days,
+            #    :discharged.eq=>false
+            #   }
 
      location = params.has_key?(:location) ? params[:location].upcase : @list.first.facility.upcase 
 
      if params.has_key?(:location)
-       meta_search_hash = meta_search_hash.merge({
-                                                    :facility.eq=>location
-                                                    }) unless params[:location].downcase=='all'
+        unless params[:location].downcase=='all'   
+          @search = Array.new
+          patient_search.each{|patient|
+            @search<<patient if patient.facility == location
+          }
+        end
+
+       # meta_search_hash = meta_search_hash.merge({
+       #                                                     :facility.eq=>location
+       #                                                     }) unless params[:location].downcase=='all'
+     else
+       @search = patient_search
      end
 
-     @search= Patient.where(meta_search_hash).order('patients.room ASC')#.where()
+   #  @search= Patient.where(meta_search_hash).order('patients.room ASC')#.where()
 
-     @patients = @search#.all
+     @patients = @search
 
      respond_to do |format|
        format.html # index.html.erb

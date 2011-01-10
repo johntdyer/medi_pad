@@ -1,16 +1,5 @@
-<!-- <%= javascript_include_tag "jquery.trilemma.js" %>  
-
-<%= javascript_include_tag "jquery-ui-min.js" %>
-<%= stylesheet_link_tag "jquery-ui-1.8.5.custom.css" %>
-<%= stylesheet_link_tag "http://ajax.googleapis.com/ajax/libs/jqueryui/1/themes/ui-lightness/jquery-ui.css" %>                                                         
-<%= javascript_include_tag "jquery.multiselect.min.js" %>
-<%= stylesheet_link_tag "jquery.multiselect.css" %>
 <% @favorites = RbYAML.load(@user.favorites) if @user.favorites %>
 <% @procedure_list = Procedure.find(:all, :order => "procedure_name") %>
--->
-
-
-
 
 <div data-role="content">
 
@@ -44,15 +33,10 @@
       <%= f.password_field :password, :class=>"password_text_box" %>  
       <%= f.password_field :password_confirmation, :class=>"password_confirmation" %>
     </div>
-   
-
 
     <div data-role="fieldcontain">
       <%= f.label :current_password, :class=>"current_password"%> <i>(we need your current password to confirm your changes)</i>
       <%= f.password_field :current_password, :id=>"current_password_field"%>
-    </div>
-
-    <div data-role="fieldcontain">
     </div>
 
     <div data-role="fieldcontain">
@@ -209,63 +193,8 @@
 
 
       
-</fieldset>
-<%= link_to "Home", '/home' %>  
 
 
-
-<div id="passwordWindow" title="Change Password" procedureId="" style="display:none"> 
-  <style type="text/css" media="screen">
-  
-  div{
-    left:0px;
-  }  
-  
-  #passwordWindow input{
-    left:0px;
-    font-size:15pt;
-    width: 150px;
-  }
-  .new_password_div div{
-  }
-   #current_password_box{
-     top: 0px;
-   }
-  #new_pass_box{
-    top: 40px;
-  }  
-  #new_pass_confirmation{
-    top: 80px;
-  }
-   .password_buttons_div{
-    top: 130px; 
-   }
-
-  </style>
-     
-<div class="new_password_div">
-     Current Pass:&nbsp;&nbsp;<input type="password" id="current_pass_box"/><br/><br/>
-     New Pass:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="password" id="new_pass_box"/><br/><br/>
-     Confirmation:  <input type="password" id="new_pass_confirmation"/></br><br/>
-</div>
-  <div class="password_buttons_div">
-    <a href="#" id="closeChangePasswordWindow" class="notesAttribute negative" onclick='return false;'>Cancel</a>
-    <a href="#" id="submitChangePasswordWindow" class="notesAttribute negative"style="color:green" onclick='return false;'>Submit</a> 
-  </div>      
- </div>
-</div>
-
-<div id="checkPassWindow" title="Confirm Password" procedureId="" style="display:none"> 
-       
-       
-<div class="confirm_password">
-        <input type="password" id="currentPassword"/><br/>
-</div>
-  <div class="password_buttons_div">
-    <a href="#" id="closePasswordWindow" class="notesAttribute negative" onclick='return false;'>Cancel</a>
-    <a href="#" id="submitPasswordWindow" class="notesAttribute negative"style="color:green" onclick='return false;'>Submit</a> 
-  </div>      
- </div>
-</div>
+    
 
  -->

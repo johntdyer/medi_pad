@@ -1,0 +1,2 @@
+class AdmissionController < ApplicationController
+end

@@ -12,11 +12,11 @@ class AdminController < ApplicationController
           case params[:commit]
             when "Import" 
               parse_with_hpricot( data )
-              logger.info { "Successfully imported." }
+              logger.info "Successfully imported."
               #flash[:notice] = "Successfully imported."
               redirect_to :action => 'index'
             else
-              logger.info { "Import Error"}
+              logger.error "Import Error"
               flash[:notice] = "Import Error"
               redirect_to :action => 'index'
           end
@@ -34,7 +34,8 @@ class AdminController < ApplicationController
 
 
         record_count = (Hpricot(data)/"/FHCA/DATA/PATIENTLIST/ROW/N_PATN").length  # This gives me patient count 
-        logger.info { "@@@ LOG: #{record_count} records to import" }
+        
+        logger.info "@@@ LOG: #{record_count} records to import"
 
         (Hpricot(data)/"/FHCA/DATA/PATIENTLIST/ROW").each_with_index do |item,index|
           record = "record_#{index}"
@@ -55,14 +56,24 @@ class AdminController < ApplicationController
                     :discharged=>false
                   )
           if @patient.save
-            logger.info {"@@@ Log: Patient #{(item/"/N_PATN").inner_text} was succesfully imported"}
+
+            #Patient has never been admitted, create an admission record
+            Admission.create(:patient_id=>@patient.id,:checkin=>Date.today)
+            logger.debug "\n=====>\t@@@ Log: Patient #{(item/"/N_PATN").inner_text} was succesfully imported <=====\n"
             success_messages << "#{(item/"/N_PATN").inner_text} was succesfully imported"
+
           else 
-            @existing_patient=Patient.find_by_fin((item/"/I_ACCN").inner_text)
-            @existing_patient.update_attributes(:date_last_added=>Time.now())
-            undischarge_patient(@existing_patient)
-            @existing_patient.save
-            logger.info {"@@@ Log: Patient #{(item/"/N_PATN").inner_text} already Exists" }
+            patient = Patient.find_by_fin((item/"/I_ACCN").inner_text)
+            patient.update_attributes(:date_last_added=>Time.now())
+
+            Admission.create(
+                      :patient_id=>patient.id,
+                      :checkin=>Date.today
+                    ) unless Admission.find_last_by_patient_id(patient.id).checkout.nil?
+
+            undischarge_patient(patient)
+            patient.save
+            logger.info "@@@ Log: Patient #{(item/"/N_PATN").inner_text} already Exists"
             failed_messages << "#{(item/"/N_PATN").inner_text} already Exists"
           end
         end
@@ -74,7 +85,7 @@ class AdminController < ApplicationController
       #validates user
       def validate
           @user = User.find(params[:userID])
-          logger.debug { "@@@ Validating #{@user.username}" }
+          logger.debug "@@@ Validating #{@user.username}"
           @user.toggle(:validated)
           @user.save
           redirect_to :action => 'index'
