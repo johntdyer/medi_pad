@@ -58,7 +58,7 @@ class AdminController < ApplicationController
           if @patient.save
 
             #Patient has never been admitted, create an admission record
-            Admission.create(:patient_id=>@patient.id,:checkin=>Date.today)
+            
             logger.debug "\n=====>\t@@@ Log: Patient #{(item/"/N_PATN").inner_text} was succesfully imported <=====\n"
             success_messages << "#{(item/"/N_PATN").inner_text} was succesfully imported"
 
