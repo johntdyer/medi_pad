@@ -9,63 +9,34 @@ class PatientsController < ApplicationController
   def index
      #Get a list of distinct facilities 
      @list = Patient.all(:select=>"DISTINCT facility")
+     @patients = Array.new
+     unless Patient.all.empty? #Patient.all.length==0
+       # If we have a date (passed from the view) we'll use that, otherwise we will set the date to today @ midnight.
+       @selected_time = params[:date] ? Time.at(params[:date].to_i).midnight : Time.now.midnight
 
-   if !Patient.last #Patient.all.length==0
-       logger.debug("NO RECORDS")
-       @search = []
-     else
+       # Set session cookie so we can track state
+       session[:selected_time] = @selected_time
 
-       # If we have a date (passed from the view) we'll use that, otherwise
-       # we will set the date to today @ midnight.
-     if params[:date] 
-       @selected_time = Time.at(params[:date].to_i).midnight 
-     else
-       @selected_time = Time.now.midnight
-     end 
+       # patient_search=Admission.scoped(:conditions => ['checkin >= ? AND checkin < ?', session[:selected_time].to_date, session[:selected_time].to_date+1.day], :include => :patient ).map(&:patient).uniq   
+       patient_search = Patient.between(session[:selected_time],session[:selected_time])
 
-     # Set session cookie so we can track state
-     session[:selected_time] = @selected_time
+       location = params.has_key?(:location) ? params[:location].upcase : @list.first.facility.upcase 
 
-      patient_search=Admission.scoped(
-            :conditions => ['checkin >= ? AND checkin < ?', session[:selected_time].to_date, session[:selected_time].to_date+1.day], 
-            :include => :patient
-          ).map(&:patient).uniq
-
-            #   meta_search_hash = {
-            #    :created_at.lte=>DateTime.now,
-            #    :created_at.gte=>session[:selected_time],
-            #    :date_last_added.gte=>session[:selected_time].midnight,
-            #    :date_last_added.lte=>session[:selected_time]+1.days,
-            #    :discharged.eq=>false
-            #   }
-
-     location = params.has_key?(:location) ? params[:location].upcase : @list.first.facility.upcase 
-
-     if params.has_key?(:location)
-        unless params[:location].downcase=='all'   
-          @search = Array.new
-          patient_search.each{|patient|
-            @search<<patient if patient.facility == location
-          }
+        if params.has_key?(:location)
+          if params[:location].downcase.eql?('all')
+            @patients = patient_search
+          else
+            patient_search.each{|patient| @patients<<patient if patient.facility == location }
+          end
+        else
+          @patients = patient_search
         end
-
-       # meta_search_hash = meta_search_hash.merge({
-       #                                                     :facility.eq=>location
-       #                                                     }) unless params[:location].downcase=='all'
-     else
-       @search = patient_search
+        respond_to do |format|
+          format.html # index.html.erb
+          format.xml  { render :xml => @patients }
+          format.json  { render :json => @patients }
+        end
      end
-
-   #  @search= Patient.where(meta_search_hash).order('patients.room ASC')#.where()
-
-     @patients = @search
-
-     respond_to do |format|
-       format.html # index.html.erb
-       format.xml  { render :xml => @patients }
-       format.json  { render :json => @patients }
-     end
-   end 
   end
 
  # def location
