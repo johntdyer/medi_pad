@@ -21,7 +21,8 @@ gem 'rspec'
 gem 'rspec-rails'
 gem 'titleize'
 gem 'newrelic_rpm'
-
+gem 'hirb'
+gem 'utility_belt'
 
 
 group :development do

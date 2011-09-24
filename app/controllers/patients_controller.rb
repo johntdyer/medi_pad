@@ -7,18 +7,17 @@ class PatientsController < ApplicationController
   # GET /patients
   # GET /patients.xml
   def index
-     #Get a list of distinct facilities 
-     @list = Patient.all(:select=>"DISTINCT facility")
+     @list = Patient.all(:select=>"DISTINCT facility") #list of distinct facilities 
      @patients = Array.new
-     unless Patient.all.empty? #Patient.all.length==0
-       # If we have a date (passed from the view) we'll use that, otherwise we will set the date to today @ midnight.
+     unless Patient.all.empty?
+       # If we have a date we'll use that, otherwise we'll set date to today @ midnight.
+#       @selected_time = params[:date] ? Time.at(params[:date].to_i).midnight : DateTime.now.midnight
        @selected_time = params[:date] ? Time.at(params[:date].to_i).midnight : Time.now.midnight
 
        # Set session cookie so we can track state
        session[:selected_time] = @selected_time
-
-       # patient_search=Admission.scoped(:conditions => ['checkin >= ? AND checkin < ?', session[:selected_time].to_date, session[:selected_time].to_date+1.day], :include => :patient ).map(&:patient).uniq   
-       patient_search = Patient.between(session[:selected_time],session[:selected_time])
+       
+       patient_search = Patient.day(session[:selected_time])
 
        location = params.has_key?(:location) ? params[:location].upcase : @list.first.facility.upcase 
 
